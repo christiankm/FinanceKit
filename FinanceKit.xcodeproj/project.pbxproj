@@ -7,9 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2645971F05CA42009DCE2E /* FKLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2645961F05CA42009DCE2E /* FKLogger.swift */; };
+		AA2645B31F084E1C009DCE2E /* FKTrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2645B21F084E1C009DCE2E /* FKTrade.swift */; };
+		AA2E3D7E1D1329E900BBBBC1 /* FKCompanyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3D7D1D1329E900BBBBC1 /* FKCompanyTests.swift */; };
+		AA2E3D801D132B7500BBBBC1 /* FKCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3D7F1D132B7500BBBBC1 /* FKCompany.swift */; };
+		AA2E3D841D132CC600BBBBC1 /* FKCurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3D831D132CC600BBBBC1 /* FKCurrencyTests.swift */; };
+		AA2E3D8B1D13321100BBBBC1 /* FKStockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3D8A1D13321100BBBBC1 /* FKStockManager.swift */; };
+		AA73DA8A1ECBADF200119DF1 /* FKStockDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73DA891ECBADF200119DF1 /* FKStockDataType.swift */; };
+		AA73DA8D1ECBAF7800119DF1 /* FKYahooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73DA8C1ECBAF7800119DF1 /* FKYahooService.swift */; };
+		AA73DA911ECBB7F500119DF1 /* FKStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73DA901ECBB7F500119DF1 /* FKStock.swift */; };
+		AA8BFF951F05BED300E1765F /* FKYahooQueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BFF941F05BED300E1765F /* FKYahooQueryResponse.swift */; };
+		AAA5A61A1D133B9C00D27C14 /* FKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5A6191D133B9C00D27C14 /* FKConstants.swift */; };
 		AAAE8F311D10751100509DBB /* FinanceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAE8F301D10751100509DBB /* FinanceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAE8F381D10751100509DBB /* FinanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAE8F2D1D10751100509DBB /* FinanceKit.framework */; };
-		AAAE8F3D1D10751100509DBB /* FinanceKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE8F3C1D10751100509DBB /* FinanceKitTests.swift */; };
+		AAEB38B61ECCDC36001C5B8E /* FKStockDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB38B51ECCDC36001C5B8E /* FKStockDataError.swift */; };
+		AAEB38B81ECCDE04001C5B8E /* FKCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB38B71ECCDE04001C5B8E /* FKCurrency.swift */; };
+		AAEB38BA1ECCE205001C5B8E /* FKSerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB38B91ECCE205001C5B8E /* FKSerializationError.swift */; };
+		AAFD4A0E1F059CD600742FFD /* FKStockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD4A0D1F059CD600742FFD /* FKStockTests.swift */; };
+		CD3BFD8C96DC06630B3D3F7C /* Pods_FinanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C693DF5C820615F3514E228A /* Pods_FinanceKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +38,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81D04D9124D9FD2122B48B3D /* Pods-FinanceKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceKit/Pods-FinanceKit.release.xcconfig"; sourceTree = "<group>"; };
+		AA2645961F05CA42009DCE2E /* FKLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKLogger.swift; sourceTree = "<group>"; };
+		AA2645981F06A66E009DCE2E /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Pods/../build/Debug/XCGLogger/XCGLogger.framework; sourceTree = "<group>"; };
+		AA2645991F06A677009DCE2E /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Pods/../build/Debug/XCGLogger/XCGLogger.framework; sourceTree = "<group>"; };
+		AA26459E1F06A939009DCE2E /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = "../../../Library/Developer/Xcode/DerivedData/FinanceKit-fmpclbjakdcxunghpkuxvayhkoga/Build/Products/Debug/ObjcExceptionBridging/ObjcExceptionBridging.framework"; sourceTree = "<group>"; };
+		AA2645A01F06A940009DCE2E /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "../../../Library/Developer/Xcode/DerivedData/FinanceKit-fmpclbjakdcxunghpkuxvayhkoga/Build/Products/Debug/XCGLogger/XCGLogger.framework"; sourceTree = "<group>"; };
+		AA2645A61F06ABEB009DCE2E /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Pods/../build/Release/XCGLogger/XCGLogger.framework; sourceTree = "<group>"; };
+		AA2645A71F06ABF5009DCE2E /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = Pods/../build/Release/ObjcExceptionBridging/ObjcExceptionBridging.framework; sourceTree = "<group>"; };
+		AA2645A81F06ABFA009DCE2E /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Pods/../build/Release/XCGLogger/XCGLogger.framework; sourceTree = "<group>"; };
+		AA2645AE1F06B22F009DCE2E /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Pods/../build/Debug/CocoaLumberjack/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		AA2645AF1F06B23D009DCE2E /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Pods/../build/Debug/CocoaLumberjack/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		AA2645B21F084E1C009DCE2E /* FKTrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKTrade.swift; sourceTree = "<group>"; };
+		AA2E3D7D1D1329E900BBBBC1 /* FKCompanyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKCompanyTests.swift; sourceTree = "<group>"; };
+		AA2E3D7F1D132B7500BBBBC1 /* FKCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FKCompany.swift; path = FinanceKit/FKCompany.swift; sourceTree = SOURCE_ROOT; };
+		AA2E3D831D132CC600BBBBC1 /* FKCurrencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKCurrencyTests.swift; sourceTree = "<group>"; };
+		AA2E3D8A1D13321100BBBBC1 /* FKStockManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKStockManager.swift; sourceTree = "<group>"; };
+		AA73DA891ECBADF200119DF1 /* FKStockDataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKStockDataType.swift; sourceTree = "<group>"; };
+		AA73DA8C1ECBAF7800119DF1 /* FKYahooService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKYahooService.swift; sourceTree = "<group>"; };
+		AA73DA901ECBB7F500119DF1 /* FKStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKStock.swift; sourceTree = "<group>"; };
+		AA8BFF941F05BED300E1765F /* FKYahooQueryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKYahooQueryResponse.swift; sourceTree = "<group>"; };
+		AA9045D21F094D41004145CC /* FKPortfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKPortfolio.swift; sourceTree = "<group>"; };
+		AAA5A6191D133B9C00D27C14 /* FKConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKConstants.swift; sourceTree = "<group>"; };
 		AAAE8F2D1D10751100509DBB /* FinanceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAE8F301D10751100509DBB /* FinanceKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinanceKit.h; sourceTree = "<group>"; };
 		AAAE8F321D10751100509DBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAE8F371D10751100509DBB /* FinanceKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAAE8F3C1D10751100509DBB /* FinanceKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceKitTests.swift; sourceTree = "<group>"; };
 		AAAE8F3E1D10751100509DBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAEB38B51ECCDC36001C5B8E /* FKStockDataError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKStockDataError.swift; sourceTree = "<group>"; };
+		AAEB38B71ECCDE04001C5B8E /* FKCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKCurrency.swift; sourceTree = "<group>"; };
+		AAEB38B91ECCE205001C5B8E /* FKSerializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKSerializationError.swift; sourceTree = "<group>"; };
+		AAFD4A0D1F059CD600742FFD /* FKStockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKStockTests.swift; sourceTree = "<group>"; };
+		C693DF5C820615F3514E228A /* Pods_FinanceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FABBCD63CCC2950AFDB65190 /* Pods-FinanceKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceKit/Pods-FinanceKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3BFD8C96DC06630B3D3F7C /* Pods_FinanceKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,12 +93,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA050C811F05A0EE00EF1756 /* Stocks */ = {
+			isa = PBXGroup;
+			children = (
+				AA73DA901ECBB7F500119DF1 /* FKStock.swift */,
+			);
+			name = Stocks;
+			sourceTree = "<group>";
+		};
+		AA050C841F05A43F00EF1756 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AA8BFF941F05BED300E1765F /* FKYahooQueryResponse.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		AA2E3D821D132B7F00BBBBC1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA2E3D7F1D132B7500BBBBC1 /* FKCompany.swift */,
+				AAEB38B71ECCDE04001C5B8E /* FKCurrency.swift */,
+				AA9045D21F094D41004145CC /* FKPortfolio.swift */,
+				AA2645B21F084E1C009DCE2E /* FKTrade.swift */,
+				AA050C811F05A0EE00EF1756 /* Stocks */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AA2E3D881D13317400BBBBC1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AA73DA8C1ECBAF7800119DF1 /* FKYahooService.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		AA2E3D891D1331E900BBBBC1 /* Data Management */ = {
+			isa = PBXGroup;
+			children = (
+				AA2E3D8A1D13321100BBBBC1 /* FKStockManager.swift */,
+			);
+			name = "Data Management";
+			sourceTree = "<group>";
+		};
+		AA73DA881ECBADCC00119DF1 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				AAEB38B91ECCE205001C5B8E /* FKSerializationError.swift */,
+				AA73DA891ECBADF200119DF1 /* FKStockDataType.swift */,
+				AAEB38B51ECCDC36001C5B8E /* FKStockDataError.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		AA8BFF981F05C1C700E1765F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA2645AE1F06B22F009DCE2E /* CocoaLumberjack.framework */,
+				AA2645AF1F06B23D009DCE2E /* CocoaLumberjack.framework */,
+				AA2645A81F06ABFA009DCE2E /* XCGLogger.framework */,
+				AA2645A71F06ABF5009DCE2E /* ObjcExceptionBridging.framework */,
+				AA2645A01F06A940009DCE2E /* XCGLogger.framework */,
+				AA2645A61F06ABEB009DCE2E /* XCGLogger.framework */,
+				AA26459E1F06A939009DCE2E /* ObjcExceptionBridging.framework */,
+				AA2645981F06A66E009DCE2E /* XCGLogger.framework */,
+				AA2645991F06A677009DCE2E /* XCGLogger.framework */,
+				C693DF5C820615F3514E228A /* Pods_FinanceKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AAAE8F231D10751100509DBB = {
 			isa = PBXGroup;
 			children = (
 				AAAE8F2F1D10751100509DBB /* FinanceKit */,
 				AAAE8F3B1D10751100509DBB /* FinanceKitTests */,
 				AAAE8F2E1D10751100509DBB /* Products */,
+				AA8BFF981F05C1C700E1765F /* Frameworks */,
+				D9F741A4057AE43124361851 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +189,14 @@
 			children = (
 				AAAE8F301D10751100509DBB /* FinanceKit.h */,
 				AAAE8F321D10751100509DBB /* Info.plist */,
+				AAA5A6191D133B9C00D27C14 /* FKConstants.swift */,
+				AA2645961F05CA42009DCE2E /* FKLogger.swift */,
+				AAFD4A0A1F059A8200742FFD /* Common */,
+				AA73DA881ECBADCC00119DF1 /* Enums */,
+				AA2E3D821D132B7F00BBBBC1 /* Models */,
+				AA050C841F05A43F00EF1756 /* Data */,
+				AA2E3D891D1331E900BBBBC1 /* Data Management */,
+				AA2E3D881D13317400BBBBC1 /* Networking */,
 			);
 			path = FinanceKit;
 			sourceTree = "<group>";
@@ -80,10 +204,28 @@
 		AAAE8F3B1D10751100509DBB /* FinanceKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				AAAE8F3C1D10751100509DBB /* FinanceKitTests.swift */,
 				AAAE8F3E1D10751100509DBB /* Info.plist */,
+				AA2E3D7D1D1329E900BBBBC1 /* FKCompanyTests.swift */,
+				AA2E3D831D132CC600BBBBC1 /* FKCurrencyTests.swift */,
+				AAFD4A0D1F059CD600742FFD /* FKStockTests.swift */,
 			);
 			path = FinanceKitTests;
+			sourceTree = "<group>";
+		};
+		AAFD4A0A1F059A8200742FFD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D9F741A4057AE43124361851 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FABBCD63CCC2950AFDB65190 /* Pods-FinanceKit.debug.xcconfig */,
+				81D04D9124D9FD2122B48B3D /* Pods-FinanceKit.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,10 +246,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAAE8F411D10751100509DBB /* Build configuration list for PBXNativeTarget "FinanceKit" */;
 			buildPhases = (
+				F6D1B4E42AB6419CB59564CE /* [CP] Check Pods Manifest.lock */,
 				AAAE8F281D10751100509DBB /* Sources */,
 				AAAE8F291D10751100509DBB /* Frameworks */,
 				AAAE8F2A1D10751100509DBB /* Headers */,
 				AAAE8F2B1D10751100509DBB /* Resources */,
+				C35BE7E18B9E02DF3DE37031 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,16 +286,21 @@
 		AAAE8F241D10751100509DBB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = FK;
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Christian Mitteldorf";
 				TargetAttributes = {
 					AAAE8F2C1D10751100509DBB = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = Q3V7EHH6V7;
+						DevelopmentTeamName = "Christian Mitteldorf (Personal Team)";
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					AAAE8F361D10751100509DBB = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -191,11 +340,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C35BE7E18B9E02DF3DE37031 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinanceKit/Pods-FinanceKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6D1B4E42AB6419CB59564CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinanceKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AAAE8F281D10751100509DBB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA2E3D801D132B7500BBBBC1 /* FKCompany.swift in Sources */,
+				AA2645B31F084E1C009DCE2E /* FKTrade.swift in Sources */,
+				AAEB38B81ECCDE04001C5B8E /* FKCurrency.swift in Sources */,
+				AAEB38B61ECCDC36001C5B8E /* FKStockDataError.swift in Sources */,
+				AAA5A61A1D133B9C00D27C14 /* FKConstants.swift in Sources */,
+				AA73DA8D1ECBAF7800119DF1 /* FKYahooService.swift in Sources */,
+				AAEB38BA1ECCE205001C5B8E /* FKSerializationError.swift in Sources */,
+				AA2645971F05CA42009DCE2E /* FKLogger.swift in Sources */,
+				AA8BFF951F05BED300E1765F /* FKYahooQueryResponse.swift in Sources */,
+				AA73DA911ECBB7F500119DF1 /* FKStock.swift in Sources */,
+				AA73DA8A1ECBADF200119DF1 /* FKStockDataType.swift in Sources */,
+				AA2E3D8B1D13321100BBBBC1 /* FKStockManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +400,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAAE8F3D1D10751100509DBB /* FinanceKitTests.swift in Sources */,
+				AA2E3D7E1D1329E900BBBBC1 /* FKCompanyTests.swift in Sources */,
+				AAFD4A0E1F059CD600742FFD /* FKStockTests.swift in Sources */,
+				AA2E3D841D132CC600BBBBC1 /* FKCurrencyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,20 +420,29 @@
 		AAAE8F3F1D10751100509DBB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -257,10 +465,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -272,20 +481,29 @@
 		AAAE8F401D10751100509DBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -302,9 +520,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -315,7 +534,10 @@
 		};
 		AAAE8F421D10751100509DBB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FABBCD63CCC2950AFDB65190 /* Pods-FinanceKit.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -326,13 +548,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.christiankm.FinanceKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		AAAE8F431D10751100509DBB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D04D9124D9FD2122B48B3D /* Pods-FinanceKit.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -343,7 +571,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.christiankm.FinanceKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -351,10 +581,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = FinanceKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.christiankm.FinanceKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -362,10 +592,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = FinanceKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.christiankm.FinanceKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -388,6 +618,7 @@
 				AAAE8F431D10751100509DBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAAE8F441D10751100509DBB /* Build configuration list for PBXNativeTarget "FinanceKitTests" */ = {
 			isa = XCConfigurationList;
@@ -396,6 +627,7 @@
 				AAAE8F461D10751100509DBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
