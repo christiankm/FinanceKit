@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.summary      = 'FinanceKit.'
   spec.description  = <<-DESC
                         FinanceKit is a library for retrieveing financial data..
-                   DESC
+                      DESC
 
   #spec.module_name  = 'FinanceKit'
   spec.source       = { :path => './' }
@@ -20,6 +20,6 @@ Pod::Spec.new do |spec|
 
   spec.requires_arc = true
 
-  #s.dependency 'Realm'
+  spec.dependency 'CocoaLumberjack/Swift'
 
 end
