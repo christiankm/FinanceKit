@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -251,7 +251,7 @@
 				AAAE8F291D10751100509DBB /* Frameworks */,
 				AAAE8F2A1D10751100509DBB /* Headers */,
 				AAAE8F2B1D10751100509DBB /* Resources */,
-				C35BE7E18B9E02DF3DE37031 /* [CP] Copy Pods Resources */,
+				AA6B058320E57BFC00B9310F /* Run Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -341,20 +341,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C35BE7E18B9E02DF3DE37031 /* [CP] Copy Pods Resources */ = {
+		AA6B058320E57BFC00B9310F /* Run Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "Run Swiftlint";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinanceKit/Pods-FinanceKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		F6D1B4E42AB6419CB59564CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

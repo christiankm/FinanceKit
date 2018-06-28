@@ -15,5 +15,5 @@ struct FKConstants {
         static let TableFinanceQuotes = "yahoo.finance.quotes"
         static let TableFInanceDividendHistory = "yahoo.finance.dividendhistory"
     }
-    
+
 }

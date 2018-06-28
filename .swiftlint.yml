@@ -1,0 +1,22 @@
+excluded:
+  - Pods
+
+disabled_rules:
+  - identifier_name
+
+opt_in_rules:
+  - yoda_condition
+#- force_unwrapping
+  - overridden_super_call
+  - prohibited_super_call
+  - discarded_notification_center_observer
+  - dynamic_inline
+  - first_where
+  - implicitly_unwrapped_optional
+  - valid_ibinspectable
+  - weak_delegate
+  - file_length
+
+force_unwrapping:
+  severity: error
+line_length: 180
