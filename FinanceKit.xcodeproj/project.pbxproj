@@ -24,7 +24,6 @@
 		AAEB38B81ECCDE04001C5B8E /* FKCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB38B71ECCDE04001C5B8E /* FKCurrency.swift */; };
 		AAEB38BA1ECCE205001C5B8E /* FKSerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB38B91ECCE205001C5B8E /* FKSerializationError.swift */; };
 		AAFD4A0E1F059CD600742FFD /* FKStockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD4A0D1F059CD600742FFD /* FKStockTests.swift */; };
-		CD3BFD8C96DC06630B3D3F7C /* Pods_FinanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C693DF5C820615F3514E228A /* Pods_FinanceKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		81D04D9124D9FD2122B48B3D /* Pods-FinanceKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceKit/Pods-FinanceKit.release.xcconfig"; sourceTree = "<group>"; };
 		AA2645961F05CA42009DCE2E /* FKLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKLogger.swift; sourceTree = "<group>"; };
 		AA2645981F06A66E009DCE2E /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Pods/../build/Debug/XCGLogger/XCGLogger.framework; sourceTree = "<group>"; };
 		AA2645991F06A677009DCE2E /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Pods/../build/Debug/XCGLogger/XCGLogger.framework; sourceTree = "<group>"; };
@@ -69,8 +67,6 @@
 		AAEB38B71ECCDE04001C5B8E /* FKCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKCurrency.swift; sourceTree = "<group>"; };
 		AAEB38B91ECCE205001C5B8E /* FKSerializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKSerializationError.swift; sourceTree = "<group>"; };
 		AAFD4A0D1F059CD600742FFD /* FKStockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKStockTests.swift; sourceTree = "<group>"; };
-		C693DF5C820615F3514E228A /* Pods_FinanceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FABBCD63CCC2950AFDB65190 /* Pods-FinanceKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceKit/Pods-FinanceKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD3BFD8C96DC06630B3D3F7C /* Pods_FinanceKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +154,6 @@
 				AA26459E1F06A939009DCE2E /* ObjcExceptionBridging.framework */,
 				AA2645981F06A66E009DCE2E /* XCGLogger.framework */,
 				AA2645991F06A677009DCE2E /* XCGLogger.framework */,
-				C693DF5C820615F3514E228A /* Pods_FinanceKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,7 +165,6 @@
 				AAAE8F3B1D10751100509DBB /* FinanceKitTests */,
 				AAAE8F2E1D10751100509DBB /* Products */,
 				AA8BFF981F05C1C700E1765F /* Frameworks */,
-				D9F741A4057AE43124361851 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,15 +212,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		D9F741A4057AE43124361851 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FABBCD63CCC2950AFDB65190 /* Pods-FinanceKit.debug.xcconfig */,
-				81D04D9124D9FD2122B48B3D /* Pods-FinanceKit.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -246,7 +230,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAAE8F411D10751100509DBB /* Build configuration list for PBXNativeTarget "FinanceKit" */;
 			buildPhases = (
-				F6D1B4E42AB6419CB59564CE /* [CP] Check Pods Manifest.lock */,
 				AAAE8F281D10751100509DBB /* Sources */,
 				AAAE8F291D10751100509DBB /* Frameworks */,
 				AAAE8F2A1D10751100509DBB /* Headers */,
@@ -354,24 +337,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		F6D1B4E42AB6419CB59564CE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FinanceKit-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -539,7 +504,6 @@
 		};
 		AAAE8F421D10751100509DBB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FABBCD63CCC2950AFDB65190 /* Pods-FinanceKit.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -549,7 +513,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FinanceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = dk.christiankm.FinanceKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -562,7 +530,6 @@
 		};
 		AAAE8F431D10751100509DBB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81D04D9124D9FD2122B48B3D /* Pods-FinanceKit.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -572,7 +539,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FinanceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = dk.christiankm.FinanceKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
