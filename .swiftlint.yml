@@ -1,22 +1,123 @@
-excluded:
-  - Pods
-
-disabled_rules:
-  - identifier_name
-
 opt_in_rules:
-  - yoda_condition
-#- force_unwrapping
+  - custom_rules
+  - collection_alignment
+  - deployment_target
+  - discarded_notification_center_observer
+  - discouraged_optional_boolean
+  - discouraged_optional_collection
+  - duplicate_imports
+  - dynamic_inline
+  - empty_count
+  - empty_string
+  - explicit_init
+  - file_header
+  - file_name
+  - file_length
+  - file_types_order
+  - first_where
+  - force_unwrapping
+  - identical_operands
+  - implicitly_unwrapped_optional
+  - inert_defer
+  - legacy_hashing
+  - legacy_multiple
+  - legacy_random
+  - lower_acl_than_parent
+  - multiline_literal_brackets
+  - nsobject_prefer_isequal
+  - operator_usage_whitespace
   - overridden_super_call
   - prohibited_super_call
-  - discarded_notification_center_observer
-  - dynamic_inline
-  - first_where
-  - implicitly_unwrapped_optional
-  - valid_ibinspectable
+  - redundant_nil_coalescing
+  - static_operator
+  - todo
+  - toggle_bool
+  - unowned_variable_capture
+  - unused_capture_list
+  - unused_import
+  - unused_declaration
+  - unused_setter_value
+  - vertical_whitespace_closing_braces
   - weak_delegate
-  - file_length
+  - yoda_condition
 
+# Configure Rules
+deployment_target:
+  iOS_deployment_target: 10.0
+  watchOS_deployment_target: 2.0
 force_unwrapping:
   severity: error
-line_length: 180
+overridden_super_call:
+  severity: error
+prohibited_super_call:
+  severity: error
+
+custom_rules: 
+  boolean_return:
+    name: "Boolean Return"
+    regex: "\\? (true : false)|(false : true)"
+    message: "It is redundant to return true or false for a boolean value. Instead return the value itself."
+    severity: warning
+
+  class_name:
+    name: "Class Name"
+    regex: "(?i)(class|struct) \\S*(Protocol|Delegate):"
+    message: "A class name should never contain `Delegate` or `Protocol`. Use a Protocol instead."
+    severity: warning
+
+  documentation_ticks:
+    name: "Documentation Ticks"
+    regex: "´"
+    message: "Incorrect Markdown format used. Mark types in '`' instead of '´' for proper formatting."
+    match_kinds:
+      - comment
+      - doccomment
+    severity: warning
+
+  final_class:
+    name: "Final Class"
+    regex: "(?<!final )class (?!(\\{|private|func|var|.*XCTestCase))"
+    message: "Classes not meant to be subclassed should be marked as `final`."
+    match_kinds:
+    - identifier
+    - keyword
+    - typeidentifier
+    severity: warning
+
+  force_https:
+    name: "Force HTTPS"
+    regex: "(?i)http:\\/\\/"
+    message: "Using HTTP is not secure. Use HTTPS where possible."
+    severity: warning
+  logging:
+    name: "Logging"
+    regex: "(print|NSLog)\\("
+    message: "Using print or NSLog is considered unsecure and inefficient. Use `os_log`"
+    severity: warning
+
+  # Custom rule violating if specifing a parameter to it's default value.
+  redundant_default_parameter:
+    name: "Redundant Default Value"
+    regex: "(present|dismiss|animateWithDuration)\\(\\V*, completion: nil\\)"
+    message: "Specifying a parameter with it's default value is redundant. Remove parameter or change it's value."
+    severity: warning
+
+  # Custom rule violating if tabs are used for indentation instead of spaces.
+  tabs:
+    name: "Tab Whitespace"
+    regex: "\\t"
+    message: "Using tabs is discouraged. Use spaces only."
+    severity: warning
+
+  # Custom rule violating when type inference is not used.
+  # Violating:
+  #   let view: UIView = UIView()
+  #   view.backgroundColor = UIColor.red()
+  # Non-violating:
+  #   let view = UIView()
+  #   view.backgroundColor = .red
+  type_inferred_context:
+    name: "type_inferred_context"
+    regex: "(\\:\\s(\\w+)\\s\\=\\s\\1|\\.priority\\s\\=\\sUILayoutPriority\\.|(textColor|highlightedTextColor|tintColor|backgroundColor)\\s\\=\\sUIColor\\.|image\\s\\=\\sUIImage\\.|\\.alignmentMode\\s=\\sCATextLayerAlignmentMode\\.|separatorInset\\s=\\sUIEdgeInsets\\.|layoutMargins\\s=\\sUIEdgeInsets\\.)"
+    message: "Type inferred context is preferred over explicit types."
+    severity: warning

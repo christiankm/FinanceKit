@@ -1,11 +1,3 @@
-//
-//  FKConstants.swift
-//  FinanceKit
-//
-//  Created by Christian Mitteldorf on 16/06/2016.
-//  Copyright © 2016 Christian Mitteldorf. All rights reserved.
-//
-
 import Foundation
 
 struct FKConstants {
@@ -15,5 +7,4 @@ struct FKConstants {
         static let TableFinanceQuotes = "yahoo.finance.quotes"
         static let TableFInanceDividendHistory = "yahoo.finance.dividendhistory"
     }
-
 }

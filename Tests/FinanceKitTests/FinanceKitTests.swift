@@ -10,6 +10,6 @@ final class FinanceKitTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 }
