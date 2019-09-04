@@ -178,7 +178,6 @@
 		OBJ_74 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		OBJ_75 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_79 /* FOR FINANCEKIT */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "FOR FINANCEKIT"; sourceTree = SOURCE_ROOT; };
-		OBJ_80 /* MOVE_TO_PORTFOLIO_APP */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MOVE_TO_PORTFOLIO_APP; sourceTree = SOURCE_ROOT; };
 		OBJ_81 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_82 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_9 /* Change.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
@@ -203,7 +202,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -211,11 +210,9 @@
 				OBJ_52 /* Tests */,
 				OBJ_76 /* Products */,
 				OBJ_79 /* FOR FINANCEKIT */,
-				OBJ_80 /* MOVE_TO_PORTFOLIO_APP */,
 				OBJ_81 /* LICENSE */,
 				OBJ_82 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_52 /* Tests */ = {
@@ -393,7 +390,7 @@
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_76 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
