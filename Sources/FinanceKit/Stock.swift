@@ -13,12 +13,15 @@ public struct Stock: Identifiable, Codable {
     public let id: UUID = UUID()
     public let symbol: Symbol
     public let company: Company
-}
+    public let price: Decimal
+    public let currency: Currency
+    public let change: Change
 
-public extension Stock {
-
-    init(symbol: Symbol) {
+    public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency, change: Change) {
         self.symbol = symbol
-        self.company = Company(symbol: symbol, name: "Apple Inc.", marketCap: "123", exchange: "NASDAQ", currency: Currency(code: .USD))
+        self.company = company
+        self.price = price
+        self.currency = currency
+        self.change = change
     }
 }

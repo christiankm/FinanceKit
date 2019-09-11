@@ -9,7 +9,7 @@
 import Foundation
 
 /// A Change keeps track of the numerical and percent changes for a stock.
-public struct Change {
+public struct Change: Codable {
     public var value: Double
 
     public var isPositive: Bool {
@@ -27,4 +27,8 @@ public struct Change {
     public init(value: Double) {
         self.value = value
     }
+
+    public static var zero: Change = {
+        Change(value: 0)
+    }()
 }
