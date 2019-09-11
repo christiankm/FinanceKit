@@ -10,6 +10,7 @@ import Foundation
 
 public enum CurrencyCode: String, CaseIterable, Codable {
     #warning("get all currencies and sort by name")
+    case unknown
     case dkk
     case USD
     case EUR
@@ -22,7 +23,7 @@ public enum CurrencyCode: String, CaseIterable, Codable {
         self.rawValue.uppercased()
     }
 
-    var currencyName: String {
+    public var currencyName: String {
         switch self {
         default:
             return ""
@@ -35,7 +36,7 @@ public struct Currency: Codable {
     public let code: CurrencyCode
     public let name: String
 
-    init(code currencyCode: CurrencyCode) {
+    public init(code currencyCode: CurrencyCode) {
         code = currencyCode
         name = currencyCode.currencyName
     }
