@@ -15,9 +15,9 @@ public struct Stock: Identifiable, Codable {
     public let company: Company
     public let price: Decimal
     public let currency: Currency
-    public let change: Change
+    public let change: Change?
 
-    public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency, change: Change) {
+    public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency, change: Change? = nil) {
         self.symbol = symbol
         self.company = company
         self.price = price
