@@ -25,6 +25,7 @@ opt_in_rules:
   - legacy_hashing
   - legacy_multiple
   - legacy_random
+  - literal_expression_end_indentation
   - lower_acl_than_parent
   - multiline_literal_brackets
   - nsobject_prefer_isequal
@@ -45,9 +46,6 @@ opt_in_rules:
   - yoda_condition
 
 # Configure Rules
-deployment_target:
-  iOS_deployment_target: 10.0
-  watchOS_deployment_target: 2.0
 force_unwrapping:
   severity: error
 overridden_super_call:
