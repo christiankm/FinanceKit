@@ -11,7 +11,7 @@ import Foundation
 public enum CurrencyCode: String, CaseIterable, Codable {
     #warning("get all currencies and sort by name")
     case unknown
-    case dkk
+    case DKK
     case USD
     case EUR
     case GBP
