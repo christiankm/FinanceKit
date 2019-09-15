@@ -13,4 +13,10 @@ public struct Portfolio: Codable, Identifiable {
     public let name: String
     public let currency: Currency
     public var stocks: [Stock] = []
+
+    public init(name: String, currency: Currency, stocks: [Stock] = []) {
+        self.name = name
+        self.currency = currency
+        self.stocks = stocks
+    }
 }
