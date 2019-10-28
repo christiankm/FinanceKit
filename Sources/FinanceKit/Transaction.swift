@@ -24,7 +24,8 @@ public struct Transaction: Codable {
     public let quantity: Int
 
     public var transactionCost: Decimal {
-        Decimal(Double(quantity) * price)
+        let cost = Decimal(Double(quantity) * price)
+        return type == .buy ? cost * -1 : cost
     }
 
     public init(type: TransactionType, symbol: Symbol, date: Date, price: Double, quantity: Int) {
