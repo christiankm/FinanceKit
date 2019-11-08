@@ -18,17 +18,21 @@ public enum TransactionType: Int, Codable {
 public struct Transaction: Codable {
 
     public let type: TransactionType
-    public let symbol: Symbol
+    public let symbol: Symbol?
     public let date: Date
-    public let price: Double
+    public let price: Price
     public let quantity: Quantity
 
-    public var transactionCost: Decimal {
-        let cost = Decimal(Double(quantity) * price)
-        return type == .buy ? cost * -1 : cost
+    public var transactionCost: Price {
+        var cost = Decimal(quantity.rawValue) * price.rawValue
+        if type == .buy {
+            cost *= -1
+        }
+
+        return Price(rawValue: cost)
     }
 
-    public init(type: TransactionType, symbol: Symbol, date: Date, price: Double, quantity: Int) {
+    public init(type: TransactionType, symbol: Symbol?, date: Date, price: Price, quantity: Quantity) {
         self.type = type
         self.symbol = symbol
         self.date = date

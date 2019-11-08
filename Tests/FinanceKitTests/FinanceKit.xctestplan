@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "6CE6A427-B980-4A10-846A-AE032EC79C1F",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FinanceKit.xcodeproj",
+        "identifier" : "FinanceKit::FinanceKitTests",
+        "name" : "FinanceKitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

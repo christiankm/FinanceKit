@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
 		AAE675472375BF8E00BA5141 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675462375BF8E00BA5141 /* Quantity.swift */; };
 		OBJ_109 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Portfolio.swift */; };
 		OBJ_110 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Price.swift */; };
@@ -54,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AAE675422375B7D700BA5141 /* FinanceKit.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FinanceKit.xctestplan; sourceTree = "<group>"; };
+		AAE675432375BC3000BA5141 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTests.swift; path = Tests/FinanceKitTests/TransactionTests.swift; sourceTree = SOURCE_ROOT; };
 		AAE675462375BF8E00BA5141 /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FinanceKit::FinanceKitTests::Product" /* FinanceKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_54 /* ChangeTests.swift */,
+				AAE675432375BC3000BA5141 /* TransactionTests.swift */,
+				AAE675422375B7D700BA5141 /* FinanceKit.xctestplan */,
 				OBJ_75 /* XCTestManifests.swift */,
 			);
 			name = FinanceKitTests;
@@ -271,6 +276,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_148 /* ChangeTests.swift in Sources */,
+				AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */,
 				OBJ_169 /* XCTestManifests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
