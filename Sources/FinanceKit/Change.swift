@@ -32,3 +32,10 @@ public struct Change: Codable {
         Change(value: 0)
     }()
 }
+
+extension Change: Equatable {
+
+    public static func == (lhs: Change, rhs: Change) -> Bool {
+        lhs.value == rhs.value
+    }
+}

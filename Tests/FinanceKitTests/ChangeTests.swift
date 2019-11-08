@@ -18,6 +18,29 @@ class ChangeTests: XCTestCase {
     func testInit() {
         let change = Change(value: 0.34)
         XCTAssertEqual(change.value, 0.34)
-        XCTAssertTrue(change.isPositive)
+    }
+
+    func testZeroChange() {
+        XCTAssertEqual(Change.zero.value, 0)
+    }
+
+    func testEquatable() {
+        XCTAssertEqual(Change.zero, Change.zero)
+    }
+
+    func testIsPositive() {
+        XCTAssertTrue(Change(value: 1).isPositive)
+        XCTAssertTrue(Change(value: 0).isPositive)
+        XCTAssertFalse(Change(value: -1).isPositive)
+    }
+
+    func testIsNegative() {
+        XCTAssertTrue(Change(value: -1).isNegative)
+        XCTAssertFalse(Change(value: 0).isNegative)
+        XCTAssertFalse(Change(value: 1).isNegative)
+    }
+
+    func testPercentageText() {
+        XCTAssertEqual(Change(value: 0.34).percentageText, "0.34 %")
     }
 }
