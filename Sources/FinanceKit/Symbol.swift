@@ -7,4 +7,11 @@
 
 import Foundation
 
-public typealias Symbol = String
+public struct Symbol: RawRepresentable, Hashable, Codable {
+    public let rawValue: String
+
+    public init?(rawValue: String) {
+        guard !rawValue.isEmpty else { return nil }
+        self.rawValue = rawValue
+    }
+}
