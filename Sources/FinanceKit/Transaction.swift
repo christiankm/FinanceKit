@@ -21,7 +21,7 @@ public struct Transaction: Codable {
     public let symbol: Symbol
     public let date: Date
     public let price: Double
-    public let quantity: Int
+    public let quantity: Quantity
 
     public var transactionCost: Decimal {
         let cost = Decimal(Double(quantity) * price)

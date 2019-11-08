@@ -21,63 +21,19 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		AA55AA79231ADF660073725E /* String+AttributedCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA55AA78231ADF660073725E /* String+AttributedCurrency.swift */; };
-		OBJ_100 /* DividendRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* DividendRecord.swift */; };
-		OBJ_103 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Formatters.swift */; };
-		OBJ_104 /* HistoricalChange+Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* HistoricalChange+Coding.swift */; };
-		OBJ_105 /* HistoricalChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* HistoricalChange.swift */; };
-		OBJ_106 /* LiveData+Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* LiveData+Coding.swift */; };
-		OBJ_107 /* LiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* LiveData.swift */; };
-		OBJ_108 /* MoneyInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* MoneyInputValidator.swift */; };
+		AAE675472375BF8E00BA5141 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675462375BF8E00BA5141 /* Quantity.swift */; };
 		OBJ_109 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Portfolio.swift */; };
 		OBJ_110 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Price.swift */; };
-		OBJ_111 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* SearchResult.swift */; };
-		OBJ_112 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* SerializationError.swift */; };
 		OBJ_114 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Stock.swift */; };
-		OBJ_117 /* StockDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* StockDataProtocol.swift */; };
-		OBJ_118 /* StockDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* StockDataType.swift */; };
-		OBJ_119 /* StockEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* StockEntry.swift */; };
-		OBJ_120 /* StockManager+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* StockManager+Debugging.swift */; };
-		OBJ_121 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* StockManager.swift */; };
 		OBJ_123 /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* Symbol.swift */; };
-		OBJ_124 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* TimeFormatter.swift */; };
-		OBJ_125 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Trade.swift */; };
 		OBJ_126 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* Transaction.swift */; };
-		OBJ_127 /* YahooQueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* YahooQueryResponse.swift */; };
-		OBJ_128 /* YahooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* YahooService.swift */; };
-		OBJ_129 /* YahooStockData+Processing.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* YahooStockData+Processing.swift */; };
-		OBJ_130 /* YahooStockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* YahooStockData.swift */; };
 		OBJ_137 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_148 /* ChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* ChangeTests.swift */; };
-		OBJ_149 /* CompanyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* CompanyTests.swift */; };
-		OBJ_151 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* CurrencyFormatterTests.swift */; };
-		OBJ_152 /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* CurrencyTests.swift */; };
-		OBJ_154 /* DividendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* DividendTests.swift */; };
-		OBJ_155 /* FinanceKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* FinanceKitTests.swift */; };
-		OBJ_156 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* FormatterTests.swift */; };
-		OBJ_157 /* HistoricalChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* HistoricalChangeTests.swift */; };
-		OBJ_158 /* LiveDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* LiveDataTests.swift */; };
-		OBJ_159 /* MoneyInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* MoneyInputValidatorTests.swift */; };
-		OBJ_160 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* MoneyTests.swift */; };
-		OBJ_161 /* NewStockEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* NewStockEntryTests.swift */; };
-		OBJ_162 /* PortfolioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* PortfolioTests.swift */; };
-		OBJ_163 /* SearchResultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* SearchResultsTests.swift */; };
-		OBJ_164 /* StockDataDownloadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* StockDataDownloadingTests.swift */; };
-		OBJ_165 /* StockManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* StockManagerTests.swift */; };
-		OBJ_166 /* StockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* StockTests.swift */; };
-		OBJ_168 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* TransactionTests.swift */; };
 		OBJ_169 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* XCTestManifests.swift */; };
 		OBJ_171 /* FinanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "FinanceKit::FinanceKit::Product" /* FinanceKit.framework */; };
 		OBJ_88 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Change.swift */; };
 		OBJ_89 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Company.swift */; };
-		OBJ_91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Constants.swift */; };
 		OBJ_92 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Currency.swift */; };
-		OBJ_93 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* CurrencyFormatter.swift */; };
-		OBJ_94 /* CurrencyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* CurrencyFormatting.swift */; };
-		OBJ_95 /* DateAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* DateAndTimeFormatter.swift */; };
-		OBJ_96 /* DayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* DayFormatter.swift */; };
-		OBJ_97 /* Dividend.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Dividend.swift */; };
-		OBJ_99 /* DividendRecord+Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* DividendRecord+Coding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,62 +54,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA55AA78231ADF660073725E /* String+AttributedCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+AttributedCurrency.swift"; sourceTree = "<group>"; };
+		AAE675462375BF8E00BA5141 /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FinanceKit::FinanceKitTests::Product" /* FinanceKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
-		OBJ_12 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		OBJ_13 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		OBJ_14 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
-		OBJ_15 /* CurrencyFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatting.swift; sourceTree = "<group>"; };
-		OBJ_16 /* DateAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeFormatter.swift; sourceTree = "<group>"; };
-		OBJ_17 /* DayFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayFormatter.swift; sourceTree = "<group>"; };
-		OBJ_18 /* Dividend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dividend.swift; sourceTree = "<group>"; };
-		OBJ_20 /* DividendRecord+Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DividendRecord+Coding.swift"; sourceTree = "<group>"; };
-		OBJ_21 /* DividendRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendRecord.swift; sourceTree = "<group>"; };
-		OBJ_24 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		OBJ_25 /* HistoricalChange+Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoricalChange+Coding.swift"; sourceTree = "<group>"; };
-		OBJ_26 /* HistoricalChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalChange.swift; sourceTree = "<group>"; };
-		OBJ_27 /* LiveData+Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveData+Coding.swift"; sourceTree = "<group>"; };
-		OBJ_28 /* LiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveData.swift; sourceTree = "<group>"; };
-		OBJ_29 /* MoneyInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInputValidator.swift; sourceTree = "<group>"; };
 		OBJ_30 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		OBJ_31 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
-		OBJ_32 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		OBJ_33 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 		OBJ_35 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		OBJ_38 /* StockDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataProtocol.swift; sourceTree = "<group>"; };
-		OBJ_39 /* StockDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataType.swift; sourceTree = "<group>"; };
-		OBJ_40 /* StockEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockEntry.swift; sourceTree = "<group>"; };
-		OBJ_41 /* StockManager+Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockManager+Debugging.swift"; sourceTree = "<group>"; };
-		OBJ_42 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
 		OBJ_44 /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
-		OBJ_45 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
-		OBJ_46 /* Trade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trade.swift; sourceTree = "<group>"; };
 		OBJ_47 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		OBJ_48 /* YahooQueryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooQueryResponse.swift; sourceTree = "<group>"; };
-		OBJ_49 /* YahooService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooService.swift; sourceTree = "<group>"; };
-		OBJ_50 /* YahooStockData+Processing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YahooStockData+Processing.swift"; sourceTree = "<group>"; };
-		OBJ_51 /* YahooStockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooStockData.swift; sourceTree = "<group>"; };
 		OBJ_54 /* ChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTests.swift; sourceTree = "<group>"; };
-		OBJ_55 /* CompanyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTests.swift; sourceTree = "<group>"; };
-		OBJ_57 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
-		OBJ_58 /* CurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_60 /* DividendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendTests.swift; sourceTree = "<group>"; };
-		OBJ_61 /* FinanceKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceKitTests.swift; sourceTree = "<group>"; };
-		OBJ_62 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
-		OBJ_63 /* HistoricalChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalChangeTests.swift; sourceTree = "<group>"; };
-		OBJ_64 /* LiveDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDataTests.swift; sourceTree = "<group>"; };
-		OBJ_65 /* MoneyInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInputValidatorTests.swift; sourceTree = "<group>"; };
-		OBJ_66 /* MoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTests.swift; sourceTree = "<group>"; };
-		OBJ_67 /* NewStockEntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStockEntryTests.swift; sourceTree = "<group>"; };
-		OBJ_68 /* PortfolioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTests.swift; sourceTree = "<group>"; };
-		OBJ_69 /* SearchResultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTests.swift; sourceTree = "<group>"; };
-		OBJ_70 /* StockDataDownloadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataDownloadingTests.swift; sourceTree = "<group>"; };
-		OBJ_71 /* StockManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerTests.swift; sourceTree = "<group>"; };
-		OBJ_72 /* StockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTests.swift; sourceTree = "<group>"; };
-		OBJ_74 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		OBJ_75 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_81 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_82 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -203,23 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_54 /* ChangeTests.swift */,
-				OBJ_55 /* CompanyTests.swift */,
-				OBJ_57 /* CurrencyFormatterTests.swift */,
-				OBJ_58 /* CurrencyTests.swift */,
-				OBJ_60 /* DividendTests.swift */,
-				OBJ_61 /* FinanceKitTests.swift */,
-				OBJ_62 /* FormatterTests.swift */,
-				OBJ_63 /* HistoricalChangeTests.swift */,
-				OBJ_64 /* LiveDataTests.swift */,
-				OBJ_65 /* MoneyInputValidatorTests.swift */,
-				OBJ_66 /* MoneyTests.swift */,
-				OBJ_67 /* NewStockEntryTests.swift */,
-				OBJ_68 /* PortfolioTests.swift */,
-				OBJ_69 /* SearchResultsTests.swift */,
-				OBJ_70 /* StockDataDownloadingTests.swift */,
-				OBJ_71 /* StockManagerTests.swift */,
-				OBJ_72 /* StockTests.swift */,
-				OBJ_74 /* TransactionTests.swift */,
 				OBJ_75 /* XCTestManifests.swift */,
 			);
 			name = FinanceKitTests;
@@ -248,40 +143,13 @@
 			children = (
 				OBJ_9 /* Change.swift */,
 				OBJ_10 /* Company.swift */,
-				OBJ_12 /* Constants.swift */,
 				OBJ_13 /* Currency.swift */,
-				OBJ_14 /* CurrencyFormatter.swift */,
-				OBJ_15 /* CurrencyFormatting.swift */,
-				OBJ_16 /* DateAndTimeFormatter.swift */,
-				OBJ_17 /* DayFormatter.swift */,
-				OBJ_18 /* Dividend.swift */,
-				OBJ_21 /* DividendRecord.swift */,
-				OBJ_20 /* DividendRecord+Coding.swift */,
-				OBJ_24 /* Formatters.swift */,
-				OBJ_26 /* HistoricalChange.swift */,
-				OBJ_25 /* HistoricalChange+Coding.swift */,
-				OBJ_28 /* LiveData.swift */,
-				OBJ_27 /* LiveData+Coding.swift */,
-				OBJ_29 /* MoneyInputValidator.swift */,
 				OBJ_30 /* Portfolio.swift */,
 				OBJ_31 /* Price.swift */,
-				OBJ_32 /* SearchResult.swift */,
-				OBJ_33 /* SerializationError.swift */,
 				OBJ_35 /* Stock.swift */,
-				OBJ_38 /* StockDataProtocol.swift */,
-				OBJ_39 /* StockDataType.swift */,
-				OBJ_40 /* StockEntry.swift */,
-				OBJ_42 /* StockManager.swift */,
-				OBJ_41 /* StockManager+Debugging.swift */,
-				AA55AA78231ADF660073725E /* String+AttributedCurrency.swift */,
 				OBJ_44 /* Symbol.swift */,
-				OBJ_45 /* TimeFormatter.swift */,
-				OBJ_46 /* Trade.swift */,
 				OBJ_47 /* Transaction.swift */,
-				OBJ_48 /* YahooQueryResponse.swift */,
-				OBJ_49 /* YahooService.swift */,
-				OBJ_51 /* YahooStockData.swift */,
-				OBJ_50 /* YahooStockData+Processing.swift */,
+				AAE675462375BF8E00BA5141 /* Quantity.swift */,
 			);
 			name = FinanceKit;
 			path = Sources/FinanceKit;
@@ -403,23 +271,6 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_148 /* ChangeTests.swift in Sources */,
-				OBJ_149 /* CompanyTests.swift in Sources */,
-				OBJ_151 /* CurrencyFormatterTests.swift in Sources */,
-				OBJ_152 /* CurrencyTests.swift in Sources */,
-				OBJ_154 /* DividendTests.swift in Sources */,
-				OBJ_155 /* FinanceKitTests.swift in Sources */,
-				OBJ_156 /* FormatterTests.swift in Sources */,
-				OBJ_157 /* HistoricalChangeTests.swift in Sources */,
-				OBJ_158 /* LiveDataTests.swift in Sources */,
-				OBJ_159 /* MoneyInputValidatorTests.swift in Sources */,
-				OBJ_160 /* MoneyTests.swift in Sources */,
-				OBJ_161 /* NewStockEntryTests.swift in Sources */,
-				OBJ_162 /* PortfolioTests.swift in Sources */,
-				OBJ_163 /* SearchResultsTests.swift in Sources */,
-				OBJ_164 /* StockDataDownloadingTests.swift in Sources */,
-				OBJ_165 /* StockManagerTests.swift in Sources */,
-				OBJ_166 /* StockTests.swift in Sources */,
-				OBJ_168 /* TransactionTests.swift in Sources */,
 				OBJ_169 /* XCTestManifests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,40 +281,13 @@
 			files = (
 				OBJ_88 /* Change.swift in Sources */,
 				OBJ_89 /* Company.swift in Sources */,
-				OBJ_91 /* Constants.swift in Sources */,
 				OBJ_92 /* Currency.swift in Sources */,
-				OBJ_93 /* CurrencyFormatter.swift in Sources */,
-				OBJ_94 /* CurrencyFormatting.swift in Sources */,
-				OBJ_95 /* DateAndTimeFormatter.swift in Sources */,
-				OBJ_96 /* DayFormatter.swift in Sources */,
-				OBJ_97 /* Dividend.swift in Sources */,
-				OBJ_99 /* DividendRecord+Coding.swift in Sources */,
-				OBJ_100 /* DividendRecord.swift in Sources */,
-				OBJ_103 /* Formatters.swift in Sources */,
-				OBJ_104 /* HistoricalChange+Coding.swift in Sources */,
-				OBJ_105 /* HistoricalChange.swift in Sources */,
-				OBJ_106 /* LiveData+Coding.swift in Sources */,
-				AA55AA79231ADF660073725E /* String+AttributedCurrency.swift in Sources */,
-				OBJ_107 /* LiveData.swift in Sources */,
-				OBJ_108 /* MoneyInputValidator.swift in Sources */,
+				AAE675472375BF8E00BA5141 /* Quantity.swift in Sources */,
 				OBJ_109 /* Portfolio.swift in Sources */,
 				OBJ_110 /* Price.swift in Sources */,
-				OBJ_111 /* SearchResult.swift in Sources */,
-				OBJ_112 /* SerializationError.swift in Sources */,
 				OBJ_114 /* Stock.swift in Sources */,
-				OBJ_117 /* StockDataProtocol.swift in Sources */,
-				OBJ_118 /* StockDataType.swift in Sources */,
-				OBJ_119 /* StockEntry.swift in Sources */,
-				OBJ_120 /* StockManager+Debugging.swift in Sources */,
-				OBJ_121 /* StockManager.swift in Sources */,
 				OBJ_123 /* Symbol.swift in Sources */,
-				OBJ_124 /* TimeFormatter.swift in Sources */,
-				OBJ_125 /* Trade.swift in Sources */,
 				OBJ_126 /* Transaction.swift in Sources */,
-				OBJ_127 /* YahooQueryResponse.swift in Sources */,
-				OBJ_128 /* YahooService.swift in Sources */,
-				OBJ_129 /* YahooStockData+Processing.swift in Sources */,
-				OBJ_130 /* YahooStockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
