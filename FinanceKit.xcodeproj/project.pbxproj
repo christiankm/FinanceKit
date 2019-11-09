@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
 		AAE675472375BF8E00BA5141 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675462375BF8E00BA5141 /* Quantity.swift */; };
+		AA69851D2377351800D0683C /* SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69851C2377351800D0683C /* SymbolTests.swift */; };
 		OBJ_109 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Portfolio.swift */; };
 		OBJ_110 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Price.swift */; };
 		OBJ_114 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Stock.swift */; };
@@ -58,6 +59,7 @@
 		AAE675422375B7D700BA5141 /* FinanceKit.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FinanceKit.xctestplan; sourceTree = "<group>"; };
 		AAE675432375BC3000BA5141 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTests.swift; path = Tests/FinanceKitTests/TransactionTests.swift; sourceTree = SOURCE_ROOT; };
 		AAE675462375BF8E00BA5141 /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
+		AA69851C2377351800D0683C /* SymbolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolTests.swift; sourceTree = "<group>"; };
 		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FinanceKit::FinanceKitTests::Product" /* FinanceKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		OBJ_52 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				AA69850523760EF000D0683C /* FinanceKit.xctestplan */,
 				OBJ_53 /* FinanceKitTests */,
 			);
 			name = Tests;
@@ -119,7 +122,7 @@
 			children = (
 				OBJ_54 /* ChangeTests.swift */,
 				AAE675432375BC3000BA5141 /* TransactionTests.swift */,
-				AAE675422375B7D700BA5141 /* FinanceKit.xctestplan */,
+				AA69851C2377351800D0683C /* SymbolTests.swift */,
 				OBJ_75 /* XCTestManifests.swift */,
 			);
 			name = FinanceKitTests;
@@ -278,6 +281,7 @@
 				OBJ_148 /* ChangeTests.swift in Sources */,
 				AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */,
 				OBJ_169 /* XCTestManifests.swift in Sources */,
+				AA69851D2377351800D0683C /* SymbolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

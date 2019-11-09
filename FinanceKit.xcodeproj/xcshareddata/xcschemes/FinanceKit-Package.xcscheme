@@ -30,7 +30,7 @@
       enableThreadSanitizer = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Tests/FinanceKitTests/FinanceKit.xctestplan"
+            reference = "container:FinanceKit.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
