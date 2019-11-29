@@ -8,10 +8,4 @@
 
 import Foundation
 
-public struct Price: RawRepresentable, Hashable, Equatable, Codable {
-    public let rawValue: Decimal
-
-    public init(rawValue: Decimal) {
-        self.rawValue = rawValue
-    }
-}
+public typealias Price = Decimal

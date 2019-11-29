@@ -7,10 +7,4 @@
 
 import Foundation
 
-public struct Quantity: RawRepresentable, Hashable, Codable {
-    public let rawValue: Int
-
-    public init(rawValue: Int) {
-        self.rawValue = rawValue
-    }
-}
+public typealias Quantity = Int
