@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -26,6 +26,8 @@
 		AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */; };
 		AA69851D2377351800D0683C /* SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69851C2377351800D0683C /* SymbolTests.swift */; };
 		AA8474E52389CAF200B23520 /* Decimal+DoubleValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8474E42389CAF200B23520 /* Decimal+DoubleValueTests.swift */; };
+		AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */; };
+		AA7DA6F32391DA7A00EF65F5 /* CurrencyCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */; };
 		OBJ_109 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Portfolio.swift */; };
 		OBJ_110 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Price.swift */; };
 		OBJ_114 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Stock.swift */; };
@@ -64,6 +66,8 @@
 		AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal+DoubleValue.swift"; sourceTree = "<group>"; };
 		AA69851C2377351800D0683C /* SymbolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolTests.swift; sourceTree = "<group>"; };
 		AA8474E42389CAF200B23520 /* Decimal+DoubleValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+DoubleValueTests.swift"; sourceTree = "<group>"; };
+		AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCode.swift; sourceTree = "<group>"; };
+		AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCodeTests.swift; sourceTree = "<group>"; };
 		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FinanceKit::FinanceKitTests::Product" /* FinanceKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			children = (
 				OBJ_54 /* ChangeTests.swift */,
 				AAE675432375BC3000BA5141 /* TransactionTests.swift */,
+				AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */,
 				AA69851C2377351800D0683C /* SymbolTests.swift */,
 				OBJ_75 /* XCTestManifests.swift */,
 				AA8474E42389CAF200B23520 /* Decimal+DoubleValueTests.swift */,
@@ -157,6 +162,7 @@
 				OBJ_9 /* Change.swift */,
 				OBJ_10 /* Company.swift */,
 				OBJ_13 /* Currency.swift */,
+				AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */,
 				AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */,
 				OBJ_30 /* Portfolio.swift */,
 				OBJ_31 /* Price.swift */,
@@ -287,6 +293,7 @@
 				OBJ_148 /* ChangeTests.swift in Sources */,
 				AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */,
 				AA8474E52389CAF200B23520 /* Decimal+DoubleValueTests.swift in Sources */,
+				AA7DA6F32391DA7A00EF65F5 /* CurrencyCodeTests.swift in Sources */,
 				OBJ_169 /* XCTestManifests.swift in Sources */,
 				AA69851D2377351800D0683C /* SymbolTests.swift in Sources */,
 			);
@@ -303,6 +310,7 @@
 				OBJ_109 /* Portfolio.swift in Sources */,
 				OBJ_110 /* Price.swift in Sources */,
 				OBJ_114 /* Stock.swift in Sources */,
+				AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */,
 				OBJ_123 /* Symbol.swift in Sources */,
 				AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */,
 				OBJ_126 /* Transaction.swift in Sources */,
