@@ -28,6 +28,7 @@
 		AA8474E52389CAF200B23520 /* DecimalDoubleValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */; };
 		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
 		AAE677832392979A0053B303 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE677822392979A0053B303 /* Quantity.swift */; };
+		AAE6778C239298550053B303 /* Holding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE67784239298550053B303 /* Holding.swift */; };
 		OBJ_109 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Portfolio.swift */; };
 		OBJ_110 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Price.swift */; };
 		OBJ_114 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Stock.swift */; };
@@ -69,6 +70,7 @@
 		AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDoubleValueTests.swift; sourceTree = "<group>"; };
 		AAE675432375BC3000BA5141 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTests.swift; path = Tests/FinanceKitTests/TransactionTests.swift; sourceTree = SOURCE_ROOT; };
 		AAE677822392979A0053B303 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
+		AAE67784239298550053B303 /* Holding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holding.swift; sourceTree = "<group>"; };
 		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FinanceKit::FinanceKitTests::Product" /* FinanceKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				OBJ_13 /* Currency.swift */,
 				AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */,
 				AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */,
+				AAE67784239298550053B303 /* Holding.swift */,
 				OBJ_30 /* Portfolio.swift */,
 				OBJ_31 /* Price.swift */,
 				AAE677822392979A0053B303 /* Quantity.swift */,
@@ -312,6 +315,7 @@
 				OBJ_92 /* Currency.swift in Sources */,
 				OBJ_109 /* Portfolio.swift in Sources */,
 				OBJ_110 /* Price.swift in Sources */,
+				AAE6778C239298550053B303 /* Holding.swift in Sources */,
 				OBJ_114 /* Stock.swift in Sources */,
 				AAE677832392979A0053B303 /* Quantity.swift in Sources */,
 				AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */,
