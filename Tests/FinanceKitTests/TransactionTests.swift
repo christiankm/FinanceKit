@@ -11,42 +11,34 @@ import XCTest
 class TransactionTests: XCTestCase {
 
     func testInit() {
-        let transaction = Transaction(
-            type: .buy,
-            symbol: Symbol(rawValue: "AAPL"),
-            date: Date(),
-            price: Price(rawValue: 180.34),
-            quantity: Quantity(rawValue: 23)
-        )
+        let transaction = mockTransaction(type: .buy)
 
         if case .buy = transaction.type {} else {
             XCTFail("Unexpected Transaction Type")
         }
         XCTAssertNotNil(transaction.symbol)
-        XCTAssertEqual(transaction.symbol?.rawValue ?? "", "AAPL")
-        XCTAssertEqual(transaction.price.rawValue, 180.34)
-        XCTAssertEqual(transaction.quantity.rawValue, 23)
+        XCTAssertEqual(transaction.symbol.rawValue, "AAPL")
+        XCTAssertEqual(transaction.price, 180.34)
+        XCTAssertEqual(transaction.quantity, 23)
     }
 
     func testTransactionCostBuy() {
-        let transaction = Transaction(
-            type: .buy,
-            symbol: Symbol(rawValue: "AAPL"),
-            date: Date(),
-            price: Price(rawValue: 180.34),
-            quantity: Quantity(rawValue: 23)
-        )
-        XCTAssertEqual(transaction.transactionCost.rawValue, -4147.82)
+        let transaction = mockTransaction(type: .buy)
+        XCTAssertEqual(transaction.transactionCost, -4147.82)
     }
 
     func testTransactionCostSell() {
-        let transaction = Transaction(
-            type: .sell,
-            symbol: Symbol(rawValue: "AAPL"),
+        let transaction = mockTransaction(type: .sell)
+        XCTAssertEqual(transaction.transactionCost, 4147.82)
+    }
+
+    private func mockTransaction(type: TransactionType) -> Transaction {
+        Transaction(
+            type: type,
+            symbol: Symbol(rawValue: "AAPL")!, //swiftlint:disable:this force_unwrapping
             date: Date(),
-            price: Price(rawValue: 180.34),
-            quantity: Quantity(rawValue: 23)
+            price: 180.34,
+            quantity: 23
         )
-        XCTAssertEqual(transaction.transactionCost.rawValue, 4147.82)
     }
 }

@@ -21,13 +21,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
-		AAE675472375BF8E00BA5141 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675462375BF8E00BA5141 /* Quantity.swift */; };
 		AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */; };
 		AA69851D2377351800D0683C /* SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69851C2377351800D0683C /* SymbolTests.swift */; };
 		AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */; };
 		AA7DA6F32391DA7A00EF65F5 /* CurrencyCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */; };
 		AA8474E52389CAF200B23520 /* DecimalDoubleValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */; };
+		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
+		AAE677832392979A0053B303 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE677822392979A0053B303 /* Quantity.swift */; };
 		OBJ_109 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Portfolio.swift */; };
 		OBJ_110 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Price.swift */; };
 		OBJ_114 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Stock.swift */; };
@@ -61,14 +61,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AAE675432375BC3000BA5141 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTests.swift; path = Tests/FinanceKitTests/TransactionTests.swift; sourceTree = SOURCE_ROOT; };
-		AAE675462375BF8E00BA5141 /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		AA69850523760EF000D0683C /* FinanceKit.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinanceKit.xctestplan; sourceTree = "<group>"; };
 		AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal+DoubleValue.swift"; sourceTree = "<group>"; };
 		AA69851C2377351800D0683C /* SymbolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolTests.swift; sourceTree = "<group>"; };
 		AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCode.swift; sourceTree = "<group>"; };
 		AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCodeTests.swift; sourceTree = "<group>"; };
 		AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDoubleValueTests.swift; sourceTree = "<group>"; };
+		AAE675432375BC3000BA5141 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTests.swift; path = Tests/FinanceKitTests/TransactionTests.swift; sourceTree = SOURCE_ROOT; };
+		AAE677822392979A0053B303 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FinanceKit::FinanceKitTests::Product" /* FinanceKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -131,11 +131,11 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_54 /* ChangeTests.swift */,
-				AAE675432375BC3000BA5141 /* TransactionTests.swift */,
 				AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */,
 				OBJ_58 /* CurrencyTests.swift */,
 				AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */,
 				AA69851C2377351800D0683C /* SymbolTests.swift */,
+				AAE675432375BC3000BA5141 /* TransactionTests.swift */,
 				OBJ_75 /* XCTestManifests.swift */,
 			);
 			name = FinanceKitTests;
@@ -169,7 +169,7 @@
 				AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */,
 				OBJ_30 /* Portfolio.swift */,
 				OBJ_31 /* Price.swift */,
-				AA69850723760EFC00D0683C /* Quantity.swift */,
+				AAE677822392979A0053B303 /* Quantity.swift */,
 				OBJ_35 /* Stock.swift */,
 				OBJ_44 /* Symbol.swift */,
 				OBJ_47 /* Transaction.swift */,
@@ -313,11 +313,11 @@
 				OBJ_109 /* Portfolio.swift in Sources */,
 				OBJ_110 /* Price.swift in Sources */,
 				OBJ_114 /* Stock.swift in Sources */,
+				AAE677832392979A0053B303 /* Quantity.swift in Sources */,
 				AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */,
 				OBJ_123 /* Symbol.swift in Sources */,
 				AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */,
 				OBJ_126 /* Transaction.swift in Sources */,
-				AA69850B23760EFC00D0683C /* Quantity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
