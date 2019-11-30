@@ -8,36 +8,38 @@
 
 import Foundation
 
-public enum CurrencyCode: String, CaseIterable, Codable {
-    #warning("get all currencies and sort by name")
-    case unknown
-    case DKK
-    case USD
-    case EUR
-    case GBP
-    case AUD
-    case NOK
-    case SEK
-
-    public var currencyCodeString: String {
-        self.rawValue.uppercased()
-    }
-
-    public var currencyName: String {
-        switch self {
-        default:
-            return ""
-        }
-    }
-}
-
 public struct Currency: Codable {
 
     public let code: CurrencyCode
-    public let name: String
 
-    public init(code currencyCode: CurrencyCode) {
-        code = currencyCode
-        name = currencyCode.currencyName
+    public var name: String {
+        Currency.localizedString(forCurrencyCode: code.rawValue) ?? ""
+    }
+
+}
+
+
+
+/// This extension provides a bridge to system APIs inside a convienent namespace.
+extension Currency {
+
+    static var currencyCode: String? {
+        NSLocale.current.currencyCode
+    }
+
+    static var currencySymbol: String? {
+        NSLocale.current.currencySymbol
+    }
+
+    static var isoCurrencyCodes: [String] {
+        NSLocale.isoCurrencyCodes
+    }
+
+    static var commonIsoCurrencyCodes: [String] {
+        NSLocale.commonISOCurrencyCodes
+    }
+
+    static func localizedString(forCurrencyCode: String) -> String? {
+        NSLocale.system.localizedString(forCurrencyCode: forCurrencyCode)
     }
 }
