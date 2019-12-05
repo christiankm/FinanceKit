@@ -22,21 +22,27 @@ public struct Transaction: Codable {
     public let date: Date
     public let price: Price
     public let quantity: Quantity
+    public let commission: Price
 
     public var transactionCost: Price {
         var cost = Decimal(quantity) * price
-        if type == .buy {
+        switch type {
+        case .buy:
+            cost += commission
             cost *= -1
+        case .sell:
+            cost -= commission
         }
 
         return cost
     }
 
-    public init(type: TransactionType, symbol: Symbol, date: Date, price: Price, quantity: Quantity) {
+    public init(type: TransactionType, symbol: Symbol, date: Date, price: Price, quantity: Quantity, commission: Price = 0) {
         self.type = type
         self.symbol = symbol
         self.date = date
         self.price = price
         self.quantity = quantity
+        self.commission = commission
     }
 }
