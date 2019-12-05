@@ -20,4 +20,15 @@ class SymbolTests: XCTestCase {
     func testInitWithEmptyStringReturnsNil() {
         XCTAssertNil(Symbol(rawValue: ""))
     }
+
+    func testComparable() {
+        let symbol1 = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
+        let symbol2 = Symbol("ABPL")! //swiftlint:disable:this force_unwrapping
+        XCTAssertTrue(symbol1 < symbol2)
+    }
+
+    func testCustomStringConvertible() {
+        let symbol = Symbol("AAPL")
+        XCTAssertEqual(symbol?.description, "AAPL")
+    }
 }
