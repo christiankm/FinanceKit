@@ -22,3 +22,17 @@ public struct Company: Codable {
         self.currency = currency
     }
 }
+
+extension Company: Equatable {
+
+    public static func == (lhs: Company, rhs: Company) -> Bool {
+        lhs.symbol == rhs.symbol
+    }
+}
+
+extension Company: Comparable {
+
+    public static func < (lhs: Company, rhs: Company) -> Bool {
+        lhs.name < rhs.name
+    }
+}
