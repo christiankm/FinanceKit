@@ -11,8 +11,7 @@ import Foundation
 public enum TransactionType: Int, Codable {
     case buy
     case sell
-    // TODO: Add support for dividends
-//    case dividend
+    case dividend
 }
 
 public struct Transaction: Codable {
@@ -32,6 +31,8 @@ public struct Transaction: Codable {
             cost *= -1
         case .sell:
             cost -= commission
+        case .dividend:
+            break
         }
 
         return cost

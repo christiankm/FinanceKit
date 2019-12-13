@@ -23,7 +23,7 @@ public struct Holding: Identifiable, Codable {
 
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
-        costBasis / Price(quantity)
+        costBasis / Decimal(quantity)
     }
 
     public var displayName: String {
