@@ -52,6 +52,9 @@ overridden_super_call:
   severity: error
 prohibited_super_call:
   severity: error
+identifier_name:
+  excluded:
+    - id
 
 custom_rules: 
   boolean_return:
