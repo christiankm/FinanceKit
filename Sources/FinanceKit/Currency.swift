@@ -16,6 +16,17 @@ public struct Currency: Codable {
         Currency.localizedString(forCurrencyCode: code.rawValue) ?? ""
     }
 
+    public init(code: CurrencyCode) {
+        self.code = code
+    }
+
+}
+
+extension Currency: Equatable {
+
+    public static func == (lhs: Currency, rhs: Currency) -> Bool {
+        lhs.code == rhs.code
+    }
 }
 
 
