@@ -32,7 +32,7 @@ extension Currency: Equatable {
 
 
 /// This extension provides a bridge to system APIs inside a convienent namespace.
-extension Currency {
+public extension Currency {
 
     static var currencyCode: String? {
         NSLocale.current.currencyCode
