@@ -20,6 +20,7 @@ public struct Holding: Identifiable, Codable {
 
     /// The total cost basis for all transactions.
     public var costBasis: Price
+    public var costBasisInLocalCurrency: Price
 
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
@@ -31,16 +32,23 @@ public struct Holding: Identifiable, Codable {
     }
 
     public var currentValue: Price
+    public var currentValueInLocalCurrency: Price
 
-    public init(symbol: Symbol, quantity: Quantity = 0, costBasis: Price = 0, currentValue: Price = 0) {
+    public init(symbol: Symbol, quantity: Quantity = 0, costBasis: Price = 0, costBasisInLocalCurrency: Price = 0, currentValue: Price = 0, currentValueInLocalCurrency: Price = 0) {
         self.symbol = symbol
         self.quantity = quantity
         self.costBasis = costBasis
+        self.costBasisInLocalCurrency = costBasisInLocalCurrency
         self.currentValue = currentValue
+        self.currentValueInLocalCurrency = currentValueInLocalCurrency
     }
 
     public var change: Change {
         Change(cost: costBasis, currentValue: currentValue)
+    }
+
+    public var changeInLocalCurrency: Change {
+        Change(cost: costBasisInLocalCurrency, currentValue: currentValueInLocalCurrency)
     }
 }
 
