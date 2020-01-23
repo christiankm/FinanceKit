@@ -113,7 +113,7 @@ public struct Holding: Identifiable, Equatable, Codable {
         currentValue = stock.price * Decimal(quantity)
 
         return self
-    }ç
+    }
 }
 
 extension Holding: Comparable {
