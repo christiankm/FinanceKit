@@ -8,8 +8,9 @@
 
 import Foundation
 
-public struct Holding: Identifiable, Codable {
+public struct Holding: Identifiable, Equatable, Codable {
 
+    /// A unique identifier that identifies this holding.
     public let id: UUID = UUID()
 
     public let symbol: Symbol
@@ -96,15 +97,23 @@ public struct Holding: Identifiable, Codable {
 
         return holdings
     }
-}
 
-extension Holding: Equatable {
+    /// Updates the holding with the current price of the specified stock.
+    /// Also updates the `company` to reflect the stock.
+    ///
+    ///  This function is useful for updating the holding with the result of a query from a Stock API, without you having to calculate this yourself.
+    ///
+    /// - Parameter stock: A stock containing the most recent price, and company details.
+    ///   The symbol must match the holding.
+    /// - Returns: The newly updated holding.
+    public mutating func update(with stock: Stock) -> Holding {
+        guard stock.symbol == symbol else { return self }
 
-    public static func == (lhs: Holding, rhs: Holding) -> Bool {
-        lhs.id == rhs.id &&
-        lhs.symbol == rhs.symbol &&
-        lhs.quantity == rhs.quantity
-    }
+        company = stock.company
+        currentValue = stock.price * Decimal(quantity)
+
+        return self
+    }ç
 }
 
 extension Holding: Comparable {
