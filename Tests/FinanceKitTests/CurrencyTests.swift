@@ -22,6 +22,11 @@ class CurrencyTests: XCTestCase {
         XCTAssertEqual(currency.name, "Danish Krone")
     }
 
+    func testNameWithUnknownCode() {
+        let currency = Currency(code: .unknown)
+        XCTAssertTrue(currency.name.isEmpty)
+    }
+
     func testLocaleCurrencyCode() {
         XCTAssertEqual(Currency.currencyCode, NSLocale.current.currencyCode)
     }

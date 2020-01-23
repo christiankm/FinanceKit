@@ -30,7 +30,7 @@ public struct Transaction: Codable {
             cost += commission
             cost *= -1
         case .sell:
-            cost -= commission
+            cost += commission
         case .dividend:
             break
         }

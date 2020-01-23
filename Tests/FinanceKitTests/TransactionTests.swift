@@ -20,15 +20,21 @@ class TransactionTests: XCTestCase {
         XCTAssertEqual(transaction.symbol.rawValue, "AAPL")
         XCTAssertEqual(transaction.price, 180.34)
         XCTAssertEqual(transaction.quantity, 23)
+        XCTAssertEqual(transaction.commission, 13)
     }
 
     func testTransactionCostBuy() {
         let transaction = mockTransaction(type: .buy)
-        XCTAssertEqual(transaction.transactionCost, -4147.82)
+        XCTAssertEqual(transaction.transactionCost, -4160.82)
     }
 
     func testTransactionCostSell() {
         let transaction = mockTransaction(type: .sell)
+        XCTAssertEqual(transaction.transactionCost, 4160.82)
+    }
+
+    func testTransactionCostDividend() {
+        let transaction = mockTransaction(type: .dividend)
         XCTAssertEqual(transaction.transactionCost, 4147.82)
     }
 
@@ -38,7 +44,8 @@ class TransactionTests: XCTestCase {
             symbol: Symbol(rawValue: "AAPL")!, //swiftlint:disable:this force_unwrapping
             date: Date(),
             price: 180.34,
-            quantity: 23
+            quantity: 23,
+            commission: 13
         )
     }
 }

@@ -26,7 +26,9 @@ public struct Company: Codable {
 extension Company: Equatable {
 
     public static func == (lhs: Company, rhs: Company) -> Bool {
-        lhs.symbol == rhs.symbol
+        lhs.symbol == rhs.symbol &&
+        lhs.name == rhs.name &&
+        lhs.currency == rhs.currency
     }
 }
 
