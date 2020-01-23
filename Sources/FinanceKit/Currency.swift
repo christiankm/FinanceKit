@@ -3,7 +3,7 @@
 //  FinanceKit
 //
 //  Created by Christian Mitteldorf on 17/05/2017.
-//  Copyright © 2017 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2017 Mitteldorf. All rights reserved.
 //
 
 import Foundation
@@ -19,7 +19,6 @@ public struct Currency: Codable {
     public init(code: CurrencyCode) {
         self.code = code
     }
-
 }
 
 extension Currency: Equatable {
@@ -28,8 +27,6 @@ extension Currency: Equatable {
         lhs.code == rhs.code
     }
 }
-
-
 
 /// This extension provides a bridge to system APIs inside a convienent namespace.
 public extension Currency {
