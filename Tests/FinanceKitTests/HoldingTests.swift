@@ -158,18 +158,60 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfAAPL.costBasis)
     }
 
+    // MARK: Test Update and mutating functions
+
+    func testUpdateWithStock() {
+        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
+        let currency = Currency(code: .USD)
+        var holding = Holding(symbol: aapl, quantity: 10, costBasis: 1000)
+        let stock = Stock(
+            symbol: aapl,
+            company: Company(symbol: aapl, name: "Apple Inc.", currency: currency),
+            price: 190,
+            currency: Currency(code: .USD)
+        )
+
+        let newHolding = holding.update(with: stock)
+
+        XCTAssertEqual(newHolding.quantity, 10)
+        XCTAssertEqual(newHolding.company?.name, "Apple Inc.")
+        XCTAssertEqual(newHolding.company?.currency, Currency(code: .USD))
+        XCTAssertEqual(newHolding.currentValue, 1900)
+        XCTAssertEqual(newHolding.change.amountValue, 900)
+    }
+
+    func testUpdateWithStockWithDifferentSymbol() {
+        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
+        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
+        let currency = Currency(code: .USD)
+        var holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
+        let stock = Stock(
+            symbol: cake,
+            company: Company(symbol: cake, name: "Cheesecake Factory", currency: currency),
+            price: 190,
+            currency: Currency(code: .USD)
+        )
+
+        let newHolding = holding.update(with: stock)
+
+        XCTAssertEqual(holding, newHolding)
+    }
+
     // MARK: Test Protocol Conformances
 
     func testEquatable() {
         // Test with equal quantity
         var holding1 = Holding(symbol: Self.symbol)
         holding1.quantity = 5
+        holding1.currentValue = 1000
         var holding2 = holding1
         holding2.quantity = 5
+        holding2.currentValue = 1000
         XCTAssertEqual(holding1, holding2)
 
         // Test with different quantities
         holding1.quantity = 3
+        holding1.currentValue = 2000
         XCTAssertNotEqual(holding1, holding2)
     }
 
