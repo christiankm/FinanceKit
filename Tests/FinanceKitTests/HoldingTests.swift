@@ -88,10 +88,12 @@ class HoldingTests: XCTestCase {
         let expectedHoldingOfAAPL = Holding(symbol: aapl, quantity: 10,
                                       costBasis: 1126)
         let expectedHoldingOfCAKE = Holding(symbol: cake, quantity: 10,
-                                            costBasis: 673)
+                                            costBasis: 613)
         XCTAssertEqual(holdings.count, 2)
-        XCTAssertEqual(holdings[0], expectedHoldingOfAAPL)
-        XCTAssertEqual(holdings[1], expectedHoldingOfCAKE)
+        XCTAssertEqual(holdings[0].quantity, expectedHoldingOfAAPL.quantity)
+        XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfAAPL.costBasis)
+        XCTAssertEqual(holdings[1].quantity, expectedHoldingOfCAKE.quantity)
+        XCTAssertEqual(holdings[1].costBasis, expectedHoldingOfCAKE.costBasis)
     }
 
     func testMakeHoldingsWithOnlySellTransactions() {
@@ -119,9 +121,10 @@ class HoldingTests: XCTestCase {
         let holdings = Holding.makeHoldings(with: transactions)
 
         let expectedHoldingOfCAKE = Holding(symbol: cake, quantity: 10,
-                                            costBasis: 673)
+                                            costBasis: 613)
         XCTAssertEqual(holdings.count, 1)
-        XCTAssertEqual(holdings[0], expectedHoldingOfCAKE)
+        XCTAssertEqual(holdings[0].quantity, expectedHoldingOfCAKE.quantity)
+        XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfCAKE.costBasis)
     }
 
     func testMakeHoldingsWithOnlyDividendTransactions() {
