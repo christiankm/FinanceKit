@@ -3,7 +3,7 @@
 //  FinanceKit
 //
 //  Created by Christian Mitteldorf on 19/10/2019.
-//  Copyright © 2019 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2019 Mitteldorf. All rights reserved.
 //
 
 import Foundation
@@ -38,7 +38,8 @@ public struct Transaction: Codable {
         return cost
     }
 
-    public init(type: TransactionType, symbol: Symbol, date: Date, price: Price, quantity: Quantity, commission: Price = 0) {
+    public init(type: TransactionType, symbol: Symbol, date: Date,
+                price: Price, quantity: Quantity, commission: Price = 0) {
         self.type = type
         self.symbol = symbol
         self.date = date
