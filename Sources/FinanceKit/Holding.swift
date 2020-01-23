@@ -97,51 +97,6 @@ public struct Holding: Identifiable, Equatable, Codable {
 
         return holdings
     }
-}
-
-    public static func makeHoldings(with transactions: [Transaction]) -> [Holding] {
-        guard !transactions.isEmpty else {
-            return []
-        }
-
-        var holdings: [Holding] = []
-        transactions.forEach { transaction in
-            let symbol = transaction.symbol
-            let quantity = transaction.quantity
-            let price = transaction.price
-            let costBasis = price * Decimal(quantity) + transaction.commission
-
-            // If a holding already exists for this symbol,
-            // update quantity and cost basis. Else add a new holding to the array
-            if var holding = holdings.first(where: { $0.symbol == symbol }) {
-                switch transaction.type {
-                case .buy:
-                    holding.quantity += quantity
-                    holding.costBasis += costBasis
-                case .sell:
-                    holding.quantity -= quantity
-                    holding.costBasis -= costBasis
-                case .dividend:
-                    holding.costBasis -= costBasis
-                }
-
-                // Remove previous and re-add newly calculated holding
-                holdings.removeAll(where: { $0.symbol == symbol })
-
-                if holding.quantity > 0 {
-                    holdings.append(holding)
-                }
-            } else {
-                var holding = Holding(symbol: symbol, quantity: quantity)
-                if transaction.type == .buy && holding.quantity > 0 {
-                    holding.costBasis = costBasis
-                    holdings.append(holding)
-                }
-            }
-        }
-
-        return holdings
-    }
 
     /// Updates the holding with the current price of the specified stock.
     /// Also updates the `company` to reflect the stock.
