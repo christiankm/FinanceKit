@@ -318,7 +318,6 @@
 				AA06F78B23D9F987001FFAE9 /* CompanyTests.swift in Sources */,
 				AA8474E52389CAF200B23520 /* DecimalDoubleValueTests.swift in Sources */,
 				AA7DA6F32391DA7A00EF65F5 /* CurrencyCodeTests.swift in Sources */,
-				AA06F78923D9F83F001FFAE9 /* PortfolioTests.swift in Sources */,
 				AAFA769323D994B70087A82D /* HoldingTests.swift in Sources */,
 				OBJ_169 /* XCTestManifests.swift in Sources */,
 				AA69851D2377351800D0683C /* SymbolTests.swift in Sources */,
