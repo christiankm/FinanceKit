@@ -127,7 +127,8 @@ public struct Holding: Identifiable, Equatable, Codable {
 
     /// Updates the holdings currenct value and cost basis in local currencies, using the companys currency as the base currency.
     /// - Parameter currencyPairs: The current rates to convert the currency with.
-    /// - Returns: If the holdings company has a currency, and a matching currency pair, it returns the converted holding, otherwise it returns a holding where the local values is equal to the base values.
+    /// - Returns: If the holdings company has a currency, and a matching currency pair,
+    /// it returns the converted holding, otherwise it returns a holding where the local values is equal to the base values.
     public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) -> Holding {
         guard let companyCurrency = company?.currency else { return self }
 
