@@ -23,6 +23,8 @@ public struct Holding: Identifiable, Equatable, Codable {
     public var costBasis: Price
     public var costBasisInLocalCurrency: Price
 
+    public internal(set) var commissionPaid: Price = 0
+
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
         costBasis / Decimal(quantity)
@@ -69,6 +71,8 @@ public struct Holding: Identifiable, Equatable, Codable {
             // If a holding already exists for this symbol,
             // update quantity and cost basis. Else add a new holding to the array
             if var holding = holdings.first(where: { $0.symbol == symbol }) {
+                holding.commissionPaid += transaction.commission
+
                 switch transaction.type {
                 case .buy:
                     holding.quantity += quantity
@@ -82,20 +86,26 @@ public struct Holding: Identifiable, Equatable, Codable {
 
                 // Remove previous and re-add newly calculated holding
                 holdings.removeAll(where: { $0.symbol == symbol })
-
-                if holding.quantity > 0 {
-                    holdings.append(holding)
-                }
+                holdings.append(holding)
             } else {
-                var holding = Holding(symbol: symbol, quantity: quantity)
-                if transaction.type == .buy && holding.quantity > 0 {
-                    holding.costBasis = costBasis
-                    holdings.append(holding)
+                var holding = Holding(symbol: symbol)
+                holding.commissionPaid += transaction.commission
+
+                switch transaction.type {
+                case .buy:
+                    holding.quantity += quantity
+                    holding.costBasis += costBasis
+                case .sell:
+                    break
+                case .dividend:
+                    break
                 }
+
+                holdings.append(holding)
             }
         }
 
-        return holdings
+        return holdings.filter { $0.quantity > 0 }
     }
 
     /// Updates the holding with the current price of the specified stock.
@@ -111,6 +121,26 @@ public struct Holding: Identifiable, Equatable, Codable {
 
         company = stock.company
         currentValue = stock.price * Decimal(quantity)
+
+        return self
+    }
+
+    /// Updates the holdings currenct value and cost basis in local currencies, using the companys currency as the base currency.
+    /// - Parameter currencyPairs: The current rates to convert the currency with.
+    /// - Returns: If the holdings company has a currency, and a matching currency pair,
+    /// it returns the converted holding, otherwise it returns a holding where the local values is equal to the base values.
+    public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) -> Holding {
+        guard let companyCurrency = company?.currency else { return self }
+
+        if companyCurrency != baseCurrency {
+            if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
+                currentValueInLocalCurrency = currentValue * (1 / pair.rate)
+                costBasisInLocalCurrency = costBasis * (1 / pair.rate)
+            }
+        } else {
+            currentValueInLocalCurrency = currentValue
+            costBasisInLocalCurrency = costBasis
+        }
 
         return self
     }

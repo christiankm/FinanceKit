@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import FinanceKit
+@testable import FinanceKit
 
 class HoldingTests: XCTestCase {
 
