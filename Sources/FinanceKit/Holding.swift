@@ -82,20 +82,28 @@ public struct Holding: Identifiable, Equatable, Codable {
 
                 // Remove previous and re-add newly calculated holding
                 holdings.removeAll(where: { $0.symbol == symbol })
-
-                if holding.quantity > 0 {
-                    holdings.append(holding)
-                }
+                holdings.append(holding)
             } else {
-                var holding = Holding(symbol: symbol, quantity: quantity)
                 if transaction.type == .buy && holding.quantity > 0 {
                     holding.costBasis = costBasis
                     holdings.append(holding)
+                var holding = Holding(symbol: symbol)
+
+                switch transaction.type {
+                case .buy:
+                    holding.quantity += quantity
+                    holding.costBasis += costBasis
+                case .sell:
+                    break
+                case .dividend:
+                    break
                 }
+
+                holdings.append(holding)
             }
         }
 
-        return holdings
+        return holdings.filter { $0.quantity > 0 }
     }
 
     /// Updates the holding with the current price of the specified stock.
