@@ -23,6 +23,8 @@ public struct Holding: Identifiable, Equatable, Codable {
     public var costBasis: Price
     public var costBasisInLocalCurrency: Price
 
+    public internal(set) var commissionPaid: Price = 0
+
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
         costBasis / Decimal(quantity)
@@ -69,6 +71,8 @@ public struct Holding: Identifiable, Equatable, Codable {
             // If a holding already exists for this symbol,
             // update quantity and cost basis. Else add a new holding to the array
             if var holding = holdings.first(where: { $0.symbol == symbol }) {
+                holding.commissionPaid += transaction.commission
+
                 switch transaction.type {
                 case .buy:
                     holding.quantity += quantity
@@ -84,10 +88,8 @@ public struct Holding: Identifiable, Equatable, Codable {
                 holdings.removeAll(where: { $0.symbol == symbol })
                 holdings.append(holding)
             } else {
-                if transaction.type == .buy && holding.quantity > 0 {
-                    holding.costBasis = costBasis
-                    holdings.append(holding)
                 var holding = Holding(symbol: symbol)
+                holding.commissionPaid += transaction.commission
 
                 switch transaction.type {
                 case .buy:
