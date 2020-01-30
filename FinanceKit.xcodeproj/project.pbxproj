@@ -205,7 +205,8 @@
 			buildPhases = (
 				OBJ_87 /* Sources */,
 				OBJ_131 /* Frameworks */,
-				AA55AA75231ADE430073725E /* Swiftlint */,
+				AA55AA75231ADE430073725E /* Run Swiftlint */,
+				AA9F511323E327B700A8107B /* Run Pecker */,
 			);
 			buildRules = (
 			);
@@ -278,7 +279,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AA55AA75231ADE430073725E /* Swiftlint */ = {
+		AA55AA75231ADE430073725E /* Run Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,7 +288,7 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = "Run Swiftlint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -295,6 +296,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		AA9F511323E327B700A8107B /* Run Pecker */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Pecker";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which pecker >/dev/null; then\n  pecker\nelse\n  echo \"warning: Pecker not installed, download from https://github.com/woshiccm/Pecker\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

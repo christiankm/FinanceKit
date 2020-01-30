@@ -55,6 +55,15 @@ prohibited_super_call:
 identifier_name:
   excluded:
     - id
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.swift
+                    \/\/  FinanceKit
+                    \/\/
+                    \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
+                    \/\/  Copyright © \d{4} Mitteldorf\. All rights reserved\.
+                    \/\/
 
 custom_rules: 
   boolean_return:
