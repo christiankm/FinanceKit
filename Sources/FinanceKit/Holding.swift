@@ -111,7 +111,8 @@ public struct Holding: Identifiable, Equatable, Codable {
     /// Updates the holding with the current price of the specified stock.
     /// Also updates the `company` to reflect the stock.
     ///
-    ///  This function is useful for updating the holding with the result of a query from a Stock API, without you having to calculate this yourself.
+    ///  This function is useful for updating the holding with the result of a query
+    ///  from a Stock API, without you having to calculate this yourself.
     ///
     /// - Parameter stock: A stock containing the most recent price, and company details.
     ///   The symbol must match the holding.
@@ -125,10 +126,12 @@ public struct Holding: Identifiable, Equatable, Codable {
         return self
     }
 
-    /// Updates the holdings currenct value and cost basis in local currencies, using the companys currency as the base currency.
+    /// Updates the holdings currenct value and cost basis in local currencies,
+    /// using the companys currency as the base currency.
     /// - Parameter currencyPairs: The current rates to convert the currency with.
     /// - Returns: If the holdings company has a currency, and a matching currency pair,
-    /// it returns the converted holding, otherwise it returns a holding where the local values is equal to the base values.
+    /// it returns the converted holding, otherwise it returns a holding where the local values
+    /// is equal to the base values.
     public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) -> Holding {
         guard let companyCurrency = company?.currency else { return self }
 
