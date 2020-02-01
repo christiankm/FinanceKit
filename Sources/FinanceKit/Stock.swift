@@ -14,8 +14,25 @@ public struct Stock: Identifiable, Codable {
     public let symbol: Symbol
     public let company: Company
     public let price: Decimal
+    public var priceOpen: Decimal?
+    public var dayHigh: Decimal?
+    public var dayLow: Decimal?
+    public var fiftyTwoWeekHigh: Decimal?
+    public var fiftyTwoWeekLow: Decimal?
     public let currency: Currency
     public let change: Change?
+    public var marketCap: Int?
+    public var exchange: Exchange?
+    public var closeYesterday: Price?
+    public var volume: Int?
+    public var volumeAvg: Int?
+    public var shares: Int?
+    public var timezone: String?
+    public var timezoneName: String?
+    public var gmtOffset: String?
+    public var lastTradeTime: String?
+    public var pe: Double?
+    public var eps: Decimal?
 
     public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency, change: Change? = nil) {
         self.symbol = symbol
