@@ -9,7 +9,7 @@
 import Foundation
 
 /// Company.
-public struct Company: Codable {
+public struct Company: Codable, Hashable {
     public let symbol: Symbol
     public let name: String
 //    public let marketCap: String?

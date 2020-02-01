@@ -25,3 +25,11 @@ public struct Stock: Identifiable, Codable {
         self.change = change
     }
 }
+
+extension Stock: Hashable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(symbol)
+    }
+}
