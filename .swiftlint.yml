@@ -1,3 +1,7 @@
+excluded:
+  - Package.swift
+  - Tests/LinuxMain.swift
+
 opt_in_rules:
   - custom_rules
   - collection_alignment
