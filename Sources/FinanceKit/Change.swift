@@ -9,7 +9,7 @@
 import Foundation
 
 /// A Change keeps track of the numerical and percent changes between the cost and current price.
-public struct Change: Codable {
+public struct Change: Codable, Hashable {
 
     public let amountValue: Decimal
     // TODO: Should return a percentage as times, 100% = 1.0, -50 = -0.5, 300% = 3 -- cap with property wrapper
