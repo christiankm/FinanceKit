@@ -221,12 +221,12 @@ class HoldingTests: XCTestCase {
         let sortedHoldings = [holding2, holding1].sorted()
         XCTAssertEqual(sortedHoldings, [holding1, holding2])
     }
-    
+
     // MARK: Performance Tests
-    
+
     func testMakeHoldingsPerformance() {
         measure {
-            let aapl = Symbol("AAPL")!
+            let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
             let transactions = [Transaction].init(repeating: Transaction(type: .buy, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13), count: 10_000)
 
             let holdings = Holding.makeHoldings(with: transactions)
