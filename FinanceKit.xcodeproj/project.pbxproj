@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		AA06F78523D9EEBB001FFAE9 /* CurrencyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78423D9EEBB001FFAE9 /* CurrencyPair.swift */; };
 		AA06F78723D9F06A001FFAE9 /* CurrencyPairTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78623D9F06A001FFAE9 /* CurrencyPairTests.swift */; };
-		AA06F78923D9F83F001FFAE9 /* PortfolioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78823D9F83F001FFAE9 /* PortfolioTests.swift */; };
 		AA06F78B23D9F987001FFAE9 /* CompanyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */; };
 		AA601F7223DDF37A008E94C6 /* StockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA601F5023DDF37A008E94C6 /* StockTests.swift */; };
 		AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */; };

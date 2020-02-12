@@ -1,5 +1,6 @@
 excluded:
   - Package.swift
+  - Tests
   - Tests/LinuxMain.swift
 
 opt_in_rules:
