@@ -12,11 +12,11 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     public let id: UUID = UUID()
     public let name: String
     public let currency: Currency
-    public var stocks: [Stock] = []
+    public var holdings: [Holding] = []
 
-    public init(name: String, currency: Currency, stocks: [Stock] = []) {
+    public init(name: String, currency: Currency, holdings: [Holding] = []) {
         self.name = name
         self.currency = currency
-        self.stocks = stocks
+        self.holdings = holdings
     }
 }
