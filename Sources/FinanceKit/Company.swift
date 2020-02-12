@@ -9,7 +9,7 @@
 import Foundation
 
 /// Company.
-public struct Company: Codable, Hashable {
+public struct Company: Codable, Equatable, Hashable {
     public let symbol: Symbol
     public let name: String
     public let currency: Currency
@@ -18,15 +18,6 @@ public struct Company: Codable, Hashable {
         self.symbol = symbol
         self.name = name
         self.currency = currency
-    }
-}
-
-extension Company: Equatable {
-
-    public static func == (lhs: Company, rhs: Company) -> Bool {
-        lhs.symbol == rhs.symbol &&
-        lhs.name == rhs.name &&
-        lhs.currency == rhs.currency
     }
 }
 

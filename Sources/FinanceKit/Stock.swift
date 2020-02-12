@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Stock: Identifiable, Codable {
+public struct Stock: Identifiable, Equatable, Codable {
 
     public let id: UUID = UUID()
     public let symbol: Symbol
@@ -48,10 +48,6 @@ public struct Stock: Identifiable, Codable {
 }
 
 extension Stock: Hashable {
-
-    public static func == (lhs: Stock, rhs: Stock) -> Bool {
-        lhs.symbol == rhs.symbol
-    }
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)

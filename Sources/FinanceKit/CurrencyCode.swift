@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum CurrencyCode: String, CaseIterable, Codable {
+public enum CurrencyCode: String, Equatable, CaseIterable, Codable {
     case unknown
     case DKK
     case USD

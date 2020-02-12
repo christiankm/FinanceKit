@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PriceTarget: Codable {
+public struct PriceTarget: Codable, Equatable {
     public let price: Price
     public let date: Date
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Symbol: RawRepresentable, Hashable, Codable {
+public struct Symbol: RawRepresentable, Equatable, Hashable, Codable {
 
     public let rawValue: String
 
