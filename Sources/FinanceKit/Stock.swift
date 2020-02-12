@@ -21,12 +21,12 @@ public struct Stock: Identifiable, Codable {
     public var fiftyTwoWeekLow: Decimal?
     public let currency: Currency
     public let change: Change?
-    public var marketCap: Int?
+    public var marketCap: UInt64?
     public var exchange: Exchange?
     public var closeYesterday: Price?
-    public var volume: Int?
-    public var volumeAvg: Int?
-    public var shares: Int?
+    public var volume: UInt64?
+    public var volumeAvg: UInt64?
+    public var shares: UInt64?
     public var timezone: String?
     public var timezoneName: String?
     public var gmtOffset: String?
@@ -34,12 +34,15 @@ public struct Stock: Identifiable, Codable {
     public var pe: Double?
     public var eps: Decimal?
 
-    public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency, change: Change? = nil) {
     public var target: PriceTarget?
+    public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency,
+                marketCap: UInt64? = nil, exchange: Exchange? = nil, change: Change? = nil) {
         self.symbol = symbol
         self.company = company
         self.price = price
         self.currency = currency
+        self.marketCap = marketCap
+        self.exchange = exchange
         self.change = change
     }
 }
