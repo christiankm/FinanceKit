@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Holding: Identifiable, Equatable, Codable {
+public struct Holding: Identifiable, Hashable, Equatable, Codable {
 
     /// A unique identifier that identifies this holding.
     public let id: UUID = UUID()

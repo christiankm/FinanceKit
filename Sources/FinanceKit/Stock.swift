@@ -54,3 +54,10 @@ extension Stock: Hashable {
         hasher.combine(symbol)
     }
 }
+
+extension Stock: Comparable {
+
+    public static func < (lhs: Stock, rhs: Stock) -> Bool {
+        lhs.company < rhs.company
+    }
+}

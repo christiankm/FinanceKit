@@ -14,7 +14,7 @@ public enum TransactionType: Int, Codable {
     case dividend
 }
 
-public struct Transaction: Codable {
+public struct Transaction: Codable, Hashable {
 
     public let type: TransactionType
     public let symbol: Symbol
