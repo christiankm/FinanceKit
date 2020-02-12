@@ -8,10 +8,17 @@
 
 import XCTest
 
-#if !canImport(ObjectiveC)
 public func allTests() -> [XCTestCaseEntry] {
     return [
-        testCase(FinanceKitTests.allTests)
+        testCase(ChangeTests.allTests),
+        testCase(CompanyTests.allTests),
+        testCase(CurrencyCodeTests.allTests),
+        testCase(CurrencyPairTests.allTests),
+        testCase(CurrencyTests.allTests),
+        testCase(DecimalDoubleValueTests.allTests),
+        testCase(HoldingTests.allTests),
+        testCase(PortfolioTests.allTests),
+        testCase(SymbolTests.allTests),
+        testCase(TransactionTests.allTests)
     ]
 }
-#endif
