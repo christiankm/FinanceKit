@@ -43,14 +43,24 @@ public struct Stock: Identifiable, Codable {
     }
 }
 
-extension Stock: Hashable {
+extension Stock: Equatable {
 
     public static func == (lhs: Stock, rhs: Stock) -> Bool {
-        lhs.symbol == rhs.symbol
+        lhs.id == rhs.id && lhs.symbol == rhs.symbol
     }
+}
+
+extension Stock: Hashable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(symbol)
+    }
+}
+
+extension Stock: Comparable {
+
+    public static func < (lhs: Stock, rhs: Stock) -> Bool {
+        lhs.company < rhs.company
     }
 }
