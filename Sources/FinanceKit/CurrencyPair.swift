@@ -15,7 +15,6 @@ public struct CurrencyPair {
     public let secondaryCurrency: Currency
 
     public init(baseCurrency: Currency, secondaryCurrency: Currency, rate: Decimal) {
-        precondition(rate > 0)
         precondition(baseCurrency != secondaryCurrency)
 
         self.baseCurrency = baseCurrency
