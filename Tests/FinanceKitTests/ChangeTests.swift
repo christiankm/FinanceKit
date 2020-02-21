@@ -11,16 +11,6 @@ import XCTest
 
 class ChangeTests: XCTestCase {
 
-    static var allTests = [
-        ("testInitWithPositiveChange", testInitWithPositiveChange),
-        ("testInitWithNegativeChange", testInitWithNegativeChange),
-        ("testZeroChange", testZeroChange),
-        ("textEquatable", testEquatable),
-        ("testIsPositive", testIsPositive),
-        ("testIsNegative", testIsNegative),
-        ("testPercentageText", testPercentageText)
-    ]
-
     func testInitWithPositiveChange() {
         let cost = Decimal(10)
         let factor = Decimal(1.2)

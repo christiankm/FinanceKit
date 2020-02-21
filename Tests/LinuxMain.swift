@@ -1,6 +1,8 @@
 import XCTest
+
 import FinanceKitTests
 
 var tests = [XCTestCaseEntry]()
-tests += FinanceKitTests.allTests()
+tests += FinanceKitTests.__allTests()
+
 XCTMain(tests)
