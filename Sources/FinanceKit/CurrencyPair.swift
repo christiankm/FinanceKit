@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CurrencyPair {
+public struct CurrencyPair: Equatable, Hashable, Codable {
 
     public let rate: Decimal
     public let baseCurrency: Currency
