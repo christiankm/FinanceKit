@@ -1,6 +1,7 @@
 excluded:
   - Package.swift
   - Tests/LinuxMain.swift
+  - Tests/FinanceKitTests/XCTestManifests.swift
 
 opt_in_rules:
   - custom_rules
