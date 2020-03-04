@@ -48,3 +48,10 @@ public struct Transaction: Codable, Hashable {
         self.commission = commission
     }
 }
+
+extension Transaction: Comparable {
+
+    public static func < (lhs: Transaction, rhs: Transaction) -> Bool {
+        lhs.date < rhs.date
+    }
+}
