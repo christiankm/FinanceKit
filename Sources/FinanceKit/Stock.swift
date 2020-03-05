@@ -39,18 +39,11 @@ public struct Stock: Identifiable, Equatable, Codable {
                 marketCap: UInt64? = nil, exchange: Exchange? = nil, change: Change? = nil) {
         self.symbol = symbol
         self.company = company
-        self.price = price
+        self.price = abs(price)
         self.currency = currency
         self.marketCap = marketCap
         self.exchange = exchange
         self.change = change
-    }
-}
-
-extension Stock: Equatable {
-
-    public static func == (lhs: Stock, rhs: Stock) -> Bool {
-        lhs.id == rhs.id && lhs.symbol == rhs.symbol
     }
 }
 
