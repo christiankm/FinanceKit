@@ -1,5 +1,6 @@
 excluded:
   - Package.swift
+  - Tests
   - Tests/LinuxMain.swift
   - Tests/FinanceKitTests/XCTestManifests.swift
 
