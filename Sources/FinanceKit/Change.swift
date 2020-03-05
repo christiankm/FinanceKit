@@ -9,7 +9,7 @@
 import Foundation
 
 /// A Change keeps track of the numerical and percent changes between the cost and current price.
-public struct Change: Codable, Hashable {
+public struct Change: Codable, Equatable, Hashable {
 
     public let amountValue: Decimal
     // TODO: Should return a percentage as times, 100% = 1.0, -50 = -0.5, 300% = 3 -- cap with property wrapper
@@ -50,12 +50,5 @@ public struct Change: Codable, Hashable {
         } else {
             self.percentageValue = (((cost - currentValue) / cost) * 100 * -1).doubleValue
         }
-    }
-}
-
-extension Change: Equatable {
-
-    public static func == (lhs: Change, rhs: Change) -> Bool {
-        lhs.amountValue == rhs.amountValue
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Holding: Identifiable, Equatable, Codable {
+public struct Holding: Identifiable, Hashable, Equatable, Codable {
 
     /// A unique identifier that identifies this holding.
     public let id: UUID = UUID()
@@ -29,6 +29,11 @@ public struct Holding: Identifiable, Equatable, Codable {
     public var averageCostPerShare: Price {
         costBasis / Decimal(quantity)
     }
+
+    public var stock: Stock?
+
+    public var averageAdjustedCostBasisPerShare: Decimal = 0
+    public var accumulatedDividends: Decimal = 0
 
     public var displayName: String {
         company?.name ?? symbol.rawValue
@@ -126,7 +131,7 @@ public struct Holding: Identifiable, Equatable, Codable {
         return self
     }
 
-    /// Updates the holdings currenct value and cost basis in local currencies,
+    /// Updates the holdings current value and cost basis in local currencies,
     /// using the companys currency as the base currency.
     /// - Parameter currencyPairs: The current rates to convert the currency with.
     /// - Returns: If the holdings company has a currency, and a matching currency pair,

@@ -8,7 +8,8 @@
 
 import Foundation
 
-public struct Exchange: Codable {
+public struct Exchange: Codable, Equatable {
+    
     public let symbol: String
     public let name: String
 

@@ -14,7 +14,7 @@ public enum TransactionType: Int, Codable {
     case dividend
 }
 
-public struct Transaction: Codable {
+public struct Transaction: Codable, Hashable {
 
     public let type: TransactionType
     public let symbol: Symbol
@@ -46,5 +46,12 @@ public struct Transaction: Codable {
         self.price = price
         self.quantity = quantity
         self.commission = commission
+    }
+}
+
+extension Transaction: Comparable {
+
+    public static func < (lhs: Transaction, rhs: Transaction) -> Bool {
+        lhs.date < rhs.date
     }
 }
