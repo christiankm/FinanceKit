@@ -26,6 +26,7 @@
 		AA06F78B23D9F987001FFAE9 /* CompanyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */; };
 		AA601F7223DDF37A008E94C6 /* StockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA601F5023DDF37A008E94C6 /* StockTests.swift */; };
 		AA339E682403056C005D5CA8 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E552403056B005D5CA8 /* Amount.swift */; };
+		AA339E732403056D005D5CA8 /* Dividend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E602403056C005D5CA8 /* Dividend.swift */; };
 		AA339E772403056D005D5CA8 /* Numerics+Total+Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */; };
 		AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */; };
 		AA69851D2377351800D0683C /* SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69851C2377351800D0683C /* SymbolTests.swift */; };
@@ -76,6 +77,7 @@
 		AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTests.swift; sourceTree = "<group>"; };
 		AA601F5023DDF37A008E94C6 /* StockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockTests.swift; sourceTree = "<group>"; };
 		AA339E552403056B005D5CA8 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
+		AA339E602403056C005D5CA8 /* Dividend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dividend.swift; sourceTree = "<group>"; };
 		AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Numerics+Total+Average.swift"; sourceTree = "<group>"; };
 		AA69850523760EF000D0683C /* FinanceKit.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinanceKit.xctestplan; sourceTree = "<group>"; };
 		AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal+DoubleValue.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */,
 				AA06F78423D9EEBB001FFAE9 /* CurrencyPair.swift */,
 				AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */,
+				AA339E602403056C005D5CA8 /* Dividend.swift */,
 				AA7A62B023E5D3F20094DC2B /* Exchange.swift */,
 				AAE67784239298550053B303 /* Holding.swift */,
 				AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */,
@@ -389,6 +392,7 @@
 				AA339E682403056C005D5CA8 /* Amount.swift in Sources */,
 				OBJ_114 /* Stock.swift in Sources */,
 				AA339E772403056D005D5CA8 /* Numerics+Total+Average.swift in Sources */,
+				AA339E732403056D005D5CA8 /* Dividend.swift in Sources */,
 				AAE677832392979A0053B303 /* Quantity.swift in Sources */,
 				AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */,
 				OBJ_123 /* Symbol.swift in Sources */,
