@@ -218,6 +218,7 @@
 				OBJ_131 /* Frameworks */,
 				AA55AA75231ADE430073725E /* Run Swiftlint */,
 				AA9F511323E327B700A8107B /* Run Pecker */,
+				AA7969A8241CC8C600759CC8 /* Generate XCTestManifest and LinuxMain */,
 			);
 			buildRules = (
 			);
@@ -307,6 +308,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		AA7969A8241CC8C600759CC8 /* Generate XCTestManifest and LinuxMain */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate XCTestManifest and LinuxMain";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swift test --generate-linuxmain\n";
 		};
 		AA9F511323E327B700A8107B /* Run Pecker */ = {
 			isa = PBXShellScriptBuildPhase;

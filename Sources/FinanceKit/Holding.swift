@@ -66,8 +66,12 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
             return []
         }
 
+        // Sort transactions by date to be sure they are
+        // processed in the real-time order.
+        let sortedTransactions = transactions.sorted()
+
         var holdings: [Holding] = []
-        transactions.forEach { transaction in
+        sortedTransactions.forEach { transaction in
             let symbol = transaction.symbol
             let quantity = transaction.quantity
             let price = transaction.price

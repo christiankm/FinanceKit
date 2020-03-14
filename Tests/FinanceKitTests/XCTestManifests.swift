@@ -88,6 +88,7 @@ extension HoldingTests {
         ("testMakeHoldingsPerformance", testMakeHoldingsPerformance),
         ("testMakeHoldingsWithBuyAndSellAndDividendTransactions", testMakeHoldingsWithBuyAndSellAndDividendTransactions),
         ("testMakeHoldingsWithBuyAndSellTransactions", testMakeHoldingsWithBuyAndSellTransactions),
+        ("testMakeHoldingsWithBuyAndSellTransactionsInUnsortedOrder", testMakeHoldingsWithBuyAndSellTransactionsInUnsortedOrder),
         ("testMakeHoldingsWithNoTransactions", testMakeHoldingsWithNoTransactions),
         ("testMakeHoldingsWithOnlyBuyTransactions", testMakeHoldingsWithOnlyBuyTransactions),
         ("testMakeHoldingsWithOnlyDividendTransactions", testMakeHoldingsWithOnlyDividendTransactions),

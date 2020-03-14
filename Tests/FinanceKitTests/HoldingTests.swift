@@ -86,7 +86,7 @@ class HoldingTests: XCTestCase {
         let holdings = Holding.makeHoldings(with: transactions)
 
         let expectedHoldingOfAAPL = Holding(symbol: aapl, quantity: 10,
-                                      costBasis: 1126)
+                                            costBasis: 1126)
         let expectedHoldingOfCAKE = Holding(symbol: cake, quantity: 10,
                                             costBasis: 613)
         XCTAssertEqual(holdings.count, 2)
@@ -120,11 +120,30 @@ class HoldingTests: XCTestCase {
 
         let holdings = Holding.makeHoldings(with: transactions)
 
-        let expectedHoldingOfCAKE = Holding(symbol: cake, quantity: 10,
-                                            costBasis: 613)
+        let expectedHoldingOfCAKE = Holding(symbol: cake, quantity: 10, costBasis: 613)
         XCTAssertEqual(holdings.count, 1)
         XCTAssertEqual(holdings[0].quantity, expectedHoldingOfCAKE.quantity)
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfCAKE.costBasis)
+    }
+
+    func testMakeHoldingsWithBuyAndSellTransactionsInUnsortedOrder() {
+        let today = Date()
+        let tomorrow = today.addingTimeInterval(86400)
+        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
+        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
+        let transactions = [
+            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .sell, symbol: cake, date: tomorrow, price: 60, quantity: 10, commission: 13),
+            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .buy, symbol: aapl, date: today, price: 100, quantity: 20, commission: 13),
+            Transaction(type: .buy, symbol: cake, date: today, price: 60, quantity: 10, commission: 13)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+
+        XCTAssertEqual(holdings.count, 0)
     }
 
     func testMakeHoldingsWithOnlyDividendTransactions() {
