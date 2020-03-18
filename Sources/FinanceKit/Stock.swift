@@ -35,6 +35,8 @@ public struct Stock: Identifiable, Equatable, Codable {
     public var eps: Decimal?
 
     public var target: PriceTarget?
+    public var intrinsicValue: PriceTarget?
+
     public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency,
                 marketCap: UInt64? = nil, exchange: Exchange? = nil, change: Change? = nil) {
         self.symbol = symbol
