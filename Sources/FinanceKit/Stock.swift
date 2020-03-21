@@ -30,7 +30,7 @@ public struct Stock: Identifiable, Equatable, Codable {
     public var timezone: String?
     public var timezoneName: String?
     public var gmtOffset: String?
-    public var lastTradeTime: String?
+    public var lastTraded: Date?
     public var pe: Double?
     public var eps: Decimal?
 
