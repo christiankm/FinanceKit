@@ -38,6 +38,11 @@ public struct Transaction: Codable, Hashable {
         return cost
     }
 
+    public var totalDividend: Amount {
+        guard type == .dividend else { return 0 }
+        return price * Decimal(quantity)
+    }
+
     public init(type: TransactionType, symbol: Symbol, date: Date,
                 price: Price, quantity: Quantity, commission: Price = 0) {
         self.type = type

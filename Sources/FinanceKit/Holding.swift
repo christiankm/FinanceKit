@@ -15,6 +15,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
 
     public let symbol: Symbol
 
+    public var stock: Stock?
     public var company: Company?
 
     public var quantity: Quantity
@@ -30,10 +31,11 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         costBasis / Decimal(quantity)
     }
 
-    public var stock: Stock?
+    public var averageAdjustedCostBasisPerShare: Amount {
+        (costBasis - accumulatedDividends) / Decimal(quantity)
+    }
 
-    public var averageAdjustedCostBasisPerShare: Decimal = 0
-    public var accumulatedDividends: Decimal = 0
+    public var accumulatedDividends: Amount = 0
 
     public var displayName: String {
         company?.name ?? symbol.rawValue
@@ -41,6 +43,12 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
 
     public var currentValue: Price
     public var currentValueInLocalCurrency: Price
+
+    /// Returns the ownership in terms of percentage of the total amount of oustanding shares.
+    public var ownership: Double {
+        guard let outstandingShares = stock?.shares, outstandingShares > 0 else { return 0 }
+        return Double(quantity / Int(outstandingShares))
+    }
 
     public init(symbol: Symbol, quantity: Quantity = 0, costBasis: Price = 0,
                 costBasisInLocalCurrency: Price = 0, currentValue: Price = 0,
@@ -91,6 +99,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
                     holding.costBasis -= costBasis
                 case .dividend:
                     holding.costBasis -= costBasis
+                    holding.accumulatedDividends += transaction.totalDividend
                 }
 
                 // Remove previous and re-add newly calculated holding
@@ -107,7 +116,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
                 case .sell:
                     break
                 case .dividend:
-                    break
+                    holding.accumulatedDividends = transaction.totalDividend
                 }
 
                 holdings.append(holding)
@@ -129,6 +138,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     public mutating func update(with stock: Stock) -> Holding {
         guard stock.symbol == symbol else { return self }
 
+        self.stock = stock
         company = stock.company
         currentValue = stock.price * Decimal(quantity)
 
