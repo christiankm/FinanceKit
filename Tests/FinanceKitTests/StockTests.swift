@@ -3,7 +3,7 @@
 //  FinanceKitTests
 //
 //  Created by Christian Mitteldorf on 29/06/2017.
-//  Copyright © 2017 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
 import XCTest

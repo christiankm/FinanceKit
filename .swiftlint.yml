@@ -54,6 +54,8 @@ opt_in_rules:
 # Configure Rules
 force_unwrapping:
   severity: error
+line_length:
+  warning: 140
 overridden_super_call:
   severity: error
 prohibited_super_call:
@@ -68,7 +70,7 @@ file_header:
                     \/\/  FinanceKit
                     \/\/
                     \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
-                    \/\/  Copyright © \d{4} Mitteldorf\. All rights reserved\.
+                    \/\/  Copyright © 2020 Mitteldorf\. All rights reserved\.
                     \/\/
 
 custom_rules: 

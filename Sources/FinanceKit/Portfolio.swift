@@ -3,7 +3,7 @@
 //  FinanceKit
 //
 //  Created by Christian Mitteldorf on 15/09/2019.
-//  Copyright © 2017 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
 import Foundation
@@ -84,8 +84,8 @@ public struct Portfolio: Codable, Hashable, Identifiable {
 
     public static func totalChangeInLocalCurrency(of portfolios: [Portfolio]) -> Change {
         guard !portfolios.isEmpty else { return .zero }
-        let averageCost: Amount = portfolios.reduce(0) { $0 + $1.costBasisInLocalCurrency } / Decimal(portfolios.count)
-        let averageValue: Amount = portfolios.reduce(0) { $0 + $1.currentValueInLocalCurrency } / Decimal(portfolios.count)
+        let averageCost = portfolios.reduce(0) { $0 + $1.costBasisInLocalCurrency } / Decimal(portfolios.count)
+        let averageValue = portfolios.reduce(0) { $0 + $1.currentValueInLocalCurrency } / Decimal(portfolios.count)
 
         return Change(cost: averageCost, currentValue: averageValue)
     }

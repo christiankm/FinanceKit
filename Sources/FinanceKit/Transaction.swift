@@ -3,7 +3,7 @@
 //  FinanceKit
 //
 //  Created by Christian Mitteldorf on 19/10/2019.
-//  Copyright © 2019 Mitteldorf. All rights reserved.
+//  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
 import Foundation
@@ -36,6 +36,11 @@ public struct Transaction: Codable, Hashable {
         }
 
         return cost
+    }
+
+    public var totalDividend: Amount {
+        guard type == .dividend else { return 0 }
+        return price * Decimal(quantity)
     }
 
     public init(type: TransactionType, symbol: Symbol, date: Date,
