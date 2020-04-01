@@ -6,7 +6,7 @@ FinanceKit is a Swift framework for working with financial data in your apps. It
 
 The framework is primarily providing you with various financial data-models, and calculations.
 
-FinanceKit is used in Stokki, an app to manage and track your stock portfolio.
+FinanceKit is used in [Stokki](https://stokki.app), an app to manage and track your stock portfolio.
 
 The framework is in a very early stage. Breaking changes will happen until version 1.0 is released.
 
