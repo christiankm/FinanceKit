@@ -3,7 +3,7 @@
 //  FinanceKit
 //
 //  Created by Christian Mitteldorf on 04/09/2019.
-//  Copyright © 2019 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
 import XCTest

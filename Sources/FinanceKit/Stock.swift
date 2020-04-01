@@ -3,7 +3,7 @@
 //  FinanceKit
 //
 //  Created by Christian Mitteldorf on 17/05/2017.
-//  Copyright © 2017 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
 import Foundation
@@ -31,8 +31,8 @@ public struct Stock: Identifiable, Equatable, Codable {
     public var timezoneName: String?
     public var gmtOffset: String?
     public var lastTraded: Date?
-    public var pe: Double?
-    public var eps: Decimal?
+    public var priceEarnings: Double?
+    public var earningsPerShare: Amount?
 
     public var target: PriceTarget?
     public var intrinsicValue: PriceTarget?

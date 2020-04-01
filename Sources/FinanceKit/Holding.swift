@@ -3,7 +3,7 @@
 //  FinanceKit
 //
 //  Created by Christian Mitteldorf on 28/10/2019.
-//  Copyright © 2019 Mitteldorf. All rights reserved.
+//  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
 import Foundation
@@ -30,8 +30,6 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     public var averageCostPerShare: Price {
         costBasis / Decimal(quantity)
     }
-
-    public var stock: Stock?
 
     public var averageAdjustedCostBasisPerShare: Decimal = 0
     public var accumulatedDividends: Decimal = 0
