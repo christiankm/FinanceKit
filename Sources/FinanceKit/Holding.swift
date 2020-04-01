@@ -31,11 +31,10 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         costBasis / Decimal(quantity)
     }
 
-    public var averageAdjustedCostBasisPerShare: Amount {
-        (costBasis - accumulatedDividends) / Decimal(quantity)
-    }
+    public var stock: Stock?
 
-    public var accumulatedDividends: Amount = 0
+    public var averageAdjustedCostBasisPerShare: Decimal = 0
+    public var accumulatedDividends: Decimal = 0
 
     public var displayName: String {
         company?.name ?? symbol.rawValue
