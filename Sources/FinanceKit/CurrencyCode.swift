@@ -19,6 +19,6 @@ public enum CurrencyCode: String, Equatable, CaseIterable, Codable {
     case SEK
 
     public var currencyCodeString: String {
-        rawValue.uppercased()
+        self != .unknown ? rawValue.uppercased() : ""
     }
 }
