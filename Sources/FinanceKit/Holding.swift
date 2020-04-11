@@ -16,19 +16,29 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     public let symbol: Symbol
 
     public var stock: Stock?
-    public var company: Company?
+    public internal(set) var company: Company?
 
-    public var quantity: Quantity
+    public internal(set) var quantity: Quantity {
+        didSet {
+            quantity = max(quantity, 0)
+        }
+    }
 
     /// The total cost basis for all transactions.
-    public var costBasis: Price
-    public var costBasisInLocalCurrency: Price
+    public internal(set) var costBasis: Price {
+        didSet {
+            costBasis = max(costBasis, 0)
+        }
+    }
+
+    public internal(set) var costBasisInLocalCurrency: Price
 
     public internal(set) var commissionPaid: Price = 0
 
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
-        costBasis / Decimal(quantity)
+        guard quantity > 0 else { return 0 }
+        return costBasis / Decimal(quantity)
     }
 
     public var averageAdjustedCostBasisPerShare: Decimal = 0
@@ -38,8 +48,8 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         company?.name ?? symbol.rawValue
     }
 
-    public var currentValue: Price
-    public var currentValueInLocalCurrency: Price
+    public internal(set) var currentValue: Price
+    public internal(set) var currentValueInLocalCurrency: Price
 
     /// Returns the ownership in terms of percentage of the total amount of oustanding shares.
     public var ownership: Double {
@@ -51,8 +61,8 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
                 costBasisInLocalCurrency: Price = 0, currentValue: Price = 0,
                 currentValueInLocalCurrency: Price = 0) {
         self.symbol = symbol
-        self.quantity = quantity
-        self.costBasis = costBasis
+        self.quantity = max(quantity, 0)
+        self.costBasis = max(costBasis, 0)
         self.costBasisInLocalCurrency = costBasisInLocalCurrency
         self.currentValue = currentValue
         self.currentValueInLocalCurrency = currentValueInLocalCurrency
@@ -136,8 +146,8 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         guard stock.symbol == symbol else { return self }
 
         self.stock = stock
-        company = stock.company
-        currentValue = stock.price * Decimal(quantity)
+        self.company = stock.company
+        self.currentValue = stock.price * Decimal(quantity)
 
         return self
     }
