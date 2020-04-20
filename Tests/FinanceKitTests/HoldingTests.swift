@@ -196,7 +196,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(newHolding.company?.name, "Apple Inc.")
         XCTAssertEqual(newHolding.company?.currency, Currency(code: CurrencyCode(rawValue: "USD")))
         XCTAssertEqual(newHolding.currentValue, 1900)
-        XCTAssertEqual(newHolding.change.amountValue, 900)
+        XCTAssertEqual(newHolding.change.amount, 900)
     }
 
     func testUpdateWithStockWithDifferentSymbol() {

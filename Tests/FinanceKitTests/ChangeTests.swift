@@ -17,10 +17,10 @@ class ChangeTests: XCTestCase {
 
         let change = Change(cost: cost, currentValue: cost * factor)
         let expectedAmountValue = Decimal(2)
-        let expectedPercentageValue = 20.0
+        let expectedPercentageValue = Percentage(20.0)
 
-        XCTAssertEqual(change.amountValue, expectedAmountValue)
-        XCTAssertEqual(change.percentageValue, expectedPercentageValue, accuracy: 0.00001)
+        XCTAssertEqual(change.amount, expectedAmountValue)
+        XCTAssertEqual(change.percentage.rawValue, expectedPercentageValue.rawValue, accuracy: 0.00001)
     }
 
     func testInitWithNegativeChange() {
@@ -31,21 +31,21 @@ class ChangeTests: XCTestCase {
         let expectedAmountValue = Decimal(-4)
         let expectedPercentageValue = -40.0
 
-        XCTAssertEqual(change.amountValue, expectedAmountValue)
-        XCTAssertEqual(change.percentageValue, expectedPercentageValue, accuracy: 0.00001)
+        XCTAssertEqual(change.amount, expectedAmountValue)
+        XCTAssertEqual(change.percentage.rawValue, expectedPercentageValue, accuracy: 0.00001)
     }
 
     func testInitWithPercentageValue() {
-        let value = Double.random(in: -1...1)
+        let value = Percentage(Double.random(in: -1...1))
         let change = Change(percentageValue: value)
-        let expectedAmountValue = Decimal(value < 0 ? -1 : 1)
-        XCTAssertEqual(change.amountValue, expectedAmountValue)
-        XCTAssertEqual(change.percentageValue, value)
+        let expectedAmountValue = Decimal(value < Percentage(0.0) ? -1 : 1)
+        XCTAssertEqual(change.amount, expectedAmountValue)
+        XCTAssertEqual(change.percentage, value)
     }
 
     func testZeroChange() {
-        XCTAssertEqual(Change.zero.amountValue, 0)
-        XCTAssertEqual(Change.zero.percentageValue, 0)
+        XCTAssertEqual(Change.zero.amount, 0)
+        XCTAssertEqual(Change.zero.percentage, Percentage(0))
     }
 
     func testEquatable() {
@@ -67,6 +67,6 @@ class ChangeTests: XCTestCase {
     func testPercentageText() {
         let cost = Decimal(1.23)
         let change = Change(cost: cost, currentValue: cost * 3)
-        XCTAssertEqual(change.percentageText, "200.0 %")
+        XCTAssertEqual(change.percentageText, "200.00%")
     }
 }
