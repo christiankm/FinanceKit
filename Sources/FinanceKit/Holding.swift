@@ -11,7 +11,7 @@ import Foundation
 public struct Holding: Identifiable, Hashable, Equatable, Codable {
 
     /// A unique identifier that identifies this holding.
-    public let id: UUID = UUID()
+    public let id = UUID()
 
     public let symbol: Symbol
 
@@ -163,8 +163,8 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
 
         if companyCurrency != baseCurrency {
             if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
-                currentValueInLocalCurrency = currentValue * (1 / pair.rate)
-                costBasisInLocalCurrency = costBasis * (1 / pair.rate)
+                currentValueInLocalCurrency = currentValue * (1 / Decimal(pair.rate))
+                costBasisInLocalCurrency = costBasis * (1 / Decimal(pair.rate))
             }
         } else {
             currentValueInLocalCurrency = currentValue

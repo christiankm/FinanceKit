@@ -43,6 +43,7 @@ extension CurrencyPairTests {
     // to regenerate.
     static let __allTests__CurrencyPairTests = [
         ("testInit", testInit),
+        ("testInitWithSameCurrency", testInitWithSameCurrency),
     ]
 }
 

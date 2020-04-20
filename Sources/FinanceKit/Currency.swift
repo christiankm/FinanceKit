@@ -19,6 +19,10 @@ public struct Currency: Codable, Equatable, Hashable {
     public init(code: CurrencyCode) {
         self.code = code
     }
+
+    public init(code: String) {
+        self.init(code: CurrencyCode(rawValue: code))
+    }
 }
 
 /// This extension provides a bridge to system APIs inside a convienent namespace.
