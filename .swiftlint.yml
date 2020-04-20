@@ -4,6 +4,9 @@ excluded:
   - Tests/LinuxMain.swift
   - Tests/FinanceKitTests/XCTestManifests.swift
 
+disabled_rules:
+  - explicit_type_interface
+
 opt_in_rules:
   - custom_rules
   - collection_alignment
@@ -18,7 +21,9 @@ opt_in_rules:
   - empty_collection_literal
   - empty_count
   - empty_string
+  - explicit_acl
   - explicit_init
+  - explicit_top_level_acl
   - file_header
   - file_name
   - file_length
