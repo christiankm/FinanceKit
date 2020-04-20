@@ -52,13 +52,13 @@ extension CurrencyTests {
     // to regenerate.
     static let __allTests__CurrencyTests = [
         ("testCommonISOCurrencyCodes", testCommonISOCurrencyCodes),
+        ("testEquatable", testEquatable),
         ("testInitWithCurrencyCode", testInitWithCurrencyCode),
         ("testISOCurrencyCodes", testISOCurrencyCodes),
         ("testLocaleCurrencyCode", testLocaleCurrencyCode),
         ("testLocaleCurrencySymbol", testLocaleCurrencySymbol),
         ("testLocalizedStringForCurrencyCode", testLocalizedStringForCurrencyCode),
         ("testName", testName),
-        ("testNameWithUnknownCode", testNameWithUnknownCode),
     ]
 }
 

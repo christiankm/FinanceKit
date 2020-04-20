@@ -12,19 +12,14 @@ import XCTest
 class CurrencyTests: XCTestCase {
 
     func testInitWithCurrencyCode() {
-        let currency = Currency(code: .DKK)
+        let currency = Currency(code: CurrencyCode(rawValue: "DKK"))
         XCTAssertNotNil(currency)
         XCTAssertEqual(currency.code.rawValue, "DKK")
     }
 
     func testName() {
-        let currency = Currency(code: .DKK)
+        let currency = Currency(code: CurrencyCode(rawValue: "DKK"))
         XCTAssertEqual(currency.name, "Danish Krone")
-    }
-
-    func testNameWithUnknownCode() {
-        let currency = Currency(code: .unknown)
-        XCTAssertTrue(currency.name.isEmpty)
     }
 
     func testLocaleCurrencyCode() {
@@ -46,5 +41,11 @@ class CurrencyTests: XCTestCase {
 
     func testCommonISOCurrencyCodes() {
         XCTAssertEqual(Currency.commonIsoCurrencyCodes, NSLocale.commonISOCurrencyCodes)
+    }
+
+    func testEquatable() {
+        let dkk = Currency(code: CurrencyCode(rawValue: "DKK"))
+        let usd = Currency(code: CurrencyCode(rawValue: "USD"))
+        XCTAssertNotEqual(usd, dkk)
     }
 }
