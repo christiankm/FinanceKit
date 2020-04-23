@@ -19,6 +19,7 @@ public struct Stock: Identifiable, Equatable, Codable {
     public var dayLow: Decimal?
     public var fiftyTwoWeekHigh: Decimal?
     public var fiftyTwoWeekLow: Decimal?
+    public var region: String?
     public let currency: Currency
     public let change: Change?
     public var marketCap: UInt64?
