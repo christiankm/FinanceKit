@@ -13,7 +13,7 @@ public struct Stock: Identifiable, Equatable, Codable {
     public let id: UUID = UUID()
     public let symbol: Symbol
     public let company: Company
-    public let price: Decimal
+    public var price: Decimal
     public var priceOpen: Decimal?
     public var dayHigh: Decimal?
     public var dayLow: Decimal?

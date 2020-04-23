@@ -8,8 +8,10 @@
 
 import Foundation
 
+/// A Portfolio is a structure that contains transactions and holdings of stocks or other instruments.
 public struct Portfolio: Codable, Hashable, Identifiable {
-    public let id: UUID = UUID()
+
+    public let id: UUID
     public let name: String
     public let currency: Currency
     public var holdings: [Holding] = []
@@ -48,9 +50,22 @@ public struct Portfolio: Codable, Hashable, Identifiable {
         return Change(cost: totalCost, currentValue: currentValueInLocalCurrency)
     }
 
-    public init(name: String, currency: Currency, holdings: [Holding] = []) {
+    public init(id: UUID = UUID(), name: String, currency: Currency, holdings: [Holding] = []) {
+        self.id = id
         self.name = name
         self.currency = currency
+        self.holdings = holdings
+    }
+
+    public init(portfolios: [Portfolio]) {
+        self.id = UUID()
+        self.name = ""
+        self.currency = Currency(code: "USD")
+
+        var holdings: [Holding] = []
+        portfolios.forEach {
+            holdings.append(contentsOf: $0.holdings)
+        }
         self.holdings = holdings
     }
 
@@ -93,36 +108,55 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     /// Updates all holdings in the portfolio with the current price of the specified stock.
     /// Also updates the `company` to reflect the stock.
     ///
-    ///  This function is useful for updating the holdings with the result of a query
-    ///  from a Stock API, without you having to calculate this yourself.
+    /// This is useful for updating the holdings with the result of a query
+    /// from a Stock API, without you having to calculate this yourself.
     ///
     /// - Parameter stock: A stock containing the most recent price, and company details.
     ///   The symbol must match the holding.
-    /// - Returns: The newly updated portfolio.
-    public mutating func update(with stock: Stock) -> Portfolio {
+    public mutating func update(with stock: Stock) {
         var updatedHoldings: [Holding] = []
         holdings.forEach { holding in
             var holdingToUpdate = holding
             updatedHoldings.append(holdingToUpdate.update(with: stock))
         }
 
-        return self
+        self.holdings = updatedHoldings
+    }
+
+    public mutating func update(with stocks: [Stock]) {
+        var updatedHoldings: [Holding] = []
+        stocks.forEach { stock in
+            guard var holding = holdings.first(where: { $0.symbol == stock.symbol }) else { return }
+            let updatedHolding = holding.update(with: stock)
+            updatedHoldings.append(updatedHolding)
+        }
+
+        // Compare updated holdings and add any that did not return a price from the API
+        // This will ensure we show the holding, but with a zero or the last known price
+        holdings.forEach { holding in
+            // If not found in updatedHoldings, add to updatedHoldings and update total market value
+            if !updatedHoldings.contains(where: { $0.symbol == holding.symbol }) {
+                updatedHoldings.append(holding)
+            }
+        }
+
+        self.holdings = updatedHoldings
     }
 
     /// Updates all holdings current value and cost basis in local currencies,
     /// using the companys currency as the base currency.
+    ///
     /// - Parameter currencyPairs: The current rates to convert the currency with.
     /// - Returns: If the holdings companies has a currency, and a matching currency pair,
     /// it returns the converted portfolio, otherwise it returns a portfolio where the local values
     /// is equal to the base values.
-    public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) -> Portfolio {
-
+    public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) {
         var updatedHoldings: [Holding] = []
         holdings.forEach { holding in
             var holdingToUpdate = holding
             updatedHoldings.append(holdingToUpdate.update(with: currencyPairs, from: baseCurrency))
         }
 
-        return self
+        self.holdings = updatedHoldings
     }
 }

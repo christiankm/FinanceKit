@@ -114,6 +114,10 @@ extension PortfolioTests {
     // to regenerate.
     static let __allTests__PortfolioTests = [
         ("testInit", testInit),
+        ("testTotalCostInLocalCurrencyOfHoldings", testTotalCostInLocalCurrencyOfHoldings),
+        ("testTotalCostOfHoldings", testTotalCostOfHoldings),
+        ("testUpdateWithStock", testUpdateWithStock),
+        ("testUpdateWithStocks", testUpdateWithStocks),
     ]
 }
 
