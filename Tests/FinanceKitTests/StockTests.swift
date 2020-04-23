@@ -14,7 +14,7 @@ class StockTests: XCTestCase {
     func testEquatable() {
         let appleSymbol = Symbol("AAPL")!
         let cakeSymbol = Symbol("CAKE")!
-        let usd = Currency(code: .USD)
+        let usd = Currency(code: CurrencyCode(rawValue: "USD"))
         let apple = Stock(symbol: appleSymbol, company: Company(symbol: appleSymbol, name: "Apple Inc.", currency: usd), price: 123, currency: usd)
         let apple2 = apple
         let cake = Stock(symbol: cakeSymbol, company: Company(symbol: cakeSymbol, name: "Cheesecake", currency: usd), price: 123, currency: usd)

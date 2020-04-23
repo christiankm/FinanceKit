@@ -12,7 +12,7 @@ import FinanceKit
 class CurrencyCodeTests: XCTestCase {
 
     func testCurrencyCodeString() {
-        let currency = CurrencyCode.DKK
+        let currency = CurrencyCode(rawValue: "DKK")
         XCTAssertEqual(currency.currencyCodeString, "DKK")
     }
 }

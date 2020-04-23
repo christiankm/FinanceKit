@@ -8,15 +8,29 @@
 
 import Foundation
 
-public enum CurrencyCode: String, Equatable, CaseIterable, Codable {
-    case unknown
-    case DKK
-    case USD
-    case EUR
-    case GBP
-    case AUD
-    case NOK
-    case SEK
+// TODO: public enum CurrencyCode: String, Equatable, CaseIterable, Codable {
+//    case unknown
+//    case DKK
+//    case USD
+//    case EUR
+//    case GBP
+//    case AUD
+//    case NOK
+//    case SEK
+//
+//    public var currencyCodeString: String {
+//        self != .unknown ? rawValue.uppercased() : ""
+//    }
+//}
+
+public struct CurrencyCode: RawRepresentable, Equatable, Hashable, Codable {
+    //TODO: add all world currency codes here (get from .commonIsoCurrencyCodes to know they're supported
+
+    public let rawValue: String
+
+    public init(rawValue: String) {
+        self.rawValue = rawValue.uppercased()
+    }
 
     public var currencyCodeString: String {
         rawValue.uppercased()

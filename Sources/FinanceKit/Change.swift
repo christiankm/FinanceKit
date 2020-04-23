@@ -11,44 +11,41 @@ import Foundation
 /// A Change keeps track of the numerical and percent changes between the cost and current price.
 public struct Change: Codable, Equatable, Hashable {
 
-    public let amountValue: Decimal
-    // TODO: Should return a percentage as times, 100% = 1.0, -50 = -0.5, 300% = 3 -- cap with property wrapper
-    public let percentageValue: Double
+    public static let zero = Change(cost: 0, currentValue: 0)
+
+    public let amount: Amount
+    public let percentage: Percentage
 
     public var isPositive: Bool {
-        amountValue >= 0
+        amount >= 0
     }
 
     public var isNegative: Bool {
-        amountValue.isLess(than: 0)
+        amount.isLess(than: 0)
     }
 
-    @available(*, deprecated, message: "Text formatting will be removed in a future version")
-    public var percentageText: String {
-        "\(percentageValue) %"
+    public var percentageText: String? {
+        percentage.formattedString
     }
 
-    public static let zero: Change = Change(cost: 0, currentValue: 0)
-
-    // TODO: Should allow a percentage factor as times, 100% = 1.0, -50 = -0.5, 300% = 3 -- cap with property wrapper
-    public init(percentageValue: Double) {
-        self.amountValue = percentageValue >= 0 ? 1 : -1
-        self.percentageValue = percentageValue
+    public init(percentageValue: Percentage) {
+        self.amount = percentageValue.rawValue >= 0.0 ? 1.0 : -1.0
+        self.percentage = percentageValue
     }
 
     public init(cost: Decimal, currentValue: Decimal) {
         if cost == 0, currentValue == 0 {
-            self.amountValue = 0
-            self.percentageValue = 0
+            self.amount = 0
+            self.percentage = Percentage(0.0)
             return
         }
 
-        self.amountValue = (currentValue - cost)
+        self.amount = (currentValue - cost)
 
-        if amountValue >= 0 {
-            self.percentageValue = ((amountValue / cost) * 100).doubleValue
+        if amount >= 0 {
+            self.percentage = Percentage(((amount / cost) * 100).doubleValue)
         } else {
-            self.percentageValue = (((cost - currentValue) / cost) * 100 * -1).doubleValue
+            self.percentage = Percentage((((cost - currentValue) / cost) * 100 * -1).doubleValue)
         }
     }
 }

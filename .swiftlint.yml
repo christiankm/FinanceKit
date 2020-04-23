@@ -4,11 +4,15 @@ excluded:
   - Tests/LinuxMain.swift
   - Tests/FinanceKitTests/XCTestManifests.swift
 
+disabled_rules:
+  - explicit_type_interface
+  - vertical_whitespace_between_cases
+
 opt_in_rules:
   - custom_rules
   - collection_alignment
   - contains_over_filter_is_empty
-  - contains_over_first_not_null
+  - contains_over_first_not_nil
   - deployment_target
   - discarded_notification_center_observer
   - discouraged_optional_boolean
@@ -18,10 +22,13 @@ opt_in_rules:
   - empty_collection_literal
   - empty_count
   - empty_string
+  - explicit_acl
   - explicit_init
+  - explicit_top_level_acl
   - file_header
-  - file_name
   - file_length
+  - file_name
+  - file_name_no_space
   - file_types_order
   - first_where
   - force_unwrapping
@@ -44,8 +51,8 @@ opt_in_rules:
   - toggle_bool
   - unowned_variable_capture
   - unused_capture_list
-  - unused_import
   - unused_declaration
+  - unused_import
   - unused_setter_value
   - vertical_whitespace_closing_braces
   - weak_delegate
