@@ -105,6 +105,16 @@ public struct Portfolio: Codable, Hashable, Identifiable {
         return Change(cost: averageCost, currentValue: averageValue)
     }
 
+    public static func totalCost(of holdings: [Holding]) -> Amount {
+        guard !holdings.isEmpty else { return 0 }
+        return holdings.reduce(0) { $0 + $1.costBasis }
+    }
+
+    public static func totalCostInLocalCurrency(of holdings: [Holding]) -> Amount {
+        guard !holdings.isEmpty else { return 0 }
+        return holdings.reduce(0) { $0 + $1.costBasisInLocalCurrency }
+    }
+
     /// Updates all holdings in the portfolio with the current price of the specified stock.
     /// Also updates the `company` to reflect the stock.
     ///
