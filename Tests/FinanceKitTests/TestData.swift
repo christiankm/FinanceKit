@@ -5,6 +5,7 @@
 //  Created by Christian Mitteldorf on 23/04/2020.
 //
 
+import Foundation
 import FinanceKit
 
 extension Company {
@@ -21,6 +22,18 @@ extension Currency {
 extension CurrencyCode {
     static let dkk = CurrencyCode(rawValue: "DKK")
     static let usd = CurrencyCode(rawValue: "USD")
+}
+
+extension Date {
+    static let jan1 = Date(day: 01, month: 01, year: 2010)!
+    static let jan2 = Date(day: 02, month: 01, year: 2010)!
+    static let jan3 = Date(day: 03, month: 01, year: 2010)!
+    static let jan4 = Date(day: 04, month: 01, year: 2010)!
+    static let jan5 = Date(day: 05, month: 01, year: 2010)!
+    static let jan6 = Date(day: 06, month: 01, year: 2010)!
+    static let jan7 = Date(day: 07, month: 01, year: 2010)!
+    static let jan8 = Date(day: 08, month: 01, year: 2010)!
+    static let jan9 = Date(day: 09, month: 01, year: 2010)!
 }
 
 extension Holding {
