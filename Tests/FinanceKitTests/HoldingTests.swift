@@ -34,6 +34,26 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.currentValueInLocalCurrency, 34)
     }
 
+    func testHoldingQuantityIsClampedToZero() {
+        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) //swiftlint:disable:this force_unwrapping
+
+        holding.quantity = 5
+        XCTAssertEqual(holding.quantity, 5)
+
+        holding.quantity = -5
+        XCTAssertEqual(holding.quantity, 0)
+    }
+
+    func testHoldingCostBasisIsClampedToZero() {
+        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) //swiftlint:disable:this force_unwrapping
+
+        holding.costBasis = 5
+        XCTAssertEqual(holding.costBasis, 5)
+
+        holding.costBasis = -5
+        XCTAssertEqual(holding.costBasis, 0)
+    }
+
     func testAverageCostPerShare() {
         let holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 16)
         XCTAssertEqual(holding.averageCostPerShare, 1.6)
