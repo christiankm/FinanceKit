@@ -168,6 +168,7 @@ extension PortfolioTests {
         ("testInit", testInit),
         ("testTotalCostInLocalCurrencyOfHoldings", testTotalCostInLocalCurrencyOfHoldings),
         ("testTotalCostOfHoldings", testTotalCostOfHoldings),
+        ("testUpdateWithCurrencyPairsToBaseCurrency", testUpdateWithCurrencyPairsToBaseCurrency),
         ("testUpdateWithStock", testUpdateWithStock),
         ("testUpdateWithStocks", testUpdateWithStocks),
     ]

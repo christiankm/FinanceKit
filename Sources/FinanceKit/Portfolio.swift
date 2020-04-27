@@ -32,6 +32,7 @@ public struct Portfolio: Codable, Hashable, Identifiable {
         holdings.reduce(0) { $0 + $1.currentValueInLocalCurrency }
     }
 
+    /// - returns: The total change for all the holdings in the portfolio.
     public var change: Change {
         var totalCost: Price = 0
         holdings.forEach {
@@ -141,8 +142,8 @@ public struct Portfolio: Codable, Hashable, Identifiable {
             updatedHoldings.append(updatedHolding)
         }
 
-        // Compare updated holdings and add any that did not return a price from the API
-        // This will ensure we show the holding, but with a zero or the last known price
+        // Compare updated holdings and add any that did not have a price
+        // This will ensure the holding is still present, but without updating the price
         holdings.forEach { holding in
             // If not found in updatedHoldings, add to updatedHoldings and update total market value
             if !updatedHoldings.contains(where: { $0.symbol == holding.symbol }) {
@@ -157,14 +158,15 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     /// using the companys currency as the base currency.
     ///
     /// - Parameter currencyPairs: The current rates to convert the currency with.
+    /// - Parameter baseCurrency: The local currency to convert any other values into.
     /// - Returns: If the holdings companies has a currency, and a matching currency pair,
     /// it returns the converted portfolio, otherwise it returns a portfolio where the local values
     /// is equal to the base values.
-    public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) {
+    public mutating func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) {
         var updatedHoldings: [Holding] = []
         holdings.forEach { holding in
             var holdingToUpdate = holding
-            updatedHoldings.append(holdingToUpdate.update(with: currencyPairs, from: baseCurrency))
+            updatedHoldings.append(holdingToUpdate.update(with: currencyPairs, to: baseCurrency))
         }
 
         self.holdings = updatedHoldings
