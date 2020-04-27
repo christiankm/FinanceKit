@@ -240,14 +240,14 @@ class HoldingTests: XCTestCase {
         var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let stock = Stock.apple
         let currencyPairs = [
-            CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
+            CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
         ]
 
         _ = sut.update(with: stock)
         _ = sut.update(with: currencyPairs, to: .danishKroner)
 
-        XCTAssertEqual(sut.costBasisInLocalCurrency, 7000)
-        XCTAssertEqual(sut.currentValueInLocalCurrency, 12600)
+        XCTAssertEqual(sut.costBasisInLocalCurrency.rounded, 6896.55)
+        XCTAssertEqual(sut.currentValueInLocalCurrency.rounded, 12413.79)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {

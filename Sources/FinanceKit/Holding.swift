@@ -172,9 +172,9 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         guard let companyCurrency = company?.currency else { return self }
 
         if companyCurrency != baseCurrency {
-            if let pair = currencyPairs.first(where: { $0.secondaryCurrency == baseCurrency && $0.baseCurrency == companyCurrency }) {
-                currentValueInLocalCurrency = currentValue * Decimal(pair.rate)
-                costBasisInLocalCurrency = costBasis * Decimal(pair.rate)
+            if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
+                currentValueInLocalCurrency = currentValue / Decimal(pair.rate)
+                costBasisInLocalCurrency = costBasis / Decimal(pair.rate)
             }
         } else {
             currentValueInLocalCurrency = currentValue

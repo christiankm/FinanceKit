@@ -97,7 +97,7 @@ class PortfolioTests: XCTestCase {
         ]
 
         let currencyPairs = [
-            CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
+            CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
         ]
 
         var sut = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
@@ -110,11 +110,11 @@ class PortfolioTests: XCTestCase {
         let cokeHolding = sut.holdings.first { $0.symbol == .ko }!
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
-        XCTAssertEqual(appleHolding.costBasisInLocalCurrency, 1400)
-        XCTAssertEqual(appleHolding.currentValueInLocalCurrency, 20160)
-        XCTAssertEqual(cakeHolding.costBasisInLocalCurrency, 2800)
-        XCTAssertEqual(cakeHolding.currentValueInLocalCurrency, 1505)
-        XCTAssertEqual(cokeHolding.costBasisInLocalCurrency, 2100)
-        XCTAssertEqual(cokeHolding.currentValueInLocalCurrency, 6930)
+        XCTAssertEqual(appleHolding.costBasisInLocalCurrency.rounded, 1379.31)
+        XCTAssertEqual(appleHolding.currentValueInLocalCurrency.rounded, 19862.07)
+        XCTAssertEqual(cakeHolding.costBasisInLocalCurrency.rounded, 2758.62)
+        XCTAssertEqual(cakeHolding.currentValueInLocalCurrency.rounded, 1482.76)
+        XCTAssertEqual(cokeHolding.costBasisInLocalCurrency.rounded, Decimal(2068.97).rounded)
+        XCTAssertEqual(cokeHolding.currentValueInLocalCurrency.rounded, 6827.59)
     }
 }
