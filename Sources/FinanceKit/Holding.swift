@@ -164,16 +164,17 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     /// Updates the holdings current value and cost basis in local currencies,
     /// using the companys currency as the base currency.
     /// - Parameter currencyPairs: The current rates to convert the currency with.
+    /// - Parameter baseCurrency: The local currency to convert any other values into.
     /// - Returns: If the holdings company has a currency, and a matching currency pair,
     /// it returns the converted holding, otherwise it returns a holding where the local values
     /// is equal to the base values.
-    public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) -> Holding {
+    public mutating func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) -> Holding {
         guard let companyCurrency = company?.currency else { return self }
 
         if companyCurrency != baseCurrency {
-            if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
-                currentValueInLocalCurrency = currentValue * (1 / Decimal(pair.rate))
-                costBasisInLocalCurrency = costBasis * (1 / Decimal(pair.rate))
+            if let pair = currencyPairs.first(where: { $0.secondaryCurrency == baseCurrency && $0.baseCurrency == companyCurrency }) {
+                currentValueInLocalCurrency = currentValue * Decimal(pair.rate)
+                costBasisInLocalCurrency = costBasis * Decimal(pair.rate)
             }
         } else {
             currentValueInLocalCurrency = currentValue

@@ -236,6 +236,46 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding, newHolding)
     }
 
+    func testUpdateWithCurrencyPairsToBaseCurrency() {
+        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let stock = Stock.apple
+        let currencyPairs = [
+            CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
+        ]
+
+        _ = sut.update(with: stock)
+        _ = sut.update(with: currencyPairs, to: .danishKroner)
+
+        XCTAssertEqual(sut.costBasisInLocalCurrency, 7000)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, 12600)
+    }
+
+    func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {
+        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let stock = Stock.apple
+        let currencyPairs = [
+            CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
+        ]
+
+        _ = sut.update(with: stock)
+        _ = sut.update(with: currencyPairs, to: .usDollars)
+
+        XCTAssertEqual(sut.costBasisInLocalCurrency, 1000)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, 1800)
+    }
+
+    func testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency() {
+        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let currencyPairs = [
+            CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
+        ]
+
+        _ = sut.update(with: currencyPairs, to: .danishKroner)
+
+        XCTAssertEqual(sut.costBasisInLocalCurrency, 0)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, 0)
+    }
+
     // MARK: Test Protocol Conformances
 
     func testEquatable() {

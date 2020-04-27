@@ -47,9 +47,9 @@ extension Portfolio {
 }
 
 extension Stock {
-    static let apple = Stock(symbol: .aapl, company: .apple, price: 0, currency: .usDollars)
-    static let cake = Stock(symbol: .cake, company: .cake, price: 0, currency: .usDollars)
-    static let coke = Stock(symbol: .ko, company: .coke, price: 0, currency: .usDollars)
+    static let apple = Stock(symbol: .aapl, company: .apple, price: 180, currency: .usDollars)
+    static let cake = Stock(symbol: .cake, company: .cake, price: 43, currency: .usDollars)
+    static let coke = Stock(symbol: .ko, company: .coke, price: 45, currency: .usDollars)
 }
 
 extension Symbol {
