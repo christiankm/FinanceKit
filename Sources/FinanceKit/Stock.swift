@@ -21,7 +21,7 @@ public struct Stock: Asset, Identifiable, Equatable, Codable {
     public var fiftyTwoWeekLow: Decimal?
     public var region: String?
     public let currency: Currency
-    public let change: Change?
+    public var change: Change?
     public var marketCap: UInt64?
     public var exchange: Exchange?
     public var closeYesterday: Price?
