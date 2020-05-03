@@ -38,6 +38,8 @@ class PortfolioTests: XCTestCase {
         XCTAssertEqual(totalCost, Decimal(70.04).rounded)
     }
 
+    // MARK: Test Update and mutating functions
+
     func testUpdateWithStock() {
         let holdings: [Holding] = [
             Holding(symbol: .aapl, quantity: 16, costBasis: 0, costBasisInLocalCurrency: 13, currentValue: 0, currentValueInLocalCurrency: 0),
@@ -77,13 +79,42 @@ class PortfolioTests: XCTestCase {
         let stocks = [appleStock, cakeStock]
         sut.update(with: stocks)
 
-        let appleHolding = sut.holdings.first { $0.symbol == .aapl }
-        let cakeHolding = sut.holdings.first { $0.symbol == .cake }
-        let cokeHolding = sut.holdings.first { $0.symbol == .ko }
+        let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
+        let cakeHolding = sut.holdings.first { $0.symbol == .cake }!
+        let cokeHolding = sut.holdings.first { $0.symbol == .ko }!
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
-        XCTAssertEqual(appleHolding?.currentValue, 2_912.00)
-        XCTAssertEqual(cakeHolding?.currentValue, 216.10)
-        XCTAssertEqual(cokeHolding?.currentValue, 0.00)
+        XCTAssertEqual(appleHolding.currentValue, 2_912.00)
+        XCTAssertEqual(cakeHolding.currentValue, 216.10)
+        XCTAssertEqual(cokeHolding.currentValue, 0.00)
+    }
+
+    func testUpdateWithCurrencyPairsToBaseCurrency() {
+        let holdings: [Holding] = [
+            Holding(symbol: .aapl, quantity: 16, costBasis: 200, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0),
+            Holding(symbol: .cake, quantity: 5, costBasis: 400, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0),
+            Holding(symbol: .ko, quantity: 22, costBasis: 300, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
+        ]
+
+        let currencyPairs = [
+            CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
+        ]
+
+        var sut = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
+
+        sut.update(with: [.apple, .cake, .coke])
+        sut.update(with: currencyPairs, to: .danishKroner)
+
+        let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
+        let cakeHolding = sut.holdings.first { $0.symbol == .cake }!
+        let cokeHolding = sut.holdings.first { $0.symbol == .ko }!
+
+        XCTAssertEqual(sut.holdings.count, holdings.count)
+        XCTAssertEqual(appleHolding.costBasisInLocalCurrency.rounded, 1379.31)
+        XCTAssertEqual(appleHolding.currentValueInLocalCurrency.rounded, 19862.07)
+        XCTAssertEqual(cakeHolding.costBasisInLocalCurrency.rounded, 2758.62)
+        XCTAssertEqual(cakeHolding.currentValueInLocalCurrency.rounded, 1482.76)
+        XCTAssertEqual(cokeHolding.costBasisInLocalCurrency.rounded, Decimal(2068.97).rounded)
+        XCTAssertEqual(cokeHolding.currentValueInLocalCurrency.rounded, 6827.59)
     }
 }

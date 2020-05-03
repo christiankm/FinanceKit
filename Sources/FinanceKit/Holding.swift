@@ -31,7 +31,11 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         }
     }
 
-    public internal(set) var costBasisInLocalCurrency: Price
+    public internal(set) var costBasisInLocalCurrency: Price {
+        didSet {
+            costBasis = max(costBasis, 0)
+        }
+    }
 
     public internal(set) var commissionPaid: Price = 0
 
@@ -41,12 +45,17 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         return costBasis / Decimal(quantity)
     }
 
-    public var averageAdjustedCostBasisPerShare: Decimal = 0
-    public var accumulatedDividends: Decimal = 0
+    public var averageAdjustedCostBasisPerShare: Price {
+        (costBasis - accumulatedDividends) / Decimal(quantity)
+    }
+
+    public internal(set) var accumulatedDividends: Amount = 0
 
     public var displayName: String {
         company?.name ?? symbol.rawValue
     }
+
+    public internal(set) var transactions: [Transaction] = []
 
     public internal(set) var currentValue: Price
     public internal(set) var currentValueInLocalCurrency: Price
@@ -63,7 +72,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         self.symbol = symbol
         self.quantity = max(quantity, 0)
         self.costBasis = max(costBasis, 0)
-        self.costBasisInLocalCurrency = costBasisInLocalCurrency
+        self.costBasisInLocalCurrency = max(costBasisInLocalCurrency, 0)
         self.currentValue = currentValue
         self.currentValueInLocalCurrency = currentValueInLocalCurrency
     }
@@ -106,11 +115,11 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
                     holding.costBasis -= costBasis
                 case .dividend:
                     holding.costBasis -= costBasis
-                    holding.accumulatedDividends += transaction.totalDividend
+                    holding.accumulatedDividends += Decimal(transaction.quantity) * transaction.price
                 }
 
                 // Remove previous and re-add newly calculated holding
-                holdings.removeAll(where: { $0.symbol == symbol })
+                holdings.removeAll { $0.symbol == symbol }
                 holdings.append(holding)
             } else {
                 var holding = Holding(symbol: symbol)
@@ -123,7 +132,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
                 case .sell:
                     break
                 case .dividend:
-                    holding.accumulatedDividends = transaction.totalDividend
+                    holding.accumulatedDividends = Decimal(transaction.quantity) * transaction.price
                 }
 
                 holdings.append(holding)
@@ -155,16 +164,17 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     /// Updates the holdings current value and cost basis in local currencies,
     /// using the companys currency as the base currency.
     /// - Parameter currencyPairs: The current rates to convert the currency with.
+    /// - Parameter baseCurrency: The local currency to convert any other values into.
     /// - Returns: If the holdings company has a currency, and a matching currency pair,
     /// it returns the converted holding, otherwise it returns a holding where the local values
     /// is equal to the base values.
-    public mutating func update(with currencyPairs: [CurrencyPair], from baseCurrency: Currency) -> Holding {
+    public mutating func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) -> Holding {
         guard let companyCurrency = company?.currency else { return self }
 
         if companyCurrency != baseCurrency {
             if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
-                currentValueInLocalCurrency = currentValue * (1 / Decimal(pair.rate))
-                costBasisInLocalCurrency = costBasis * (1 / Decimal(pair.rate))
+                currentValueInLocalCurrency = currentValue / Decimal(pair.rate)
+                costBasisInLocalCurrency = costBasis / Decimal(pair.rate)
             }
         } else {
             currentValueInLocalCurrency = currentValue

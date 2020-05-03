@@ -5,6 +5,7 @@
 //  Created by Christian Mitteldorf on 23/04/2020.
 //
 
+import Foundation
 import FinanceKit
 
 extension Company {
@@ -23,6 +24,18 @@ extension CurrencyCode {
     static let usd = CurrencyCode(rawValue: "USD")
 }
 
+extension Date {
+    static let jan1 = Date(day: 01, month: 01, year: 2010)!
+    static let jan2 = Date(day: 02, month: 01, year: 2010)!
+    static let jan3 = Date(day: 03, month: 01, year: 2010)!
+    static let jan4 = Date(day: 04, month: 01, year: 2010)!
+    static let jan5 = Date(day: 05, month: 01, year: 2010)!
+    static let jan6 = Date(day: 06, month: 01, year: 2010)!
+    static let jan7 = Date(day: 07, month: 01, year: 2010)!
+    static let jan8 = Date(day: 08, month: 01, year: 2010)!
+    static let jan9 = Date(day: 09, month: 01, year: 2010)!
+}
+
 extension Holding {
     static let apple = Holding(symbol: .aapl, quantity: 16, costBasis: 13, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
     static let cake = Holding(symbol: .cake, quantity: 5, costBasis: 44.21, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
@@ -34,9 +47,9 @@ extension Portfolio {
 }
 
 extension Stock {
-    static let apple = Stock(symbol: .aapl, company: .apple, price: 0, currency: .usDollars)
-    static let cake = Stock(symbol: .cake, company: .cake, price: 0, currency: .usDollars)
-    static let coke = Stock(symbol: .ko, company: .coke, price: 0, currency: .usDollars)
+    static let apple = Stock(symbol: .aapl, company: .apple, price: 180, currency: .usDollars)
+    static let cake = Stock(symbol: .cake, company: .cake, price: 43, currency: .usDollars)
+    static let coke = Stock(symbol: .ko, company: .coke, price: 45, currency: .usDollars)
 }
 
 extension Symbol {

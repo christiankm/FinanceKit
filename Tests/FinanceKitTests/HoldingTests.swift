@@ -34,6 +34,26 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.currentValueInLocalCurrency, 34)
     }
 
+    func testHoldingQuantityIsClampedToZero() {
+        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) //swiftlint:disable:this force_unwrapping
+
+        holding.quantity = 5
+        XCTAssertEqual(holding.quantity, 5)
+
+        holding.quantity = -5
+        XCTAssertEqual(holding.quantity, 0)
+    }
+
+    func testHoldingCostBasisIsClampedToZero() {
+        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) //swiftlint:disable:this force_unwrapping
+
+        holding.costBasis = 5
+        XCTAssertEqual(holding.costBasis, 5)
+
+        holding.costBasis = -5
+        XCTAssertEqual(holding.costBasis, 0)
+    }
+
     func testAverageCostPerShare() {
         let holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 16)
         XCTAssertEqual(holding.averageCostPerShare, 1.6)
@@ -216,6 +236,46 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding, newHolding)
     }
 
+    func testUpdateWithCurrencyPairsToBaseCurrency() {
+        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let stock = Stock.apple
+        let currencyPairs = [
+            CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
+        ]
+
+        _ = sut.update(with: stock)
+        _ = sut.update(with: currencyPairs, to: .danishKroner)
+
+        XCTAssertEqual(sut.costBasisInLocalCurrency.rounded, 6896.55)
+        XCTAssertEqual(sut.currentValueInLocalCurrency.rounded, 12413.79)
+    }
+
+    func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {
+        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let stock = Stock.apple
+        let currencyPairs = [
+            CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
+        ]
+
+        _ = sut.update(with: stock)
+        _ = sut.update(with: currencyPairs, to: .usDollars)
+
+        XCTAssertEqual(sut.costBasisInLocalCurrency, 1000)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, 1800)
+    }
+
+    func testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency() {
+        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let currencyPairs = [
+            CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
+        ]
+
+        _ = sut.update(with: currencyPairs, to: .danishKroner)
+
+        XCTAssertEqual(sut.costBasisInLocalCurrency, 0)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, 0)
+    }
+
     // MARK: Test Protocol Conformances
 
     func testEquatable() {
@@ -246,7 +306,7 @@ class HoldingTests: XCTestCase {
     func testMakeHoldingsPerformance() {
         measure {
             let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-            let transactions = [Transaction].init(repeating: Transaction(type: .buy, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13), count: 10_000)
+            let transactions = [Transaction].init(repeating: Transaction(type: .buy, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13), count: 1_000)
 
             let holdings = Holding.makeHoldings(with: transactions)
             XCTAssertEqual(holdings.count, 1)

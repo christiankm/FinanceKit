@@ -11,9 +11,10 @@ public struct PercentageFormatter {
 
     private let formatter: NumberFormatter
 
-    public init(minimumFractionDigits: Int = 2, maximumFractionDigits: Int = 2) {
+    public init(positivePrefix: String = "", minimumFractionDigits: Int = 2, maximumFractionDigits: Int = 2) {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
+        formatter.positivePrefix = positivePrefix
         formatter.minimumFractionDigits = minimumFractionDigits
         formatter.maximumFractionDigits = maximumFractionDigits
         self.formatter = formatter

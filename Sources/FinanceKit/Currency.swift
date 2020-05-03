@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Currency: Codable, Equatable, Hashable {
+public struct Currency: Codable, Hashable {
 
     public let code: CurrencyCode
 
@@ -22,6 +22,14 @@ public struct Currency: Codable, Equatable, Hashable {
 
     public init(code: String) {
         self.init(code: CurrencyCode(rawValue: code))
+    }
+
+}
+
+extension Currency: Equatable {
+
+    public static func == (lhs: Currency, rhs: Currency) -> Bool {
+        lhs.code == rhs.code
     }
 }
 

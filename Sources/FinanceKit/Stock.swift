@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct Stock: Identifiable, Equatable, Codable {
+public struct Stock: Asset, Identifiable, Equatable, Codable {
 
-    public let id: UUID = UUID()
+    public let id = UUID()
     public let symbol: Symbol
     public let company: Company
     public var price: Decimal
@@ -21,7 +21,7 @@ public struct Stock: Identifiable, Equatable, Codable {
     public var fiftyTwoWeekLow: Decimal?
     public var region: String?
     public let currency: Currency
-    public let change: Change?
+    public var change: Change?
     public var marketCap: UInt64?
     public var exchange: Exchange?
     public var closeYesterday: Price?
@@ -37,6 +37,10 @@ public struct Stock: Identifiable, Equatable, Codable {
 
     public var target: PriceTarget?
     public var intrinsicValue: PriceTarget?
+
+    public var displayName: String {
+        company.name
+    }
 
     public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency,
                 marketCap: UInt64? = nil, exchange: Exchange? = nil, change: Change? = nil) {
