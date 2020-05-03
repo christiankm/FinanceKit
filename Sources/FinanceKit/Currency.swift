@@ -33,8 +33,6 @@ extension Currency: Equatable {
     }
 }
 
-}
-
 /// This extension provides a bridge to system APIs inside a convienent namespace.
 public extension Currency {
 
