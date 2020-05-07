@@ -43,6 +43,16 @@ public struct CurrencyFormatter {
         formatter.currencyCode = currency.code.currencyCodeString
     }
 
+    public func decimal(from string: String) -> Decimal? {
+        guard let number = formatter.number(from: string) else { return nil }
+        return number.decimalValue
+    }
+
+    public func money(from string: String) -> Money? {
+        guard let number = formatter.number(from: string) else { return nil }
+        return Money(number.decimalValue, in: currency)
+    }
+
     public func string(from number: Decimal) -> String? {
         formatter.string(from: number.rounded as NSDecimalNumber)
     }
