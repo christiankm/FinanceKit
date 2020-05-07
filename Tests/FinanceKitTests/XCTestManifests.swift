@@ -46,11 +46,6 @@ extension CurrencyFormatterTests {
         ("testMoneyFromString", testMoneyFromString),
         ("testStringFromDecimal", testStringFromDecimal),
         ("testStringFromMoney", testStringFromMoney),
-        ("testStringFromMoney_DanishKroner", testStringFromMoney_DanishKroner),
-        ("testStringFromMoneyCurrencyCodeWhenDenmarkCurrencyCodeNil", testStringFromMoneyCurrencyCodeWhenDenmarkCurrencyCodeNil),
-        ("testStringFromMoneyCurrencyCodeWhenDenmarkLeadingZero", testStringFromMoneyCurrencyCodeWhenDenmarkLeadingZero),
-        ("testStringFromMoneyCurrencyCodeWhenFinland", testStringFromMoneyCurrencyCodeWhenFinland),
-        ("testStringFromMoneyCurrencyCodeWhenFinlandLeadingZero", testStringFromMoneyCurrencyCodeWhenFinlandLeadingZero),
     ]
 }
 

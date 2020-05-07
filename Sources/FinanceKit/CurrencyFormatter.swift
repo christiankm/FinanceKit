@@ -7,27 +7,6 @@
 
 import Foundation
 
-extension NumberFormatter {
-
-    public static var currency: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter
-    }
-
-    public static let currentLocale: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.alwaysShowsDecimalSeparator = true
-        formatter.numberStyle = .decimal
-        formatter.minimumIntegerDigits = 1
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        formatter.usesGroupingSeparator = true
-        return formatter
-    }()
-}
-
 public struct CurrencyFormatter {
 
     public let locale: Locale

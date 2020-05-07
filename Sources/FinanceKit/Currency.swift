@@ -23,7 +23,6 @@ public struct Currency: Codable, Hashable {
     public init(code: String) {
         self.init(code: CurrencyCode(rawValue: code))
     }
-
 }
 
 extension Currency: Equatable {
