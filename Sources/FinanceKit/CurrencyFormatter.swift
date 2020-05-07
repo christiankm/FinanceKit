@@ -2,7 +2,7 @@
 //  CurrencyFormatter.swift
 //  FinanceKit
 //
-//  Created by Christian Mitteldorf on 20/04/2020.
+//  Created by Christian Mitteldorf on 07/05/2020.
 //
 
 import Foundation
@@ -30,31 +30,24 @@ extension NumberFormatter {
 
 public struct CurrencyFormatter {
 
-    let locale: Locale
-    let currencyCode: String
+    public let locale: Locale
+    public let currency: Currency
 
-    private let formatter = NumberFormatter()
+    private let formatter = NumberFormatter.currency
 
-    public init(locale: Locale, currencyCode: String) {
+    public init(currency: Currency, locale: Locale = .current) {
+        self.currency = currency
         self.locale = locale
-        self.currencyCode = currencyCode
 
-        formatter.numberStyle = .currency
         formatter.locale = locale
-        formatter.currencyCode = currencyCode
+        formatter.currencyCode = currency.code.currencyCodeString
     }
 
     public func string(from number: Decimal) -> String? {
         formatter.string(from: number.rounded as NSDecimalNumber)
     }
-}
 
-public extension NumberFormatter {
-
-    func string(from doubleValue: Double?) -> String? {
-        if let doubleValue = doubleValue {
-            return string(from: NSNumber(value: doubleValue))
-        }
-        return nil
+    public func string(from money: Money) -> String? {
+        formatter.string(from: money.amount as NSDecimalNumber)
     }
 }

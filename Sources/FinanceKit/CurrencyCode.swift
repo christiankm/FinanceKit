@@ -28,11 +28,11 @@ public struct CurrencyCode: RawRepresentable, Equatable, Hashable, Codable {
 
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue.uppercased()
-    }
-
     public var currencyCodeString: String {
         rawValue.uppercased()
+    }
+
+    public init(rawValue: String) {
+        self.rawValue = rawValue.uppercased()
     }
 }

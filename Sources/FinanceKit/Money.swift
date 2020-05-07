@@ -25,6 +25,17 @@ public struct Money {
         NSDecimalNumber(decimal: rawValue).rounding(accordingToBehavior: Self.decimalHandler).decimalValue
     }
 
+    /// - returns: Formatted rounded amount with currency symbol.
+    /// If `currency` is not set, returns the formatted amound without currency.
+    public var formattedAmount: String? {
+        if let currency = self.currency {
+            let formatter = CurrencyFormatter(currency: currency, locale: .current)
+            return formatter.string(from: self)
+        } else {
+            return NumberFormatter.monetary.string(from: amount as NSDecimalNumber)
+        }
+    }
+
     /// - returns: True is the amount is exactly zero.
     public var isZero: Bool {
         amount.isZero
@@ -92,7 +103,7 @@ public struct Money {
 extension Money: CustomStringConvertible {
 
     public var description: String {
-        return "\(self.amount)"
+        "\(self.amount)"
     }
 }
 
@@ -134,7 +145,7 @@ extension Money: Comparable {
     }
 }
 
-// MARK - Codable
+// MARK: - Codable
 
 extension Money: Codable {
 

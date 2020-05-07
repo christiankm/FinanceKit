@@ -30,7 +30,7 @@ class MoneyTests: XCTestCase {
 
     // MARK: - Properties
 
-    func testRoundedAmount() {
+    func testAmount() {
         XCTAssertEqual(Money(12.801123).amount, 12.80)
         XCTAssertEqual(Money(0.051).amount, 0.05)
         XCTAssertEqual(Money(4.9923).amount, Money(4.99).amount)
@@ -38,6 +38,18 @@ class MoneyTests: XCTestCase {
         XCTAssertEqual(Money(50.555111).amount, 50.56)
         XCTAssertEqual(Money(1299.0000032).amount, 1299.00)
         XCTAssertEqual(Money(0.56).amount.doubleValue, Double(0.56), accuracy: 0.01)
+    }
+
+    func testFormattedAmountWithCurrency() {
+        let sut = Money(2500.32, in: .usDollars)
+
+        XCTAssertEqual(sut.formattedAmount!, "$2,500.32")
+    }
+
+    func testFormattedAmountWithoutCurrency() {
+        let sut = Money(2500.32)
+
+        XCTAssertEqual(sut.formattedAmount!, "2,500.32")
     }
 
     func testIsZero() {
