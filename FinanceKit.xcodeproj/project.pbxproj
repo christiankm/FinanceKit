@@ -37,6 +37,8 @@
 		AA339E6A2403056D005D5CA8 /* PercentageFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E572403056C005D5CA8 /* PercentageFormatter.swift */; };
 		AA339E772403056D005D5CA8 /* Numerics+Total+Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */; };
 		AA339E782403056D005D5CA8 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E652403056C005D5CA8 /* Asset.swift */; };
+		AA5A85E32464BDB80094510B /* NumberFormatter+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */; };
+		AA5A85E52464BDD70094510B /* NumberFormatter+CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */; };
 		AA6835C52455E5A700DF1A08 /* Dividend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6835C42455E5A700DF1A08 /* Dividend.swift */; };
 		AA6835C8245615C400DF1A08 /* PerformanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6835C7245615C400DF1A08 /* PerformanceCalculatorTests.swift */; };
 		AA6835C92456181A00DF1A08 /* PerformanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B1243E153300BD450F /* PerformanceCalculator.swift */; };
@@ -106,6 +108,8 @@
 		AA339E572403056C005D5CA8 /* PercentageFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentageFormatter.swift; sourceTree = "<group>"; };
 		AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Numerics+Total+Average.swift"; sourceTree = "<group>"; };
 		AA339E652403056C005D5CA8 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
+		AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+CurrencyTests.swift"; sourceTree = "<group>"; };
 		AA6835C42455E5A700DF1A08 /* Dividend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dividend.swift; sourceTree = "<group>"; };
 		AA6835C7245615C400DF1A08 /* PerformanceCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCalculatorTests.swift; sourceTree = "<group>"; };
 		AA6835CA2456210100DF1A08 /* Date+Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Comparison.swift"; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				AAA96F6F24521588008524AC /* ExchangeTests.swift */,
 				AAFA769223D994B70087A82D /* HoldingTests.swift */,
 				AAB7B1C0243E154000BD450F /* MoneyTests.swift */,
+				AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */,
 				AAA96F73245216ED008524AC /* Numerics+Total+AverageTests.swift */,
 				AA2721AD244E3B6C00BEB19D /* PercentageFormatterTests.swift */,
 				AA6835C7245615C400DF1A08 /* PerformanceCalculatorTests.swift */,
@@ -254,6 +259,7 @@
 				AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */,
 				AAE67784239298550053B303 /* Holding.swift */,
 				AAB7B1B7243E153300BD450F /* Money.swift */,
+				AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */,
 				AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */,
 				AA2721A9244E383500BEB19D /* Percentage.swift */,
 				AA339E572403056C005D5CA8 /* PercentageFormatter.swift */,
@@ -439,6 +445,7 @@
 				OBJ_169 /* XCTestManifests.swift in Sources */,
 				AA6835C8245615C400DF1A08 /* PerformanceCalculatorTests.swift in Sources */,
 				AA69851D2377351800D0683C /* SymbolTests.swift in Sources */,
+				AA5A85E52464BDD70094510B /* NumberFormatter+CurrencyTests.swift in Sources */,
 				AAA96F74245216ED008524AC /* Numerics+Total+AverageTests.swift in Sources */,
 				AA6835CD2456214000DF1A08 /* Date+ComparisonTests.swift in Sources */,
 				AA2721AE244E3B6C00BEB19D /* PercentageFormatterTests.swift in Sources */,
@@ -452,6 +459,7 @@
 				AA6835C52455E5A700DF1A08 /* Dividend.swift in Sources */,
 				OBJ_88 /* Change.swift in Sources */,
 				AA339E782403056D005D5CA8 /* Asset.swift in Sources */,
+				AA5A85E32464BDB80094510B /* NumberFormatter+Currency.swift in Sources */,
 				OBJ_89 /* Company.swift in Sources */,
 				AA06F78523D9EEBB001FFAE9 /* CurrencyPair.swift in Sources */,
 				OBJ_92 /* Currency.swift in Sources */,
