@@ -1,0 +1,95 @@
+//
+//  MoneyTests.swift
+//  FinanceKitTests
+//
+//  Created by Christian Mitteldorf on 06/04/2020.
+//
+
+import XCTest
+@testable import FinanceKit
+
+class MoneyTests: XCTestCase {
+
+    func testInitWithDecimal() {
+        XCTAssertEqual(Money(12.80).amount, 12.80)
+    }
+
+    func testInitWithDouble() {
+        XCTAssertEqual(Money(amount: 12.80), Money(12.80))
+    }
+
+    func testInitWithString() {
+        XCTAssertEqual(Money(string: "22.44"), Money(22.44))
+    }
+
+    func testInitWithInvalidStringReturnsNil() {
+        XCTAssertNil(Money(string: "-.22,44,00"))
+    }
+
+    func testRoundedAmount() {
+        XCTAssertEqual(Money(12.801123).amount, 12.80)
+        XCTAssertEqual(Money(0.051).amount, 0.05)
+        XCTAssertEqual(Money(4.9923).amount, Money(4.99).amount)
+        XCTAssertEqual(Money(25.1239).amount, 25.12)
+        XCTAssertEqual(Money(50.555111).amount, 50.56)
+        XCTAssertEqual(Money(1299.0000032).amount, 1299.00)
+        XCTAssertEqual(Money(0.56).amount.doubleValue, Double(0.56), accuracy: 0.01)
+    }
+
+    func testIsZero() {
+        XCTAssertTrue(Money(0.00).isZero)
+        XCTAssertFalse(Money(0.56).isZero)
+        XCTAssertFalse(Money(-0.56).isZero)
+    }
+
+    func testIsPositive() {
+        XCTAssertTrue(Money(0.56).isPositive)
+        XCTAssertTrue(Money(0.00).isPositive)
+        XCTAssertFalse(Money(-0.56).isPositive)
+    }
+
+    func testIsNegative() {
+        XCTAssertTrue(Money(-0.56).isNegative)
+        XCTAssertFalse(Money(0.00).isNegative)
+        XCTAssertFalse(Money(0.56).isNegative)
+    }
+
+    func testIsGreaterThanZero() {
+        XCTAssertTrue(Money(0.56).isGreaterThanZero)
+        XCTAssertFalse(Money(0.00).isGreaterThanZero)
+        XCTAssertFalse(Money(-0.56).isGreaterThanZero)
+    }
+
+    func testEquatable() {
+        XCTAssertEqual(Money(12.33), Money(12.33))
+    }
+
+    func testComparable() {
+        XCTAssertGreaterThan(Money(12.50), Money(12.22))
+    }
+
+    // Verifies that numbers are correctly rounded and formatted when the
+    // number has known rounding issues, leaving precision decimals.
+    // For example "0.56 could sometimes show up as "0.5600000000000001024".
+    func testRoundingWithValueThatHasKnownRoundingIssue() {
+        let sut = Money(0.56)
+        XCTAssertEqual(sut.amount.doubleValue, Double(0.56), accuracy: 0.01)
+    }
+
+    func testCodableInitFromDecoderUsesRoundedValue() {
+        let json = Data("0.56".utf8)
+        let sut = try! JSONDecoder().decode(Money.self, from: json)
+
+        XCTAssertEqual(sut, Money(0.56))
+    }
+
+    func testEncodeToEncoder() {
+        let sut = Money(0.56)
+        let data = try! JSONEncoder().encode(sut)
+        let json = String(decoding: data, as: UTF8.self)
+
+        XCTAssertNotEqual(json, "0.5600000000000001024")
+        XCTAssertEqual(json, "0.56")
+    }
+}
+
