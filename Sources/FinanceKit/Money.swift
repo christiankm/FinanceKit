@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An amount of money in a given currency.
 public struct Money {
 
     private static let decimalHandler = NSDecimalNumberHandler(
@@ -65,7 +66,46 @@ public struct Money {
         self.rawValue = Decimal(doubleValue)
         self.currency = currency
     }
+
+// MARK: - Arithmetic
+
+    public static func + (lhs: Money, rhs: Money) -> Money {
+        Money(lhs.rawValue + rhs.rawValue)
+    }
+
+    public static func - (lhs: Money, rhs: Money) -> Money {
+        Money(lhs.rawValue - rhs.rawValue)
+    }
+
+    public static func * (lhs: Money, rhs: Money) -> Money {
+        Money(lhs.rawValue * rhs.rawValue)
+    }
+
+    public static func / (lhs: Money, rhs: Money) -> Money? {
+        guard !rhs.isZero else { return nil }
+        return Money(lhs.rawValue / rhs.rawValue)
+    }
 }
+
+// MARK: - CustomStringConvertible
+
+extension Money: CustomStringConvertible {
+
+    public var description: String {
+        return "\(self.amount)"
+    }
+}
+
+// MARK: - ExpressibleByIntegerLiteral
+
+extension Money: ExpressibleByIntegerLiteral {
+
+    public init(integerLiteral value: Int) {
+        self.init(Decimal(integerLiteral: value))
+    }
+}
+
+// MARK: - ExpressibleByFloatLiteral
 
 extension Money: ExpressibleByFloatLiteral {
 
@@ -76,6 +116,8 @@ extension Money: ExpressibleByFloatLiteral {
     }
 }
 
+// MARK: - Equatable
+
 extension Money: Equatable {
 
     public static func == (lhs: Money, rhs: Money) -> Bool {
@@ -83,12 +125,16 @@ extension Money: Equatable {
     }
 }
 
+// MARK: - Comparable
+
 extension Money: Comparable {
 
     public static func < (lhs: Money, rhs: Money) -> Bool {
         lhs.amount < rhs.amount
     }
 }
+
+// MARK - Codable
 
 extension Money: Codable {
 

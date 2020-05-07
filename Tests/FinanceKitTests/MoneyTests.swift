@@ -10,6 +10,8 @@ import XCTest
 
 class MoneyTests: XCTestCase {
 
+    // MARK: - Initialization
+
     func testInitWithDecimal() {
         XCTAssertEqual(Money(12.80).amount, 12.80)
     }
@@ -25,6 +27,8 @@ class MoneyTests: XCTestCase {
     func testInitWithInvalidStringReturnsNil() {
         XCTAssertNil(Money(string: "-.22,44,00"))
     }
+
+    // MARK: - Properties
 
     func testRoundedAmount() {
         XCTAssertEqual(Money(12.801123).amount, 12.80)
@@ -58,6 +62,33 @@ class MoneyTests: XCTestCase {
         XCTAssertTrue(Money(0.56).isGreaterThanZero)
         XCTAssertFalse(Money(0.00).isGreaterThanZero)
         XCTAssertFalse(Money(-0.56).isGreaterThanZero)
+    }
+
+    // MARK: - Arithmetic
+
+    func testAddition() {
+        let added = Money(4.00) + Money(5.40)
+        XCTAssertEqual(added, Money(9.40))
+    }
+
+    func testSubtracting() {
+        let subtracted = Money(8.00) - Money(5.40)
+        XCTAssertEqual(subtracted, Money(2.60))
+    }
+
+    func testMultiplication() {
+        let multiplied = Money(4.00) * Money(5.40)
+        XCTAssertEqual(multiplied, Money(21.60))
+    }
+
+    func testDivision() {
+        let divided = Money(4.00) / Money(5.40)
+        XCTAssertEqual(divided, Money(0.7404))
+    }
+
+    func testDivisionbyZeroReturnsNil() {
+        let divided = Money(4.00) / Money(0)
+        XCTAssertNil(divided)
     }
 
     func testEquatable() {

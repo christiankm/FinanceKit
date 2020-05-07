@@ -130,8 +130,11 @@ extension MoneyTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__MoneyTests = [
+        ("testAddition", testAddition),
         ("testCodableInitFromDecoderUsesRoundedValue", testCodableInitFromDecoderUsesRoundedValue),
         ("testComparable", testComparable),
+        ("testDivision", testDivision),
+        ("testDivisionbyZeroReturnsNil", testDivisionbyZeroReturnsNil),
         ("testEncodeToEncoder", testEncodeToEncoder),
         ("testEquatable", testEquatable),
         ("testInitWithDecimal", testInitWithDecimal),
@@ -142,8 +145,10 @@ extension MoneyTests {
         ("testIsNegative", testIsNegative),
         ("testIsPositive", testIsPositive),
         ("testIsZero", testIsZero),
+        ("testMultiplication", testMultiplication),
         ("testRoundedAmount", testRoundedAmount),
         ("testRoundingWithValueThatHasKnownRoundingIssue", testRoundingWithValueThatHasKnownRoundingIssue),
+        ("testSubtracting", testSubtracting),
     ]
 }
 
