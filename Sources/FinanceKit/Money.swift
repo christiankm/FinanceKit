@@ -20,7 +20,7 @@ public struct Money {
         raiseOnDivideByZero: true
     )
 
-    /// - returns: Rounded amount in decimal using NSDecimalNumberHandler
+    /// - returns: Rounded amount of money in decimal using NSDecimalNumberHandler
     public var amount: Decimal {
         NSDecimalNumber(decimal: rawValue).rounding(accordingToBehavior: Self.decimalHandler).decimalValue
     }
@@ -62,39 +62,65 @@ public struct Money {
     /// Instead get the amount-value using the `rounded` property.
     private let rawValue: Decimal
 
+    /// Creates an amount of money with a given decimal number, and optional currency.
+    /// - Parameters:
+    ///   - amount: An amount of money.
+    ///   - currency: A currency the money is in, or nil if no particular currency is needed.
     public init(_ amount: Decimal, in currency: Currency? = nil) {
         self.rawValue = amount
         self.currency = currency
     }
 
+    /// Creates an amount of money with a given double number, and optional currency.
+    /// - Parameters:
+    ///   - amount: An amount of money.
+    ///   - currency: A currency the money is in, or nil if no particular currency is needed.
     public init(amount: Double, in currency: Currency? = nil) {
         self.rawValue = Decimal(amount)
         self.currency = currency
     }
 
+    // MARK: - Arithmetic
+
+    /// Creates an amount of money with a given string number, and optional currency, or returns nil if the string is not a valid number.
+    /// - Parameters:
+    ///   - string: An amount of money from string.
+    ///   - currency: A currency the money is in, or nil if no particular currency is needed.
     public init?(string: String, in currency: Currency? = nil) {
         guard let doubleValue = Double(string) else { return nil }
         self.rawValue = Decimal(doubleValue)
         self.currency = currency
     }
 
-// MARK: - Arithmetic
-
+    /// Add two money amounts. This function does not take different currencies into account.
     public static func + (lhs: Money, rhs: Money) -> Money {
         Money(lhs.rawValue + rhs.rawValue)
     }
 
+    /// Subtract two money amounts. This function does not take different currencies into account.
     public static func - (lhs: Money, rhs: Money) -> Money {
         Money(lhs.rawValue - rhs.rawValue)
     }
 
+    /// Multiply two money amounts. This function does not take different currencies into account.
     public static func * (lhs: Money, rhs: Money) -> Money {
         Money(lhs.rawValue * rhs.rawValue)
     }
 
+    /// Divide two money amounts. This function does not take different currencies into account.
     public static func / (lhs: Money, rhs: Money) -> Money? {
         guard !rhs.isZero else { return nil }
         return Money(lhs.rawValue / rhs.rawValue)
+    }
+
+    // MARK: Currency Conversion
+
+    /// Converts and returns a new `Money` in the given currency. The amount is not converted with any currency rate.
+    /// - Parameter currency: The currency the money should be in.
+    /// - Returns: A new `Money` with the current amount in the given currency.
+    @discardableResult
+    public func convert(to currency: Currency) -> Self {
+        Money(rawValue, in: currency)
     }
 }
 
@@ -112,7 +138,7 @@ extension Money: CustomStringConvertible {
 extension Money: ExpressibleByIntegerLiteral {
 
     public init(integerLiteral value: Int) {
-        self.init(Decimal(integerLiteral: value))
+        self = Money(Decimal(value))
     }
 }
 
@@ -160,5 +186,17 @@ extension Money: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(amount)
+    }
+}
+
+// MARK: - Convert to Money
+
+extension Decimal {
+
+    /// Convert a decimal number to `Money` in a given currency.
+    /// - Parameter currency: A currency the money is in.
+    /// - Returns: A new `Money` with the current amount in the given currency.
+    func `in`(_ currency: Currency) -> Money {
+        Money(self, in: currency)
     }
 }

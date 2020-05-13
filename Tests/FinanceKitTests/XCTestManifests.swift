@@ -46,6 +46,7 @@ extension CurrencyFormatterTests {
         ("testMoneyFromString", testMoneyFromString),
         ("testStringFromDecimal", testStringFromDecimal),
         ("testStringFromMoney", testStringFromMoney),
+        ("testStringFromMoney_DanishKroner", testStringFromMoney_DanishKroner),
     ]
 }
 
@@ -154,14 +155,17 @@ extension MoneyTests {
     static let __allTests__MoneyTests = [
         ("testAddition", testAddition),
         ("testAmount", testAmount),
-        ("testCodableInitFromDecoderUsesRoundedValue", testCodableInitFromDecoderUsesRoundedValue),
         ("testComparable", testComparable),
+        ("testConvertDecimalToMoneyCurrency", testConvertDecimalToMoneyCurrency),
+        ("testConvertToCurrency", testConvertToCurrency),
+        ("testDescription", testDescription),
         ("testDivision", testDivision),
         ("testDivisionbyZeroReturnsNil", testDivisionbyZeroReturnsNil),
         ("testEncodeToEncoder", testEncodeToEncoder),
         ("testEquatable", testEquatable),
         ("testFormattedAmountWithCurrency", testFormattedAmountWithCurrency),
         ("testFormattedAmountWithoutCurrency", testFormattedAmountWithoutCurrency),
+        ("testInitFromDecoderSingleValue", testInitFromDecoderSingleValue),
         ("testInitWithDecimal", testInitWithDecimal),
         ("testInitWithDouble", testInitWithDouble),
         ("testInitWithInvalidStringReturnsNil", testInitWithInvalidStringReturnsNil),

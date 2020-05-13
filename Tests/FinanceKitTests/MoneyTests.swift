@@ -76,6 +76,30 @@ class MoneyTests: XCTestCase {
         XCTAssertFalse(Money(-0.56).isGreaterThanZero)
     }
 
+    func testDescription() {
+        let sut = Money(12.22, in: .danishKroner)
+
+        XCTAssertEqual(sut.description, "12.22")
+    }
+
+    // MARK: - Conversion
+
+    func testConvertToCurrency() {
+        let money = Money(12.22, in: .danishKroner)
+        let sut = money.convert(to: .usDollars)
+
+        XCTAssertEqual(sut.amount, 12.22)
+        XCTAssertEqual(sut.currency, .usDollars)
+    }
+
+    func testConvertDecimalToMoneyCurrency() {
+        let amount = Decimal(12.44)
+        let sut = amount.in(.usDollars)
+
+        XCTAssertEqual(sut.amount, 12.44)
+        XCTAssertEqual(sut.currency, .usDollars)
+    }
+
     // MARK: - Arithmetic
 
     func testAddition() {
@@ -119,7 +143,9 @@ class MoneyTests: XCTestCase {
         XCTAssertEqual(sut.amount.doubleValue, Double(0.56), accuracy: 0.01)
     }
 
-    func testCodableInitFromDecoderUsesRoundedValue() {
+    // MARK: - Codable
+
+    func testInitFromDecoderSingleValue() {
         let json = Data("0.56".utf8)
         let sut = try! JSONDecoder().decode(Money.self, from: json)
 
