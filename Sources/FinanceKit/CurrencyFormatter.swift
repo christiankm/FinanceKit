@@ -14,12 +14,12 @@ public struct CurrencyFormatter {
 
     private let formatter = NumberFormatter.currency
 
-    public init(currency: Currency, locale: Locale = .current) {
+    public init(currency: Currency, locale: Locale = .autoupdatingCurrent) {
         self.currency = currency
         self.locale = locale
 
         formatter.locale = locale
-        formatter.currencyCode = currency.code.currencyCodeString
+        formatter.currencyCode = currency.code.rawValue
     }
 
     public func decimal(from string: String) -> Decimal? {

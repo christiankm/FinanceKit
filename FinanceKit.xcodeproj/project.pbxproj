@@ -43,6 +43,7 @@
 		AA339E782403056D005D5CA8 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E652403056C005D5CA8 /* Asset.swift */; };
 		AA5A85E32464BDB80094510B /* NumberFormatter+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */; };
 		AA5A85E52464BDD70094510B /* NumberFormatter+CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */; };
+		AA5A85E62464C6B30094510B /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E7F24030574005D5CA8 /* CurrencyFormatterTests.swift */; };
 		AA6835C52455E5A700DF1A08 /* Dividend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6835C42455E5A700DF1A08 /* Dividend.swift */; };
 		AA6835C8245615C400DF1A08 /* PerformanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6835C7245615C400DF1A08 /* PerformanceCalculatorTests.swift */; };
 		AA6835C92456181A00DF1A08 /* PerformanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B1243E153300BD450F /* PerformanceCalculator.swift */; };
@@ -114,6 +115,7 @@
 		AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Numerics+Total+Average.swift"; sourceTree = "<group>"; };
 		AA339E652403056C005D5CA8 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		AA339E7A24030574005D5CA8 /* DividendTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividendTests.swift; sourceTree = "<group>"; };
+		AA339E7F24030574005D5CA8 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
 		AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+CurrencyTests.swift"; sourceTree = "<group>"; };
 		AA6835C42455E5A700DF1A08 /* Dividend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dividend.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				OBJ_54 /* ChangeTests.swift */,
 				AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */,
 				AA12001F246C6FD000C1FFCA /* CurrencyConverterTests.swift */,
+				AA339E7F24030574005D5CA8 /* CurrencyFormatterTests.swift */,
 				AA06F78623D9F06A001FFAE9 /* CurrencyPairTests.swift */,
 				OBJ_58 /* CurrencyTests.swift */,
 				AA6835CC2456214000DF1A08 /* Date+ComparisonTests.swift */,
