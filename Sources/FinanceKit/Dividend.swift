@@ -7,13 +7,15 @@
 
 import Foundation
 
-public struct Dividend: Hashable, Identifiable, Equatable {
+public struct Dividend: Identifiable, Equatable {
     public let id = UUID()
     public let symbol: Symbol
-    public var value: Amount = 0
+    public let value: Money
+    public let payDate: Date
 
-    public init(symbol: Symbol, value: Amount = 0) {
+    public init(symbol: Symbol, payDate: Date, value: Money = 0) {
         self.symbol = symbol
+        self.payDate = payDate
         self.value = value
     }
 }
