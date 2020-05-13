@@ -12,12 +12,9 @@ import XCTest
 class StockTests: XCTestCase {
 
     func testEquatable() {
-        let appleSymbol = Symbol("AAPL")!
-        let cakeSymbol = Symbol("CAKE")!
-        let usd = Currency(code: CurrencyCode(rawValue: "USD"))
-        let apple = Stock(symbol: appleSymbol, company: Company(symbol: appleSymbol, name: "Apple Inc.", currency: usd), price: 123, currency: usd)
+        let apple = Stock(symbol: .aapl, company: .apple, price: 123, currency: .usDollars)
         let apple2 = apple
-        let cake = Stock(symbol: cakeSymbol, company: Company(symbol: cakeSymbol, name: "Cheesecake", currency: usd), price: 123, currency: usd)
+        let cake = Stock(symbol: .cake, company: .cake, price: 123, currency: .usDollars)
 
         XCTAssertTrue(apple == apple2)
         XCTAssertFalse(apple == cake)
