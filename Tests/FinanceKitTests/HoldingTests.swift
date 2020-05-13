@@ -59,6 +59,22 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.averageCostPerShare, 1.6)
     }
 
+    func testAverageAdjustedCostbasisPerShare() {
+        var holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 160)
+        holding.accumulatedDividends = 30
+        XCTAssertEqual(holding.averageAdjustedCostBasisPerShare, 13)
+    }
+
+    func testOwnership() {
+        var sut = Holding(symbol: .aapl, quantity: 10_000)
+        var stock = Stock.apple
+        stock.shares = 400_000_000
+
+        sut = sut.update(with: stock)
+
+        XCTAssertEqual(sut.ownership.rawValue, 0.000025)
+    }
+
     func testChange() {
         let holding = Holding(symbol: Self.symbol, quantity: 3,
                               costBasis: 12, costBasisInLocalCurrency: 23,

@@ -69,9 +69,9 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     }
 
     /// Returns the ownership in terms of percentage of the total amount of oustanding shares.
-    public var ownership: Double {
-        guard let outstandingShares = stock?.shares, outstandingShares > 0 else { return 0 }
-        return Double(quantity / Int(outstandingShares))
+    public var ownership: Percentage {
+        guard let outstandingShares = stock?.shares, outstandingShares > 0 else { return .zero }
+        return Percentage(Double(quantity) / Double(outstandingShares))
     }
 
     public init(symbol: Symbol, quantity: Quantity = 0, costBasis: Price = 0,
@@ -151,6 +151,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     /// - Parameter stock: A stock containing the most recent price, and company details.
     ///   The symbol must match the holding.
     /// - Returns: The newly updated holding.
+    @discardableResult
     public mutating func update(with stock: Stock) -> Holding {
         guard stock.symbol == symbol else { return self }
 
@@ -168,6 +169,7 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     /// - Returns: If the holdings company has a currency, and a matching currency pair,
     /// it returns the converted holding, otherwise it returns a holding where the local values
     /// is equal to the base values.
+    @discardableResult
     public mutating func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) -> Holding {
         guard let companyCurrency = company?.currency else { return self }
 

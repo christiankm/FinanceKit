@@ -126,6 +126,7 @@ extension HoldingTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__HoldingTests = [
+        ("testAverageAdjustedCostbasisPerShare", testAverageAdjustedCostbasisPerShare),
         ("testAverageCostPerShare", testAverageCostPerShare),
         ("testChange", testChange),
         ("testChangeInLocalCurrency", testChangeInLocalCurrency),
@@ -145,6 +146,7 @@ extension HoldingTests {
         ("testMakeHoldingsWithOnlyBuyTransactions", testMakeHoldingsWithOnlyBuyTransactions),
         ("testMakeHoldingsWithOnlyDividendTransactions", testMakeHoldingsWithOnlyDividendTransactions),
         ("testMakeHoldingsWithOnlySellTransactions", testMakeHoldingsWithOnlySellTransactions),
+        ("testOwnership", testOwnership),
         ("testUpdateWithCurrencyPairsToBaseCurrency", testUpdateWithCurrencyPairsToBaseCurrency),
         ("testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual", testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual),
         ("testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency", testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency),
