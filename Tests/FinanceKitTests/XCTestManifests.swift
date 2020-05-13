@@ -172,7 +172,6 @@ extension MoneyTests {
         ("testEquatable", testEquatable),
         ("testFormattedAmountWithCurrency", testFormattedAmountWithCurrency),
         ("testFormattedAmountWithoutCurrency", testFormattedAmountWithoutCurrency),
-        ("testInitFromDecoderSingleValue", testInitFromDecoderSingleValue),
         ("testInitWithDecimal", testInitWithDecimal),
         ("testInitWithDouble", testInitWithDouble),
         ("testInitWithInvalidStringReturnsNil", testInitWithInvalidStringReturnsNil),
