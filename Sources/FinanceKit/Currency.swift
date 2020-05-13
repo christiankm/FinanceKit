@@ -12,7 +12,6 @@ import Foundation
 /// You would normally not need to construct your own currency, but can instead access one using `Currency(code:)`.
 public struct Currency: Codable, Hashable {
 
-
     public var localizedName: String? {
         locale.localizedString(forCurrencyCode: code.rawValue)
     }
