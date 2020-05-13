@@ -60,6 +60,14 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     public internal(set) var currentValue: Price
     public internal(set) var currentValueInLocalCurrency: Price
 
+    public var change: Change {
+        Change(cost: costBasis, currentValue: currentValue)
+    }
+
+    public var changeInLocalCurrency: Change {
+        Change(cost: costBasisInLocalCurrency, currentValue: currentValueInLocalCurrency)
+    }
+
     /// Returns the ownership in terms of percentage of the total amount of oustanding shares.
     public var ownership: Double {
         guard let outstandingShares = stock?.shares, outstandingShares > 0 else { return 0 }
@@ -75,14 +83,6 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
         self.costBasisInLocalCurrency = max(costBasisInLocalCurrency, 0)
         self.currentValue = currentValue
         self.currentValueInLocalCurrency = currentValueInLocalCurrency
-    }
-
-    public var change: Change {
-        Change(cost: costBasis, currentValue: currentValue)
-    }
-
-    public var changeInLocalCurrency: Change {
-        Change(cost: costBasisInLocalCurrency, currentValue: currentValueInLocalCurrency)
     }
 
     public static func makeHoldings(with transactions: [Transaction]) -> [Holding] {

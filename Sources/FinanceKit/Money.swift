@@ -27,7 +27,7 @@ public struct Money {
 
     /// - returns: Formatted rounded amount with currency symbol.
     /// If `currency` is not set, returns the formatted amound without currency.
-    public var formattedAmount: String? {
+    public var formattedString: String? {
         if let currency = self.currency {
             let formatter = CurrencyFormatter(currency: currency, locale: .current)
             return formatter.string(from: self)
@@ -115,12 +115,19 @@ public struct Money {
 
     // MARK: Currency Conversion
 
-    /// Converts and returns a new `Money` in the given currency. The amount is not converted with any currency rate.
-    /// - Parameter currency: The currency the money should be in.
-    /// - Returns: A new `Money` with the current amount in the given currency.
-    @discardableResult
-    public func convert(to currency: Currency) -> Self {
-        Money(rawValue, in: currency)
+    /// Converts and returns a new `Money` in the given currency with a new amount.
+    /// - Parameter to: The currency the money should be in.
+    /// - Parameter at: The conversion rate to use.
+    /// - Returns: A new `Money` with the converted amount in the given currency. If the current currency is nil, no conversion is made, and the new Money will have the same amount.
+    public func convert(to targetCurrency: Currency, at rate: Double) -> Self {
+        guard let fromCurrency = self.currency else {
+            return Self(rawValue, in: currency)
+        }
+
+        let converter = CurrencyConverter()
+        let convertedAmount = converter.convert(rawValue, from: fromCurrency, to: targetCurrency, at: rate)
+
+        return Money(convertedAmount, in: targetCurrency)
     }
 }
 

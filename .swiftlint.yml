@@ -286,9 +286,3 @@ custom_rules:
     regex: "(\\:\\s(\\w+)\\s\\=\\s\\1|\\.priority\\s\\=\\sUILayoutPriority\\.|(textColor|highlightedTextColor|tintColor|backgroundColor)\\s\\=\\sUIColor\\.|image\\s\\=\\sUIImage\\.|\\.alignmentMode\\s=\\sCATextLayerAlignmentMode\\.|separatorInset\\s=\\sUIEdgeInsets\\.|layoutMargins\\s=\\sUIEdgeInsets\\.)"
     message: "Type inferred context is preferred over explicit types."
     severity: warning
-
-  todo_jira:
-    name: "TODO without Clubhouse reference"
-    regex: "(?i)(?=[^\\n]\\/\\/\\s+(TODO|TO DO|FIX|FIXME|FIX ME):)(?!.FKIT\\-\\d+)[^\\n]*"
-    message: "Do not add TODOs without a task reference. Add Task Id to comment."
-    severity: warning

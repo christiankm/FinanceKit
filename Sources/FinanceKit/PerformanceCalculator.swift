@@ -1,6 +1,6 @@
 //
 //  PerformanceCalculator.swift
-//  
+//  FinanceKit
 //
 //  Created by Christian Mitteldorf on 04/03/2020.
 //

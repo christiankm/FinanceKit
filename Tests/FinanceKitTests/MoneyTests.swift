@@ -43,13 +43,13 @@ class MoneyTests: XCTestCase {
     func testFormattedAmountWithCurrency() {
         let sut = Money(2500.32, in: .usDollars)
 
-        XCTAssertEqual(sut.formattedAmount!, "$2,500.32")
+        XCTAssertEqual(sut.formattedString!, "$2,500.32")
     }
 
     func testFormattedAmountWithoutCurrency() {
         let sut = Money(2500.32)
 
-        XCTAssertEqual(sut.formattedAmount!, "2,500.32")
+        XCTAssertEqual(sut.formattedString!, "2,500.32")
     }
 
     func testIsZero() {
@@ -84,12 +84,12 @@ class MoneyTests: XCTestCase {
 
     // MARK: - Conversion
 
-    func testConvertToCurrency() {
-        let money = Money(12.22, in: .danishKroner)
-        let sut = money.convert(to: .usDollars)
+    func testConvertToCurrencyAtRate() {
+        let money = Money(100.0, in: .danishKroner)
+        let sut = money.convert(to: .usDollars, at: 0.145)
 
-        XCTAssertEqual(sut.amount, 12.22)
-        XCTAssertEqual(sut.currency, .usDollars)
+        XCTAssertEqual(sut.amount, 14.50)
+        XCTAssertEqual(sut.currency?.code, .unitedStatesDollar)
     }
 
     func testConvertDecimalToMoneyCurrency() {

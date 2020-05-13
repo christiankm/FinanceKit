@@ -17,6 +17,7 @@ extension Company {
 extension Currency {
     static let danishKroner = Currency(code: CurrencyCode.danishKrone)
     static let usDollars = Currency(code: CurrencyCode.unitedStatesDollar)
+    static let australianDollars = Currency(code: CurrencyCode.australianDollar)
 }
 
 extension Date {
