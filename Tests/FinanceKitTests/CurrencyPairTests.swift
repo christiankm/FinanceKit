@@ -12,21 +12,21 @@ class CurrencyPairTests: XCTestCase {
 
     func testInit() {
         let pair = CurrencyPair(
-            baseCurrency: Currency(code: "USD"),
-            secondaryCurrency: Currency(code: "DKK"),
+            baseCurrency: .usDollars,
+            secondaryCurrency: .danishKroner,
             rate: 0.64
         )
 
         XCTAssertNotEqual(pair.baseCurrency, pair.secondaryCurrency)
-        XCTAssertEqual(pair.baseCurrency, Currency(code: "USD"))
-        XCTAssertEqual(pair.secondaryCurrency, Currency(code: "DKK"))
+        XCTAssertEqual(pair.baseCurrency.code.rawValue, "USD")
+        XCTAssertEqual(pair.secondaryCurrency.code.rawValue, "DKK")
         XCTAssertEqual(pair.rate, 0.64)
     }
 
     func testInitWithSameCurrency() {
         let pair = CurrencyPair(
-            baseCurrency: Currency(code: "DKK"),
-            secondaryCurrency: Currency(code: "DKK"),
+            baseCurrency: .danishKroner,
+            secondaryCurrency: .danishKroner,
             rate: 1.00
         )
 

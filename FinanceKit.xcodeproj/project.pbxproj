@@ -24,8 +24,15 @@
 		AA06F78523D9EEBB001FFAE9 /* CurrencyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78423D9EEBB001FFAE9 /* CurrencyPair.swift */; };
 		AA06F78723D9F06A001FFAE9 /* CurrencyPairTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78623D9F06A001FFAE9 /* CurrencyPairTests.swift */; };
 		AA06F78B23D9F987001FFAE9 /* CompanyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */; };
+		AA120019246C44A700C1FFCA /* DividendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E7A24030574005D5CA8 /* DividendTests.swift */; };
+		AA12001C246C5D7800C1FFCA /* StockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1C1243E154000BD450F /* StockTests.swift */; };
+		AA12001E246C6AEE00C1FFCA /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12001D246C6AEE00C1FFCA /* CurrencyConverter.swift */; };
+		AA120020246C6FD000C1FFCA /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12001F246C6FD000C1FFCA /* CurrencyConverterTests.swift */; };
+		AA120021246C7A2500C1FFCA /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E7F24030574005D5CA8 /* CurrencyFormatterTests.swift */; };
+		AA120023246C7C5800C1FFCA /* PercentageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA120022246C7C5800C1FFCA /* PercentageTests.swift */; };
 		AA2721A4244E196D00BEB19D /* ChangePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2721A3244E196D00BEB19D /* ChangePeriod.swift */; };
 		AA2721A6244E199C00BEB19D /* Date+Ranges.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2721A5244E199C00BEB19D /* Date+Ranges.swift */; };
+		AA2721A7244E2A0B00BEB19D /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1C0243E154000BD450F /* MoneyTests.swift */; };
 		AA2721AA244E383500BEB19D /* Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2721A9244E383500BEB19D /* Percentage.swift */; };
 		AA2721AC244E390100BEB19D /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2721AB244E390100BEB19D /* CurrencyFormatter.swift */; };
 		AA2721AE244E3B6C00BEB19D /* PercentageFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2721AD244E3B6C00BEB19D /* PercentageFormatterTests.swift */; };
@@ -36,6 +43,8 @@
 		AA339E6A2403056D005D5CA8 /* PercentageFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E572403056C005D5CA8 /* PercentageFormatter.swift */; };
 		AA339E772403056D005D5CA8 /* Numerics+Total+Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */; };
 		AA339E782403056D005D5CA8 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA339E652403056C005D5CA8 /* Asset.swift */; };
+		AA5A85E32464BDB80094510B /* NumberFormatter+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */; };
+		AA5A85E52464BDD70094510B /* NumberFormatter+CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */; };
 		AA6835C52455E5A700DF1A08 /* Dividend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6835C42455E5A700DF1A08 /* Dividend.swift */; };
 		AA6835C8245615C400DF1A08 /* PerformanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6835C7245615C400DF1A08 /* PerformanceCalculatorTests.swift */; };
 		AA6835C92456181A00DF1A08 /* PerformanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B1243E153300BD450F /* PerformanceCalculator.swift */; };
@@ -45,13 +54,13 @@
 		AA69851D2377351800D0683C /* SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69851C2377351800D0683C /* SymbolTests.swift */; };
 		AA7A62B123E5D3F20094DC2B /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A62B023E5D3F20094DC2B /* Exchange.swift */; };
 		AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */; };
-		AA7DA6F32391DA7A00EF65F5 /* CurrencyCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */; };
 		AA8474E52389CAF200B23520 /* DecimalDoubleValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */; };
 		AAA96F6C2451FB10008524AC /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96F6A2451FB04008524AC /* TestData.swift */; };
 		AAA96F7024521588008524AC /* ExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96F6F24521588008524AC /* ExchangeTests.swift */; };
 		AAA96F722452162A008524AC /* PriceTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96F712452162A008524AC /* PriceTargetTests.swift */; };
 		AAA96F74245216ED008524AC /* Numerics+Total+AverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96F73245216ED008524AC /* Numerics+Total+AverageTests.swift */; };
 		AAB7B1BB243E153400BD450F /* HistoricalPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */; };
+		AAB7B1BE243E153400BD450F /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B7243E153300BD450F /* Money.swift */; };
 		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
 		AAE677832392979A0053B303 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE677822392979A0053B303 /* Quantity.swift */; };
 		AAE6778C239298550053B303 /* Holding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE67784239298550053B303 /* Holding.swift */; };
@@ -93,6 +102,9 @@
 		AA06F78623D9F06A001FFAE9 /* CurrencyPairTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPairTests.swift; sourceTree = "<group>"; };
 		AA06F78823D9F83F001FFAE9 /* PortfolioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTests.swift; sourceTree = "<group>"; };
 		AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTests.swift; sourceTree = "<group>"; };
+		AA12001D246C6AEE00C1FFCA /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		AA12001F246C6FD000C1FFCA /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
+		AA120022246C7C5800C1FFCA /* PercentageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageTests.swift; sourceTree = "<group>"; };
 		AA2721A3244E196D00BEB19D /* ChangePeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePeriod.swift; sourceTree = "<group>"; };
 		AA2721A5244E199C00BEB19D /* Date+Ranges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ranges.swift"; sourceTree = "<group>"; };
 		AA2721A9244E383500BEB19D /* Percentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Percentage.swift; sourceTree = "<group>"; };
@@ -104,6 +116,10 @@
 		AA339E572403056C005D5CA8 /* PercentageFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentageFormatter.swift; sourceTree = "<group>"; };
 		AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Numerics+Total+Average.swift"; sourceTree = "<group>"; };
 		AA339E652403056C005D5CA8 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		AA339E7A24030574005D5CA8 /* DividendTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividendTests.swift; sourceTree = "<group>"; };
+		AA339E7F24030574005D5CA8 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
+		AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+CurrencyTests.swift"; sourceTree = "<group>"; };
 		AA6835C42455E5A700DF1A08 /* Dividend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dividend.swift; sourceTree = "<group>"; };
 		AA6835C7245615C400DF1A08 /* PerformanceCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCalculatorTests.swift; sourceTree = "<group>"; };
 		AA6835CA2456210100DF1A08 /* Date+Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Comparison.swift"; sourceTree = "<group>"; };
@@ -113,7 +129,6 @@
 		AA69851C2377351800D0683C /* SymbolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolTests.swift; sourceTree = "<group>"; };
 		AA7A62B023E5D3F20094DC2B /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCode.swift; sourceTree = "<group>"; };
-		AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCodeTests.swift; sourceTree = "<group>"; };
 		AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDoubleValueTests.swift; sourceTree = "<group>"; };
 		AAA96F6A2451FB04008524AC /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		AAA96F6F24521588008524AC /* ExchangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTests.swift; sourceTree = "<group>"; };
@@ -121,6 +136,8 @@
 		AAA96F73245216ED008524AC /* Numerics+Total+AverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numerics+Total+AverageTests.swift"; sourceTree = "<group>"; };
 		AAB7B1B1243E153300BD450F /* PerformanceCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceCalculator.swift; sourceTree = "<group>"; };
 		AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalPrice.swift; sourceTree = "<group>"; };
+		AAB7B1B7243E153300BD450F /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		AAB7B1C0243E154000BD450F /* MoneyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyTests.swift; sourceTree = "<group>"; };
 		AAB7B1C1243E154000BD450F /* StockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockTests.swift; sourceTree = "<group>"; };
 		AAE675432375BC3000BA5141 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTests.swift; path = Tests/FinanceKitTests/TransactionTests.swift; sourceTree = SOURCE_ROOT; };
 		AAE677822392979A0053B303 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
@@ -189,15 +206,20 @@
 			children = (
 				OBJ_54 /* ChangeTests.swift */,
 				AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */,
-				AA7DA6F22391DA7A00EF65F5 /* CurrencyCodeTests.swift */,
+				AA12001F246C6FD000C1FFCA /* CurrencyConverterTests.swift */,
+				AA339E7F24030574005D5CA8 /* CurrencyFormatterTests.swift */,
 				AA06F78623D9F06A001FFAE9 /* CurrencyPairTests.swift */,
 				OBJ_58 /* CurrencyTests.swift */,
 				AA6835CC2456214000DF1A08 /* Date+ComparisonTests.swift */,
 				AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */,
+				AA339E7A24030574005D5CA8 /* DividendTests.swift */,
 				AAA96F6F24521588008524AC /* ExchangeTests.swift */,
 				AAFA769223D994B70087A82D /* HoldingTests.swift */,
+				AAB7B1C0243E154000BD450F /* MoneyTests.swift */,
+				AA5A85E42464BDD70094510B /* NumberFormatter+CurrencyTests.swift */,
 				AAA96F73245216ED008524AC /* Numerics+Total+AverageTests.swift */,
 				AA2721AD244E3B6C00BEB19D /* PercentageFormatterTests.swift */,
+				AA120022246C7C5800C1FFCA /* PercentageTests.swift */,
 				AA6835C7245615C400DF1A08 /* PerformanceCalculatorTests.swift */,
 				AA06F78823D9F83F001FFAE9 /* PortfolioTests.swift */,
 				AAA96F712452162A008524AC /* PriceTargetTests.swift */,
@@ -238,6 +260,7 @@
 				OBJ_10 /* Company.swift */,
 				OBJ_13 /* Currency.swift */,
 				AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */,
+				AA12001D246C6AEE00C1FFCA /* CurrencyConverter.swift */,
 				AA2721AB244E390100BEB19D /* CurrencyFormatter.swift */,
 				AA06F78423D9EEBB001FFAE9 /* CurrencyPair.swift */,
 				AA6835CA2456210100DF1A08 /* Date+Comparison.swift */,
@@ -248,6 +271,8 @@
 				AA7A62B023E5D3F20094DC2B /* Exchange.swift */,
 				AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */,
 				AAE67784239298550053B303 /* Holding.swift */,
+				AAB7B1B7243E153300BD450F /* Money.swift */,
+				AA5A85E22464BDB80094510B /* NumberFormatter+Currency.swift */,
 				AA339E642403056C005D5CA8 /* Numerics+Total+Average.swift */,
 				AA2721A9244E383500BEB19D /* Percentage.swift */,
 				AA339E572403056C005D5CA8 /* PercentageFormatter.swift */,
@@ -417,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				AA120021246C7A2500C1FFCA /* CurrencyFormatterTests.swift in Sources */,
 				AAA96F7024521588008524AC /* ExchangeTests.swift in Sources */,
 				OBJ_148 /* ChangeTests.swift in Sources */,
 				AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */,
@@ -425,13 +451,18 @@
 				AA06F78723D9F06A001FFAE9 /* CurrencyPairTests.swift in Sources */,
 				AA06F78B23D9F987001FFAE9 /* CompanyTests.swift in Sources */,
 				AA8474E52389CAF200B23520 /* DecimalDoubleValueTests.swift in Sources */,
+				AA120019246C44A700C1FFCA /* DividendTests.swift in Sources */,
 				AAA96F722452162A008524AC /* PriceTargetTests.swift in Sources */,
-				AA7DA6F32391DA7A00EF65F5 /* CurrencyCodeTests.swift in Sources */,
+				AA2721A7244E2A0B00BEB19D /* MoneyTests.swift in Sources */,
 				AA2721AF244E4E7000BEB19D /* PortfolioTests.swift in Sources */,
 				AAFA769323D994B70087A82D /* HoldingTests.swift in Sources */,
 				OBJ_169 /* XCTestManifests.swift in Sources */,
+				AA120020246C6FD000C1FFCA /* CurrencyConverterTests.swift in Sources */,
+				AA12001C246C5D7800C1FFCA /* StockTests.swift in Sources */,
+				AA120023246C7C5800C1FFCA /* PercentageTests.swift in Sources */,
 				AA6835C8245615C400DF1A08 /* PerformanceCalculatorTests.swift in Sources */,
 				AA69851D2377351800D0683C /* SymbolTests.swift in Sources */,
+				AA5A85E52464BDD70094510B /* NumberFormatter+CurrencyTests.swift in Sources */,
 				AAA96F74245216ED008524AC /* Numerics+Total+AverageTests.swift in Sources */,
 				AA6835CD2456214000DF1A08 /* Date+ComparisonTests.swift in Sources */,
 				AA2721AE244E3B6C00BEB19D /* PercentageFormatterTests.swift in Sources */,
@@ -445,6 +476,7 @@
 				AA6835C52455E5A700DF1A08 /* Dividend.swift in Sources */,
 				OBJ_88 /* Change.swift in Sources */,
 				AA339E782403056D005D5CA8 /* Asset.swift in Sources */,
+				AA5A85E32464BDB80094510B /* NumberFormatter+Currency.swift in Sources */,
 				OBJ_89 /* Company.swift in Sources */,
 				AA06F78523D9EEBB001FFAE9 /* CurrencyPair.swift in Sources */,
 				OBJ_92 /* Currency.swift in Sources */,
@@ -460,6 +492,8 @@
 				AA339E772403056D005D5CA8 /* Numerics+Total+Average.swift in Sources */,
 				AAE677832392979A0053B303 /* Quantity.swift in Sources */,
 				AA2721A4244E196D00BEB19D /* ChangePeriod.swift in Sources */,
+				AAB7B1BE243E153400BD450F /* Money.swift in Sources */,
+				AA12001E246C6AEE00C1FFCA /* CurrencyConverter.swift in Sources */,
 				AA339E6A2403056D005D5CA8 /* PercentageFormatter.swift in Sources */,
 				AA2721AC244E390100BEB19D /* CurrencyFormatter.swift in Sources */,
 				AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */,

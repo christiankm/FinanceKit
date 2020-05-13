@@ -14,24 +14,24 @@ class CompanyTests: XCTestCase {
         let apple = Company(
             symbol: Symbol("AAPL")!, //swiftlint:disable:this force_unwrapping
             name: "Apple Inc.",
-            currency: Currency(code: CurrencyCode(rawValue: "USD"))
+            currency: .usDollars
         )
 
         XCTAssertEqual(apple.symbol, Symbol("AAPL")!) //swiftlint:disable:this force_unwrapping
         XCTAssertEqual(apple.name, "Apple Inc.")
-        XCTAssertEqual(apple.currency, Currency(code: CurrencyCode(rawValue: "USD")))
+        XCTAssertEqual(apple.currency.code.rawValue, "USD")
     }
 
     func testEquatable() {
         let apple = Company(
             symbol: Symbol("AAPL")!, //swiftlint:disable:this force_unwrapping
             name: "Apple Inc.",
-            currency: Currency(code: CurrencyCode(rawValue: "USD"))
+            currency: .usDollars
         )
         let coke = Company(
             symbol: Symbol("KO")!, //swiftlint:disable:this force_unwrapping
             name: "Coca-Cola",
-            currency: Currency(code: CurrencyCode(rawValue: "USD"))
+            currency: .usDollars
         )
 
         XCTAssertEqual(apple, apple)
@@ -42,12 +42,12 @@ class CompanyTests: XCTestCase {
         let apple = Company(
             symbol: Symbol("AAPL")!, //swiftlint:disable:this force_unwrapping
             name: "Apple Inc.",
-            currency: Currency(code: CurrencyCode(rawValue: "USD"))
+            currency: .usDollars
         )
         let coke = Company(
             symbol: Symbol("KO")!, //swiftlint:disable:this force_unwrapping
             name: "Coca-Cola",
-            currency: Currency(code: CurrencyCode(rawValue: "USD"))
+            currency: .usDollars
         )
 
         XCTAssertEqual([coke, apple].sorted(), [apple, coke])

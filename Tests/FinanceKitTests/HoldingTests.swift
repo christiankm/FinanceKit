@@ -59,6 +59,22 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.averageCostPerShare, 1.6)
     }
 
+    func testAverageAdjustedCostbasisPerShare() {
+        var holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 160)
+        holding.accumulatedDividends = 30
+        XCTAssertEqual(holding.averageAdjustedCostBasisPerShare, 13)
+    }
+
+    func testOwnership() {
+        var sut = Holding(symbol: .aapl, quantity: 10_000)
+        var stock = Stock.apple
+        stock.shares = 400_000_000
+
+        sut = sut.update(with: stock)
+
+        XCTAssertEqual(sut.ownership.rawValue, 0.000025)
+    }
+
     func testChange() {
         let holding = Holding(symbol: Self.symbol, quantity: 3,
                               costBasis: 12, costBasisInLocalCurrency: 23,
@@ -77,7 +93,7 @@ class HoldingTests: XCTestCase {
 
     func testDisplayNameWhenCompanyIsCompanyName() {
         var holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 16)
-        holding.company = Company(symbol: Self.symbol, name: "Apple Inc.", currency: Currency(code: CurrencyCode(rawValue: "USD")))
+        holding.company = Company(symbol: Self.symbol, name: "Apple Inc.", currency: Currency.usDollars)
         XCTAssertEqual(holding.displayName, "Apple Inc.")
     }
 
@@ -200,35 +216,35 @@ class HoldingTests: XCTestCase {
     // MARK: Test Update and mutating functions
 
     func testUpdateWithStock() {
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let currency = Currency(code: CurrencyCode(rawValue: "USD"))
+        let aapl = Symbol.aapl
+        let currency = Currency.usDollars
         var holding = Holding(symbol: aapl, quantity: 10, costBasis: 1000)
         let stock = Stock(
             symbol: aapl,
             company: Company(symbol: aapl, name: "Apple Inc.", currency: currency),
             price: 190,
-            currency: Currency(code: CurrencyCode(rawValue: "USD"))
+            currency: .usDollars
         )
 
         let newHolding = holding.update(with: stock)
 
         XCTAssertEqual(newHolding.quantity, 10)
         XCTAssertEqual(newHolding.company?.name, "Apple Inc.")
-        XCTAssertEqual(newHolding.company?.currency, Currency(code: CurrencyCode(rawValue: "USD")))
+        XCTAssertEqual(newHolding.company?.currency, .usDollars)
         XCTAssertEqual(newHolding.currentValue, 1900)
         XCTAssertEqual(newHolding.change.amount, 900)
     }
 
     func testUpdateWithStockWithDifferentSymbol() {
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
-        let currency = Currency(code: CurrencyCode(rawValue: "USD"))
+        let aapl = Symbol.aapl
+        let cake = Symbol.cake
+        let currency = Currency.usDollars
         var holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
         let stock = Stock(
             symbol: cake,
             company: Company(symbol: cake, name: "Cheesecake Factory", currency: currency),
             price: 190,
-            currency: Currency(code: CurrencyCode(rawValue: "USD"))
+            currency: .usDollars
         )
 
         let newHolding = holding.update(with: stock)

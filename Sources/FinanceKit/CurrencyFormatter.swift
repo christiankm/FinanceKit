@@ -2,59 +2,41 @@
 //  CurrencyFormatter.swift
 //  FinanceKit
 //
-//  Created by Christian Mitteldorf on 20/04/2020.
+//  Created by Christian Mitteldorf on 07/05/2020.
 //
 
 import Foundation
 
-extension NumberFormatter {
-
-    public static var currency: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter
-    }
-
-    public static let currentLocale: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.alwaysShowsDecimalSeparator = true
-        formatter.numberStyle = .decimal
-        formatter.minimumIntegerDigits = 1
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        formatter.usesGroupingSeparator = true
-        return formatter
-    }()
-}
-
 public struct CurrencyFormatter {
 
-    let locale: Locale
-    let currencyCode: String
+    public let locale: Locale
+    public let currency: Currency
 
-    private let formatter = NumberFormatter()
+    private let formatter = NumberFormatter.currency
 
-    public init(locale: Locale, currencyCode: String) {
+    public init(currency: Currency, locale: Locale = .autoupdatingCurrent) {
+        self.currency = currency
         self.locale = locale
-        self.currencyCode = currencyCode
 
-        formatter.numberStyle = .currency
         formatter.locale = locale
-        formatter.currencyCode = currencyCode
+        formatter.currencyCode = currency.code.rawValue
+    }
+
+    public func decimal(from string: String) -> Decimal? {
+        guard let number = formatter.number(from: string) else { return nil }
+        return number.decimalValue
+    }
+
+    public func money(from string: String) -> Money? {
+        guard let number = formatter.number(from: string) else { return nil }
+        return Money(number.decimalValue, in: currency)
     }
 
     public func string(from number: Decimal) -> String? {
         formatter.string(from: number.rounded as NSDecimalNumber)
     }
-}
 
-public extension NumberFormatter {
-
-    func string(from doubleValue: Double?) -> String? {
-        if let doubleValue = doubleValue {
-            return string(from: NSNumber(value: doubleValue))
-        }
-        return nil
+    public func string(from money: Money) -> String? {
+        formatter.string(from: money.amount as NSDecimalNumber)
     }
 }

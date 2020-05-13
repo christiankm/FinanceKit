@@ -61,7 +61,7 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     public init(portfolios: [Portfolio]) {
         self.id = UUID()
         self.name = ""
-        self.currency = Currency(code: "USD")
+        self.currency = Currency(code: .unitedStatesDollar)
 
         var holdings: [Holding] = []
         portfolios.forEach {
