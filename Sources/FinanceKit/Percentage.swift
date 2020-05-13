@@ -9,6 +9,8 @@ import Foundation
 
 public struct Percentage: RawRepresentable, Equatable, Hashable, Codable {
 
+    public static let zero = Percentage(0)
+
     public let rawValue: Double
 
     public var formattedString: String? {
