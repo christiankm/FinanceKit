@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Dividend: Identifiable, Equatable {
+public struct Dividend: Identifiable, Equatable, Hashable {
     public let id = UUID()
     public let symbol: Symbol
     public let value: Money

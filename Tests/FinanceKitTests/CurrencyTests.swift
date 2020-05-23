@@ -18,7 +18,6 @@ class CurrencyTests: XCTestCase {
         XCTAssertEqual(sut.code.rawValue, "DKK")
     }
 
-
     func testLocalizedName() {
         let dkkEnglish = Currency(code: .danishKrone, locale: Locale(identifier: "en_US"))
         XCTAssertEqual(dkkEnglish.localizedName, "Danish Krone")

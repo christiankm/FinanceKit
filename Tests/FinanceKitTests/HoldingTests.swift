@@ -213,12 +213,12 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfAAPL.costBasis)
     }
 
-    // MARK: Test Update and mutating functions
+    // MARK: Test Update functions
 
     func testUpdateWithStock() {
         let aapl = Symbol.aapl
         let currency = Currency.usDollars
-        var holding = Holding(symbol: aapl, quantity: 10, costBasis: 1000)
+        let holding = Holding(symbol: aapl, quantity: 10, costBasis: 1000)
         let stock = Stock(
             symbol: aapl,
             company: Company(symbol: aapl, name: "Apple Inc.", currency: currency),
@@ -228,7 +228,10 @@ class HoldingTests: XCTestCase {
 
         let newHolding = holding.update(with: stock)
 
+        XCTAssertNotEqual(holding.id, newHolding.id)
         XCTAssertEqual(newHolding.quantity, 10)
+        XCTAssertNotNil(newHolding.stock)
+        XCTAssertEqual(newHolding.stock, stock)
         XCTAssertEqual(newHolding.company?.name, "Apple Inc.")
         XCTAssertEqual(newHolding.company?.currency, .usDollars)
         XCTAssertEqual(newHolding.currentValue, 1900)
@@ -239,7 +242,7 @@ class HoldingTests: XCTestCase {
         let aapl = Symbol.aapl
         let cake = Symbol.cake
         let currency = Currency.usDollars
-        var holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
+        let holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
         let stock = Stock(
             symbol: cake,
             company: Company(symbol: cake, name: "Cheesecake Factory", currency: currency),
@@ -253,35 +256,35 @@ class HoldingTests: XCTestCase {
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrency() {
-        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let stock = Stock.apple
         let currencyPairs = [
             CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
         ]
 
-        _ = sut.update(with: stock)
-        _ = sut.update(with: currencyPairs, to: .danishKroner)
+        var sut = holding.update(with: stock)
+        sut = sut.update(with: currencyPairs, to: .danishKroner)
 
         XCTAssertEqual(sut.costBasisInLocalCurrency.rounded, 6896.55)
         XCTAssertEqual(sut.currentValueInLocalCurrency.rounded, 12413.79)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {
-        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let stock = Stock.apple
         let currencyPairs = [
             CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
         ]
 
-        _ = sut.update(with: stock)
-        _ = sut.update(with: currencyPairs, to: .usDollars)
+        var sut = holding.update(with: stock)
+        sut = sut.update(with: currencyPairs, to: .usDollars)
 
         XCTAssertEqual(sut.costBasisInLocalCurrency, 1000)
         XCTAssertEqual(sut.currentValueInLocalCurrency, 1800)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency() {
-        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let currencyPairs = [
             CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
         ]
@@ -294,20 +297,16 @@ class HoldingTests: XCTestCase {
 
     // MARK: Test Protocol Conformances
 
-    func testEquatable() {
-        // Test with equal quantity
-        var holding1 = Holding(symbol: Self.symbol)
-        holding1.quantity = 5
-        holding1.currentValue = 1000
-        var holding2 = holding1
-        holding2.quantity = 5
-        holding2.currentValue = 1000
+    func testEquatableEqualObjectsAreEqual() {
+        let holding1 = Holding(symbol: Self.symbol)
+        let holding2 = holding1
         XCTAssertEqual(holding1, holding2)
+    }
 
-        // Test with different quantities
-        holding1.quantity = 3
-        holding1.currentValue = 2000
-        XCTAssertNotEqual(holding1, holding2)
+    func testEquatableDifferentObjectsAreNotEqual() {
+        let holdingC = Holding(symbol: .aapl)
+        let holdingD = Holding(symbol: .aapl)
+        XCTAssertNotEqual(holdingC, holdingD)
     }
 
     func testComparable() {
