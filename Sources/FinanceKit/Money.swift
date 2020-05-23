@@ -9,7 +9,7 @@
 import Foundation
 
 /// An amount of money in a given currency.
-public struct Money {
+public struct Money: Hashable {
 
     private static let decimalHandler = NSDecimalNumberHandler(
         roundingMode: .bankers,
