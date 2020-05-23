@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct Holding: Identifiable, Hashable, Equatable, Codable {
+public struct Holding: Identifiable, Hashable, Codable {
 
     /// A unique identifier that identifies this holding.
     public let id = UUID()
 
     public let symbol: Symbol
 
-    public var stock: Stock?
+    public internal(set) var stock: Stock?
     public internal(set) var company: Company?
 
     public internal(set) var quantity: Quantity {
@@ -145,21 +145,27 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     /// Updates the holding with the current price of the specified stock.
     /// Also updates the `company` to reflect the stock.
     ///
-    ///  This function is useful for updating the holding with the result of a query
-    ///  from a Stock API, without you having to calculate this yourself.
+    /// This function is useful for updating the holding with the result of a query
+    /// from a Stock API, without you having to calculate this yourself.
     ///
     /// - Parameter stock: A stock containing the most recent price, and company details.
     ///   The symbol must match the holding.
     /// - Returns: The newly updated holding.
-    @discardableResult
-    public mutating func update(with stock: Stock) -> Holding {
-        guard stock.symbol == symbol else { return self }
+    public func update(with updatedStock: Stock) -> Holding {
+        guard updatedStock.symbol == symbol else { return self }
 
-        self.stock = stock
-        self.company = stock.company
-        self.currentValue = stock.price * Decimal(quantity)
+        var newHolding = Holding(
+            symbol: symbol,
+            quantity: quantity,
+            costBasis: costBasis,
+            costBasisInLocalCurrency: costBasisInLocalCurrency,
+            currentValue: updatedStock.price * Decimal(quantity),
+            currentValueInLocalCurrency: currentValueInLocalCurrency
+        )
+        newHolding.stock = updatedStock
+        newHolding.company = updatedStock.company
 
-        return self
+        return newHolding
     }
 
     /// Updates the holdings current value and cost basis in local currencies,
@@ -169,21 +175,31 @@ public struct Holding: Identifiable, Hashable, Equatable, Codable {
     /// - Returns: If the holdings company has a currency, and a matching currency pair,
     /// it returns the converted holding, otherwise it returns a holding where the local values
     /// is equal to the base values.
-    @discardableResult
-    public mutating func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) -> Holding {
+    public func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) -> Holding {
         guard let companyCurrency = company?.currency else { return self }
+
+        var updatedCurrencyValue = currentValue
+        var updatedCostBasis = costBasis
 
         if companyCurrency != baseCurrency {
             if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
-                currentValueInLocalCurrency = currentValue / Decimal(pair.rate)
-                costBasisInLocalCurrency = costBasis / Decimal(pair.rate)
+                updatedCurrencyValue = currentValue / Decimal(pair.rate)
+                updatedCostBasis = costBasis / Decimal(pair.rate)
             }
-        } else {
-            currentValueInLocalCurrency = currentValue
-            costBasisInLocalCurrency = costBasis
         }
 
-        return self
+        var newHolding = Holding(
+            symbol: symbol,
+            quantity: quantity,
+            costBasis: costBasis,
+            costBasisInLocalCurrency: updatedCostBasis,
+            currentValue: currentValue,
+            currentValueInLocalCurrency: updatedCurrencyValue
+        )
+        newHolding.stock = stock
+        newHolding.company = company
+
+        return newHolding
     }
 }
 
@@ -191,5 +207,19 @@ extension Holding: Comparable {
 
     public static func < (lhs: Holding, rhs: Holding) -> Bool {
         lhs.displayName < rhs.displayName
+    }
+}
+
+extension Holding: Equatable {
+
+    public static func == (lhs: Holding, rhs: Holding) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.symbol == rhs.symbol &&
+        lhs.stock == rhs.stock &&
+        lhs.company == rhs.company &&
+        lhs.currentValue == rhs.currentValue &&
+        lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
+        lhs.change == rhs.change &&
+        lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
     }
 }

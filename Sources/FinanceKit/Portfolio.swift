@@ -116,28 +116,34 @@ public struct Portfolio: Codable, Hashable, Identifiable {
         return holdings.reduce(0) { $0 + $1.costBasisInLocalCurrency }
     }
 
-    /// Updates all holdings in the portfolio with the current price of the specified stock.
-    /// Also updates the `company` to reflect the stock.
+    /// Returns a new `Portfolio` updating all holdings in the portfolio with the current price of the specified stock.
     ///
     /// This is useful for updating the holdings with the result of a query
     /// from a Stock API, without you having to calculate this yourself.
     ///
     /// - Parameter stock: A stock containing the most recent price, and company details.
     ///   The symbol must match the holding.
-    public mutating func update(with stock: Stock) {
+    public func update(with stock: Stock) -> Portfolio {
         var updatedHoldings: [Holding] = []
         holdings.forEach { holding in
-            var holdingToUpdate = holding
+            let holdingToUpdate = holding
             updatedHoldings.append(holdingToUpdate.update(with: stock))
         }
 
-        self.holdings = updatedHoldings
+        let newPortfolio = Portfolio(
+            id: UUID(),
+            name: name,
+            currency: currency,
+            holdings: updatedHoldings
+        )
+
+        return newPortfolio
     }
 
-    public mutating func update(with stocks: [Stock]) {
+    public func update(with stocks: [Stock]) -> Portfolio {
         var updatedHoldings: [Holding] = []
         stocks.forEach { stock in
-            guard var holding = holdings.first(where: { $0.symbol == stock.symbol }) else { return }
+            guard let holding = holdings.first(where: { $0.symbol == stock.symbol }) else { return }
             let updatedHolding = holding.update(with: stock)
             updatedHoldings.append(updatedHolding)
         }
@@ -151,10 +157,16 @@ public struct Portfolio: Codable, Hashable, Identifiable {
             }
         }
 
-        self.holdings = updatedHoldings
+        let newPortfolio = Portfolio(
+            name: name,
+            currency: currency,
+            holdings: updatedHoldings
+        )
+
+        return newPortfolio
     }
 
-    /// Updates all holdings current value and cost basis in local currencies,
+    /// Returns a new `Portfolio` with all holdings current value and cost basis in local currencies,
     /// using the companys currency as the base currency.
     ///
     /// - Parameter currencyPairs: The current rates to convert the currency with.
@@ -162,13 +174,34 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     /// - Returns: If the holdings companies has a currency, and a matching currency pair,
     /// it returns the converted portfolio, otherwise it returns a portfolio where the local values
     /// is equal to the base values.
-    public mutating func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) {
+    public func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) -> Portfolio {
         var updatedHoldings: [Holding] = []
         holdings.forEach { holding in
-            var holdingToUpdate = holding
-            updatedHoldings.append(holdingToUpdate.update(with: currencyPairs, to: baseCurrency))
+            let newHolding = holding.update(with: currencyPairs, to: baseCurrency)
+            updatedHoldings.append(newHolding)
         }
 
-        self.holdings = updatedHoldings
+        let newPortfolio = Portfolio(
+            id: UUID(),
+            name: name,
+            currency: currency,
+            holdings: updatedHoldings
+        )
+
+        return newPortfolio
+    }
+}
+
+extension Portfolio: Equatable {
+
+    public static func == (lhs: Portfolio, rhs: Portfolio) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.name == rhs.name &&
+        lhs.currency == rhs.currency &&
+        lhs.holdings == rhs.holdings &&
+        lhs.currentValue == rhs.currentValue &&
+        lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
+        lhs.change == rhs.change &&
+        lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
     }
 }

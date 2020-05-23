@@ -228,7 +228,10 @@ class HoldingTests: XCTestCase {
 
         let newHolding = holding.update(with: stock)
 
+        XCTAssertNotEqual(holding.id, newHolding.id)
         XCTAssertEqual(newHolding.quantity, 10)
+        XCTAssertNotNil(newHolding.stock)
+        XCTAssertEqual(newHolding.stock, stock)
         XCTAssertEqual(newHolding.company?.name, "Apple Inc.")
         XCTAssertEqual(newHolding.company?.currency, .usDollars)
         XCTAssertEqual(newHolding.currentValue, 1900)
@@ -253,28 +256,28 @@ class HoldingTests: XCTestCase {
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrency() {
-        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let stock = Stock.apple
         let currencyPairs = [
             CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
         ]
 
-        _ = sut.update(with: stock)
-        _ = sut.update(with: currencyPairs, to: .danishKroner)
+        var sut = holding.update(with: stock)
+        sut = sut.update(with: currencyPairs, to: .danishKroner)
 
         XCTAssertEqual(sut.costBasisInLocalCurrency.rounded, 6896.55)
         XCTAssertEqual(sut.currentValueInLocalCurrency.rounded, 12413.79)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {
-        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let stock = Stock.apple
         let currencyPairs = [
             CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
         ]
 
-        _ = sut.update(with: stock)
-        _ = sut.update(with: currencyPairs, to: .usDollars)
+        var sut = holding.update(with: stock)
+        sut = sut.update(with: currencyPairs, to: .usDollars)
 
         XCTAssertEqual(sut.costBasisInLocalCurrency, 1000)
         XCTAssertEqual(sut.currentValueInLocalCurrency, 1800)
@@ -294,8 +297,8 @@ class HoldingTests: XCTestCase {
 
     // MARK: Test Protocol Conformances
 
-    func testEquatable() {
-        // Test with equal quantity
+    func testEquatableEqualObjectsAreEqual() {
+        // Test equal objects
         var holding1 = Holding(symbol: Self.symbol)
         holding1.quantity = 5
         holding1.currentValue = 1000
@@ -304,7 +307,23 @@ class HoldingTests: XCTestCase {
         holding2.currentValue = 1000
         XCTAssertEqual(holding1, holding2)
 
-        // Test with different quantities
+        // Test different objects
+        holding1.quantity = 3
+        holding1.currentValue = 2000
+        XCTAssertNotEqual(holding1, holding2)
+    }
+
+    func testEquatableDifferentObjectsAreNotEqual() {
+        // Test equal objects
+        var holding1 = Holding(symbol: Self.symbol)
+        holding1.quantity = 5
+        holding1.currentValue = 1000
+        var holding2 = holding1
+        holding2.quantity = 5
+        holding2.currentValue = 1000
+        XCTAssertEqual(holding1, holding2)
+
+        // Test different objects
         holding1.quantity = 3
         holding1.currentValue = 2000
         XCTAssertNotEqual(holding1, holding2)
