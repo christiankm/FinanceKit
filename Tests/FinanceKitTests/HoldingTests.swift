@@ -213,12 +213,12 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfAAPL.costBasis)
     }
 
-    // MARK: Test Update and mutating functions
+    // MARK: Test Update functions
 
     func testUpdateWithStock() {
         let aapl = Symbol.aapl
         let currency = Currency.usDollars
-        var holding = Holding(symbol: aapl, quantity: 10, costBasis: 1000)
+        let holding = Holding(symbol: aapl, quantity: 10, costBasis: 1000)
         let stock = Stock(
             symbol: aapl,
             company: Company(symbol: aapl, name: "Apple Inc.", currency: currency),
@@ -242,7 +242,7 @@ class HoldingTests: XCTestCase {
         let aapl = Symbol.aapl
         let cake = Symbol.cake
         let currency = Currency.usDollars
-        var holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
+        let holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
         let stock = Stock(
             symbol: cake,
             company: Company(symbol: cake, name: "Cheesecake Factory", currency: currency),
@@ -284,7 +284,7 @@ class HoldingTests: XCTestCase {
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency() {
-        var sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        let sut = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let currencyPairs = [
             CurrencyPair(baseCurrency: .usDollars, secondaryCurrency: .danishKroner, rate: 7.0)
         ]
@@ -298,35 +298,15 @@ class HoldingTests: XCTestCase {
     // MARK: Test Protocol Conformances
 
     func testEquatableEqualObjectsAreEqual() {
-        // Test equal objects
-        var holding1 = Holding(symbol: Self.symbol)
-        holding1.quantity = 5
-        holding1.currentValue = 1000
-        var holding2 = holding1
-        holding2.quantity = 5
-        holding2.currentValue = 1000
+        let holding1 = Holding(symbol: Self.symbol)
+        let holding2 = holding1
         XCTAssertEqual(holding1, holding2)
-
-        // Test different objects
-        holding1.quantity = 3
-        holding1.currentValue = 2000
-        XCTAssertNotEqual(holding1, holding2)
     }
 
     func testEquatableDifferentObjectsAreNotEqual() {
-        // Test equal objects
-        var holding1 = Holding(symbol: Self.symbol)
-        holding1.quantity = 5
-        holding1.currentValue = 1000
-        var holding2 = holding1
-        holding2.quantity = 5
-        holding2.currentValue = 1000
-        XCTAssertEqual(holding1, holding2)
-
-        // Test different objects
-        holding1.quantity = 3
-        holding1.currentValue = 2000
-        XCTAssertNotEqual(holding1, holding2)
+        let holdingC = Holding(symbol: .aapl)
+        let holdingD = Holding(symbol: .aapl)
+        XCTAssertNotEqual(holdingC, holdingD)
     }
 
     func testComparable() {

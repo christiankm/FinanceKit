@@ -46,11 +46,11 @@ class PortfolioTests: XCTestCase {
             Holding(symbol: .ko, quantity: 22, costBasis: 0, costBasisInLocalCurrency: 12.83, currentValue: 0, currentValueInLocalCurrency: 0),
             Holding(symbol: .cake, quantity: 5, costBasis: 0, costBasisInLocalCurrency: 44.21, currentValue: 0, currentValueInLocalCurrency: 0)
         ]
-        var sut = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
+        let portfolio = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
         var stock = Stock.apple
         stock.price = 180
 
-        sut.update(with: stock)
+        let sut = portfolio.update(with: stock)
 
         let appleHolding = sut.holdings.first { $0.symbol == .aapl }
         let cakeHolding = sut.holdings.first { $0.symbol == .cake }
@@ -68,7 +68,7 @@ class PortfolioTests: XCTestCase {
             Holding(symbol: .ko, quantity: 22, costBasis: 0, costBasisInLocalCurrency: 12.83, currentValue: 0, currentValueInLocalCurrency: 0),
             Holding(symbol: .cake, quantity: 5, costBasis: 0, costBasisInLocalCurrency: 44.21, currentValue: 0, currentValueInLocalCurrency: 0)
         ]
-        var sut = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
+        let portfolio = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
 
         var appleStock = Stock.apple
         appleStock.price = 182.00
@@ -77,7 +77,7 @@ class PortfolioTests: XCTestCase {
 
         // Only update two of them, to test no holdings are removed
         let stocks = [appleStock, cakeStock]
-        sut.update(with: stocks)
+        let sut = portfolio.update(with: stocks)
 
         let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
         let cakeHolding = sut.holdings.first { $0.symbol == .cake }!
@@ -100,10 +100,10 @@ class PortfolioTests: XCTestCase {
             CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
         ]
 
-        var sut = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
+        let portfolio = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
 
-        sut.update(with: [.apple, .cake, .coke])
-        sut.update(with: currencyPairs, to: .danishKroner)
+        var sut = portfolio.update(with: [.apple, .cake, .coke])
+        sut = sut.update(with: currencyPairs, to: .danishKroner)
 
         let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
         let cakeHolding = sut.holdings.first { $0.symbol == .cake }!

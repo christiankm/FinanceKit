@@ -169,7 +169,6 @@ extension MoneyTests {
         ("testDescription", testDescription),
         ("testDivision", testDivision),
         ("testDivisionbyZeroReturnsNil", testDivisionbyZeroReturnsNil),
-        ("testEncodeToEncoder", testEncodeToEncoder),
         ("testEquatable", testEquatable),
         ("testFormattedAmountWithCurrency", testFormattedAmountWithCurrency),
         ("testFormattedAmountWithoutCurrency", testFormattedAmountWithoutCurrency),
