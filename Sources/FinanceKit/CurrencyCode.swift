@@ -13,7 +13,8 @@ import Foundation
 /// A currency code is a three-letter code that is usually composed of a country’s two-character Internet country code and the currency unit.
 /// For example, the currency code for the Australian dollar is “AUD”.
 public enum CurrencyCode: String, Codable, CaseIterable {
-    case afghani = "AFN",
+    case none = "",
+    afghani = "AFN",
     algerianDinar = "DZD",
     argentinePeso = "ARS",
     armenianDram = "AMD",
