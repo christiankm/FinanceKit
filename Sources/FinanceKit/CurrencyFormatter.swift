@@ -18,8 +18,12 @@ public struct CurrencyFormatter {
         self.currency = currency
         self.locale = locale
 
-        formatter.locale = locale
-        formatter.currencyCode = currency.code.rawValue
+        self.formatter.locale = locale
+        self.formatter.currencyCode = currency.code.rawValue
+
+        if currency.code == .none {
+            self.formatter.numberStyle = .decimal
+        }
     }
 
     public func decimal(from string: String) -> Decimal? {

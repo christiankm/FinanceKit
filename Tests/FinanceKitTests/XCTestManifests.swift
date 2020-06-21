@@ -48,6 +48,7 @@ extension CurrencyFormatterTests {
         ("testDecimalFromString", testDecimalFromString),
         ("testMoneyFromString", testMoneyFromString),
         ("testStringFromDecimal", testStringFromDecimal),
+        ("testStringFromDecimalWithNoCurrency", testStringFromDecimalWithNoCurrency),
         ("testStringFromMoney", testStringFromMoney),
         ("testStringFromMoneyLocalCurrency", testStringFromMoneyLocalCurrency),
         ("testStringFromMoneyNonLocalCurrency", testStringFromMoneyNonLocalCurrency),

@@ -23,6 +23,12 @@ class CurrencyFormatterTests: XCTestCase {
         XCTAssertEqual(money.currency, .usDollars)
     }
 
+    func testStringFromDecimalWithNoCurrency() {
+        let sut = CurrencyFormatter(currency: Currency(code: .none))
+        let string = sut.string(from: Decimal(1234.99))!
+        XCTAssertEqual(string, "1,234.99")
+    }
+
     func testStringFromDecimal() {
         let sut = CurrencyFormatter(currency: .usDollars)
         let string = sut.string(from: Decimal(1234.99))!
