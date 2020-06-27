@@ -226,7 +226,8 @@ class HoldingTests: XCTestCase {
 
     func testUpdateWithStock() {
         let currency = Currency.usDollars
-        let holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        var holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        holding.accumulatedDividends = 20
         let stock = Stock(
             symbol: .aapl,
             company: .apple,
@@ -246,16 +247,18 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(newHolding.change.amount, 900)
         XCTAssertEqual(newHolding.costBasis, 1000)
         XCTAssertEqual(newHolding.costBasisInLocalCurrency, 0)
-        XCTAssertEqual(newHolding.adjustedCostBasis, 1000)
+        XCTAssertEqual(newHolding.accumulatedDividends, 20)
+        XCTAssertEqual(newHolding.adjustedCostBasis, 980)
         XCTAssertEqual(newHolding.averageCostPerShare, 100)
-        XCTAssertEqual(newHolding.averageAdjustedCostPerShare, 100)
+        XCTAssertEqual(newHolding.averageAdjustedCostPerShare, 98)
     }
 
     func testUpdateWithStockWithDifferentSymbol() {
         let aapl = Symbol.aapl
         let cake = Symbol.cake
         let currency = Currency.usDollars
-        let holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
+        var holding = Holding(symbol: aapl, quantity: 10, costBasis: 100)
+        holding.accumulatedDividends = 20
         let stock = Stock(
             symbol: cake,
             company: Company(symbol: cake, name: "Cheesecake Factory", currency: currency),
@@ -269,7 +272,9 @@ class HoldingTests: XCTestCase {
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrency() {
-        let holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        var holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
+        holding.accumulatedDividends = 30
+
         let stock = Stock.apple
         let currencyPairs = [
             CurrencyPair(baseCurrency: .danishKroner, secondaryCurrency: .usDollars, rate: 0.145)
@@ -280,6 +285,7 @@ class HoldingTests: XCTestCase {
 
         XCTAssertEqual(sut.costBasisInLocalCurrency.rounded, 6896.55)
         XCTAssertEqual(sut.currentValueInLocalCurrency.rounded, 12413.79)
+        XCTAssertEqual(sut.adjustedCostBasisInLocalCurrency.rounded, 6689.66, accuracy: 0.001)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {

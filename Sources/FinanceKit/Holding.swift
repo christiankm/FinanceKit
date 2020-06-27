@@ -46,6 +46,12 @@ public struct Holding: Identifiable, Hashable, Codable {
         return costBasis - accumulatedDividends
     }
 
+    public internal(set) var adjustedCostBasisInLocalCurrency: Price {
+        didSet {
+            adjustedCostBasisInLocalCurrency = max(adjustedCostBasisInLocalCurrency, 0)
+        }
+    }
+
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
         guard isActive else { return 0 }
@@ -95,13 +101,15 @@ public struct Holding: Identifiable, Hashable, Codable {
 
     public init(symbol: Symbol, quantity: Quantity = 0, costBasis: Price = 0,
                 costBasisInLocalCurrency: Price = 0, currentValue: Price = 0,
-                currentValueInLocalCurrency: Price = 0) {
+                currentValueInLocalCurrency: Price = 0,
+                adjustedCostBasisInLocalCurrency: Price = 0) {
         self.symbol = symbol
         self.quantity = max(quantity, 0)
         self.costBasis = max(costBasis, 0)
         self.costBasisInLocalCurrency = max(costBasisInLocalCurrency, 0)
         self.currentValue = currentValue
         self.currentValueInLocalCurrency = currentValueInLocalCurrency
+        self.adjustedCostBasisInLocalCurrency = adjustedCostBasisInLocalCurrency
     }
 
     public static func makeHoldings(with transactions: [Transaction]) -> [Holding] {
@@ -181,6 +189,7 @@ public struct Holding: Identifiable, Hashable, Codable {
         )
         newHolding.stock = updatedStock
         newHolding.company = updatedStock.company
+        newHolding.accumulatedDividends = accumulatedDividends
 
         return newHolding
     }
@@ -197,11 +206,14 @@ public struct Holding: Identifiable, Hashable, Codable {
 
         var updatedCurrencyValue = currentValue
         var updatedCostBasis = costBasis
+        var updatedAdjustedCostBasis = adjustedCostBasis
 
         if companyCurrency != baseCurrency {
             if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
-                updatedCurrencyValue = currentValue / Decimal(pair.rate)
-                updatedCostBasis = costBasis / Decimal(pair.rate)
+                let rate = Decimal(pair.rate)
+                updatedCurrencyValue = currentValue / rate
+                updatedCostBasis = costBasis / rate
+                updatedAdjustedCostBasis = adjustedCostBasis / rate
             }
         }
 
@@ -211,10 +223,12 @@ public struct Holding: Identifiable, Hashable, Codable {
             costBasis: costBasis,
             costBasisInLocalCurrency: updatedCostBasis,
             currentValue: currentValue,
-            currentValueInLocalCurrency: updatedCurrencyValue
+            currentValueInLocalCurrency: updatedCurrencyValue,
+            adjustedCostBasisInLocalCurrency: updatedAdjustedCostBasis
         )
         newHolding.stock = stock
         newHolding.company = company
+        newHolding.accumulatedDividends = accumulatedDividends
 
         return newHolding
     }
