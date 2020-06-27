@@ -10,7 +10,7 @@ import Foundation
 
 public struct Stock: Asset, Identifiable, Equatable, Codable {
 
-    public let id = UUID()
+    public var id = UUID()
     public let symbol: Symbol
     public let company: Company
     public var price: Decimal

@@ -118,7 +118,8 @@ public struct Money: Hashable {
     /// Converts and returns a new `Money` in the given currency with a new amount.
     /// - Parameter to: The currency the money should be in.
     /// - Parameter at: The conversion rate to use.
-    /// - Returns: A new `Money` with the converted amount in the given currency. If the current currency is nil, no conversion is made, and the new Money will have the same amount.
+    /// - Returns: A new `Money` with the converted amount in the given currency.
+    /// If the current currency is nil, no conversion is made, and the new Money will have the same amount.
     public func convert(to targetCurrency: Currency, at rate: Double) -> Self {
         guard let fromCurrency = self.currency else {
             return Self(rawValue, in: currency)

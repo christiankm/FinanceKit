@@ -296,10 +296,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_84 /* Build configuration list for PBXNativeTarget "FinanceKit" */;
 			buildPhases = (
+				AA55AA75231ADE430073725E /* Run Swiftlint */,
 				OBJ_87 /* Sources */,
 				OBJ_131 /* Frameworks */,
-				AA55AA75231ADE430073725E /* Run Swiftlint */,
-				AA9F511323E327B700A8107B /* Run Pecker */,
 				AA7969A8241CC8C600759CC8 /* Generate XCTestManifest and LinuxMain */,
 			);
 			buildRules = (
@@ -408,24 +407,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "swift test --generate-linuxmain\n";
-		};
-		AA9F511323E327B700A8107B /* Run Pecker */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Pecker";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which pecker >/dev/null; then\n  pecker\nelse\n  echo \"warning: Pecker not installed, download from https://github.com/woshiccm/Pecker\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

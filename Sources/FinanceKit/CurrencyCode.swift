@@ -10,7 +10,8 @@ import Foundation
 
 /// Contains all available currencies which a monetary value could be of.
 /// Currencies are uniquely identified by their currency code after the ISO 4217 standard.
-/// A currency code is a three-letter code that is usually composed of a country’s two-character Internet country code and the currency unit.
+/// A currency code is a three-letter code that is usually composed of
+/// a country’s two-character Internet country code and the currency unit.
 /// For example, the currency code for the Australian dollar is “AUD”.
 public enum CurrencyCode: String, Codable, CaseIterable {
     case none = "",

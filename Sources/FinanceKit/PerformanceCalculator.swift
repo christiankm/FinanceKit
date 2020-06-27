@@ -11,7 +11,8 @@ public struct PerformanceCalculator {
 
     public init() {}
 
-    public func totalChange(from startDate: Date, with transactions: [Transaction], historicalPrices: [Symbol: [HistoricalPrice]]) -> Change {
+    public func totalChange(from startDate: Date, with transactions: [Transaction],
+                            historicalPrices: [Symbol: [HistoricalPrice]]) -> Change {
         totalChange(between: startDate, and: Date(), with: transactions, historicalPrices: historicalPrices)
     }
 
@@ -25,7 +26,11 @@ public struct PerformanceCalculator {
 
         holdings.forEach { holding in
             guard let holdingHistoricalData = historicalPrices[holding.symbol] else { return }
-            let historicalDataInPeriod = holdingHistoricalData.filter { $0.date.isLaterThanOrSameAs(startDate) && $0.date.isEarlierThanOrSameAs(endDate) }.sorted { $0.date < $1.date }
+            let historicalDataInPeriod = holdingHistoricalData
+                .filter { data in
+                data.date.isLaterThanOrSameAs(startDate) && data.date.isEarlierThanOrSameAs(endDate)
+                }
+                .sorted { $0.date < $1.date }
 
             totalHistoricalPrice += historicalDataInPeriod.first?.price ?? 0
             totalCurrentPrice += historicalDataInPeriod.last?.price ?? 0
