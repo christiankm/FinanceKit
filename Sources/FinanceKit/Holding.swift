@@ -11,7 +11,7 @@ import Foundation
 public struct Holding: Identifiable, Hashable, Codable {
 
     /// A unique identifier that identifies this holding.
-    public let id = UUID()
+    public var id = UUID()
 
     public let symbol: Symbol
 
@@ -25,6 +25,10 @@ public struct Holding: Identifiable, Hashable, Codable {
     }
 
     /// The total cost basis for all transactions.
+    /// Dividends and buybacks are not subtracted into this calculation.
+    /// It is therefore the plain purchase price divided by the number of shares.
+    /// See `adjustedCostBasis` to include dividends.
+    /// Commissions are included in this cost.
     public internal(set) var costBasis: Price {
         didSet {
             costBasis = max(costBasis, 0)
@@ -33,23 +37,34 @@ public struct Holding: Identifiable, Hashable, Codable {
 
     public internal(set) var costBasisInLocalCurrency: Price {
         didSet {
-            costBasis = max(costBasis, 0)
+            costBasisInLocalCurrency = max(costBasisInLocalCurrency, 0)
         }
     }
 
-    public internal(set) var commissionPaid: Price = 0
+    public var adjustedCostBasis: Price {
+        guard isActive else { return 0 }
+        return costBasis - accumulatedDividends
+    }
 
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
-        guard quantity > 0 else { return 0 }
+        guard isActive else { return 0 }
         return costBasis / Decimal(quantity)
     }
 
+    public var averageAdjustedCostPerShare: Price {
+        guard isActive else { return 0 }
+        return adjustedCostBasis / Decimal(quantity)
+    }
+
+    @available(*, deprecated, renamed: "averageAdjustedCostPerShare")
     public var averageAdjustedCostBasisPerShare: Price {
-        (costBasis - accumulatedDividends) / Decimal(quantity)
+        averageAdjustedCostPerShare
     }
 
     public internal(set) var accumulatedDividends: Amount = 0
+
+    public internal(set) var commissionPaid: Price = 0
 
     public var displayName: String {
         company?.name ?? symbol.rawValue
@@ -74,6 +89,10 @@ public struct Holding: Identifiable, Hashable, Codable {
         return Percentage(Double(quantity) / Double(outstandingShares))
     }
 
+    internal var isActive: Bool {
+        quantity > 0
+    }
+
     public init(symbol: Symbol, quantity: Quantity = 0, costBasis: Price = 0,
                 costBasisInLocalCurrency: Price = 0, currentValue: Price = 0,
                 currentValueInLocalCurrency: Price = 0) {
@@ -91,19 +110,18 @@ public struct Holding: Identifiable, Hashable, Codable {
         }
 
         // Sort transactions by date to be sure they are
-        // processed in the real-time order.
+        // processed in the right historical order.
         let sortedTransactions = transactions.sorted()
 
         var holdings: [Holding] = []
         sortedTransactions.forEach { transaction in
-            let symbol = transaction.symbol
             let quantity = transaction.quantity
             let price = transaction.price
             let costBasis = price * Decimal(quantity) + transaction.commission
 
-            // If a holding already exists for this symbol,
-            // update quantity and cost basis. Else add a new holding to the array
-            if var holding = holdings.first(where: { $0.symbol == symbol }) {
+            // If a holding already exists for this symbol, update quantity and cost basis.
+            // Otherwise add a new holding to the array
+            if var holding = holdings.contains(symbol: transaction.symbol) {
                 holding.commissionPaid += transaction.commission
 
                 switch transaction.type {
@@ -114,15 +132,14 @@ public struct Holding: Identifiable, Hashable, Codable {
                     holding.quantity -= quantity
                     holding.costBasis -= costBasis
                 case .dividend:
-                    holding.costBasis -= costBasis
                     holding.accumulatedDividends += Decimal(transaction.quantity) * transaction.price
                 }
 
                 // Remove previous and re-add newly calculated holding
-                holdings.removeAll { $0.symbol == symbol }
+                holdings.removeAll { $0.symbol == transaction.symbol }
                 holdings.append(holding)
             } else {
-                var holding = Holding(symbol: symbol)
+                var holding = Holding(symbol: transaction.symbol)
                 holding.commissionPaid += transaction.commission
 
                 switch transaction.type {
@@ -139,7 +156,7 @@ public struct Holding: Identifiable, Hashable, Codable {
             }
         }
 
-        return holdings.filter { $0.quantity > 0 }
+        return holdings.active
     }
 
     /// Updates the holding with the current price of the specified stock.
@@ -221,5 +238,16 @@ extension Holding: Equatable {
         lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
         lhs.change == rhs.change &&
         lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
+    }
+}
+
+extension Array where Element == Holding {
+
+    public var active: [Holding] {
+        filter { $0.isActive }
+    }
+
+    public func contains(symbol: Symbol) -> Holding? {
+        first { $0.symbol == symbol }
     }
 }

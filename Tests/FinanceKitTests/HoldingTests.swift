@@ -54,15 +54,26 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.costBasis, 0)
     }
 
+    func testCostBasis() {
+        let holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 16)
+        XCTAssertEqual(holding.costBasis, 16)
+    }
+
+    func testAdjustedCostBasis() {
+        var holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 160)
+        holding.accumulatedDividends = 30
+        XCTAssertEqual(holding.adjustedCostBasis, 130)
+    }
+
     func testAverageCostPerShare() {
         let holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 16)
         XCTAssertEqual(holding.averageCostPerShare, 1.6)
     }
 
-    func testAverageAdjustedCostbasisPerShare() {
+    func testAverageAdjustedCostBasisPerShare() {
         var holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 160)
         holding.accumulatedDividends = 30
-        XCTAssertEqual(holding.averageAdjustedCostBasisPerShare, 13)
+        XCTAssertEqual(holding.averageAdjustedCostPerShare, 13)
     }
 
     func testOwnership() {
@@ -165,16 +176,14 @@ class HoldingTests: XCTestCase {
     func testMakeHoldingsWithBuyAndSellTransactionsInUnsortedOrder() {
         let today = Date()
         let tomorrow = today.addingTimeInterval(86400)
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
         let transactions = [
-            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
-            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
-            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
-            Transaction(type: .sell, symbol: cake, date: tomorrow, price: 60, quantity: 10, commission: 13),
-            Transaction(type: .sell, symbol: aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
-            Transaction(type: .buy, symbol: aapl, date: today, price: 100, quantity: 20, commission: 13),
-            Transaction(type: .buy, symbol: cake, date: today, price: 60, quantity: 10, commission: 13)
+            Transaction(type: .sell, symbol: .aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .sell, symbol: .aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .sell, symbol: .aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .sell, symbol: .cake, date: tomorrow, price: 60, quantity: 10, commission: 13),
+            Transaction(type: .sell, symbol: .aapl, date: tomorrow, price: 120, quantity: 5, commission: 13),
+            Transaction(type: .buy, symbol: .aapl, date: today, price: 100, quantity: 20, commission: 13),
+            Transaction(type: .buy, symbol: .cake, date: today, price: 60, quantity: 10, commission: 13)
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
@@ -183,12 +192,10 @@ class HoldingTests: XCTestCase {
     }
 
     func testMakeHoldingsWithOnlyDividendTransactions() {
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
         let transactions = [
-            Transaction(type: .dividend, symbol: aapl, date: Date(), price: 0.4, quantity: 5),
-            Transaction(type: .dividend, symbol: aapl, date: Date(), price: 0.4, quantity: 5),
-            Transaction(type: .dividend, symbol: cake, date: Date(), price: 0.6, quantity: 10)
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.4, quantity: 5),
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.4, quantity: 5),
+            Transaction(type: .dividend, symbol: .cake, date: Date(), price: 0.6, quantity: 10)
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
@@ -196,34 +203,35 @@ class HoldingTests: XCTestCase {
     }
 
     func testMakeHoldingsWithBuyAndSellAndDividendTransactions() {
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
         let transactions = [
-            Transaction(type: .buy, symbol: aapl, date: Date(), price: 100, quantity: 5, commission: 13),
-            Transaction(type: .buy, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13),
-            Transaction(type: .dividend, symbol: aapl, date: Date(), price: 0.5, quantity: 10),
-            Transaction(type: .sell, symbol: aapl, date: Date(), price: 120, quantity: 3, commission: 13),
-            Transaction(type: .dividend, symbol: aapl, date: Date(), price: 0.6, quantity: 7)
+            Transaction(type: .buy, symbol: .aapl, date: Date(), price: 100, quantity: 5, commission: 13),
+            Transaction(type: .buy, symbol: .aapl, date: Date(), price: 120, quantity: 5, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.5, quantity: 10),
+            Transaction(type: .sell, symbol: .aapl, date: Date(), price: 120, quantity: 3, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.6, quantity: 7)
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
 
-        let expectedHoldingOfAAPL = Holding(symbol: aapl, quantity: 7, costBasis: 743.8)
         XCTAssertEqual(holdings.count, 1)
-        XCTAssertEqual(holdings[0].quantity, expectedHoldingOfAAPL.quantity)
-        XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfAAPL.costBasis)
+        XCTAssertEqual(holdings[0].quantity, 7)
+        XCTAssertEqual(holdings[0].accumulatedDividends, 9.2)
+        XCTAssertEqual(holdings[0].costBasis, 753)
+        XCTAssertEqual(holdings[0].adjustedCostBasis, 743.8)
+        XCTAssertEqual(holdings[0].averageCostPerShare, 107.57, accuracy: 0.1)
+        XCTAssertEqual(holdings[0].averageAdjustedCostPerShare, 106.25, accuracy: 0.1)
     }
 
     // MARK: Test Update functions
 
     func testUpdateWithStock() {
-        let aapl = Symbol.aapl
         let currency = Currency.usDollars
-        let holding = Holding(symbol: aapl, quantity: 10, costBasis: 1000)
+        let holding = Holding(symbol: .aapl, quantity: 10, costBasis: 1000)
         let stock = Stock(
-            symbol: aapl,
-            company: Company(symbol: aapl, name: "Apple Inc.", currency: currency),
+            symbol: .aapl,
+            company: .apple,
             price: 190,
-            currency: .usDollars
+            currency: currency
         )
 
         let newHolding = holding.update(with: stock)
@@ -236,6 +244,11 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(newHolding.company?.currency, .usDollars)
         XCTAssertEqual(newHolding.currentValue, 1900)
         XCTAssertEqual(newHolding.change.amount, 900)
+        XCTAssertEqual(newHolding.costBasis, 1000)
+        XCTAssertEqual(newHolding.costBasisInLocalCurrency, 0)
+        XCTAssertEqual(newHolding.adjustedCostBasis, 1000)
+        XCTAssertEqual(newHolding.averageCostPerShare, 100)
+        XCTAssertEqual(newHolding.averageAdjustedCostPerShare, 100)
     }
 
     func testUpdateWithStockWithDifferentSymbol() {

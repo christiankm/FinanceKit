@@ -127,11 +127,13 @@ extension HoldingTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__HoldingTests = [
-        ("testAverageAdjustedCostbasisPerShare", testAverageAdjustedCostbasisPerShare),
+        ("testAdjustedCostBasis", testAdjustedCostBasis),
+        ("testAverageAdjustedCostBasisPerShare", testAverageAdjustedCostBasisPerShare),
         ("testAverageCostPerShare", testAverageCostPerShare),
         ("testChange", testChange),
         ("testChangeInLocalCurrency", testChangeInLocalCurrency),
         ("testComparable", testComparable),
+        ("testCostBasis", testCostBasis),
         ("testDisplayNameWhenCompanyIsCompanyName", testDisplayNameWhenCompanyIsCompanyName),
         ("testDisplayNameWhenNoCompanyIsSymbol", testDisplayNameWhenNoCompanyIsSymbol),
         ("testEquatableDifferentObjectsAreNotEqual", testEquatableDifferentObjectsAreNotEqual),
