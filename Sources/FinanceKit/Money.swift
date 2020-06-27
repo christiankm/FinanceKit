@@ -184,10 +184,21 @@ extension Money: Comparable {
 extension Money: Codable {
 
     public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let rawValue = try container.decode(Decimal.self)
-        do {
-            self.init(rawValue)
+        if let singleValueContainer = try? decoder.singleValueContainer() {
+            var amount: Double?
+            if let double = try? singleValueContainer.decode(Double.self) {
+                amount = double
+            }
+
+            if let amount = amount {
+                self.rawValue = Decimal(amount)
+                self.currency = .none
+            } else {
+                throw DecodingError.dataCorruptedError(in: singleValueContainer, debugDescription: "Could not decode value for amount")
+            }
+        } else {
+            let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not decode Money value")
+            throw DecodingError.dataCorrupted(context)
         }
     }
 
