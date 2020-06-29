@@ -143,7 +143,7 @@
 		AAE677822392979A0053B303 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		AAE67784239298550053B303 /* Holding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holding.swift; sourceTree = "<group>"; };
 		AAFA769223D994B70087A82D /* HoldingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingTests.swift; sourceTree = "<group>"; };
-		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"FinanceKit::FinanceKit::Product" /* FinanceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FinanceKit::FinanceKitTests::Product" /* FinanceKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		OBJ_13 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -650,6 +650,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
+				MARKETING_VERSION = 0.5.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -677,6 +678,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
+				MARKETING_VERSION = 0.5.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
