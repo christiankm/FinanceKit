@@ -201,30 +201,27 @@ public struct Holding: Identifiable, Hashable, Codable {
     /// - Returns: If the holdings company has a currency, and a matching currency pair,
     /// it returns the converted holding, otherwise it returns a holding where the local values
     /// is equal to the base values.
-    public func update(with currencyPairs: [CurrencyPair], to baseCurrency: Currency) -> Holding {
+    public func update(with currencyPairs: [CurrencyPair], to targetCurrency: Currency) -> Holding {
         guard let companyCurrency = company?.currency else { return self }
 
-        var updatedCurrencyValue = currentValue
-        var updatedCostBasis = costBasis
-        var updatedAdjustedCostBasis = adjustedCostBasis
-
-        if companyCurrency != baseCurrency {
-            if let pair = currencyPairs.first(where: { $0.baseCurrency == baseCurrency && $0.secondaryCurrency == companyCurrency }) {
-                let rate = Decimal(pair.rate)
-                updatedCurrencyValue = currentValue / rate
-                updatedCostBasis = costBasis / rate
-                updatedAdjustedCostBasis = adjustedCostBasis / rate
-            }
-        }
+        let converter = CurrencyConverter()
+        let convertedCurrentValue = converter.convert(currentValue, from: companyCurrency, to: targetCurrency, with: currencyPairs)
+        let convertedCostBasis = converter.convert(costBasis, from: companyCurrency, to: targetCurrency, with: currencyPairs)
+        let convertedAdjustedCostBasis = converter.convert(
+            adjustedCostBasis,
+            from: companyCurrency,
+            to: targetCurrency,
+            with: currencyPairs
+        )
 
         var newHolding = Holding(
             symbol: symbol,
             quantity: quantity,
             costBasis: costBasis,
-            costBasisInLocalCurrency: updatedCostBasis,
+            costBasisInLocalCurrency: convertedCostBasis,
             currentValue: currentValue,
-            currentValueInLocalCurrency: updatedCurrencyValue,
-            adjustedCostBasisInLocalCurrency: updatedAdjustedCostBasis
+            currentValueInLocalCurrency: convertedCurrentValue,
+            adjustedCostBasisInLocalCurrency: convertedAdjustedCostBasis
         )
         newHolding.stock = stock
         newHolding.company = company

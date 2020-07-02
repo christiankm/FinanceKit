@@ -33,7 +33,10 @@ extension CurrencyConverterTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__CurrencyConverterTests = [
+        ("testConvertAmountFromCurrencyToCurrencyAtOneToOneRate", testConvertAmountFromCurrencyToCurrencyAtOneToOneRate),
         ("testConvertAmountFromCurrencyToCurrencyAtRate", testConvertAmountFromCurrencyToCurrencyAtRate),
+        ("testConvertAmountFromCurrencyToCurrencyWithCurrencyPairs", testConvertAmountFromCurrencyToCurrencyWithCurrencyPairs),
+        ("testConvertAmountFromCurrencyToCurrencyWithCurrencyPairsIfInverted", testConvertAmountFromCurrencyToCurrencyWithCurrencyPairsIfInverted),
         ("testConvertAmountWithCurrencyPairAtRate", testConvertAmountWithCurrencyPairAtRate),
         ("testConvertMoneyWithCurrencyToCurrencyAtRate", testConvertMoneyWithCurrencyToCurrencyAtRate),
         ("testConvertMoneyWithoutCurrencyToCurrencyAtRate", testConvertMoneyWithoutCurrencyToCurrencyAtRate),

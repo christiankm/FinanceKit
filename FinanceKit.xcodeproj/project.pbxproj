@@ -52,6 +52,7 @@
 		AA6835CD2456214000DF1A08 /* Date+ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6835CC2456214000DF1A08 /* Date+ComparisonTests.swift */; };
 		AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */; };
 		AA69851D2377351800D0683C /* SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69851C2377351800D0683C /* SymbolTests.swift */; };
+		AA6C248424ACCD5800056AAA /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C248324ACCD5800056AAA /* ExchangeRate.swift */; };
 		AA7A62B123E5D3F20094DC2B /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A62B023E5D3F20094DC2B /* Exchange.swift */; };
 		AA7DA6F12391DA4400EF65F5 /* CurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */; };
 		AA8474E52389CAF200B23520 /* DecimalDoubleValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */; };
@@ -127,6 +128,7 @@
 		AA69850523760EF000D0683C /* FinanceKit.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinanceKit.xctestplan; sourceTree = "<group>"; };
 		AA69850823760EFC00D0683C /* Decimal+DoubleValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal+DoubleValue.swift"; sourceTree = "<group>"; };
 		AA69851C2377351800D0683C /* SymbolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolTests.swift; sourceTree = "<group>"; };
+		AA6C248324ACCD5800056AAA /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		AA7A62B023E5D3F20094DC2B /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCode.swift; sourceTree = "<group>"; };
 		AA8474E42389CAF200B23520 /* DecimalDoubleValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDoubleValueTests.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				OBJ_35 /* Stock.swift */,
 				OBJ_44 /* Symbol.swift */,
 				OBJ_47 /* Transaction.swift */,
+				AA6C248324ACCD5800056AAA /* ExchangeRate.swift */,
 			);
 			name = FinanceKit;
 			path = Sources/FinanceKit;
@@ -482,6 +485,7 @@
 				AA2721AA244E383500BEB19D /* Percentage.swift in Sources */,
 				OBJ_123 /* Symbol.swift in Sources */,
 				AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */,
+				AA6C248424ACCD5800056AAA /* ExchangeRate.swift in Sources */,
 				AA6835CB2456210100DF1A08 /* Date+Comparison.swift in Sources */,
 				OBJ_126 /* Transaction.swift in Sources */,
 				AA2721A6244E199C00BEB19D /* Date+Ranges.swift in Sources */,
@@ -650,7 +654,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -678,7 +682,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";

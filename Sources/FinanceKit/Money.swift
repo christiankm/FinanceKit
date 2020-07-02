@@ -120,15 +120,15 @@ public struct Money: Hashable {
     /// - Parameter at: The conversion rate to use.
     /// - Returns: A new `Money` with the converted amount in the given currency.
     /// If the current currency is nil, no conversion is made, and the new Money will have the same amount.
-    public func convert(to targetCurrency: Currency, at rate: Double) -> Self {
-        guard let fromCurrency = self.currency else {
+    public func convert(to targetCurrency: Currency, at rate: ExchangeRate) -> Self {
+        guard self.currency != nil else {
             return Self(rawValue, in: currency)
         }
 
         let converter = CurrencyConverter()
-        let convertedAmount = converter.convert(rawValue, from: fromCurrency, to: targetCurrency, at: rate)
+        let convertedAmount = converter.convert(self, to: targetCurrency, at: rate)
 
-        return Money(convertedAmount, in: targetCurrency)
+        return Money(convertedAmount.amount, in: targetCurrency)
     }
 }
 
