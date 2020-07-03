@@ -9,35 +9,35 @@ import XCTest
 
 class Date_ComparisonTests: XCTestCase {
 
-    func testIsEarlierThan() throws {
+    func testIsBefore() throws {
         let now = Date()
         let future = Date().addingTimeInterval(5000)
 
-        XCTAssertTrue(now.isEarlierThan(future))
-        XCTAssertFalse(now.isEarlierThan(now))
+        XCTAssertTrue(now.isBefore(future))
+        XCTAssertFalse(now.isBefore(now))
     }
 
-    func testIsLaterThan() throws {
+    func testIsAfter() throws {
         let now = Date()
         let future = Date().addingTimeInterval(5000)
 
-        XCTAssertFalse(now.isLaterThan(future))
-        XCTAssertFalse(now.isLaterThan(now))
+        XCTAssertFalse(now.isAfter(future))
+        XCTAssertFalse(now.isAfter(now))
     }
 
-    func testIsEarlierThanOrSame() throws {
+    func testIsBeforeOrSameAs() throws {
         let now = Date()
         let future = Date().addingTimeInterval(5000)
 
-        XCTAssertTrue(now.isEarlierThanOrSameAs(future))
-        XCTAssertTrue(now.isEarlierThanOrSameAs(now))
+        XCTAssertTrue(now.isBeforeOrSameAs(future))
+        XCTAssertTrue(now.isBeforeOrSameAs(now))
     }
 
-    func testIsLaterThanOrSame() throws {
+    func testIsAfterOrSameAs() throws {
         let now = Date()
         let future = Date().addingTimeInterval(5000)
 
-        XCTAssertFalse(now.isLaterThanOrSameAs(future))
-        XCTAssertTrue(now.isLaterThanOrSameAs(now))
+        XCTAssertFalse(now.isAfterOrSameAs(future))
+        XCTAssertTrue(now.isAfterOrSameAs(now))
     }
 }

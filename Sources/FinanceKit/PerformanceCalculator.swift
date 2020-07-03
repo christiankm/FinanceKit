@@ -28,7 +28,7 @@ public struct PerformanceCalculator {
             guard let holdingHistoricalData = historicalPrices[holding.symbol] else { return }
             let historicalDataInPeriod = holdingHistoricalData
                 .filter { data in
-                data.date.isLaterThanOrSameAs(startDate) && data.date.isEarlierThanOrSameAs(endDate)
+                    data.date.isAfterOrSameAs(startDate) && data.date.isBeforeOrSameAs(endDate)
                 }
                 .sorted { $0.date < $1.date }
 
@@ -40,7 +40,7 @@ public struct PerformanceCalculator {
     }
 
     internal func holdingsInPeriod(with transactions: [Transaction], from startDate: Date, to endDate: Date) -> [Holding] {
-        let transactionsInPeriod = transactions.filter { $0.date.isLaterThanOrSameAs(startDate) && $0.date.isEarlierThanOrSameAs(endDate) }
+        let transactionsInPeriod = transactions.filter { $0.date.isAfterOrSameAs(startDate) && $0.date.isBeforeOrSameAs(endDate) }
         return Holding.makeHoldings(with: transactionsInPeriod)
     }
 }

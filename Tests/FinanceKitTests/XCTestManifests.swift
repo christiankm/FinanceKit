@@ -90,10 +90,10 @@ extension Date_ComparisonTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__Date_ComparisonTests = [
-        ("testIsEarlierThan", testIsEarlierThan),
-        ("testIsEarlierThanOrSame", testIsEarlierThanOrSame),
-        ("testIsLaterThan", testIsLaterThan),
-        ("testIsLaterThanOrSame", testIsLaterThanOrSame),
+        ("testIsAfter", testIsAfter),
+        ("testIsAfterOrSameAs", testIsAfterOrSameAs),
+        ("testIsBefore", testIsBefore),
+        ("testIsBeforeOrSameAs", testIsBeforeOrSameAs),
     ]
 }
 
