@@ -191,5 +191,46 @@ class MoneyTests: XCTestCase {
         XCTAssertNotEqual(json, "0.5600000000000001024")
         XCTAssertEqual(json, "0.56")
     }
-}
 
+    // MARK: Sum and Average
+
+    func testSum() {
+        let elements = [
+            Money(12.0, in: .none),
+            Money(24.0, in: .none),
+            Money(36.0, in: .none),
+            Money(120.0, in: .none)
+        ]
+        XCTAssertEqual(elements.sum, Money(192))
+    }
+
+    func testSumReturnsNilIfElementsHaveDifferentCurrencies() {
+        let elements = [
+            Money(12.0, in: .none),
+            Money(24.0, in: nil),
+            Money(36.0, in: .danishKroner),
+            Money(120.0, in: .none)
+        ]
+        XCTAssertNil(elements.sum)
+    }
+
+    func testAverage() {
+        let elements = [
+            Money(12.0, in: .danishKroner),
+            Money(24.0, in: .danishKroner),
+            Money(36.0, in: .danishKroner),
+            Money(120.0, in: .danishKroner)
+        ]
+        XCTAssertEqual(elements.average, Money(48))
+    }
+
+    func testAverageReturnsNilIfElementsHaveDifferentCurrencies() {
+        let elements = [
+            Money(12.0, in: .none),
+            Money(24.0, in: nil),
+            Money(36.0, in: .danishKroner),
+            Money(120.0, in: .none)
+        ]
+        XCTAssertNil(elements.average)
+    }
+}

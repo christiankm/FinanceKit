@@ -171,6 +171,8 @@ extension MoneyTests {
     static let __allTests__MoneyTests = [
         ("testAddition", testAddition),
         ("testAmount", testAmount),
+        ("testAverage", testAverage),
+        ("testAverageReturnsNilIfElementsHaveDifferentCurrencies", testAverageReturnsNilIfElementsHaveDifferentCurrencies),
         ("testCodableInitFromDecoderKeyedContainer", testCodableInitFromDecoderKeyedContainer),
         ("testCodableInitFromDecoderSingleValueContainer", testCodableInitFromDecoderSingleValueContainer),
         ("testCodableInitFromDecoderUnkeyedContainer", testCodableInitFromDecoderUnkeyedContainer),
@@ -196,6 +198,8 @@ extension MoneyTests {
         ("testMultiplication", testMultiplication),
         ("testRoundingWithValueThatHasKnownRoundingIssue", testRoundingWithValueThatHasKnownRoundingIssue),
         ("testSubtracting", testSubtracting),
+        ("testSum", testSum),
+        ("testSumReturnsNilIfElementsHaveDifferentCurrencies", testSumReturnsNilIfElementsHaveDifferentCurrencies),
     ]
 }
 

@@ -8,4 +8,5 @@
 
 import Foundation
 
+/// `Quantity` is a typealias for `Int` used to describe the quantity of objects.
 public typealias Quantity = Int

@@ -7,8 +7,11 @@
 
 import Foundation
 
+/// CurrencyConverter allows you to convert monetary amounts from one currency to another
+/// given a selection of currency pairs, or a fixed exchange rate.
 public struct CurrencyConverter {
 
+    /// Initializes an instance of `CurrencyConverter`
     public init() {}
 
     public func convert(_ amount: Decimal, from fromCurrency: Currency,
@@ -34,6 +37,12 @@ public struct CurrencyConverter {
         return amount
     }
 
+    /// Converts a `Decimal` amount with the rate of the given currency pair.
+    ///
+    /// - Parameters:
+    ///   - amount: An amount to convert from.
+    ///   - currencyPair: A `CurrencyPair` to convert the amount with.
+    /// - Returns: The converted amount in the target currency.
     public func convert(_ amount: Decimal, with currencyPair: CurrencyPair) -> Decimal {
         convert(amount, at: currencyPair.rate)
     }

@@ -58,7 +58,6 @@ opt_in_rules:
   - extension_access_modifier
   - fallthrough
   - fatal_error_message
-  - file_header
   - file_length
   - file_name
   - file_name_no_space
@@ -208,15 +207,6 @@ prohibited_super_call:
 identifier_name:
   excluded:
     - id
-file_header:
-  required_pattern: |
-                    \/\/
-                    \/\/  .*?\.swift
-                    \/\/  FinanceKit
-                    \/\/
-                    \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
-                    \/\/  Copyright © 2020 Mitteldorf\. All rights reserved\.
-                    \/\/
 
 custom_rules: 
   boolean_return:

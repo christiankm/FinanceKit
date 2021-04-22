@@ -44,7 +44,7 @@ public struct Change: Codable, Equatable, Hashable {
 
 extension Change: ComparableToZero {
 
-    var isZero: Bool {
+    public var isZero: Bool {
         amount.isZero
     }
 
@@ -56,7 +56,7 @@ extension Change: ComparableToZero {
         amount.isNegative
     }
 
-    var isGreaterThanZero: Bool {
+    public var isGreaterThanZero: Bool {
         amount.isGreaterThanZero
     }
 }

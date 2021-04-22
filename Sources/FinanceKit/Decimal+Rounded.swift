@@ -18,6 +18,8 @@ extension Decimal {
         raiseOnDivideByZero: true
     )
 
+    /// Returns the number rounded to two decimals.
+    /// Using this help prevent incorrect values especially during serialization.
     public var rounded: Self {
         NSDecimalNumber(decimal: self).rounding(accordingToBehavior: Self.decimalHandler).decimalValue
     }

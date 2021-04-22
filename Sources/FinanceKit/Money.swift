@@ -220,7 +220,32 @@ extension Decimal {
     /// Convert a decimal number to `Money` in a given currency.
     /// - Parameter currency: A currency the money is in.
     /// - Returns: A new `Money` with the current amount in the given currency.
-    func `in`(_ currency: Currency) -> Money {
+    public func `in`(_ currency: Currency) -> Money {
         Money(self, in: currency)
+    }
+}
+
+// MARK: - Sum and Average
+
+public extension Collection where Element == Money {
+
+    /// Returns the sum of the money in the collection.
+    /// All elements must have the same currency (or none), otherwise this returns nil.
+    var sum: Money? {
+        let uniqueElements = Set(self.map(\.currency))
+        guard uniqueElements.count == 1 else { return nil }
+        return reduce(0, +)
+    }
+
+    /// Returns the average of the money in the collection, or zero if the collection is empty
+    /// All elements must have the same currency (or none), otherwise this returns nil.
+    var average: Money? {
+        guard !isEmpty else { return Money(0) }
+
+        let uniqueElements = Set(self.map(\.currency))
+        guard uniqueElements.count == 1,
+              let sum = sum else { return nil }
+
+        return sum / Money(Decimal(count))
     }
 }

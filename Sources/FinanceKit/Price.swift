@@ -8,4 +8,6 @@
 
 import Foundation
 
+/// Price is a typealias for a Decimal.
+/// You should prefer to use `Money` for all monetary amounts.
 public typealias Price = Decimal
