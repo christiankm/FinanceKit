@@ -145,7 +145,7 @@ public struct Holding: Identifiable, Hashable, Codable {
                     holding.quantity -= quantity
                     holding.costBasis -= costBasis
                 case .dividend:
-                    holding.accumulatedDividends += Decimal(transaction.quantity) * transaction.price
+                    holding.accumulatedDividends += Decimal(transaction.quantity) * price
                 }
 
                 // Remove previous and re-add newly calculated holding

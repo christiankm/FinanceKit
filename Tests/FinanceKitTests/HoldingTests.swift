@@ -243,21 +243,21 @@ class HoldingTests: XCTestCase {
     func testMakeHoldingsWithBuyAndSellAndDividendTransactions() {
         let transactions = [
             Transaction(type: .buy, symbol: .aapl, date: Date(), price: 100, quantity: 5, commission: 13),
-            Transaction(type: .buy, symbol: .aapl, date: Date(), price: 120, quantity: 5, commission: 13),
             Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.5, quantity: 10),
             Transaction(type: .sell, symbol: .aapl, date: Date(), price: 120, quantity: 3, commission: 13),
-            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.6, quantity: 7)
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.6, quantity: 2)
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
+        let holding = holdings.first!
 
         XCTAssertEqual(holdings.count, 1)
-        XCTAssertEqual(holdings[0].quantity, 7)
-        XCTAssertEqual(holdings[0].accumulatedDividends, 9.2)
-        XCTAssertEqual(holdings[0].costBasis, 753)
-        XCTAssertEqual(holdings[0].adjustedCostBasis, 743.8)
-        XCTAssertEqual(holdings[0].averageCostPerShare, 107.57, accuracy: 0.1)
-        XCTAssertEqual(holdings[0].averageAdjustedCostPerShare, 106.25, accuracy: 0.1)
+        XCTAssertEqual(holding.quantity, 2)
+        XCTAssertEqual(holding.accumulatedDividends, 6.2)
+        XCTAssertEqual(holding.costBasis, 166)
+        XCTAssertEqual(holding.adjustedCostBasis, 159.8)
+        XCTAssertEqual(holding.averageCostPerShare, 83, accuracy: 0.01)
+        XCTAssertEqual(holding.averageAdjustedCostPerShare, 79.9, accuracy: 0.01)
     }
 
     // MARK: Test Update functions
