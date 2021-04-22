@@ -30,7 +30,17 @@ class TransactionTests: XCTestCase {
 
     func testTransactionCostSell() {
         let transaction = mockTransaction(type: .sell)
-        XCTAssertEqual(transaction.transactionCost, 4160.82)
+        XCTAssertEqual(transaction.transactionCost, 4134.82)
+    }
+
+    func testBuyTransactionsAddsCommissionCost() {
+        let transaction = mockTransaction(type: .buy)
+        XCTAssertEqual(transaction.transactionCost, -4160.82)
+    }
+
+    func testSellTransactionsSubtractsCommissionCost() {
+        let transaction = mockTransaction(type: .sell)
+        XCTAssertEqual(transaction.transactionCost, 4134.82)
     }
 
     func testTransactionCostDividend() {

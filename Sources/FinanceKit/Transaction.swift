@@ -23,6 +23,11 @@ public struct Transaction: Codable, Hashable {
     public let quantity: Quantity
     public let commission: Price
 
+    /// Total cost (or return) of the transaction.
+    ///
+    /// Buy transactions will have a negative cost including commission, indicating money was paid from the account.
+    /// Sell transactions will have a (usually) positive cost with commissions subtracted, indicating money was deposited into the account.
+    /// Dividends will be positive indicating money going into the account.
     public var transactionCost: Price {
         var cost = Decimal(quantity) * price
         switch type {
@@ -30,7 +35,7 @@ public struct Transaction: Codable, Hashable {
             cost += commission
             cost *= -1
         case .sell:
-            cost += commission
+            cost -= commission
         case .dividend:
             break
         }

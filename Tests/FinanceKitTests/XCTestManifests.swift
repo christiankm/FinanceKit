@@ -307,7 +307,9 @@ extension TransactionTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__TransactionTests = [
+        ("testBuyTransactionsAddsCommissionCost", testBuyTransactionsAddsCommissionCost),
         ("testInit", testInit),
+        ("testSellTransactionsSubtractsCommissionCost", testSellTransactionsSubtractsCommissionCost),
         ("testTransactionCostBuy", testTransactionCostBuy),
         ("testTransactionCostDividend", testTransactionCostDividend),
         ("testTransactionCostSell", testTransactionCostSell),
