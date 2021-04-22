@@ -394,7 +394,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		AA7969A8241CC8C600759CC8 /* Generate XCTestManifest and LinuxMain */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -607,6 +607,7 @@
 					"SWIFT_PACKAGE=1",
 					"DEBUG=1",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
@@ -632,6 +633,7 @@
 					"$(inherited)",
 					"SWIFT_PACKAGE=1",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,6 +654,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FinanceKit.xcodeproj/FinanceKit_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -680,6 +683,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FinanceKit.xcodeproj/FinanceKit_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
