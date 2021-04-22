@@ -155,6 +155,7 @@ extension HoldingTests {
         ("testMakeHoldingsWithOnlyDividendTransactions", testMakeHoldingsWithOnlyDividendTransactions),
         ("testMakeHoldingsWithOnlySellTransactions", testMakeHoldingsWithOnlySellTransactions),
         ("testOwnership", testOwnership),
+        ("testReturnOnInvestment", testReturnOnInvestment),
         ("testUpdateWithCurrencyPairsToBaseCurrency", testUpdateWithCurrencyPairsToBaseCurrency),
         ("testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual", testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual),
         ("testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency", testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency),

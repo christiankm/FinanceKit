@@ -89,6 +89,11 @@ public struct Holding: Identifiable, Hashable, Codable {
         Change(cost: costBasisInLocalCurrency, currentValue: currentValueInLocalCurrency)
     }
 
+    /// Returns the return of the holding not including dividends, in its base currency.
+    public var returnOnInvestment: Percentage {
+        change.percentage
+    }
+
     /// Returns the ownership in terms of percentage of the total amount of oustanding shares.
     public var ownership: Percentage {
         guard let outstandingShares = stock?.shares, outstandingShares > 0 else { return .zero }

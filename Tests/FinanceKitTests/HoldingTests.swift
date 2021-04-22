@@ -87,19 +87,40 @@ class HoldingTests: XCTestCase {
     }
 
     func testChange() {
-        let holding = Holding(symbol: Self.symbol, quantity: 3,
-                              costBasis: 12, costBasisInLocalCurrency: 23,
-                              currentValue: 23, currentValueInLocalCurrency: 34)
+        let holding = Holding(
+            symbol: Self.symbol,
+            quantity: 3,
+            costBasis: 12,
+            costBasisInLocalCurrency: 23,
+            currentValue: 23,
+            currentValueInLocalCurrency: 34
+        )
         let expectedChange = Change(cost: 12, currentValue: 23)
         XCTAssertEqual(holding.change, expectedChange)
     }
 
     func testChangeInLocalCurrency() {
-        let holding = Holding(symbol: Self.symbol, quantity: 3,
-                              costBasis: 12, costBasisInLocalCurrency: 23,
-                              currentValue: 23, currentValueInLocalCurrency: 34)
+        let holding = Holding(
+            symbol: Self.symbol,
+            quantity: 3,
+            costBasis: 12,
+            costBasisInLocalCurrency: 23,
+            currentValue: 23,
+            currentValueInLocalCurrency: 34
+        )
         let expectedChange = Change(cost: 23, currentValue: 34)
         XCTAssertEqual(holding.changeInLocalCurrency, expectedChange)
+    }
+
+    func testReturnOnInvestment() {
+        let holding = Holding(
+            symbol: Self.symbol,
+            quantity: 3,
+            costBasis: 12,
+            currentValue: 23
+        )
+        let expectedReturn = Percentage(0.916)
+        XCTAssertEqual(holding.returnOnInvestment.decimal, expectedReturn.decimal, accuracy: 0.001)
     }
 
     func testDisplayNameWhenCompanyIsCompanyName() {
