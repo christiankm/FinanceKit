@@ -26,3 +26,19 @@ extension NumberFormatter {
         return formatter
     }
 }
+
+extension NumberFormatter {
+
+    public func money(from string: String, in currency: Currency) -> Money? {
+        guard let number = number(from: string) else { return nil }
+        return Money(number.decimalValue, in: currency)
+    }
+
+    public func string(fromMoney money: Money) -> String? {
+        string(fromDecimal: money.amount)
+    }
+
+    public func string(fromDecimal number: Decimal) -> String? {
+        string(from: number.rounded as NSDecimalNumber)
+    }
+}

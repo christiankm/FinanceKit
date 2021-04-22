@@ -36,26 +36,6 @@ public struct Money: Hashable {
         }
     }
 
-    /// - returns: True is the amount is exactly zero.
-    public var isZero: Bool {
-        amount.isZero
-    }
-
-    /// - returns: True if the rounded amount is positive, i.e. zero or more.
-    public var isPositive: Bool {
-        isZero || isGreaterThanZero
-    }
-
-    /// - returns: True if the rounded amount is less than zero, or false if the amount is zero or more.
-    public var isNegative: Bool {
-        amount < 0.0
-    }
-
-    /// - returns: True if the rounded amount is greater than zero, or false if the amount is zero or less.
-    public var isGreaterThanZero: Bool {
-        amount > 0.0
-    }
-
     public let currency: Currency?
 
     /// The raw decimal value. Do not use this directly as it can cause rounding issues.
@@ -129,6 +109,31 @@ public struct Money: Hashable {
         let convertedAmount = converter.convert(self, to: targetCurrency, at: rate)
 
         return Money(convertedAmount.amount, in: targetCurrency)
+    }
+}
+
+// MARK: - ComparableToZero
+
+extension Money: ComparableToZero {
+
+    /// - returns: True if the amount is exactly zero.
+    public var isZero: Bool {
+        amount.isZero
+    }
+
+    /// - returns: True if the rounded amount is positive, i.e. zero or more.
+    public var isPositive: Bool {
+        isZero || isGreaterThanZero
+    }
+
+    /// - returns: True if the rounded amount is less than zero, or false if the amount is zero or more.
+    public var isNegative: Bool {
+        amount < 0.0
+    }
+
+    /// - returns: True if the rounded amount is greater than zero, or false if the amount is zero or less.
+    public var isGreaterThanZero: Bool {
+        amount > 0.0
     }
 }
 

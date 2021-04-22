@@ -227,7 +227,9 @@ extension PercentageFormatterTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__PercentageFormatterTests = [
-        ("testStringFromPercentDouble", testStringFromPercentDouble),
+        ("testStringFromPercent", testStringFromPercent),
+        ("testStringFromPercentDecimal", testStringFromPercentDecimal),
+        ("testStringFromPercentWithZeroFractionDigits", testStringFromPercentWithZeroFractionDigits),
     ]
 }
 
@@ -239,7 +241,8 @@ extension PercentageTests {
         ("testBasisPoints", testBasisPoints),
         ("testComparable", testComparable),
         ("testFormattedString", testFormattedString),
-        ("testInitWithRawValue", testInitWithRawValue),
+        ("testInitWithDecimal", testInitWithDecimal),
+        ("testInitWithPercentage", testInitWithPercentage),
         ("testZero", testZero),
     ]
 }

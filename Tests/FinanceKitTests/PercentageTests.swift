@@ -13,33 +13,40 @@ class PercentageTests: XCTestCase {
     func testZero() throws {
         let sut = Percentage.zero
 
-        XCTAssertEqual(sut.rawValue, 0)
+        XCTAssertEqual(sut.decimal, 0)
     }
 
-    func testInitWithRawValue() {
-        let sut1 = Percentage(10.0)
-        XCTAssertEqual(sut1.rawValue, 10)
+    func testInitWithDecimal() {
+        let sut1 = Percentage(decimal: 0.1)
+        XCTAssertEqual(sut1.decimal, 0.1)
+        XCTAssertEqual(sut1.basisPoints, 100)
 
-        let sut2 = Percentage(rawValue: 22)
-        XCTAssertEqual(sut2.rawValue, 22)
+        let sut2 = Percentage(decimal: -1.22)
+        XCTAssertEqual(sut2.decimal, -1.22)
+        XCTAssertEqual(sut2.basisPoints, -1220)
+    }
+
+    func testInitWithPercentage() {
+        let sut1 = Percentage(percentage: 10.0)
+        XCTAssertEqual(sut1.decimal, 0.1)
+
+        let sut2 = Percentage(percentage: 22.0)
+        XCTAssertEqual(sut2.decimal, 0.22)
     }
 
     func testFormattedString() {
         let sut = Percentage(0.2)
-
-        XCTAssertEqual(sut.formattedString, "0.20%")
+        XCTAssertEqual(sut.formattedString, "20.00%")
     }
 
     func testBasisPoints() {
-        let sut = Percentage(22.3)
-
-        XCTAssertEqual(sut.basisPoints, 2230)
+        let sut = Percentage(decimal: 0.223)
+        XCTAssertEqual(sut.basisPoints, 223)
     }
 
     func testComparable() {
-        let lhs = Percentage(10)
-        let rhs = Percentage(30)
-
+        let lhs = Percentage(decimal: 0.10)
+        let rhs = Percentage(decimal: 0.30)
         XCTAssertLessThan(lhs, rhs)
     }
 }

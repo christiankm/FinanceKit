@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TransactionType: Int, Codable {
+public enum TransactionType: Int, CaseIterable, Codable {
     case buy
     case sell
     case dividend

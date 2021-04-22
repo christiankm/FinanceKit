@@ -83,7 +83,7 @@ class HoldingTests: XCTestCase {
 
         sut = sut.update(with: stock)
 
-        XCTAssertEqual(sut.ownership.rawValue, 0.000025)
+        XCTAssertEqual(sut.ownership.decimal, 0.000025)
     }
 
     func testChange() {

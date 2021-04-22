@@ -17,10 +17,10 @@ class ChangeTests: XCTestCase {
 
         let change = Change(cost: cost, currentValue: cost * factor)
         let expectedAmountValue = Decimal(2)
-        let expectedPercentageValue = Percentage(20.0)
+        let expectedPercentageValue = Percentage(percentage: 20.0)
 
         XCTAssertEqual(change.amount, expectedAmountValue)
-        XCTAssertEqual(change.percentage.rawValue, expectedPercentageValue.rawValue, accuracy: 0.00001)
+        XCTAssertEqual(change.percentage.decimal, expectedPercentageValue.decimal, accuracy: 0.00001)
     }
 
     func testInitWithNegativeChange() {
@@ -29,14 +29,14 @@ class ChangeTests: XCTestCase {
 
         let change = Change(cost: cost, currentValue: cost * factor)
         let expectedAmountValue = Decimal(-4)
-        let expectedPercentageValue = -40.0
+        let expectedPercentageValue = -0.40
 
         XCTAssertEqual(change.amount, expectedAmountValue)
-        XCTAssertEqual(change.percentage.rawValue, expectedPercentageValue, accuracy: 0.00001)
+        XCTAssertEqual(change.percentage.decimal, expectedPercentageValue, accuracy: 0.00001)
     }
 
     func testInitWithPercentageValue() {
-        let value = Percentage(Double.random(in: -1...1))
+        let value = Percentage(decimal: Double.random(in: -1...1))
         let change = Change(percentageValue: value)
         let expectedAmountValue = Decimal(value < Percentage(0.0) ? -1 : 1)
         XCTAssertEqual(change.amount, expectedAmountValue)
@@ -45,7 +45,7 @@ class ChangeTests: XCTestCase {
 
     func testZeroChange() {
         XCTAssertEqual(Change.zero.amount, 0)
-        XCTAssertEqual(Change.zero.percentage, Percentage(0))
+        XCTAssertEqual(Change.zero.percentage, Percentage.zero)
     }
 
     func testEquatable() {

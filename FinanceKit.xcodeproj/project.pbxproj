@@ -60,6 +60,7 @@
 		AAA96F7024521588008524AC /* ExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96F6F24521588008524AC /* ExchangeTests.swift */; };
 		AAA96F722452162A008524AC /* PriceTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96F712452162A008524AC /* PriceTargetTests.swift */; };
 		AAA96F74245216ED008524AC /* Numerics+Total+AverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96F73245216ED008524AC /* Numerics+Total+AverageTests.swift */; };
+		AAAD1FDF26314C1F00E797AF /* ComparableToZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD1FDE26314C1F00E797AF /* ComparableToZero.swift */; };
 		AAB7B1BB243E153400BD450F /* HistoricalPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */; };
 		AAB7B1BE243E153400BD450F /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B7243E153300BD450F /* Money.swift */; };
 		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
@@ -136,6 +137,7 @@
 		AAA96F6F24521588008524AC /* ExchangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTests.swift; sourceTree = "<group>"; };
 		AAA96F712452162A008524AC /* PriceTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTargetTests.swift; sourceTree = "<group>"; };
 		AAA96F73245216ED008524AC /* Numerics+Total+AverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numerics+Total+AverageTests.swift"; sourceTree = "<group>"; };
+		AAAD1FDE26314C1F00E797AF /* ComparableToZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableToZero.swift; sourceTree = "<group>"; };
 		AAB7B1B1243E153300BD450F /* PerformanceCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceCalculator.swift; sourceTree = "<group>"; };
 		AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalPrice.swift; sourceTree = "<group>"; };
 		AAB7B1B7243E153300BD450F /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				OBJ_9 /* Change.swift */,
 				AA2721A3244E196D00BEB19D /* ChangePeriod.swift */,
 				OBJ_10 /* Company.swift */,
+				AAAD1FDE26314C1F00E797AF /* ComparableToZero.swift */,
 				OBJ_13 /* Currency.swift */,
 				AA7DA6F02391DA4400EF65F5 /* CurrencyCode.swift */,
 				AA12001D246C6AEE00C1FFCA /* CurrencyConverter.swift */,
@@ -271,6 +274,7 @@
 				AA2721B0244E511300BEB19D /* Decimal+Rounded.swift */,
 				AA6835C42455E5A700DF1A08 /* Dividend.swift */,
 				AA7A62B023E5D3F20094DC2B /* Exchange.swift */,
+				AA6C248324ACCD5800056AAA /* ExchangeRate.swift */,
 				AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */,
 				AAE67784239298550053B303 /* Holding.swift */,
 				AAB7B1B7243E153300BD450F /* Money.swift */,
@@ -286,7 +290,6 @@
 				OBJ_35 /* Stock.swift */,
 				OBJ_44 /* Symbol.swift */,
 				OBJ_47 /* Transaction.swift */,
-				AA6C248324ACCD5800056AAA /* ExchangeRate.swift */,
 			);
 			name = FinanceKit;
 			path = Sources/FinanceKit;
@@ -486,6 +489,7 @@
 				OBJ_123 /* Symbol.swift in Sources */,
 				AA69850C23760EFC00D0683C /* Decimal+DoubleValue.swift in Sources */,
 				AA6C248424ACCD5800056AAA /* ExchangeRate.swift in Sources */,
+				AAAD1FDF26314C1F00E797AF /* ComparableToZero.swift in Sources */,
 				AA6835CB2456210100DF1A08 /* Date+Comparison.swift in Sources */,
 				OBJ_126 /* Transaction.swift in Sources */,
 				AA2721A6244E199C00BEB19D /* Date+Ranges.swift in Sources */,

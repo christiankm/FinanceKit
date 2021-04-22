@@ -21,11 +21,16 @@ public struct PercentageFormatter {
         self.formatter = formatter
     }
 
-    public func string(fromPercent double: Double) -> String? {
-        string(from: Percentage(double))
+    public func string(fromPercentDecimal decimal: FloatLiteralType) -> String? {
+        string(from: Percentage(decimal: decimal))
     }
 
     public func string(from percentage: Percentage) -> String? {
-        formatter.string(from: NSNumber(value: percentage.rawValue / 100))
+        formatter.string(from: NSNumber(value: percentage.decimal))
+    }
+
+    public func percentage(from string: String) -> Percentage? {
+        guard let number = formatter.number(from: string) else { return nil }
+        return Percentage(decimal: number.doubleValue)
     }
 }

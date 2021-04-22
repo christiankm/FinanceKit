@@ -111,7 +111,7 @@ public enum CurrencyCode: String, Codable, CaseIterable {
     newIsraeliSheqel = "ILS",
     newTaiwanDollar = "TWD",
     newZealandDollar = "NZD",
-    ngultrum =  "BTN",
+    ngultrum = "BTN",
     northKoreanWon = "KPW",
     norwegianKrone = "NOK",
     ouguiya = "MRU",

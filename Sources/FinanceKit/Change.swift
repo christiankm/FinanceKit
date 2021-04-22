@@ -16,36 +16,47 @@ public struct Change: Codable, Equatable, Hashable {
     public let amount: Amount
     public let percentage: Percentage
 
-    public var isPositive: Bool {
-        amount >= 0
-    }
-
-    public var isNegative: Bool {
-        amount.isLess(than: 0)
-    }
-
     public var percentageText: String? {
         percentage.formattedString
     }
 
     public init(percentageValue: Percentage) {
-        self.amount = percentageValue.rawValue >= 0.0 ? 1.0 : -1.0
+        self.amount = percentageValue.decimal.isPositive ? 1.0 : -1.0
         self.percentage = percentageValue
     }
 
-    public init(cost: Decimal, currentValue: Decimal) {
-        if cost == 0, currentValue == 0 {
+    public init(cost: Amount, currentValue: Amount) {
+        if cost.isZero, currentValue.isZero {
             self.amount = 0
-            self.percentage = Percentage(0.0)
+            self.percentage = Percentage.zero
             return
         }
 
         self.amount = (currentValue - cost)
 
-        if amount >= 0 {
-            self.percentage = Percentage(((amount / cost) * 100).doubleValue)
+        if amount.isPositive {
+            self.percentage = Percentage(((amount / cost)).doubleValue)
         } else {
-            self.percentage = Percentage((((cost - currentValue) / cost) * 100 * -1).doubleValue)
+            self.percentage = Percentage((((cost - currentValue) / cost) * -1).doubleValue)
         }
+    }
+}
+
+extension Change: ComparableToZero {
+
+    var isZero: Bool {
+        amount.isZero
+    }
+
+    public var isPositive: Bool {
+        amount.isPositive
+    }
+
+    public var isNegative: Bool {
+        amount.isNegative
+    }
+
+    var isGreaterThanZero: Bool {
+        amount.isGreaterThanZero
     }
 }
