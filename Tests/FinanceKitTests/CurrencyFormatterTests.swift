@@ -11,32 +11,32 @@ import FinanceKit
 class CurrencyFormatterTests: XCTestCase {
 
     func testDecimalFromString() {
-        let sut = CurrencyFormatter(currency: .usDollars)
+        let sut = CurrencyFormatter(currency: .usDollars, locale: Locale(identifier: "en_US"))
         let decimal = sut.decimal(from: "$1,234.99")!
         XCTAssertEqual(decimal, Decimal(1234.99))
     }
 
     func testMoneyFromString() {
-        let sut = CurrencyFormatter(currency: .usDollars)
+        let sut = CurrencyFormatter(currency: .usDollars, locale: Locale(identifier: "en_US"))
         let money = sut.money(from: "$1,234.99")!
         XCTAssertEqual(money.amount, Decimal(1234.99))
         XCTAssertEqual(money.currency, .usDollars)
     }
 
     func testStringFromDecimalWithNoCurrency() {
-        let sut = CurrencyFormatter(currency: Currency(code: .none))
+        let sut = CurrencyFormatter(currency: Currency(code: .none), locale: Locale(identifier: "en_US"))
         let string = sut.string(from: Decimal(1234.99))!
         XCTAssertEqual(string, "1,234.99")
     }
 
     func testStringFromDecimal() {
-        let sut = CurrencyFormatter(currency: .usDollars)
+        let sut = CurrencyFormatter(currency: .usDollars, locale: Locale(identifier: "en_US"))
         let string = sut.string(from: Decimal(1234.99))!
         XCTAssertEqual(string, "$1,234.99")
     }
 
     func testStringFromMoney() {
-        let sut = CurrencyFormatter(currency: .usDollars)
+        let sut = CurrencyFormatter(currency: .usDollars, locale: Locale(identifier: "en_US"))
         let string = sut.string(from: Money(1234.99))!
         XCTAssertEqual(string, "$1,234.99")
     }
@@ -56,7 +56,7 @@ class CurrencyFormatterTests: XCTestCase {
     }
 
     func testStringFromMoneyZeroAmount() {
-        let sut = CurrencyFormatter(currency: .usDollars)
+        let sut = CurrencyFormatter(currency: .usDollars, locale: Locale(identifier: "en_US"))
         let string = sut.string(from: Money(0.0))!
         XCTAssertEqual(string, "$0.00")
     }
