@@ -51,6 +51,7 @@ public struct Portfolio: Codable, Hashable, Identifiable {
         return Change(cost: totalCost, currentValue: currentValueInLocalCurrency)
     }
 
+    // swiftlint:disable:next function_default_parameter_at_end
     public init(id: UUID = UUID(), name: String, currency: Currency, holdings: [Holding] = []) {
         self.id = id
         self.name = name
@@ -114,6 +115,18 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     public static func totalCostInLocalCurrency(of holdings: [Holding]) -> Amount {
         guard !holdings.isEmpty else { return 0 }
         return holdings.reduce(0) { $0 + $1.costBasisInLocalCurrency }
+    }
+
+    public static func averageAdjustedCostPerShare(of symbol: Symbol, in transactions: [Transaction]) -> Price {
+        let transactionsMatchingSymbol = transactions.filter { $0.symbol.rawValue == symbol.rawValue }
+        guard let holding = Holding.makeHoldings(with: transactionsMatchingSymbol).first else { return 0 }
+
+        return holding.averageAdjustedCostPerShare
+    }
+
+    public static func averageAdjustedCostPerShare(of symbol: Symbol, in holdings: [Holding]) -> Price {
+        guard let holdingMatchingSymbol = holdings.first(where: { $0.symbol == symbol }) else { return 0 }
+        return holdingMatchingSymbol.averageAdjustedCostPerShare
     }
 
     /// Returns a new `Portfolio` updating all holdings in the portfolio with the current price of the specified stock.
