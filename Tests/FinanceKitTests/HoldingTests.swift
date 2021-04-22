@@ -173,6 +173,23 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfCAKE.costBasis)
     }
 
+    func testMakeHoldingsWithMultipleBuyAndSellTransactions() {
+        let today = Date()
+        let tomorrow = today.addingTimeInterval(86400)
+        let transactions = [
+            Transaction(type: .buy, symbol: .aapl, date: today, price: 100, quantity: 20, commission: 4),
+            Transaction(type: .sell, symbol: .aapl, date: tomorrow, price: 110, quantity: 5, commission: 4),
+            Transaction(type: .sell, symbol: .aapl, date: tomorrow, price: 120, quantity: 5, commission: 4),
+            Transaction(type: .sell, symbol: .aapl, date: tomorrow, price: 130, quantity: 5, commission: 4)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+
+        XCTAssertEqual(holdings.count, 1)
+        XCTAssertEqual(holdings.first!.costBasis, 216)
+        XCTAssertEqual(holdings.first!.averageCostPerShare, 43.2)
+    }
+
     func testMakeHoldingsWithBuyAndSellTransactionsInUnsortedOrder() {
         let today = Date()
         let tomorrow = today.addingTimeInterval(86400)

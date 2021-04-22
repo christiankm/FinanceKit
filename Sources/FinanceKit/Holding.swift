@@ -125,7 +125,7 @@ public struct Holding: Identifiable, Hashable, Codable {
         sortedTransactions.forEach { transaction in
             let quantity = transaction.quantity
             let price = transaction.price
-            let costBasis = price * Decimal(quantity) + transaction.commission
+            let costBasis = abs(transaction.transactionCost)
 
             // If a holding already exists for this symbol, update quantity and cost basis.
             // Otherwise add a new holding to the array
@@ -157,7 +157,7 @@ public struct Holding: Identifiable, Hashable, Codable {
                 case .sell:
                     break
                 case .dividend:
-                    holding.accumulatedDividends = Decimal(transaction.quantity) * transaction.price
+                    holding.accumulatedDividends = Decimal(quantity) * price
                 }
 
                 holdings.append(holding)
