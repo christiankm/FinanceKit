@@ -63,6 +63,8 @@
 		AAAD1FDF26314C1F00E797AF /* ComparableToZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD1FDE26314C1F00E797AF /* ComparableToZero.swift */; };
 		AAB7B1BB243E153400BD450F /* HistoricalPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B4243E153300BD450F /* HistoricalPrice.swift */; };
 		AAB7B1BE243E153400BD450F /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1B7243E153300BD450F /* Money.swift */; };
+		AACA05E32725150000CBF668 /* AssetAllocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA05E22725150000CBF668 /* AssetAllocation.swift */; };
+		AACA05E52725151900CBF668 /* AssetAllocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA05E42725151900CBF668 /* AssetAllocationTests.swift */; };
 		AAE675442375BC3000BA5141 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE675432375BC3000BA5141 /* TransactionTests.swift */; };
 		AAE677832392979A0053B303 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE677822392979A0053B303 /* Quantity.swift */; };
 		AAE6778C239298550053B303 /* Holding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE67784239298550053B303 /* Holding.swift */; };
@@ -143,6 +145,8 @@
 		AAB7B1B7243E153300BD450F /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		AAB7B1C0243E154000BD450F /* MoneyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyTests.swift; sourceTree = "<group>"; };
 		AAB7B1C1243E154000BD450F /* StockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockTests.swift; sourceTree = "<group>"; };
+		AACA05E22725150000CBF668 /* AssetAllocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetAllocation.swift; sourceTree = "<group>"; };
+		AACA05E42725151900CBF668 /* AssetAllocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetAllocationTests.swift; sourceTree = "<group>"; };
 		AAE675432375BC3000BA5141 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTests.swift; path = Tests/FinanceKitTests/TransactionTests.swift; sourceTree = SOURCE_ROOT; };
 		AAE677822392979A0053B303 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		AAE67784239298550053B303 /* Holding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holding.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 		OBJ_53 /* FinanceKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				AACA05E42725151900CBF668 /* AssetAllocationTests.swift */,
 				OBJ_54 /* ChangeTests.swift */,
 				AA06F78A23D9F987001FFAE9 /* CompanyTests.swift */,
 				AA12001F246C6FD000C1FFCA /* CurrencyConverterTests.swift */,
@@ -259,6 +264,7 @@
 			children = (
 				AA339E552403056B005D5CA8 /* Amount.swift */,
 				AA339E652403056C005D5CA8 /* Asset.swift */,
+				AACA05E22725150000CBF668 /* AssetAllocation.swift */,
 				OBJ_9 /* Change.swift */,
 				AA2721A3244E196D00BEB19D /* ChangePeriod.swift */,
 				OBJ_10 /* Company.swift */,
@@ -470,6 +476,7 @@
 				AA69851D2377351800D0683C /* SymbolTests.swift in Sources */,
 				AA5A85E52464BDD70094510B /* NumberFormatter+CurrencyTests.swift in Sources */,
 				AAA96F74245216ED008524AC /* Numerics+Total+AverageTests.swift in Sources */,
+				AACA05E52725151900CBF668 /* AssetAllocationTests.swift in Sources */,
 				AA6835CD2456214000DF1A08 /* Date+ComparisonTests.swift in Sources */,
 				AA2721AE244E3B6C00BEB19D /* PercentageFormatterTests.swift in Sources */,
 			);
@@ -495,6 +502,7 @@
 				AA339E682403056C005D5CA8 /* Amount.swift in Sources */,
 				OBJ_114 /* Stock.swift in Sources */,
 				AAB7B1BB243E153400BD450F /* HistoricalPrice.swift in Sources */,
+				AACA05E32725150000CBF668 /* AssetAllocation.swift in Sources */,
 				AA339E772403056D005D5CA8 /* Numerics+Total+Average.swift in Sources */,
 				AAE677832392979A0053B303 /* Quantity.swift in Sources */,
 				AA2721A4244E196D00BEB19D /* ChangePeriod.swift in Sources */,
