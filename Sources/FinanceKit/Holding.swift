@@ -94,7 +94,7 @@ public struct Holding: Identifiable, Hashable, Codable {
         change.percentage
     }
 
-    /// Returns the ownership in terms of percentage of the total amount of oustanding shares.
+    /// Returns the ownership in terms of percentage of the total amount of outstanding shares.
     public var ownership: Percentage {
         guard let outstandingShares = stock?.shares, outstandingShares > 0 else { return .zero }
         return Percentage(Double(quantity) / Double(outstandingShares))

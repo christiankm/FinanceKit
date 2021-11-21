@@ -16,7 +16,7 @@ public struct Currency: Codable, Hashable {
         locale.localizedString(forCurrencyCode: code.rawValue)
     }
 
-    /// The ISO 4217 currency code identifiying the currency, e.g. GBP.
+    /// The ISO 4217 currency code identifying the currency, e.g. GBP.
     public let code: CurrencyCode
 
     public let locale: Locale
@@ -40,7 +40,7 @@ extension Currency: Equatable {
     }
 }
 
-/// This extension provides a bridge to system APIs inside a convienent namespace.
+/// This extension provides a bridge to system APIs inside a convenient namespace.
 public extension Currency {
 
     /// The currency code of the users current locale.
