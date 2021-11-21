@@ -5,8 +5,8 @@
 //  Created by Christian Mitteldorf on 08/11/2019.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class TransactionTests: XCTestCase {
 
@@ -48,10 +48,15 @@ class TransactionTests: XCTestCase {
         XCTAssertEqual(transaction.transactionCost, 4147.82)
     }
 
+    func testDividendReceived() {
+        let transaction = mockTransaction(type: .dividend)
+        XCTAssertEqual(transaction.transactionCost, 4147.82)
+    }
+
     private func mockTransaction(type: TransactionType) -> Transaction {
         Transaction(
             type: type,
-            symbol: Symbol(rawValue: "AAPL")!, //swiftlint:disable:this force_unwrapping
+            symbol: Symbol(rawValue: "AAPL")!, // swiftlint:disable:this force_unwrapping
             date: Date(),
             price: 180.34,
             quantity: 23,

@@ -1,9 +1,7 @@
 //
-//  Change.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 05/08/2017.
-//  Copyright © 2020 Mitteldorf. All rights reserved.
+//  Copyright © 2020 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details
 //
 
 import Foundation

@@ -247,13 +247,13 @@ extension Holding: Equatable {
 
     public static func == (lhs: Holding, rhs: Holding) -> Bool {
         lhs.id == rhs.id &&
-        lhs.symbol == rhs.symbol &&
-        lhs.stock == rhs.stock &&
-        lhs.company == rhs.company &&
-        lhs.currentValue == rhs.currentValue &&
-        lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
-        lhs.change == rhs.change &&
-        lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
+            lhs.symbol == rhs.symbol &&
+            lhs.stock == rhs.stock &&
+            lhs.company == rhs.company &&
+            lhs.currentValue == rhs.currentValue &&
+            lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
+            lhs.change == rhs.change &&
+            lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
     }
 }
 
@@ -261,7 +261,7 @@ extension Array where Element == Holding {
 
     /// Returns all currently open holdings in the array.
     public var active: [Holding] {
-        filter { $0.isActive }
+        filter(\.isActive)
     }
 
     /// Searches the array for a match for this symbol, and returns

@@ -6,8 +6,8 @@
 //  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class SymbolTests: XCTestCase {
 
@@ -22,8 +22,8 @@ class SymbolTests: XCTestCase {
     }
 
     func testComparable() {
-        let symbol1 = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let symbol2 = Symbol("ABPL")! //swiftlint:disable:this force_unwrapping
+        let symbol1 = Symbol("AAPL")! // swiftlint:disable:this force_unwrapping
+        let symbol2 = Symbol("ABPL")! // swiftlint:disable:this force_unwrapping
         XCTAssertTrue(symbol1 < symbol2)
     }
 

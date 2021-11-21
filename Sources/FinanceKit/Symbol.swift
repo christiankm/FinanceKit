@@ -1,8 +1,7 @@
 //
-//  Symbol.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 21/07/2019.
+//  Copyright © 2019 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details
 //
 
 import Foundation
@@ -18,6 +17,7 @@ public struct Symbol: RawRepresentable, Equatable, Hashable, Codable {
 
     public init?(rawValue: String) {
         guard !rawValue.isEmpty else { return nil }
+
         self.rawValue = rawValue.uppercased()
     }
 }
@@ -32,6 +32,6 @@ extension Symbol: Comparable {
 extension Symbol: CustomStringConvertible {
 
     public var description: String {
-        self.rawValue
+        rawValue
     }
 }

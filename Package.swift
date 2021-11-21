@@ -1,6 +1,12 @@
 // swift-tools-version:5.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
+//
+//  FinanceKit
+//  Copyright © 2020 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details
+//
+
 import PackageDescription
 
 let package = Package(
@@ -9,7 +15,8 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "FinanceKit",
-            targets: ["FinanceKit"])
+            targets: ["FinanceKit"]
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -21,10 +28,12 @@ let package = Package(
         // and on products in packages which this package depends on.
         .target(
             name: "FinanceKit",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "FinanceKitTests",
-            dependencies: ["FinanceKit"])
+            dependencies: ["FinanceKit"]
+        )
     ],
     swiftLanguageVersions: [.v5]
 )

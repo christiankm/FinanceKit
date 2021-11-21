@@ -1,9 +1,7 @@
 //
-//  Money.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 06/04/2020.
-//  Copyright © 2020 Mitteldorf. All rights reserved.
+//  Copyright © 2020 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details
 //
 
 import Foundation
@@ -26,9 +24,9 @@ public struct Money: Hashable {
     }
 
     /// - returns: Formatted rounded amount with currency symbol.
-    /// If `currency` is not set, returns the formatted amound without currency.
+    /// If `currency` is not set, returns the formatted amount without currency.
     public var formattedString: String? {
-        if let currency = self.currency {
+        if let currency = currency {
             let formatter = CurrencyFormatter(currency: currency, locale: .current)
             return formatter.string(from: self)
         } else {
@@ -68,6 +66,7 @@ public struct Money: Hashable {
     ///   - currency: A currency the money is in, or nil if no particular currency is needed.
     public init?(string: String, in currency: Currency? = nil) {
         guard let doubleValue = Double(string) else { return nil }
+
         self.rawValue = Decimal(doubleValue)
         self.currency = currency
     }
@@ -101,7 +100,7 @@ public struct Money: Hashable {
     /// - Returns: A new `Money` with the converted amount in the given currency.
     /// If the current currency is nil, no conversion is made, and the new Money will have the same amount.
     public func convert(to targetCurrency: Currency, at rate: ExchangeRate) -> Self {
-        guard self.currency != nil else {
+        guard currency != nil else {
             return Self(rawValue, in: currency)
         }
 
@@ -142,7 +141,7 @@ extension Money: ComparableToZero {
 extension Money: CustomStringConvertible {
 
     public var description: String {
-        "\(self.amount)"
+        "\(amount)"
     }
 }
 
@@ -227,22 +226,22 @@ extension Decimal {
 
 // MARK: - Sum and Average
 
-public extension Collection where Element == Money {
+extension Collection where Element == Money {
 
     /// Returns the sum of the money in the collection.
     /// All elements must have the same currency (or none), otherwise this returns nil.
-    var sum: Money? {
-        let uniqueElements = Set(self.map(\.currency))
+    public var sum: Money? {
+        let uniqueElements = Set(map(\.currency))
         guard uniqueElements.count == 1 else { return nil }
         return reduce(0, +)
     }
 
     /// Returns the average of the money in the collection, or zero if the collection is empty
     /// All elements must have the same currency (or none), otherwise this returns nil.
-    var average: Money? {
+    public var average: Money? {
         guard !isEmpty else { return Money(0) }
 
-        let uniqueElements = Set(self.map(\.currency))
+        let uniqueElements = Set(map(\.currency))
         guard uniqueElements.count == 1,
               let sum = sum else { return nil }
 

@@ -5,12 +5,12 @@
 //  Created by Christian Mitteldorf on 23/01/2020.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class HoldingTests: XCTestCase {
 
-    private static let symbol = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
+    private static let symbol = Symbol("AAPL")! // swiftlint:disable:this force_unwrapping
 
     func testInitWithDefaultValues() {
         let holding = Holding(symbol: Self.symbol)
@@ -23,9 +23,14 @@ class HoldingTests: XCTestCase {
     }
 
     func testInitWithValues() {
-        let holding = Holding(symbol: Self.symbol, quantity: 3,
-                              costBasis: 12, costBasisInLocalCurrency: 23,
-                              currentValue: 23, currentValueInLocalCurrency: 34)
+        let holding = Holding(
+            symbol: Self.symbol,
+            quantity: 3,
+            costBasis: 12,
+            costBasisInLocalCurrency: 23,
+            currentValue: 23,
+            currentValueInLocalCurrency: 34
+        )
         XCTAssertEqual(holding.symbol.rawValue, "AAPL")
         XCTAssertEqual(holding.quantity, 3)
         XCTAssertEqual(holding.costBasis, 12)
@@ -35,7 +40,7 @@ class HoldingTests: XCTestCase {
     }
 
     func testHoldingQuantityIsClampedToZero() {
-        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) //swiftlint:disable:this force_unwrapping
+        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) // swiftlint:disable:this force_unwrapping
 
         holding.quantity = 5
         XCTAssertEqual(holding.quantity, 5)
@@ -45,7 +50,7 @@ class HoldingTests: XCTestCase {
     }
 
     func testHoldingCostBasisIsClampedToZero() {
-        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) //swiftlint:disable:this force_unwrapping
+        var holding = Holding(symbol: Symbol(rawValue: "AAPL")!) // swiftlint:disable:this force_unwrapping
 
         holding.costBasis = 5
         XCTAssertEqual(holding.costBasis, 5)
@@ -77,7 +82,7 @@ class HoldingTests: XCTestCase {
     }
 
     func testOwnership() {
-        var sut = Holding(symbol: .aapl, quantity: 10_000)
+        var sut = Holding(symbol: .aapl, quantity: 10000)
         var stock = Stock.apple
         stock.shares = 400_000_000
 
@@ -143,8 +148,8 @@ class HoldingTests: XCTestCase {
     }
 
     func testMakeHoldingsWithOnlyBuyTransactions() {
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
+        let aapl = Symbol("AAPL")! // swiftlint:disable:this force_unwrapping
+        let cake = Symbol("CAKE")! // swiftlint:disable:this force_unwrapping
         let transactions = [
             Transaction(type: .buy, symbol: aapl, date: Date(), price: 100, quantity: 5, commission: 13),
             Transaction(type: .buy, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13),
@@ -153,10 +158,16 @@ class HoldingTests: XCTestCase {
 
         let holdings = Holding.makeHoldings(with: transactions)
 
-        let expectedHoldingOfAAPL = Holding(symbol: aapl, quantity: 10,
-                                            costBasis: 1126)
-        let expectedHoldingOfCAKE = Holding(symbol: cake, quantity: 10,
-                                            costBasis: 613)
+        let expectedHoldingOfAAPL = Holding(
+            symbol: aapl,
+            quantity: 10,
+            costBasis: 1126
+        )
+        let expectedHoldingOfCAKE = Holding(
+            symbol: cake,
+            quantity: 10,
+            costBasis: 613
+        )
         XCTAssertEqual(holdings.count, 2)
         XCTAssertEqual(holdings[0].quantity, expectedHoldingOfAAPL.quantity)
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfAAPL.costBasis)
@@ -165,8 +176,8 @@ class HoldingTests: XCTestCase {
     }
 
     func testMakeHoldingsWithOnlySellTransactions() {
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
+        let aapl = Symbol("AAPL")! // swiftlint:disable:this force_unwrapping
+        let cake = Symbol("CAKE")! // swiftlint:disable:this force_unwrapping
         let transactions = [
             Transaction(type: .sell, symbol: aapl, date: Date(), price: 100, quantity: 5, commission: 13),
             Transaction(type: .sell, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13),
@@ -178,8 +189,8 @@ class HoldingTests: XCTestCase {
     }
 
     func testMakeHoldingsWithBuyAndSellTransactions() {
-        let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-        let cake = Symbol("CAKE")! //swiftlint:disable:this force_unwrapping
+        let aapl = Symbol("AAPL")! // swiftlint:disable:this force_unwrapping
+        let cake = Symbol("CAKE")! // swiftlint:disable:this force_unwrapping
         let transactions = [
             Transaction(type: .buy, symbol: aapl, date: Date(), price: 100, quantity: 5, commission: 13),
             Transaction(type: .sell, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13),
@@ -323,7 +334,7 @@ class HoldingTests: XCTestCase {
 
         XCTAssertEqual(sut.costBasisInLocalCurrency.rounded, 132.3)
         XCTAssertEqual(sut.currentValueInLocalCurrency.rounded, 2381.4)
-        XCTAssertEqual(sut.adjustedCostBasisInLocalCurrency.rounded,92.61)
+        XCTAssertEqual(sut.adjustedCostBasisInLocalCurrency.rounded, 92.61)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {
@@ -367,8 +378,8 @@ class HoldingTests: XCTestCase {
     }
 
     func testComparable() {
-        let holding1 = Holding(symbol: Symbol("AAPL")!) //swiftlint:disable:this force_unwrapping
-        let holding2 = Holding(symbol: Symbol("KO")!) //swiftlint:disable:this force_unwrapping
+        let holding1 = Holding(symbol: Symbol("AAPL")!) // swiftlint:disable:this force_unwrapping
+        let holding2 = Holding(symbol: Symbol("KO")!) // swiftlint:disable:this force_unwrapping
         let sortedHoldings = [holding2, holding1].sorted()
         XCTAssertEqual(sortedHoldings, [holding1, holding2])
     }
@@ -377,8 +388,8 @@ class HoldingTests: XCTestCase {
 
     func testMakeHoldingsPerformance() {
         measure {
-            let aapl = Symbol("AAPL")! //swiftlint:disable:this force_unwrapping
-            let transactions = [Transaction].init(repeating: Transaction(type: .buy, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13), count: 1_000)
+            let aapl = Symbol("AAPL")! // swiftlint:disable:this force_unwrapping
+            let transactions = [Transaction].init(repeating: Transaction(type: .buy, symbol: aapl, date: Date(), price: 120, quantity: 5, commission: 13), count: 1000)
 
             let holdings = Holding.makeHoldings(with: transactions)
             XCTAssertEqual(holdings.count, 1)

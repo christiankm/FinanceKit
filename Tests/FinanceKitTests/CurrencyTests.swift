@@ -6,8 +6,8 @@
 //  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class CurrencyTests: XCTestCase {
 

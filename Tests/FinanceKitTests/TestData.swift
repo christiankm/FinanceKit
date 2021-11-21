@@ -5,8 +5,8 @@
 //  Created by Christian Mitteldorf on 23/04/2020.
 //
 
-import Foundation
 import FinanceKit
+import Foundation
 
 extension Company {
     static let apple = Company(symbol: .aapl, name: "Apple Inc.", currency: .usDollars)
@@ -38,9 +38,7 @@ extension Holding {
     static let coke = Holding(symbol: .ko, quantity: 22, costBasis: 12.83, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
 }
 
-extension Portfolio {
-
-}
+extension Portfolio {}
 
 extension Stock {
     static let apple = Stock(symbol: .aapl, company: .apple, price: 180, currency: .usDollars)

@@ -5,8 +5,8 @@
 //  Created by Christian Mitteldorf on 23/01/2020.
 //
 
-import XCTest
 import FinanceKit
+import XCTest
 
 class CurrencyPairTests: XCTestCase {
 

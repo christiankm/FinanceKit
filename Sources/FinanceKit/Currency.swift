@@ -41,30 +41,30 @@ extension Currency: Equatable {
 }
 
 /// This extension provides a bridge to system APIs inside a convenient namespace.
-public extension Currency {
+extension Currency {
 
     /// The currency code of the users current locale.
-    static var currencyCode: String? {
+    public static var currencyCode: String? {
         Locale.current.currencyCode
     }
 
     /// The currency symbol of the users current locale.
-    static var currencySymbol: String? {
+    public static var currencySymbol: String? {
         Locale.current.currencySymbol
     }
 
     /// A list of available currency codes.
-    static var isoCurrencyCodes: [String] {
+    public static var isoCurrencyCodes: [String] {
         Locale.isoCurrencyCodes
     }
 
     /// A list of common currency codes.
-    static var commonIsoCurrencyCodes: [String] {
+    public static var commonIsoCurrencyCodes: [String] {
         Locale.commonISOCurrencyCodes
     }
 
     /// Returns a localized string for a specified ISO 4217 currency code.
-    static func localizedString(forCurrencyCode: String) -> String? {
+    public static func localizedString(forCurrencyCode: String) -> String? {
         NSLocale.system.localizedString(forCurrencyCode: forCurrencyCode)
     }
 }

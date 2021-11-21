@@ -35,18 +35,14 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     /// - returns: The total change for all the holdings in the portfolio.
     public var change: Change {
         var totalCost: Price = 0
-        holdings.forEach {
-            totalCost += $0.costBasis
-        }
+        holdings.forEach { totalCost += $0.costBasis }
 
         return Change(cost: totalCost, currentValue: currentValue)
     }
 
     public var changeInLocalCurrency: Change {
         var totalCost: Price = 0
-        holdings.forEach {
-            totalCost += $0.costBasisInLocalCurrency
-        }
+        holdings.forEach { totalCost += $0.costBasisInLocalCurrency }
 
         return Change(cost: totalCost, currentValue: currentValueInLocalCurrency)
     }
@@ -65,9 +61,7 @@ public struct Portfolio: Codable, Hashable, Identifiable {
         self.currency = Currency(code: .unitedStatesDollar)
 
         var holdings: [Holding] = []
-        portfolios.forEach {
-            holdings.append(contentsOf: $0.holdings)
-        }
+        portfolios.forEach { holdings.append(contentsOf: $0.holdings) }
         self.holdings = holdings
     }
 
@@ -93,6 +87,7 @@ public struct Portfolio: Codable, Hashable, Identifiable {
 
     public static func totalChange(of portfolios: [Portfolio]) -> Change {
         guard !portfolios.isEmpty else { return .zero }
+
         let averageCost: Amount = portfolios.reduce(0) { $0 + $1.costBasis } / Decimal(portfolios.count)
         let averageValue: Amount = portfolios.reduce(0) { $0 + $1.currentValue } / Decimal(portfolios.count)
 
@@ -101,6 +96,7 @@ public struct Portfolio: Codable, Hashable, Identifiable {
 
     public static func totalChangeInLocalCurrency(of portfolios: [Portfolio]) -> Change {
         guard !portfolios.isEmpty else { return .zero }
+
         let averageCost = portfolios.reduce(0) { $0 + $1.costBasisInLocalCurrency } / Decimal(portfolios.count)
         let averageValue = portfolios.reduce(0) { $0 + $1.currentValueInLocalCurrency } / Decimal(portfolios.count)
 
@@ -209,12 +205,12 @@ extension Portfolio: Equatable {
 
     public static func == (lhs: Portfolio, rhs: Portfolio) -> Bool {
         lhs.id == rhs.id &&
-        lhs.name == rhs.name &&
-        lhs.currency == rhs.currency &&
-        lhs.holdings == rhs.holdings &&
-        lhs.currentValue == rhs.currentValue &&
-        lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
-        lhs.change == rhs.change &&
-        lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
+            lhs.name == rhs.name &&
+            lhs.currency == rhs.currency &&
+            lhs.holdings == rhs.holdings &&
+            lhs.currentValue == rhs.currentValue &&
+            lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
+            lhs.change == rhs.change &&
+            lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
     }
 }

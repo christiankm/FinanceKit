@@ -5,8 +5,8 @@
 //  Created by Christian Mitteldorf on 06/04/2020.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class MoneyTests: XCTestCase {
 

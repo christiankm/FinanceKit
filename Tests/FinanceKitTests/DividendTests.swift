@@ -5,8 +5,8 @@
 //  Created by Christian Mitteldorf on 05/13/20.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class DividendTests: XCTestCase {
 

@@ -5,8 +5,8 @@
 //  Created by Christian Mitteldorf on 26/04/2020.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class PerformanceCalculatorTests: XCTestCase {
 
@@ -63,7 +63,7 @@ class PerformanceCalculatorTests: XCTestCase {
             HistoricalPrice(date: Date.jan6, price: 150),
             HistoricalPrice(date: Date.jan7, price: 145),
             HistoricalPrice(date: Date.jan8, price: 148),
-            HistoricalPrice(date: Date.jan9, price: 160),
+            HistoricalPrice(date: Date.jan9, price: 160)
         ],
         .cake: [
             HistoricalPrice(date: Date.jan1, price: 100),
@@ -74,7 +74,7 @@ class PerformanceCalculatorTests: XCTestCase {
             HistoricalPrice(date: Date.jan6, price: 140),
             HistoricalPrice(date: Date.jan7, price: 135),
             HistoricalPrice(date: Date.jan8, price: 148),
-            HistoricalPrice(date: Date.jan9, price: 180),
+            HistoricalPrice(date: Date.jan9, price: 180)
         ],
         .ko: [
             HistoricalPrice(date: Date.jan1, price: 30),
@@ -85,7 +85,7 @@ class PerformanceCalculatorTests: XCTestCase {
             HistoricalPrice(date: Date.jan6, price: 50),
             HistoricalPrice(date: Date.jan7, price: 25),
             HistoricalPrice(date: Date.jan8, price: 28),
-            HistoricalPrice(date: Date.jan9, price: 22),
+            HistoricalPrice(date: Date.jan9, price: 22)
         ]
     ]
 }

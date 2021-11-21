@@ -25,11 +25,11 @@ public struct CurrencyFormatter {
         self.currency = currency
         self.locale = locale
 
-        self.formatter.locale = locale
-        self.formatter.currencyCode = currency.code.rawValue
+        formatter.locale = locale
+        formatter.currencyCode = currency.code.rawValue
 
         if currency.code == .none {
-            self.formatter.numberStyle = .decimal
+            formatter.numberStyle = .decimal
         }
     }
 

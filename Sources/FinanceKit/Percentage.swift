@@ -24,7 +24,7 @@ public struct Percentage: Equatable, Hashable, Codable {
 
     /// The percentage in basis points, corresponding to the percentage decimal times 1000.
     public var basisPoints: Int {
-        Int(decimal * 1_000)
+        Int(decimal * 1000)
     }
 
     /// Initialize with a decimal, e.g. 0.23 or 1.7.

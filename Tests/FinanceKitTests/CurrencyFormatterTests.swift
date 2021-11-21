@@ -5,8 +5,8 @@
 //  Created by Christian Mitteldorf on 07/05/2020.
 //
 
-import XCTest
 import FinanceKit
+import XCTest
 
 class CurrencyFormatterTests: XCTestCase {
 

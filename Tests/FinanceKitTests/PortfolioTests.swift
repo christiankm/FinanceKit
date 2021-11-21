@@ -6,8 +6,8 @@
 //  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
-import XCTest
 import FinanceKit
+import XCTest
 
 class PortfolioTests: XCTestCase {
 
@@ -57,7 +57,7 @@ class PortfolioTests: XCTestCase {
         let cokeHolding = sut.holdings.first { $0.symbol == .ko }
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
-        XCTAssertEqual(appleHolding?.currentValue, 2_880)
+        XCTAssertEqual(appleHolding?.currentValue, 2880)
         XCTAssertEqual(cakeHolding?.currentValue, 0)
         XCTAssertEqual(cokeHolding?.currentValue, 0)
     }
@@ -84,7 +84,7 @@ class PortfolioTests: XCTestCase {
         let cokeHolding = sut.holdings.first { $0.symbol == .ko }!
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
-        XCTAssertEqual(appleHolding.currentValue, 2_912.00)
+        XCTAssertEqual(appleHolding.currentValue, 2912.00)
         XCTAssertEqual(cakeHolding.currentValue, 216.10)
         XCTAssertEqual(cokeHolding.currentValue, 0.00)
     }
