@@ -6,8 +6,8 @@
 //  Copyright © 2020 Mitteldorf. All rights reserved.
 //
 
-import XCTest
 @testable import FinanceKit
+import XCTest
 
 class ChangeTests: XCTestCase {
 
@@ -36,11 +36,18 @@ class ChangeTests: XCTestCase {
     }
 
     func testInitWithPercentageValue() {
-        let value = Percentage(decimal: Double.random(in: -1...1))
+        let value = Percentage(decimal: Double.random(in: -1 ... 1))
         let change = Change(percentageValue: value)
         let expectedAmountValue = Decimal(value < Percentage(0.0) ? -1 : 1)
         XCTAssertEqual(change.amount, expectedAmountValue)
         XCTAssertEqual(change.percentage, value)
+    }
+
+    func testInitWithZeroCost() {
+        let sut = Change(cost: 0, currentValue: 1)
+
+        XCTAssertEqual(sut.amount, 0)
+        XCTAssertEqual(sut.percentage, .zero)
     }
 
     func testZeroChange() {
@@ -53,15 +60,15 @@ class ChangeTests: XCTestCase {
     }
 
     func testIsPositive() {
-        XCTAssertTrue(Change(cost: 0, currentValue: 1).isPositive)
+        XCTAssertTrue(Change(cost: 100, currentValue: 110).isPositive)
         XCTAssertTrue(Change.zero.isPositive)
-        XCTAssertFalse(Change(cost: 0, currentValue: -1).isPositive)
+        XCTAssertFalse(Change(cost: 100, currentValue: 90).isPositive)
     }
 
     func testIsNegative() {
-        XCTAssertTrue(Change(cost: 0, currentValue: -1).isNegative)
+        XCTAssertTrue(Change(cost: 100, currentValue: 90).isNegative)
         XCTAssertFalse(Change.zero.isNegative)
-        XCTAssertFalse(Change(cost: 0, currentValue: 1).isNegative)
+        XCTAssertFalse(Change(cost: 100, currentValue: 110).isNegative)
     }
 
     func testPercentageText() {

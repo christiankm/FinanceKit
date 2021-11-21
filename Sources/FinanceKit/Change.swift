@@ -24,16 +24,16 @@ public struct Change: Codable, Equatable, Hashable {
     }
 
     public init(cost: Amount, currentValue: Amount) {
-        if cost.isZero, currentValue.isZero {
+        guard !cost.isZero else {
             self.amount = 0
-            self.percentage = Percentage.zero
+            self.percentage = .zero
             return
         }
 
         self.amount = (currentValue - cost)
 
         if amount.isPositive {
-            self.percentage = Percentage(((amount / cost)).doubleValue)
+            self.percentage = Percentage((amount / cost).doubleValue)
         } else {
             self.percentage = Percentage((((cost - currentValue) / cost) * -1).doubleValue)
         }

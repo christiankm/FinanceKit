@@ -20,6 +20,7 @@ extension ChangeTests {
         ("testInitWithNegativeChange", testInitWithNegativeChange),
         ("testInitWithPercentageValue", testInitWithPercentageValue),
         ("testInitWithPositiveChange", testInitWithPositiveChange),
+        ("testInitWithZeroCost", testInitWithZeroCost),
         ("testIsNegative", testIsNegative),
         ("testIsPositive", testIsPositive),
         ("testPercentageText", testPercentageText),
@@ -334,6 +335,7 @@ extension TransactionTests {
 
 public func __allTests() -> [XCTestCaseEntry] {
     return [
+        testCase(AssetAllocationTests.__allTests__AssetAllocationTests),
         testCase(ChangeTests.__allTests__ChangeTests),
         testCase(CompanyTests.__allTests__CompanyTests),
         testCase(CurrencyConverterTests.__allTests__CurrencyConverterTests),

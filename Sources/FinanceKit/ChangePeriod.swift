@@ -65,3 +65,5 @@ public enum ChangePeriod {
         }
     }
 }
+
+extension ChangePeriod: Codable {}
