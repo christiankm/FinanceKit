@@ -49,9 +49,21 @@ public struct Percentage: Equatable, Hashable, Codable {
     }
 }
 
+// MARK: - Comparable
+
 extension Percentage: Comparable {
 
     public static func < (lhs: Percentage, rhs: Percentage) -> Bool {
         lhs.decimal < rhs.decimal
+    }
+}
+
+// MARK: - Average
+
+extension Collection where Element == Percentage {
+
+    /// Returns the average of all percentages in the collection.
+    public var average: Percentage {
+        Percentage(map(\.decimal).average)
     }
 }
