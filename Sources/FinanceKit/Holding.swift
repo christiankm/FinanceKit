@@ -1,9 +1,7 @@
 //
-//  Holding.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 28/10/2019.
-//  Copyright © 2020 Mitteldorf. All rights reserved.
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import Foundation

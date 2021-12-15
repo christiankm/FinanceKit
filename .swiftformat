@@ -13,6 +13,7 @@
     emptyBraces, \
     enumNamespaces, \
     extensionAccessControl, \
+    fileHeader, \
     hoistPatternLet, \
     indent, \
     initCoderUnavailable, \
@@ -66,23 +67,23 @@
     yodaConditions
 
 # Options
---swiftversion 5.5
---minversion 0.48
+--commas inline
 --extensionacl on-declarations
+--guardelse same-line
+--header "\n FinanceKit \n Copyright © {year} Christian Mitteldorf. All rights reserved.\n MIT license, see LICENSE file for details.\n"
 --indent 4
---xcodeindentation disabled
+--minversion 0.48
 --self init-only
 --stripunusedargs closure-only
---commas inline
---guardelse same-line
+--swiftversion 5.5
 --wraparguments before-first
 --wrapcollections before-first
+--xcodeindentation disabled
 
 # Disabled rules
 # Could be disabled due to false positives or because of team agreements.
 --disable \
     blankLinesAtStartOfScope, \
-    fileHeader, \
     organizeDeclarations, \
     redundantType, \
     sortedSwitchCases, \

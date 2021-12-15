@@ -1,9 +1,7 @@
 //
-//  SymbolTests.swift
-//  FinanceKitTests
-//
-//  Created by Christian Mitteldorf on 09/11/2019.
-//  Copyright © 2020 Mitteldorf. All rights reserved.
+//  FinanceKit
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 @testable import FinanceKit

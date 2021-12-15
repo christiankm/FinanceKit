@@ -1,8 +1,7 @@
 //
-//  DividendTests.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 05/13/20.
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 @testable import FinanceKit

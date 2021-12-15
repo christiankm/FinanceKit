@@ -1,8 +1,7 @@
 //
-//  AssetAllocation.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 24/10/2021.
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import Foundation

@@ -1,3 +1,9 @@
+//
+//  FinanceKit
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
+//
+
 // swiftlint:disable:this file_name
 //
 //  Numerics+Total+Average.swift

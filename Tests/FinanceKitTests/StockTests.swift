@@ -1,9 +1,7 @@
 //
-//  StockTests.swift
-//  FinanceKitTests
-//
-//  Created by Christian Mitteldorf on 29/06/2017.
-//  Copyright © 2020 Mitteldorf. All rights reserved.
+//  FinanceKit
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 @testable import FinanceKit

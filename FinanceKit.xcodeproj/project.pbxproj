@@ -309,7 +309,7 @@
 			buildConfigurationList = OBJ_84 /* Build configuration list for PBXNativeTarget "FinanceKit" */;
 			buildPhases = (
 				AAB08E282749E2400060355B /* Run SwiftFormat */,
-				AA55AA75231ADE430073725E /* Run Swiftlint */,
+				AA55AA75231ADE430073725E /* Run SwiftLint */,
 				OBJ_87 /* Sources */,
 				OBJ_131 /* Frameworks */,
 				AA7969A8241CC8C600759CC8 /* Generate XCTestManifest and LinuxMain */,
@@ -385,7 +385,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AA55AA75231ADE430073725E /* Run Swiftlint */ = {
+		AA55AA75231ADE430073725E /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -394,7 +394,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Swiftlint";
+			name = "Run SwiftLint";
 			outputFileListPaths = (
 			);
 			outputPaths = (

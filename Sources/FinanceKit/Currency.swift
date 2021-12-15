@@ -1,9 +1,7 @@
 //
-//  Currency.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 17/05/2017.
-//  Copyright © 2020 Mitteldorf. All rights reserved.
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import Foundation

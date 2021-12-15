@@ -1,8 +1,7 @@
 //
-//  Dividend.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 05/08/2017.
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import Foundation

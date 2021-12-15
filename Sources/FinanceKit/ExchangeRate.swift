@@ -1,8 +1,7 @@
 //
-//  ExchangeRate.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 01/07/2020.
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import Foundation

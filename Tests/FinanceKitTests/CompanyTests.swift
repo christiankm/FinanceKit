@@ -1,8 +1,7 @@
 //
-//  CompanyTests.swift
-//  FinanceKitTests
-//
-//  Created by Christian Mitteldorf on 23/01/2020.
+//  FinanceKit
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import FinanceKit

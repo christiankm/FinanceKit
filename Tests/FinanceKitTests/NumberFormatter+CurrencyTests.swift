@@ -1,8 +1,7 @@
 //
-//  NumberFormatter+CurrencyTests.swift
-//  FinanceKitTests
-//
-//  Created by Christian Mitteldorf on 08/05/2020.
+//  FinanceKit
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import XCTest

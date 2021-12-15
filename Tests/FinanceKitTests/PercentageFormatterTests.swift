@@ -1,8 +1,7 @@
 //
-//  PercentageFormatterTests.swift
-//  FinanceKitTests
-//
-//  Created by Christian Mitteldorf on 20/04/2020.
+//  FinanceKit
+//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import FinanceKit
