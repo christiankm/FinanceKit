@@ -77,7 +77,6 @@
 		OBJ_137 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_148 /* ChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* ChangeTests.swift */; };
 		OBJ_152 /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* CurrencyTests.swift */; };
-		OBJ_169 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* XCTestManifests.swift */; };
 		OBJ_171 /* FinanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "FinanceKit::FinanceKit::Product" /* FinanceKit.framework */; };
 		OBJ_88 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Change.swift */; };
 		OBJ_89 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Company.swift */; };
@@ -163,7 +162,6 @@
 		OBJ_54 /* ChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTests.swift; sourceTree = "<group>"; };
 		OBJ_58 /* CurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_75 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_81 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_82 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_9 /* Change.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				AA69851C2377351800D0683C /* SymbolTests.swift */,
 				AAA96F6A2451FB04008524AC /* TestData.swift */,
 				AAE675432375BC3000BA5141 /* TransactionTests.swift */,
-				OBJ_75 /* XCTestManifests.swift */,
 			);
 			name = FinanceKitTests;
 			path = Tests/FinanceKitTests;
@@ -312,7 +309,6 @@
 				AA55AA75231ADE430073725E /* Run SwiftLint */,
 				OBJ_87 /* Sources */,
 				OBJ_131 /* Frameworks */,
-				AA7969A8241CC8C600759CC8 /* Generate XCTestManifest and LinuxMain */,
 			);
 			buildRules = (
 			);
@@ -403,24 +399,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		AA7969A8241CC8C600759CC8 /* Generate XCTestManifest and LinuxMain */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate XCTestManifest and LinuxMain";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "swift test --generate-linuxmain\n";
-		};
 		AAB08E282749E2400060355B /* Run SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,7 +446,6 @@
 				AA2721A7244E2A0B00BEB19D /* MoneyTests.swift in Sources */,
 				AA2721AF244E4E7000BEB19D /* PortfolioTests.swift in Sources */,
 				AAFA769323D994B70087A82D /* HoldingTests.swift in Sources */,
-				OBJ_169 /* XCTestManifests.swift in Sources */,
 				AA120020246C6FD000C1FFCA /* CurrencyConverterTests.swift in Sources */,
 				AA12001C246C5D7800C1FFCA /* StockTests.swift in Sources */,
 				AA120023246C7C5800C1FFCA /* PercentageTests.swift in Sources */,
