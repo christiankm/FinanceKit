@@ -138,6 +138,12 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.displayName, "AAPL")
     }
 
+    func testDisplayNameIsSymbolIfEmptyCompanyName() {
+        var holding = Holding(symbol: Self.symbol, quantity: 10, costBasis: 16)
+        holding.company = Company(symbol: Self.symbol, name: "", currency: Currency.usDollars)
+        XCTAssertEqual(holding.displayName, "AAPL")
+    }
+
     // MARK: Test makeHoldings
 
     func testMakeHoldingsWithNoTransactions() {

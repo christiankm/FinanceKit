@@ -71,7 +71,11 @@ public struct Holding: Identifiable, Hashable, Codable {
     public internal(set) var commissionPaid: Price = 0
 
     public var displayName: String {
-        company?.name ?? symbol.rawValue
+        if let name = company?.name, !name.isEmpty {
+            return name
+        } else {
+            return symbol.rawValue
+        }
     }
 
     public internal(set) var transactions: [Transaction] = []

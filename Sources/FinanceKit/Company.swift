@@ -12,9 +12,15 @@ public struct Company: Codable, Equatable, Hashable {
     public let name: String
     public let currency: Currency
 
+    /// Initializes a new `Company` with a given symbol, name and base currency.
+    ///
+    /// - Parameters:
+    ///   - symbol: The symbol of the companys stock.
+    ///   - name: The name of the company. If this is empty the symbol will be used instead.
+    ///   - currency: The main currency of the company. This is usually the same as the country where the company is headquartered.
     public init(symbol: Symbol, name: String, currency: Currency) {
         self.symbol = symbol
-        self.name = name
+        self.name = name.isEmpty ? symbol.rawValue : name
         self.currency = currency
     }
 }

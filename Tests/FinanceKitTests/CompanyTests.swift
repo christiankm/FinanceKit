@@ -21,6 +21,18 @@ class CompanyTests: XCTestCase {
         XCTAssertEqual(apple.currency.code.rawValue, "USD")
     }
 
+    func testInitWithEmptyName() {
+        let apple = Company(
+            symbol: Symbol("AAPL")!, // swiftlint:disable:this force_unwrapping
+            name: "",
+            currency: .usDollars
+        )
+
+        XCTAssertEqual(apple.symbol, Symbol("AAPL")!) // swiftlint:disable:this force_unwrapping
+        XCTAssertEqual(apple.name, "AAPL")
+        XCTAssertEqual(apple.currency.code.rawValue, "USD")
+    }
+
     func testEquatable() {
         let apple = Company(
             symbol: Symbol("AAPL")!, // swiftlint:disable:this force_unwrapping
