@@ -2,9 +2,12 @@
 --enable \
     andOperator, \
     anyObjectProtocol, \
+    assertionFailures, \
     blankLinesAroundMark, \
     blankLinesAtEndOfScope, \
+    blankLinesBetweenImports, \
     blankLinesBetweenScopes, \
+    blockComments, \
     braces, \
     consecutiveBlankLines, \
     consecutiveSpaces, \
@@ -22,9 +25,11 @@
     linebreakAtEndOfFile, \
     modifierOrder, \
     numberFormatting, \
+    preferDouble, \
     preferKeyPath, \
     redundantBackticks, \
     redundantBreak, \
+    redundantClosure, \
     redundantExtensionACL, \
     redundantFileprivate, \
     redundantGet, \
@@ -71,7 +76,9 @@
 --extensionacl on-declarations
 --guardelse same-line
 --header "\n FinanceKit \n Copyright © {year} Christian Mitteldorf. All rights reserved.\n MIT license, see LICENSE file for details.\n"
+--ifdef no-indent
 --indent 4
+--lineaftermarks true
 --minversion 0.48
 --self init-only
 --stripunusedargs closure-only
