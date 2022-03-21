@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -37,6 +37,10 @@ public struct Change: Codable, Equatable, Hashable {
         } else {
             self.percentage = Percentage((((cost - currentValue) / cost) * -1).doubleValue)
         }
+    }
+
+    public init(from: Money, to: Money) {
+        self.init(cost: from.amount, currentValue: to.amount)
     }
 }
 

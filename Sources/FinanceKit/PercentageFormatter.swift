@@ -24,7 +24,7 @@ public struct PercentageFormatter {
     }
 
     public func string(from percentage: Percentage) -> String? {
-        formatter.string(from: NSNumber(value: percentage.decimal))
+        formatter.string(from: NSNumber(value: percentage.decimal)) // swiftlint:disable:this legacy_objc_type
     }
 
     public func percentage(from string: String) -> Percentage? {

@@ -20,6 +20,8 @@ extension Decimal {
     /// Returns the number rounded to two decimals.
     /// Using this help prevent incorrect values especially during serialization.
     public var rounded: Self {
-        NSDecimalNumber(decimal: self).rounding(accordingToBehavior: Self.decimalHandler).decimalValue
+        NSDecimalNumber(decimal: self) // swiftlint:disable:this legacy_objc_type
+            .rounding(accordingToBehavior: Self.decimalHandler)
+            .decimalValue
     }
 }

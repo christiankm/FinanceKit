@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -31,3 +31,28 @@ extension Company: Comparable {
         lhs.name < rhs.name
     }
 }
+
+// @propertyWrapper
+// public struct NonEmpty {
+//    let defaultValue: String
+//    private let value: String?
+//
+//    public var wrappedValue: String {
+//        didSet {
+//            if let value = value, !value.isEmpty {
+//                wrappedValue = value
+//            } else {
+//                wrappedValue = defaultValue
+//            }
+//        }
+//    }
+//
+//    init(_ value: String?, defaultValue: String) {
+//        if let value = value, !value.isEmpty {
+//            self.value = value
+//        } else {
+//            self.value = defaultValue
+//        }
+//        self.defaultValue = defaultValue
+//    }
+// }

@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -13,13 +13,35 @@ public struct CurrencyConverter {
     /// Initializes an instance of `CurrencyConverter`
     public init() {}
 
-    public func convert(_ amount: Decimal, from fromCurrency: Currency,
-                        to toCurrency: Currency, at rate: ExchangeRate) -> Decimal {
+    /// <#Description#>
+    /// - Parameters:
+    ///   - amount: <#amount description#>
+    ///   - fromCurrency: <#fromCurrency description#>
+    ///   - toCurrency: <#toCurrency description#>
+    ///   - rate: <#rate description#>
+    /// - Returns: <#description#>
+    public func convert(
+        _ amount: Decimal,
+        from fromCurrency: Currency,
+        to toCurrency: Currency,
+        at rate: ExchangeRate
+    ) -> Decimal {
         convert(amount, at: rate)
     }
 
-    public func convert(_ amount: Decimal, from fromCurrency: Currency,
-                        to toCurrency: Currency, with pairs: [CurrencyPair]) -> Decimal {
+    /// <#Description#>
+    /// - Parameters:
+    ///   - amount: <#amount description#>
+    ///   - fromCurrency: <#fromCurrency description#>
+    ///   - toCurrency: <#toCurrency description#>
+    ///   - pairs: <#pairs description#>
+    /// - Returns: <#description#>
+    public func convert(
+        _ amount: Decimal,
+        from fromCurrency: Currency,
+        to toCurrency: Currency,
+        with pairs: [CurrencyPair]
+    ) -> Decimal {
         guard fromCurrency != toCurrency else {
             return amount
         }
@@ -46,6 +68,12 @@ public struct CurrencyConverter {
         convert(amount, at: currencyPair.rate)
     }
 
+    /// <#Description#>
+    /// - Parameters:
+    ///   - money: <#money description#>
+    ///   - toCurrency: <#toCurrency description#>
+    ///   - rate: <#rate description#>
+    /// - Returns: <#description#>
     public func convert(_ money: Money, to toCurrency: Currency, at rate: ExchangeRate) -> Money {
         guard money.currency != nil else {
             return Money(money.amount, in: toCurrency)

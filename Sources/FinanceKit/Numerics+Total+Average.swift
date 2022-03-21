@@ -5,12 +5,9 @@
 //
 
 // swiftlint:disable:this file_name
-//
-//  Numerics+Total+Average.swift
 //  FinanceKit
-//
-//  Created by Christian Mitteldorf on 11/02/2020.
-//  Copyright © 2020 Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
+//  MIT license, see LICENSE file for details.
 //
 
 import Foundation

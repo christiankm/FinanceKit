@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -10,14 +10,21 @@ public struct PerformanceCalculator {
 
     public init() {}
 
-    public func totalChange(from startDate: Date, with transactions: [Transaction],
-                            historicalPrices: [Symbol: [HistoricalPrice]]) -> Change {
+    public func totalChange(
+        from startDate: Date,
+        with transactions: [Transaction],
+        historicalPrices: [Symbol: [HistoricalPrice]]
+    ) -> Change {
         totalChange(between: startDate, and: Date(), with: transactions, historicalPrices: historicalPrices)
     }
 
     // TODO: Change must also factor in dividends received, and commission paid on the cost-basis. Not just the price at that point.
-    public func totalChange(between startDate: Date, and endDate: Date,
-                            with transactions: [Transaction], historicalPrices: [Symbol: [HistoricalPrice]]) -> Change {
+    public func totalChange(
+        between startDate: Date,
+        and endDate: Date,
+        with transactions: [Transaction],
+        historicalPrices: [Symbol: [HistoricalPrice]]
+    ) -> Change {
         let holdings = holdingsInPeriod(with: transactions, from: startDate, to: endDate)
 
         var totalHistoricalPrice: Price = 0.0

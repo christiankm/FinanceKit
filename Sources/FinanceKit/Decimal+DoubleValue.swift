@@ -10,6 +10,6 @@ extension Decimal {
 
     /// The double value of the decimal number.
     public var doubleValue: Double {
-        (self as NSNumber).doubleValue
+        asDecimalNumber.doubleValue
     }
 }

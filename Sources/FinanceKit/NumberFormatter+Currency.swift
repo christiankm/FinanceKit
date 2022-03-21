@@ -38,6 +38,6 @@ extension NumberFormatter {
     }
 
     public func string(fromDecimal number: Decimal) -> String? {
-        string(from: number.rounded as NSDecimalNumber)
+        string(from: number.rounded.asDecimalNumber)
     }
 }

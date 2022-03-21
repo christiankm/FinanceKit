@@ -45,11 +45,11 @@ public struct CurrencyFormatter {
 
     /// Returns a formatted string from a number, or nil if formatting fails.
     public func string(from number: Decimal) -> String? {
-        formatter.string(from: number.rounded as NSDecimalNumber)
+        formatter.string(from: number.rounded.asDecimalNumber)
     }
 
     /// Returns a formatted string from a `Money`-value, or nil if formatting fails.
     public func string(from money: Money) -> String? {
-        formatter.string(from: money.amount as NSDecimalNumber)
+        formatter.string(from: money.amount.asDecimalNumber)
     }
 }

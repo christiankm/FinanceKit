@@ -20,7 +20,7 @@ public struct Money: Hashable {
 
     /// - returns: Rounded amount of money in decimal using NSDecimalNumberHandler
     public var amount: Decimal {
-        NSDecimalNumber(decimal: rawValue).rounding(accordingToBehavior: Self.decimalHandler).decimalValue
+        rawValue.rounded
     }
 
     /// - returns: Formatted rounded amount with currency symbol.
@@ -30,7 +30,7 @@ public struct Money: Hashable {
             let formatter = CurrencyFormatter(currency: currency, locale: .current)
             return formatter.string(from: self)
         } else {
-            return NumberFormatter.monetary.string(from: amount as NSDecimalNumber)
+            return NumberFormatter.monetary.string(from: amount.asDecimalNumber)
         }
     }
 

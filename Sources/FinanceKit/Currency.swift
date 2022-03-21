@@ -63,6 +63,6 @@ extension Currency {
 
     /// Returns a localized string for a specified ISO 4217 currency code.
     public static func localizedString(forCurrencyCode: String) -> String? {
-        NSLocale.system.localizedString(forCurrencyCode: forCurrencyCode)
+        NSLocale.system.localizedString(forCurrencyCode: forCurrencyCode) // swiftlint:disable:this legacy_objc_type
     }
 }

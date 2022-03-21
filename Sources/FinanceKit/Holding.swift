@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -106,10 +106,15 @@ public struct Holding: Identifiable, Hashable, Codable {
         quantity > 0
     }
 
-    public init(symbol: Symbol, quantity: Quantity = 0, costBasis: Price = 0,
-                costBasisInLocalCurrency: Price = 0, currentValue: Price = 0,
-                currentValueInLocalCurrency: Price = 0,
-                adjustedCostBasisInLocalCurrency: Price = 0) {
+    public init(
+        symbol: Symbol,
+        quantity: Quantity = 0,
+        costBasis: Price = 0,
+        costBasisInLocalCurrency: Price = 0,
+        currentValue: Price = 0,
+        currentValueInLocalCurrency: Price = 0,
+        adjustedCostBasisInLocalCurrency: Price = 0
+    ) {
         self.symbol = symbol
         self.quantity = max(quantity, 0)
         self.costBasis = max(costBasis, 0)
@@ -236,7 +241,17 @@ public struct Holding: Identifiable, Hashable, Codable {
 
         return newHolding
     }
+
+    public func adjustedForSplit(_ split: Split) -> Holding {
+        self
+    }
+
+    public func adjustedForSplits(_ splits: [Split]) -> Holding {
+        self
+    }
 }
+
+// MARK: Comparable
 
 extension Holding: Comparable {
 
@@ -244,6 +259,8 @@ extension Holding: Comparable {
         lhs.displayName < rhs.displayName
     }
 }
+
+// MARK: Equatable
 
 extension Holding: Equatable {
 
@@ -256,21 +273,5 @@ extension Holding: Equatable {
             lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
             lhs.change == rhs.change &&
             lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
-    }
-}
-
-extension Array where Element == Holding {
-
-    /// Returns all currently open holdings in the array.
-    public var active: [Holding] {
-        filter(\.isActive)
-    }
-
-    /// Searches the array for a match for this symbol, and returns
-    /// the first item that matches, or nil if there are no holdings of this symbol.
-    /// - Parameter symbol: A symbol to match.
-    /// - Returns: The first holding with this symbol or nil if no matches.
-    public func contains(symbol: Symbol) -> Holding? {
-        first { $0.symbol == symbol }
     }
 }
