@@ -33,13 +33,17 @@ public struct CurrencyFormatter {
 
     /// Returns the decimal value from a formatted string, or nil if parsing fails.
     public func decimal(from string: String) -> Decimal? {
-        guard let number = formatter.number(from: string) else { return nil }
+        guard let number = formatter.number(from: string) else {
+            return nil
+        }
         return number.decimalValue
     }
 
     /// Returns the `Money` value from a formatted string, or nil if parsing fails.
     public func money(from string: String) -> Money? {
-        guard let number = formatter.number(from: string) else { return nil }
+        guard let number = formatter.number(from: string) else {
+            return nil
+        }
         return Money(number.decimalValue, in: currency)
     }
 

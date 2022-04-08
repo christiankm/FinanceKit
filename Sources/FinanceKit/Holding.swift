@@ -40,7 +40,10 @@ public struct Holding: Identifiable, Hashable, Codable {
     }
 
     public var adjustedCostBasis: Price {
-        guard isActive else { return 0 }
+        guard isActive else {
+            return 0
+        }
+
         return costBasis - accumulatedDividends
     }
 
@@ -52,12 +55,16 @@ public struct Holding: Identifiable, Hashable, Codable {
 
     /// The average purchase price per share.
     public var averageCostPerShare: Price {
-        guard isActive else { return 0 }
+        guard isActive else {
+            return 0
+        }
         return costBasis / Decimal(quantity)
     }
 
     public var averageAdjustedCostPerShare: Price {
-        guard isActive else { return 0 }
+        guard isActive else {
+            return 0
+        }
         return adjustedCostBasis / Decimal(quantity)
     }
 
@@ -98,7 +105,9 @@ public struct Holding: Identifiable, Hashable, Codable {
 
     /// Returns the ownership in terms of percentage of the total amount of outstanding shares.
     public var ownership: Percentage {
-        guard let outstandingShares = stock?.shares, outstandingShares > 0 else { return .zero }
+        guard let outstandingShares = stock?.shares, outstandingShares > 0 else {
+            return .zero
+        }
         return Percentage(Double(quantity) / Double(outstandingShares))
     }
 
@@ -155,6 +164,8 @@ public struct Holding: Identifiable, Hashable, Codable {
                     holding.accumulatedDividends += Decimal(transaction.quantity) * price
                 }
 
+                holding.transactions.append(transaction)
+
                 // Remove previous and re-add newly calculated holding
                 holdings.removeAll { $0.symbol == transaction.symbol }
                 holdings.append(holding)
@@ -171,6 +182,8 @@ public struct Holding: Identifiable, Hashable, Codable {
                 case .dividend:
                     holding.accumulatedDividends = Decimal(quantity) * price
                 }
+
+                holding.transactions.append(transaction)
 
                 holdings.append(holding)
             }
@@ -189,7 +202,9 @@ public struct Holding: Identifiable, Hashable, Codable {
     ///   The symbol must match the holding.
     /// - Returns: The newly updated holding.
     public func update(with updatedStock: Stock) -> Holding {
-        guard updatedStock.symbol == symbol else { return self }
+        guard updatedStock.symbol == symbol else {
+            return self
+        }
 
         var newHolding = Holding(
             symbol: symbol,
@@ -202,6 +217,7 @@ public struct Holding: Identifiable, Hashable, Codable {
         newHolding.stock = updatedStock
         newHolding.company = updatedStock.company
         newHolding.accumulatedDividends = accumulatedDividends
+        newHolding.transactions = transactions
 
         return newHolding
     }
@@ -214,7 +230,9 @@ public struct Holding: Identifiable, Hashable, Codable {
     /// it returns the converted holding, otherwise it returns a holding where the local values
     /// is equal to the base values.
     public func update(with currencyPairs: [CurrencyPair], to targetCurrency: Currency) -> Holding {
-        guard let companyCurrency = company?.currency else { return self }
+        guard let companyCurrency = company?.currency else {
+            return self
+        }
 
         let converter = CurrencyConverter()
         let convertedCurrentValue = converter.convert(currentValue, from: companyCurrency, to: targetCurrency, with: currencyPairs)
@@ -238,16 +256,59 @@ public struct Holding: Identifiable, Hashable, Codable {
         newHolding.stock = stock
         newHolding.company = company
         newHolding.accumulatedDividends = accumulatedDividends
+        newHolding.transactions = transactions
 
         return newHolding
     }
 
-    public func adjustedForSplit(_ split: Split) -> Holding {
-        self
+    public mutating func adjustForSplit(_ split: Split) {
+        // Only adjust for splits that has happened
+        // and has a valid split ratio.
+        guard split.date.isBeforeOrSameAs(Date()),
+              split.ratio != 0,
+              split.ratio != 1 else {
+            return
+        }
+
+        guard !transactions.isEmpty else { return }
+
+        // For each transaction, adjust for split
+        var adjustedTransactions: [Transaction] = []
+        for transaction in transactions {
+            guard transaction.type != .dividend,
+                  split.date.isAfterOrSameAs(transaction.date) else {
+                adjustedTransactions.append(transaction)
+                continue
+            }
+
+            let adjustedQuantity = Quantity((Double(transaction.quantity) * split.ratio).rounded(.down))
+            let adjustedPrice = transaction.price / Decimal(split.ratio)
+
+            adjustedTransactions.append(Transaction(
+                type: transaction.type,
+                symbol: transaction.symbol,
+                date: transaction.date,
+                price: adjustedPrice,
+                quantity: adjustedQuantity,
+                commission: transaction.commission
+            ))
+        }
+
+        var adjustedHolding = Holding.makeHoldings(with: adjustedTransactions)[0]
+        adjustedHolding.stock = stock
+        adjustedHolding.company = company
+        adjustedHolding.currentValue = currentValue
+        adjustedHolding.currentValueInLocalCurrency = currentValueInLocalCurrency
+
+        assert(adjustedHolding.transactions.count == transactions.count, "Two arrays must be of equal count")
+
+        self = adjustedHolding
     }
 
-    public func adjustedForSplits(_ splits: [Split]) -> Holding {
-        self
+    public mutating func adjustForSplits(_ splits: [Split]) {
+        splits
+            .sorted()
+            .forEach { adjustForSplit($0) }
     }
 }
 
@@ -272,6 +333,7 @@ extension Holding: Equatable {
             lhs.currentValue == rhs.currentValue &&
             lhs.currentValueInLocalCurrency == rhs.currentValueInLocalCurrency &&
             lhs.change == rhs.change &&
-            lhs.changeInLocalCurrency == rhs.changeInLocalCurrency
+            lhs.changeInLocalCurrency == rhs.changeInLocalCurrency &&
+            lhs.transactions == rhs.transactions
     }
 }

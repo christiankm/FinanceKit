@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -20,6 +20,8 @@ public struct Transaction: Codable, Hashable {
     public let price: Price
     public let quantity: Quantity
     public let commission: Price
+
+    public var portfolio: Portfolio?
 
     /// Total cost (or return) of the transaction.
     ///
@@ -41,8 +43,14 @@ public struct Transaction: Codable, Hashable {
         return cost
     }
 
-    public init(type: TransactionType, symbol: Symbol, date: Date,
-                price: Price, quantity: Quantity, commission: Price = 0) {
+    public init(
+        type: TransactionType,
+        symbol: Symbol,
+        date: Date,
+        price: Price,
+        quantity: Quantity,
+        commission: Price = 0
+    ) {
         self.type = type
         self.symbol = symbol
         self.date = date

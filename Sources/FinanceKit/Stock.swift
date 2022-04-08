@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -40,8 +40,15 @@ public struct Stock: Asset, Identifiable, Equatable, Codable {
         company.name
     }
 
-    public init(symbol: Symbol, company: Company, price: Decimal, currency: Currency,
-                marketCap: UInt64? = nil, exchange: Exchange? = nil, change: Change? = nil) {
+    public init(
+        symbol: Symbol,
+        company: Company,
+        price: Decimal,
+        currency: Currency,
+        marketCap: UInt64? = nil,
+        exchange: Exchange? = nil,
+        change: Change? = nil
+    ) {
         self.symbol = symbol
         self.company = company
         self.price = abs(price)

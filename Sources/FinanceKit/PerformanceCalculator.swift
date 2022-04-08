@@ -31,7 +31,9 @@ public struct PerformanceCalculator {
         var totalCurrentPrice: Price = 0.0
 
         holdings.forEach { holding in
-            guard let holdingHistoricalData = historicalPrices[holding.symbol] else { return }
+            guard let holdingHistoricalData = historicalPrices[holding.symbol] else {
+                return
+            }
             let historicalDataInPeriod = holdingHistoricalData
                 .filter { data in
                     data.date.isAfterOrSameAs(startDate) && data.date.isBeforeOrSameAs(endDate)

@@ -11,12 +11,16 @@ public struct Symbol: RawRepresentable, Equatable, Hashable, Codable {
     public let rawValue: String
 
     public init?(_ rawValue: String) {
-        guard let symbol = Symbol(rawValue: rawValue) else { return nil }
+        guard let symbol = Symbol(rawValue: rawValue) else {
+            return nil
+        }
         self.rawValue = symbol.rawValue
     }
 
     public init?(rawValue: String) {
-        guard !rawValue.isEmpty else { return nil }
+        guard !rawValue.isEmpty else {
+            return nil
+        }
 
         self.rawValue = rawValue.uppercased()
     }

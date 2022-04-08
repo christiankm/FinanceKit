@@ -28,7 +28,9 @@ public struct PercentageFormatter {
     }
 
     public func percentage(from string: String) -> Percentage? {
-        guard let number = formatter.number(from: string) else { return nil }
+        guard let number = formatter.number(from: string) else {
+            return nil
+        }
         return Percentage(decimal: number.doubleValue)
     }
 }

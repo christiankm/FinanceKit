@@ -64,27 +64,37 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     }
 
     public static func totalCost(of portfolios: [Portfolio]) -> Amount {
-        guard !portfolios.isEmpty else { return 0 }
+        guard !portfolios.isEmpty else {
+            return 0
+        }
         return portfolios.reduce(0) { $0 + $1.costBasis }
     }
 
     public static func totalCostInLocalCurrency(of portfolios: [Portfolio]) -> Amount {
-        guard !portfolios.isEmpty else { return 0 }
+        guard !portfolios.isEmpty else {
+            return 0
+        }
         return portfolios.reduce(0) { $0 + $1.costBasisInLocalCurrency }
     }
 
     public static func totalValue(of portfolios: [Portfolio]) -> Amount {
-        guard !portfolios.isEmpty else { return 0 }
+        guard !portfolios.isEmpty else {
+            return 0
+        }
         return portfolios.reduce(0) { $0 + $1.currentValue }
     }
 
     public static func totalValueInLocalCurrency(of portfolios: [Portfolio]) -> Amount {
-        guard !portfolios.isEmpty else { return 0 }
+        guard !portfolios.isEmpty else {
+            return 0
+        }
         return portfolios.reduce(0) { $0 + $1.currentValueInLocalCurrency }
     }
 
     public static func totalChange(of portfolios: [Portfolio]) -> Change {
-        guard !portfolios.isEmpty else { return .zero }
+        guard !portfolios.isEmpty else {
+            return .zero
+        }
 
         let averageCost: Amount = portfolios.reduce(0) { $0 + $1.costBasis } / Decimal(portfolios.count)
         let averageValue: Amount = portfolios.reduce(0) { $0 + $1.currentValue } / Decimal(portfolios.count)
@@ -93,7 +103,9 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     }
 
     public static func totalChangeInLocalCurrency(of portfolios: [Portfolio]) -> Change {
-        guard !portfolios.isEmpty else { return .zero }
+        guard !portfolios.isEmpty else {
+            return .zero
+        }
 
         let averageCost = portfolios.reduce(0) { $0 + $1.costBasisInLocalCurrency } / Decimal(portfolios.count)
         let averageValue = portfolios.reduce(0) { $0 + $1.currentValueInLocalCurrency } / Decimal(portfolios.count)
@@ -102,24 +114,32 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     }
 
     public static func totalCost(of holdings: [Holding]) -> Amount {
-        guard !holdings.isEmpty else { return 0 }
+        guard !holdings.isEmpty else {
+            return 0
+        }
         return holdings.reduce(0) { $0 + $1.costBasis }
     }
 
     public static func totalCostInLocalCurrency(of holdings: [Holding]) -> Amount {
-        guard !holdings.isEmpty else { return 0 }
+        guard !holdings.isEmpty else {
+            return 0
+        }
         return holdings.reduce(0) { $0 + $1.costBasisInLocalCurrency }
     }
 
     public static func averageAdjustedCostPerShare(of symbol: Symbol, in transactions: [Transaction]) -> Price {
         let transactionsMatchingSymbol = transactions.filter { $0.symbol.rawValue == symbol.rawValue }
-        guard let holding = Holding.makeHoldings(with: transactionsMatchingSymbol).first else { return 0 }
+        guard let holding = Holding.makeHoldings(with: transactionsMatchingSymbol).first else {
+            return 0
+        }
 
         return holding.averageAdjustedCostPerShare
     }
 
     public static func averageAdjustedCostPerShare(of symbol: Symbol, in holdings: [Holding]) -> Price {
-        guard let holdingMatchingSymbol = holdings.first(where: { $0.symbol == symbol }) else { return 0 }
+        guard let holdingMatchingSymbol = holdings.first(where: { $0.symbol == symbol }) else {
+            return 0
+        }
         return holdingMatchingSymbol.averageAdjustedCostPerShare
     }
 
@@ -150,7 +170,9 @@ public struct Portfolio: Codable, Hashable, Identifiable {
     public func update(with stocks: [Stock]) -> Portfolio {
         var updatedHoldings: [Holding] = []
         stocks.forEach { stock in
-            guard let holding = holdings.first(where: { $0.symbol == stock.symbol }) else { return }
+            guard let holding = holdings.first(where: { $0.symbol == stock.symbol }) else {
+                return
+            }
             let updatedHolding = holding.update(with: stock)
             updatedHoldings.append(updatedHolding)
         }

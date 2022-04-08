@@ -72,7 +72,9 @@ extension Date {
         dateComponents.day = day
         dateComponents.timeZone = .current
 
-        guard let date = Calendar.current.date(from: dateComponents) else { return nil }
+        guard let date = Calendar.current.date(from: dateComponents) else {
+            return nil
+        }
 
         self = date
     }

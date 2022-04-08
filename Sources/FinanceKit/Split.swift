@@ -54,3 +54,10 @@ public struct Split {
         }
     }
 }
+
+extension Split: Comparable {
+
+    public static func < (lhs: Split, rhs: Split) -> Bool {
+        lhs.date > rhs.date
+    }
+}

@@ -43,7 +43,9 @@ public struct Percentage: Equatable, Hashable, Codable {
 
     /// Initialize with a percentage formatted as a string.
     public init?(string: String) {
-        guard let percentage = PercentageFormatter().percentage(from: string) else { return nil }
+        guard let percentage = PercentageFormatter().percentage(from: string) else {
+            return nil
+        }
         self = percentage
     }
 }

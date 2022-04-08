@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2021 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -19,6 +19,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.costBasisInLocalCurrency, 0)
         XCTAssertEqual(holding.currentValue, 0)
         XCTAssertEqual(holding.currentValueInLocalCurrency, 0)
+        XCTAssertTrue(holding.transactions.isEmpty)
     }
 
     func testInitWithValues() {
@@ -36,6 +37,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.costBasisInLocalCurrency, 23)
         XCTAssertEqual(holding.currentValue, 23)
         XCTAssertEqual(holding.currentValueInLocalCurrency, 34)
+        XCTAssertTrue(holding.transactions.isEmpty)
     }
 
     func testHoldingQuantityIsClampedToZero() {
@@ -176,8 +178,10 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings.count, 2)
         XCTAssertEqual(holdings[0].quantity, expectedHoldingOfAAPL.quantity)
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfAAPL.costBasis)
+        XCTAssertEqual(holdings[0].transactions.count, 2)
         XCTAssertEqual(holdings[1].quantity, expectedHoldingOfCAKE.quantity)
         XCTAssertEqual(holdings[1].costBasis, expectedHoldingOfCAKE.costBasis)
+        XCTAssertEqual(holdings[1].transactions.count, 1)
     }
 
     func testMakeHoldingsWithOnlySellTransactions() {
@@ -208,6 +212,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings.count, 1)
         XCTAssertEqual(holdings[0].quantity, expectedHoldingOfCAKE.quantity)
         XCTAssertEqual(holdings[0].costBasis, expectedHoldingOfCAKE.costBasis)
+        XCTAssertEqual(holdings[0].transactions.count, 1)
     }
 
     func testMakeHoldingsWithMultipleBuyAndSellTransactions() {
@@ -225,6 +230,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings.count, 1)
         XCTAssertEqual(holdings.first!.costBasis, 216)
         XCTAssertEqual(holdings.first!.averageCostPerShare, 43.2)
+        XCTAssertEqual(holdings.first!.transactions.count, 4)
     }
 
     func testMakeHoldingsWithBuyAndSellTransactionsInUnsortedOrder() {
@@ -274,6 +280,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holding.adjustedCostBasis, 159.8)
         XCTAssertEqual(holding.averageCostPerShare, 83, accuracy: 0.01)
         XCTAssertEqual(holding.averageAdjustedCostPerShare, 79.9, accuracy: 0.01)
+        XCTAssertEqual(holding.transactions.count, 4)
     }
 
     // MARK: Test Update functions
@@ -305,6 +312,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(newHolding.adjustedCostBasis, 980)
         XCTAssertEqual(newHolding.averageCostPerShare, 100)
         XCTAssertEqual(newHolding.averageAdjustedCostPerShare, 98)
+        XCTAssertEqual(newHolding.transactions.count, holding.transactions.count)
     }
 
     func testUpdateWithStockWithDifferentSymbol() {
@@ -340,6 +348,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(sut.costBasisInLocalCurrency.rounded, 132.3)
         XCTAssertEqual(sut.currentValueInLocalCurrency.rounded, 2381.4)
         XCTAssertEqual(sut.adjustedCostBasisInLocalCurrency.rounded, 92.61)
+        XCTAssertEqual(sut.transactions.count, holding.transactions.count)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenCurrencyIsEqual() {
@@ -354,6 +363,7 @@ class HoldingTests: XCTestCase {
 
         XCTAssertEqual(sut.costBasisInLocalCurrency, 1000)
         XCTAssertEqual(sut.currentValueInLocalCurrency, 1800)
+        XCTAssertEqual(sut.transactions.count, holding.transactions.count)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrencyWhenHoldingHasNoCompanyCurrency() {
@@ -366,6 +376,150 @@ class HoldingTests: XCTestCase {
 
         XCTAssertEqual(sut.costBasisInLocalCurrency, 0)
         XCTAssertEqual(sut.currentValueInLocalCurrency, 0)
+        XCTAssertEqual(sut.transactions.count, 0)
+    }
+
+    // MARK: Test Split adjusting
+
+    func testAdjustForSplit() throws {
+        let transactions = [
+            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 23, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: .jan4, price: 0.5, quantity: 23),
+            Transaction(type: .sell, symbol: .aapl, date: .jan5, price: 120, quantity: 3, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: .jan6, price: 0.6, quantity: 20),
+            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 50, quantity: 26, commission: 13)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+        var holding = holdings.first!
+
+        holding = holding.update(with: .apple)
+        XCTAssertEqual(holding.quantity, 46)
+        XCTAssertEqual(holding.currentValue, 8280)
+
+        var sut = holding
+
+        let split = Split(date: .jan7, ratio: 2)
+        sut.adjustForSplit(split)
+
+        XCTAssertEqual(sut.stock, holding.stock)
+        XCTAssertEqual(sut.company, holding.company)
+        XCTAssertEqual(sut.quantity, 66)
+        XCTAssertEqual(sut.accumulatedDividends, holding.accumulatedDividends)
+        XCTAssertEqual(sut.costBasis, holding.costBasis)
+        XCTAssertEqual(sut.adjustedCostBasis, holding.adjustedCostBasis)
+        XCTAssertEqual(sut.averageCostPerShare, 49.681, accuracy: 0.01)
+        XCTAssertEqual(sut.averageAdjustedCostPerShare, 49.325, accuracy: 0.01)
+        XCTAssertEqual(sut.currentValue, holding.currentValue)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, holding.currentValueInLocalCurrency)
+    }
+
+    func testAdjustForReverseSplit() throws {
+        let transactions = [
+            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 23, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: .jan4, price: 0.5, quantity: 23),
+            Transaction(type: .sell, symbol: .aapl, date: .jan5, price: 120, quantity: 3, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: .jan6, price: 0.6, quantity: 20),
+            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 400, quantity: 26, commission: 13)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+        var holding = holdings.first!
+
+        holding = holding.update(with: .apple)
+        XCTAssertEqual(holding.quantity, 46)
+        XCTAssertEqual(holding.currentValue, 8280)
+
+        var sut = holding
+
+        let split = Split(date: .jan7, ratio: 0.2)
+        sut.adjustForSplit(split)
+
+        XCTAssertEqual(sut.stock, holding.stock)
+        XCTAssertEqual(sut.company, holding.company)
+        XCTAssertEqual(sut.quantity, 30)
+        XCTAssertEqual(sut.accumulatedDividends, holding.accumulatedDividends)
+//        XCTAssertEqual(sut.costBasis, holding.costBasis)
+//        XCTAssertEqual(sut.adjustedCostBasis, holding.adjustedCostBasis)
+        XCTAssertEqual(sut.averageCostPerShare, 413.76, accuracy: 0.01)
+        XCTAssertEqual(sut.averageAdjustedCostPerShare, 412.983, accuracy: 0.01)
+        XCTAssertEqual(sut.currentValue, holding.currentValue)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, holding.currentValueInLocalCurrency)
+    }
+
+    func testAdjustForSplits() throws {
+        let transactions = [
+            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 23, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: .jan4, price: 0.5, quantity: 23),
+            Transaction(type: .sell, symbol: .aapl, date: .jan5, price: 120, quantity: 3, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: .jan6, price: 0.6, quantity: 20),
+            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 50, quantity: 26, commission: 13)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+        var holding = holdings.first!
+
+        holding = holding.update(with: .apple)
+        XCTAssertEqual(holding.quantity, 46)
+        XCTAssertEqual(holding.currentValue, 8280)
+
+        var sut = holding
+
+        sut.adjustForSplit(Split(date: .jan7, ratio: 2))
+        sut.adjustForSplit(Split(date: .jan8, ratio: 5))
+        sut.adjustForSplit(Split(date: .jan9, ratio: 0.5))
+
+        XCTAssertEqual(sut.stock, holding.stock)
+        XCTAssertEqual(sut.company, holding.company)
+        XCTAssertEqual(sut.quantity, 165)
+        XCTAssertEqual(sut.accumulatedDividends, holding.accumulatedDividends)
+        XCTAssertEqual(sut.costBasis, holding.costBasis)
+        XCTAssertEqual(sut.adjustedCostBasis, holding.adjustedCostBasis)
+        XCTAssertEqual(sut.averageCostPerShare, 19.872, accuracy: 0.01)
+        XCTAssertEqual(sut.averageAdjustedCostPerShare, 19.73, accuracy: 0.01)
+        XCTAssertEqual(sut.currentValue, holding.currentValue)
+        XCTAssertEqual(sut.currentValueInLocalCurrency, holding.currentValueInLocalCurrency)
+    }
+
+    func testAdjustForSplitDoesNothingForFutureSplit() throws {
+        let transactions = [
+            Transaction(type: .buy, symbol: .aapl, date: Date(), price: 100, quantity: 5, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.5, quantity: 10),
+            Transaction(type: .sell, symbol: .aapl, date: Date(), price: 120, quantity: 3, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.6, quantity: 2)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+        let holding = holdings.first!
+        var sut = holding
+
+        let futureSplit = Split(date: .distantFuture, ratio: 2)
+        sut.adjustForSplit(futureSplit)
+
+        XCTAssertEqual(sut, sut)
+    }
+
+    func testAdjustForSplitDoesNothingForInvalidSplitRatio() throws {
+        let transactions = [
+            Transaction(type: .buy, symbol: .aapl, date: Date(), price: 100, quantity: 5, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.5, quantity: 10),
+            Transaction(type: .sell, symbol: .aapl, date: Date(), price: 120, quantity: 3, commission: 13),
+            Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.6, quantity: 2)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+        let holding = holdings.first!
+        var sut = holding
+
+        let zeroSplit = Split(date: .distantPast, ratio: 0)
+        sut.adjustForSplit(zeroSplit)
+
+        XCTAssertEqual(holding, sut)
+
+        let oneSplit = Split(date: .distantPast, ratio: 1)
+        sut.adjustForSplit(oneSplit)
+
+        XCTAssertEqual(holding, sut)
     }
 
     // MARK: Test Protocol Conformances

@@ -65,7 +65,9 @@ public struct Money: Hashable {
     ///   - string: An amount of money from string.
     ///   - currency: A currency the money is in, or nil if no particular currency is needed.
     public init?(string: String, in currency: Currency? = nil) {
-        guard let doubleValue = Double(string) else { return nil }
+        guard let doubleValue = Double(string) else {
+            return nil
+        }
 
         self.rawValue = Decimal(doubleValue)
         self.currency = currency
@@ -88,7 +90,9 @@ public struct Money: Hashable {
 
     /// Divide two money amounts. This function does not take different currencies into account.
     public static func / (lhs: Money, rhs: Money) -> Money? {
-        guard !rhs.isZero else { return nil }
+        guard !rhs.isZero else {
+            return nil
+        }
         return Money(lhs.rawValue / rhs.rawValue)
     }
 
@@ -232,18 +236,24 @@ extension Collection where Element == Money {
     /// All elements must have the same currency (or none), otherwise this returns nil.
     public var sum: Money? {
         let uniqueElements = Set(map(\.currency))
-        guard uniqueElements.count == 1 else { return nil }
+        guard uniqueElements.count == 1 else {
+            return nil
+        }
         return reduce(0, +)
     }
 
     /// Returns the average of the money in the collection, or zero if the collection is empty
     /// All elements must have the same currency (or none), otherwise this returns nil.
     public var average: Money? {
-        guard !isEmpty else { return Money(0) }
+        guard !isEmpty else {
+            return Money(0)
+        }
 
         let uniqueElements = Set(map(\.currency))
         guard uniqueElements.count == 1,
-              let sum = sum else { return nil }
+              let sum = sum else {
+            return nil
+        }
 
         return sum / Money(Decimal(count))
     }

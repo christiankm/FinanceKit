@@ -46,4 +46,23 @@ class SplitTests: XCTestCase {
         let reverseSplit = Split(date: date, fromFactor: 3, toFactor: 1)
         XCTAssertTrue(reverseSplit.isReverseSplit)
     }
+
+    func testComparable() throws {
+        let splits: [Split] = [
+            Split(date: Date(timeIntervalSinceReferenceDate: 5000), ratio: 0.0),
+            Split(date: Date(timeIntervalSinceReferenceDate: 30000), ratio: 0.0),
+            Split(date: Date(timeIntervalSinceReferenceDate: 10000), ratio: 0.0),
+            Split(date: Date(timeIntervalSinceReferenceDate: 2000), ratio: 0.0),
+            Split(date: Date(timeIntervalSinceReferenceDate: 3600), ratio: 0.0),
+            Split(date: Date(timeIntervalSinceReferenceDate: 6400), ratio: 0.0)
+        ]
+
+        let sut = splits.sorted()
+        XCTAssertEqual(sut[0].date.timeIntervalSinceReferenceDate, 30000)
+        XCTAssertEqual(sut[1].date.timeIntervalSinceReferenceDate, 10000)
+        XCTAssertEqual(sut[2].date.timeIntervalSinceReferenceDate, 6400)
+        XCTAssertEqual(sut[3].date.timeIntervalSinceReferenceDate, 5000)
+        XCTAssertEqual(sut[4].date.timeIntervalSinceReferenceDate, 3600)
+        XCTAssertEqual(sut[5].date.timeIntervalSinceReferenceDate, 2000)
+    }
 }
