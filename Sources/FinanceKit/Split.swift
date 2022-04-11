@@ -19,6 +19,9 @@ public struct Split {
     /// this value should be 5. For a reverse split of 4-to-1, this value should be 0.25.
     public typealias Ratio = Double
 
+    /// The symbol of the instrument.
+    public let symbol: Symbol
+
     /// The date of the split.
     public let date: Date
 
@@ -32,19 +35,23 @@ public struct Split {
 
     /// Initialize a new Split with the split date and ratio.
     /// - Parameters:
+    ///   - symbol: The symbol of the instrument.
     ///   - date: The date where the split is effective from.
     ///   - ratio: A positive non-zero number describing the split ratio.
-    public init(date: Date, ratio: Ratio) {
+    public init(symbol: Symbol, date: Date, ratio: Ratio) {
+        self.symbol = symbol
         self.date = date
         self.ratio = ratio
     }
 
     /// Initialize a new Split with the split date, a from factor and to factor.
     /// - Parameters:
+    ///   - symbol: The symbol of the instrument.
     ///   - date: The date where the split is effective from.
     ///   - fromFactor: The number of shares we are splitting from.
     ///   - toFactor: The number of shares we end up with.
-    public init(date: Date, fromFactor: Int, toFactor: Int) {
+    public init(symbol: Symbol, date: Date, fromFactor: Int, toFactor: Int) {
+        self.symbol = symbol
         self.date = date
 
         if toFactor == 0 {

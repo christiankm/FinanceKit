@@ -12,49 +12,49 @@ class SplitTests: XCTestCase {
     private let date = Date()
 
     func testInitWithDateRatio() throws {
-        let sut = Split(date: date, ratio: 0.25)
+        let sut = Split(symbol: .aapl, date: date, ratio: 0.25)
 
         XCTAssertEqual(sut.date, date)
         XCTAssertEqual(sut.ratio, 0.25)
     }
 
     func testInitWithDateFactor() throws {
-        let sut = Split(date: date, fromFactor: 1, toFactor: 5)
+        let sut = Split(symbol: .aapl, date: date, fromFactor: 1, toFactor: 5)
 
         XCTAssertEqual(sut.date, date)
         XCTAssertEqual(sut.ratio, 0.20)
     }
 
     func testInitWithDateZeroToFactor() throws {
-        let sut = Split(date: date, fromFactor: 1, toFactor: 0)
+        let sut = Split(symbol: .aapl, date: date, fromFactor: 1, toFactor: 0)
 
         XCTAssertEqual(sut.date, date)
         XCTAssertEqual(sut.ratio, 0.00)
     }
 
     func testInitWithDateReverseFactor() throws {
-        let sut = Split(date: date, fromFactor: 3, toFactor: 1)
+        let sut = Split(symbol: .aapl, date: date, fromFactor: 3, toFactor: 1)
 
         XCTAssertEqual(sut.date, date)
         XCTAssertEqual(sut.ratio, 3.00)
     }
 
     func testIsReverseSplit() throws {
-        let split = Split(date: date, fromFactor: 1, toFactor: 5)
+        let split = Split(symbol: .aapl, date: date, fromFactor: 1, toFactor: 5)
         XCTAssertFalse(split.isReverseSplit)
 
-        let reverseSplit = Split(date: date, fromFactor: 3, toFactor: 1)
+        let reverseSplit = Split(symbol: .aapl, date: date, fromFactor: 3, toFactor: 1)
         XCTAssertTrue(reverseSplit.isReverseSplit)
     }
 
     func testComparable() throws {
         let splits: [Split] = [
-            Split(date: Date(timeIntervalSinceReferenceDate: 5000), ratio: 0.0),
-            Split(date: Date(timeIntervalSinceReferenceDate: 30000), ratio: 0.0),
-            Split(date: Date(timeIntervalSinceReferenceDate: 10000), ratio: 0.0),
-            Split(date: Date(timeIntervalSinceReferenceDate: 2000), ratio: 0.0),
-            Split(date: Date(timeIntervalSinceReferenceDate: 3600), ratio: 0.0),
-            Split(date: Date(timeIntervalSinceReferenceDate: 6400), ratio: 0.0)
+            Split(symbol: .aapl, date: Date(timeIntervalSinceReferenceDate: 5000), ratio: 0.0),
+            Split(symbol: .aapl, date: Date(timeIntervalSinceReferenceDate: 30000), ratio: 0.0),
+            Split(symbol: .aapl, date: Date(timeIntervalSinceReferenceDate: 10000), ratio: 0.0),
+            Split(symbol: .aapl, date: Date(timeIntervalSinceReferenceDate: 2000), ratio: 0.0),
+            Split(symbol: .aapl, date: Date(timeIntervalSinceReferenceDate: 3600), ratio: 0.0),
+            Split(symbol: .aapl, date: Date(timeIntervalSinceReferenceDate: 6400), ratio: 0.0)
         ]
 
         let sut = splits.sorted()

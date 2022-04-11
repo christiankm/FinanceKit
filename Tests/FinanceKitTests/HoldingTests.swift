@@ -399,7 +399,7 @@ class HoldingTests: XCTestCase {
 
         var sut = holding
 
-        let split = Split(date: .jan7, ratio: 2)
+        let split = Split(symbol: .aapl, date: .jan7, ratio: 2)
         sut.adjustForSplit(split)
 
         XCTAssertEqual(sut.stock, holding.stock)
@@ -432,7 +432,7 @@ class HoldingTests: XCTestCase {
 
         var sut = holding
 
-        let split = Split(date: .jan7, ratio: 0.2)
+        let split = Split(symbol: .aapl, date: .jan7, ratio: 0.2)
         sut.adjustForSplit(split)
 
         XCTAssertEqual(sut.stock, holding.stock)
@@ -465,9 +465,9 @@ class HoldingTests: XCTestCase {
 
         var sut = holding
 
-        sut.adjustForSplit(Split(date: .jan7, ratio: 2))
-        sut.adjustForSplit(Split(date: .jan8, ratio: 5))
-        sut.adjustForSplit(Split(date: .jan9, ratio: 0.5))
+        sut.adjustForSplit(Split(symbol: .aapl, date: .jan7, ratio: 2))
+        sut.adjustForSplit(Split(symbol: .aapl, date: .jan8, ratio: 5))
+        sut.adjustForSplit(Split(symbol: .aapl, date: .jan9, ratio: 0.5))
 
         XCTAssertEqual(sut.stock, holding.stock)
         XCTAssertEqual(sut.company, holding.company)
@@ -493,7 +493,7 @@ class HoldingTests: XCTestCase {
         let holding = holdings.first!
         var sut = holding
 
-        let futureSplit = Split(date: .distantFuture, ratio: 2)
+        let futureSplit = Split(symbol: .aapl, date: .distantFuture, ratio: 2)
         sut.adjustForSplit(futureSplit)
 
         XCTAssertEqual(sut, sut)
@@ -511,12 +511,12 @@ class HoldingTests: XCTestCase {
         let holding = holdings.first!
         var sut = holding
 
-        let zeroSplit = Split(date: .distantPast, ratio: 0)
+        let zeroSplit = Split(symbol: .aapl, date: .distantPast, ratio: 0)
         sut.adjustForSplit(zeroSplit)
 
         XCTAssertEqual(holding, sut)
 
-        let oneSplit = Split(date: .distantPast, ratio: 1)
+        let oneSplit = Split(symbol: .aapl, date: .distantPast, ratio: 1)
         sut.adjustForSplit(oneSplit)
 
         XCTAssertEqual(holding, sut)
