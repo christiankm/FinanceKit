@@ -87,6 +87,25 @@ class PortfolioTests: XCTestCase {
         XCTAssertEqual(cokeHolding.currentValue, 0.00)
     }
 
+    func testAdjustForSplits() {
+        let transactions = [
+            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 23, commission: 13),
+            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 50, quantity: 26, commission: 13)
+        ]
+
+        let holdings = Holding.makeHoldings(with: transactions)
+        var sut = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
+
+        sut.adjust(for: [
+            Split(symbol: .aapl, date: .jan7, ratio: 2)
+        ])
+
+        let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
+
+        XCTAssertEqual(sut.holdings.count, holdings.count)
+        XCTAssertEqual(appleHolding.quantity, 72)
+    }
+
     func testUpdateWithCurrencyPairsToBaseCurrency() {
         let holdings: [Holding] = [
             Holding(symbol: .aapl, quantity: 16, costBasis: 200, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0),

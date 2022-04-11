@@ -195,6 +195,25 @@ public struct Portfolio: Codable, Hashable, Identifiable {
         return newPortfolio
     }
 
+    public mutating func adjust(for splits: [Split]) {
+        var adjustedHoldings: [Holding] = []
+        splits.sorted().forEach { split in
+            guard var holding = holdings.first(where: { $0.symbol == split.symbol }) else {
+                return
+            }
+            holding.adjustForSplit(split)
+            adjustedHoldings.append(holding)
+        }
+
+        let adjustedPortfolio = Portfolio(
+            name: name,
+            currency: currency,
+            holdings: adjustedHoldings
+        )
+
+        self = adjustedPortfolio
+    }
+
     /// Returns a new `Portfolio` with all holdings current value and cost basis in local currencies,
     /// using the companys currency as the base currency.
     ///
