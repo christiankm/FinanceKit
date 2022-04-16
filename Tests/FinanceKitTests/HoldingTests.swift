@@ -383,33 +383,33 @@ class HoldingTests: XCTestCase {
 
     func testAdjustForSplit() throws {
         let transactions = [
-            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 23, commission: 13),
+            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 92.72, quantity: 7, commission: 13),
             Transaction(type: .dividend, symbol: .aapl, date: .jan4, price: 0.5, quantity: 23),
-            Transaction(type: .sell, symbol: .aapl, date: .jan5, price: 120, quantity: 3, commission: 13),
+            Transaction(type: .sell, symbol: .aapl, date: .jan5, price: 92.72, quantity: 3, commission: 13),
             Transaction(type: .dividend, symbol: .aapl, date: .jan6, price: 0.6, quantity: 20),
-            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 50, quantity: 26, commission: 13)
+            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 180.94, quantity: 11, commission: 13)
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
         var holding = holdings.first!
 
         holding = holding.update(with: .apple)
-        XCTAssertEqual(holding.quantity, 46)
-        XCTAssertEqual(holding.currentValue, 8280)
+        XCTAssertEqual(holding.quantity, 15)
+        XCTAssertEqual(holding.currentValue, 2700)
 
         var sut = holding
 
-        let split = Split(symbol: .aapl, date: .jan7, ratio: 2)
+        let split = Split(symbol: .aapl, date: .jan9, ratio: 0.25)
         sut.adjustForSplit(split)
 
         XCTAssertEqual(sut.stock, holding.stock)
         XCTAssertEqual(sut.company, holding.company)
-        XCTAssertEqual(sut.quantity, 66)
+        XCTAssertEqual(sut.quantity, 60)
         XCTAssertEqual(sut.accumulatedDividends, holding.accumulatedDividends)
         XCTAssertEqual(sut.costBasis, holding.costBasis)
         XCTAssertEqual(sut.adjustedCostBasis, holding.adjustedCostBasis)
-        XCTAssertEqual(sut.averageCostPerShare, 49.681, accuracy: 0.01)
-        XCTAssertEqual(sut.averageAdjustedCostPerShare, 49.325, accuracy: 0.01)
+        XCTAssertEqual(sut.averageCostPerShare, 40.00, accuracy: 0.01)
+        XCTAssertEqual(sut.averageAdjustedCostPerShare, 39.612, accuracy: 0.01)
         XCTAssertEqual(sut.currentValue, holding.currentValue)
         XCTAssertEqual(sut.currentValueInLocalCurrency, holding.currentValueInLocalCurrency)
     }
@@ -437,12 +437,12 @@ class HoldingTests: XCTestCase {
 
         XCTAssertEqual(sut.stock, holding.stock)
         XCTAssertEqual(sut.company, holding.company)
-        XCTAssertEqual(sut.quantity, 30)
+        XCTAssertEqual(sut.quantity, 126)
         XCTAssertEqual(sut.accumulatedDividends, holding.accumulatedDividends)
 //        XCTAssertEqual(sut.costBasis, holding.costBasis)
 //        XCTAssertEqual(sut.adjustedCostBasis, holding.adjustedCostBasis)
-        XCTAssertEqual(sut.averageCostPerShare, 413.76, accuracy: 0.01)
-        XCTAssertEqual(sut.averageAdjustedCostPerShare, 412.983, accuracy: 0.01)
+        XCTAssertEqual(sut.averageCostPerShare, 98.24, accuracy: 0.01)
+        XCTAssertEqual(sut.averageAdjustedCostPerShare, 98.05, accuracy: 0.01)
         XCTAssertEqual(sut.currentValue, holding.currentValue)
         XCTAssertEqual(sut.currentValueInLocalCurrency, holding.currentValueInLocalCurrency)
     }
@@ -471,12 +471,12 @@ class HoldingTests: XCTestCase {
 
         XCTAssertEqual(sut.stock, holding.stock)
         XCTAssertEqual(sut.company, holding.company)
-        XCTAssertEqual(sut.quantity, 165)
+        XCTAssertEqual(sut.quantity, 14)
         XCTAssertEqual(sut.accumulatedDividends, holding.accumulatedDividends)
-        XCTAssertEqual(sut.costBasis, holding.costBasis)
-        XCTAssertEqual(sut.adjustedCostBasis, holding.adjustedCostBasis)
-        XCTAssertEqual(sut.averageCostPerShare, 19.872, accuracy: 0.01)
-        XCTAssertEqual(sut.averageAdjustedCostPerShare, 19.73, accuracy: 0.01)
+//        XCTAssertEqual(sut.costBasis, holding.costBasis)
+//        XCTAssertEqual(sut.adjustedCostBasis, holding.adjustedCostBasis)
+        XCTAssertEqual(sut.averageCostPerShare, 233.07, accuracy: 0.01)
+        XCTAssertEqual(sut.averageAdjustedCostPerShare, 231.39, accuracy: 0.01)
         XCTAssertEqual(sut.currentValue, holding.currentValue)
         XCTAssertEqual(sut.currentValueInLocalCurrency, holding.currentValueInLocalCurrency)
     }

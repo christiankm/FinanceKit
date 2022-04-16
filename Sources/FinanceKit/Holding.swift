@@ -281,8 +281,9 @@ public struct Holding: Identifiable, Hashable, Codable {
                 continue
             }
 
-            let adjustedQuantity = Quantity((Double(transaction.quantity) * split.ratio).rounded(.down))
-            let adjustedPrice = transaction.price / Decimal(split.ratio)
+            let factor = 1 / split.ratio
+            let adjustedQuantity = Quantity((Double(transaction.quantity) * factor).rounded(.down))
+            let adjustedPrice = transaction.price / Decimal(factor)
 
             adjustedTransactions.append(Transaction(
                 type: transaction.type,
@@ -297,7 +298,7 @@ public struct Holding: Identifiable, Hashable, Codable {
         var adjustedHolding = Holding.makeHoldings(with: adjustedTransactions)[0]
         adjustedHolding.stock = stock
         adjustedHolding.company = company
-        adjustedHolding.currentValue = currentValue
+        adjustedHolding.currentValue = (stock?.price ?? 0) * Decimal(quantity)
         adjustedHolding.currentValueInLocalCurrency = currentValueInLocalCurrency
 
         assert(adjustedHolding.transactions.count == transactions.count, "Two arrays must be of equal count")

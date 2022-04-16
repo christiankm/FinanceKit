@@ -89,9 +89,9 @@ class PortfolioTests: XCTestCase {
 
     func testAdjustForSplits() {
         let transactions = [
-            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 23, commission: 13),
-            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 50, quantity: 26, commission: 13),
-            Transaction(type: .buy, symbol: .cake, date: .jan9, price: 59, quantity: 260, commission: 4)
+            Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 20, commission: 13),
+            Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 50, quantity: 30, commission: 13),
+            Transaction(type: .buy, symbol: .cake, date: .jan9, price: 59, quantity: 20, commission: 4)
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
@@ -104,7 +104,7 @@ class PortfolioTests: XCTestCase {
         let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
-        XCTAssertEqual(appleHolding.quantity, 72)
+        XCTAssertEqual(appleHolding.quantity, 40)
     }
 
     func testUpdateWithCurrencyPairsToBaseCurrency() {
