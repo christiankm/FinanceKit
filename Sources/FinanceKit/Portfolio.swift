@@ -197,11 +197,14 @@ public struct Portfolio: Codable, Hashable, Identifiable {
 
     public mutating func adjust(for splits: [Split]) {
         var adjustedHoldings: [Holding] = []
-        splits.sorted().forEach { split in
-            guard var holding = holdings.first(where: { $0.symbol == split.symbol }) else {
-                return
+
+        holdings.forEach { holding in
+            var holding = holding
+            let splits = splits.filter { $0.symbol == holding.symbol }
+            if !splits.isEmpty {
+                holding.adjustForSplits(splits)
             }
-            holding.adjustForSplit(split)
+
             adjustedHoldings.append(holding)
         }
 

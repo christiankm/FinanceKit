@@ -121,6 +121,7 @@ identifier_name:
   excluded:
     - i
     - id
+    - to
 
 custom_rules: 
   boolean_return:
