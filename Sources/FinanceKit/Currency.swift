@@ -19,6 +19,16 @@ public struct Currency: Codable, Hashable {
 
     public let locale: Locale
 
+    public var symbol: String {
+        let code = code.rawValue
+        let locale = NSLocale(localeIdentifier: code) // swiftlint:disable:this legacy_objc_type
+        if locale.displayName(forKey: .currencySymbol, value: code) == code {
+            let newLocale = NSLocale(localeIdentifier: code.dropLast() + "_en") // swiftlint:disable:this legacy_objc_type
+            return newLocale.displayName(forKey: .currencySymbol, value: code) ?? code
+        }
+        return locale.displayName(forKey: .currencySymbol, value: code) ?? code
+    }
+
     public init(code: CurrencyCode, locale: Locale = .autoupdatingCurrent) {
         self.code = code
         self.locale = Locale.autoupdatingCurrent

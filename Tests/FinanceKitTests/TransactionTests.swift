@@ -55,7 +55,7 @@ class TransactionTests: XCTestCase {
     private func mockTransaction(type: TransactionType) -> Transaction {
         Transaction(
             type: type,
-            symbol: Symbol(rawValue: "AAPL")!, // swiftlint:disable:this force_unwrapping
+            symbol: .aapl,
             date: Date(),
             price: 180.34,
             quantity: 23,
