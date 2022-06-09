@@ -18,9 +18,30 @@ class PortfolioTests: XCTestCase {
 
     func testTotalCostOfHoldings() {
         let holdings: [Holding] = [
-            Holding(symbol: .aapl, quantity: 16, costBasis: 13, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .ko, quantity: 22, costBasis: 12.83, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .cake, quantity: 5, costBasis: 44.21, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
+            Holding(
+                symbol: .aapl,
+                quantity: 16,
+                costBasis: 13,
+                costBasisInLocalCurrency: 0,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .coke,
+                quantity: 22,
+                costBasis: 12.83,
+                costBasisInLocalCurrency: 0,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .cake,
+                quantity: 5,
+                costBasis: 44.21,
+                costBasisInLocalCurrency: 0,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            )
         ]
         let totalCost = Portfolio.totalCost(of: holdings).rounded
         XCTAssertEqual(totalCost, Decimal(70.04).rounded)
@@ -28,9 +49,30 @@ class PortfolioTests: XCTestCase {
 
     func testTotalCostInLocalCurrencyOfHoldings() {
         let holdings: [Holding] = [
-            Holding(symbol: .aapl, quantity: 16, costBasis: 0, costBasisInLocalCurrency: 13, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: Symbol(rawValue: "KO")!, quantity: 22, costBasis: 0, costBasisInLocalCurrency: 12.83, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: Symbol(rawValue: "CAKE")!, quantity: 5, costBasis: 0, costBasisInLocalCurrency: 44.21, currentValue: 0, currentValueInLocalCurrency: 0)
+            Holding(
+                symbol: .aapl,
+                quantity: 16,
+                costBasis: 0,
+                costBasisInLocalCurrency: 13,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .coke,
+                quantity: 22,
+                costBasis: 0,
+                costBasisInLocalCurrency: 12.83,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .cake,
+                quantity: 5,
+                costBasis: 0,
+                costBasisInLocalCurrency: 44.21,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            )
         ]
         let totalCost = Portfolio.totalCostInLocalCurrency(of: holdings).rounded
         XCTAssertEqual(totalCost, Decimal(70.04).rounded)
@@ -40,9 +82,30 @@ class PortfolioTests: XCTestCase {
 
     func testUpdateWithStock() {
         let holdings: [Holding] = [
-            Holding(symbol: .aapl, quantity: 16, costBasis: 0, costBasisInLocalCurrency: 13, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .ko, quantity: 22, costBasis: 0, costBasisInLocalCurrency: 12.83, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .cake, quantity: 5, costBasis: 0, costBasisInLocalCurrency: 44.21, currentValue: 0, currentValueInLocalCurrency: 0)
+            Holding(
+                symbol: .aapl,
+                quantity: 16,
+                costBasis: 0,
+                costBasisInLocalCurrency: 13,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .coke,
+                quantity: 22,
+                costBasis: 0,
+                costBasisInLocalCurrency: 12.83,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .cake,
+                quantity: 5,
+                costBasis: 0,
+                costBasisInLocalCurrency: 44.21,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            )
         ]
         let portfolio = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
         var stock = Stock.apple
@@ -52,7 +115,7 @@ class PortfolioTests: XCTestCase {
 
         let appleHolding = sut.holdings.first { $0.symbol == .aapl }
         let cakeHolding = sut.holdings.first { $0.symbol == .cake }
-        let cokeHolding = sut.holdings.first { $0.symbol == .ko }
+        let cokeHolding = sut.holdings.first { $0.symbol == .coke }
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
         XCTAssertEqual(appleHolding?.currentValue, 2880)
@@ -62,9 +125,30 @@ class PortfolioTests: XCTestCase {
 
     func testUpdateWithStocks() {
         let holdings: [Holding] = [
-            Holding(symbol: .aapl, quantity: 16, costBasis: 0, costBasisInLocalCurrency: 13, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .ko, quantity: 22, costBasis: 0, costBasisInLocalCurrency: 12.83, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .cake, quantity: 5, costBasis: 0, costBasisInLocalCurrency: 44.21, currentValue: 0, currentValueInLocalCurrency: 0)
+            Holding(
+                symbol: .aapl,
+                quantity: 16,
+                costBasis: 0,
+                costBasisInLocalCurrency: 13,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .coke,
+                quantity: 22,
+                costBasis: 0,
+                costBasisInLocalCurrency: 12.83,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .cake,
+                quantity: 5,
+                costBasis: 0,
+                costBasisInLocalCurrency: 44.21,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            )
         ]
         let portfolio = Portfolio(id: UUID(), name: "", currency: .usDollars, holdings: holdings)
 
@@ -79,7 +163,7 @@ class PortfolioTests: XCTestCase {
 
         let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
         let cakeHolding = sut.holdings.first { $0.symbol == .cake }!
-        let cokeHolding = sut.holdings.first { $0.symbol == .ko }!
+        let cokeHolding = sut.holdings.first { $0.symbol == .coke }!
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
         XCTAssertEqual(appleHolding.currentValue, 2912.00)
@@ -109,9 +193,30 @@ class PortfolioTests: XCTestCase {
 
     func testUpdateWithCurrencyPairsToBaseCurrency() {
         let holdings: [Holding] = [
-            Holding(symbol: .aapl, quantity: 16, costBasis: 200, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .cake, quantity: 5, costBasis: 400, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0),
-            Holding(symbol: .ko, quantity: 22, costBasis: 300, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
+            Holding(
+                symbol: .aapl,
+                quantity: 16,
+                costBasis: 200,
+                costBasisInLocalCurrency: 0,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .cake,
+                quantity: 5,
+                costBasis: 400,
+                costBasisInLocalCurrency: 0,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            ),
+            Holding(
+                symbol: .coke,
+                quantity: 22,
+                costBasis: 300,
+                costBasisInLocalCurrency: 0,
+                currentValue: 0,
+                currentValueInLocalCurrency: 0
+            )
         ]
 
         let currencyPairs = [
@@ -125,7 +230,7 @@ class PortfolioTests: XCTestCase {
 
         let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
         let cakeHolding = sut.holdings.first { $0.symbol == .cake }!
-        let cokeHolding = sut.holdings.first { $0.symbol == .ko }!
+        let cokeHolding = sut.holdings.first { $0.symbol == .coke }!
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
         XCTAssertEqual(appleHolding.costBasisInLocalCurrency.rounded, 1379.31)

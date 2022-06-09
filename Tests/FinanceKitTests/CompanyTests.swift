@@ -56,7 +56,7 @@ class CompanyTests: XCTestCase {
             currency: .usDollars
         )
         let coke = Company(
-            symbol: .ko,
+            symbol: .coke,
             name: "Coca-Cola",
             currency: .usDollars
         )

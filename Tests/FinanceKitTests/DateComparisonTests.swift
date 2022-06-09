@@ -6,7 +6,7 @@
 
 import XCTest
 
-class Date_ComparisonTests: XCTestCase {
+class DateComparisonTests: XCTestCase {
 
     func testIsBefore() throws {
         let now = Date()

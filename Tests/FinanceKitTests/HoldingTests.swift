@@ -7,6 +7,7 @@
 @testable import FinanceKit
 import XCTest
 
+// swiftlint:disable:next type_body_length
 class HoldingTests: XCTestCase {
 
     func testInitWithDefaultValues() {
@@ -213,7 +214,7 @@ class HoldingTests: XCTestCase {
         XCTAssertEqual(holdings[0].transactions.count, 1)
     }
 
-    func testMakeHoldingsWithMultipleBuyAndSellTransactions() {
+    func testMakeHoldingsWithMultipleBuyAndSellTransactions() throws {
         let today = Date()
         let tomorrow = today.addingTimeInterval(86400)
         let transactions = [
@@ -226,9 +227,11 @@ class HoldingTests: XCTestCase {
         let holdings = Holding.makeHoldings(with: transactions)
 
         XCTAssertEqual(holdings.count, 1)
-        XCTAssertEqual(holdings.first!.costBasis, 216)
-        XCTAssertEqual(holdings.first!.averageCostPerShare, 43.2)
-        XCTAssertEqual(holdings.first!.transactions.count, 4)
+
+        let firstHolding = try XCTUnwrap(holdings.first)
+        XCTAssertEqual(firstHolding.costBasis, 216)
+        XCTAssertEqual(firstHolding.averageCostPerShare, 43.2)
+        XCTAssertEqual(firstHolding.transactions.count, 4)
     }
 
     func testMakeHoldingsWithBuyAndSellTransactionsInUnsortedOrder() {
@@ -260,7 +263,7 @@ class HoldingTests: XCTestCase {
         XCTAssertTrue(holdings.isEmpty)
     }
 
-    func testMakeHoldingsWithBuyAndSellAndDividendTransactions() {
+    func testMakeHoldingsWithBuyAndSellAndDividendTransactions() throws {
         let transactions = [
             Transaction(type: .buy, symbol: .aapl, date: Date(), price: 100, quantity: 5, commission: 13),
             Transaction(type: .dividend, symbol: .aapl, date: Date(), price: 0.5, quantity: 10),
@@ -269,7 +272,7 @@ class HoldingTests: XCTestCase {
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
-        let holding = holdings.first!
+        let holding = try XCTUnwrap(holdings.first)
 
         XCTAssertEqual(holdings.count, 1)
         XCTAssertEqual(holding.quantity, 2)
@@ -389,7 +392,7 @@ class HoldingTests: XCTestCase {
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
-        var holding = holdings.first!
+        var holding = try XCTUnwrap(holdings.first)
 
         holding = holding.update(with: .apple)
         XCTAssertEqual(holding.quantity, 15)
@@ -422,7 +425,7 @@ class HoldingTests: XCTestCase {
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
-        var holding = holdings.first!
+        var holding = try XCTUnwrap(holdings.first)
 
         holding = holding.update(with: .apple)
         XCTAssertEqual(holding.quantity, 46)
@@ -455,7 +458,7 @@ class HoldingTests: XCTestCase {
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
-        var holding = holdings.first!
+        var holding = try XCTUnwrap(holdings.first)
 
         holding = holding.update(with: .apple)
         XCTAssertEqual(holding.quantity, 46)
@@ -488,7 +491,7 @@ class HoldingTests: XCTestCase {
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
-        let holding = holdings.first!
+        let holding = try XCTUnwrap(holdings.first)
         var sut = holding
 
         let futureSplit = Split(symbol: .aapl, date: .distantFuture, ratio: 2)
@@ -506,7 +509,7 @@ class HoldingTests: XCTestCase {
         ]
 
         let holdings = Holding.makeHoldings(with: transactions)
-        let holding = holdings.first!
+        let holding = try XCTUnwrap(holdings.first)
         var sut = holding
 
         let zeroSplit = Split(symbol: .aapl, date: .distantPast, ratio: 0)
@@ -536,7 +539,7 @@ class HoldingTests: XCTestCase {
 
     func testComparable() {
         let holding1 = Holding(symbol: .aapl)
-        let holding2 = Holding(symbol: .ko)
+        let holding2 = Holding(symbol: .coke)
         let sortedHoldings = [holding2, holding1].sorted()
         XCTAssertEqual(sortedHoldings, [holding1, holding2])
     }
@@ -545,10 +548,19 @@ class HoldingTests: XCTestCase {
 
     func testMakeHoldingsPerformance() {
         measure {
-            let transactions = [Transaction].init(repeating: Transaction(type: .buy, symbol: .aapl, date: Date(), price: 120, quantity: 5, commission: 13), count: 1000)
+            let transactions = [Transaction].init(repeating: Transaction(
+                type: .buy,
+                symbol: .aapl,
+                date: Date(),
+                price: 120,
+                quantity: 5,
+                commission: 13
+            ), count: 1000)
 
             let holdings = Holding.makeHoldings(with: transactions)
             XCTAssertEqual(holdings.count, 1)
         }
     }
 }
+
+// swiftlint:disable:this file_length

@@ -6,7 +6,7 @@
 
 import XCTest
 
-class Numerics_Total_AverageTests: XCTestCase {
+class NumericsTotalAverageTests: XCTestCase {
 
     func testTotalForNumericCollection() throws {
         let sut: [Double] = [23, 84.23, -123, 3]

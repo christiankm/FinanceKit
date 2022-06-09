@@ -39,16 +39,16 @@ class MoneyTests: XCTestCase {
         XCTAssertEqual(Money(0.56).amount.doubleValue, Double(0.56), accuracy: 0.01)
     }
 
-    func testFormattedAmountWithCurrency() {
+    func testFormattedAmountWithCurrency() throws {
         let sut = Money(2500.32, in: .usDollars)
 
-        XCTAssertEqual(sut.formattedString!, "$2,500.32")
+        XCTAssertEqual(try XCTUnwrap(sut.formattedString), "$2,500.32")
     }
 
-    func testFormattedAmountWithoutCurrency() {
+    func testFormattedAmountWithoutCurrency() throws {
         let sut = Money(2500.32)
 
-        XCTAssertEqual(sut.formattedString!, "2,500.32")
+        XCTAssertEqual(try XCTUnwrap(sut.formattedString), "2,500.32")
     }
 
     func testIsZero() {
@@ -144,28 +144,28 @@ class MoneyTests: XCTestCase {
 
     // MARK: - Codable
 
-    func testCodableInitFromDecoderUsesRoundedValue() {
+    func testCodableInitFromDecoderUsesRoundedValue() throws {
         let json = Data("0.5600000000021".utf8)
-        let sut = try! JSONDecoder().decode(Money.self, from: json)
+        let sut = try JSONDecoder().decode(Money.self, from: json)
 
         XCTAssertEqual(sut, Money(0.56))
     }
 
-    func testCodableInitFromDecoderSingleValueContainer() {
+    func testCodableInitFromDecoderSingleValueContainer() throws {
         let json = Data("0.56".utf8)
-        let sut = try! JSONDecoder().decode(Money.self, from: json)
+        let sut = try JSONDecoder().decode(Money.self, from: json)
 
         XCTAssertEqual(sut, Money(0.56))
     }
 
-    func testCodableInitFromDecoderUnkeyedContainer() {
+    func testCodableInitFromDecoderUnkeyedContainer() throws {
         let json = Data("[0.56]".utf8)
-        let sut = try! JSONDecoder().decode([Money].self, from: json)
+        let sut = try JSONDecoder().decode([Money].self, from: json)
 
-        XCTAssertEqual(sut.first!, Money(0.56))
+        XCTAssertEqual(try XCTUnwrap(sut.first), Money(0.56))
     }
 
-    func testCodableInitFromDecoderKeyedContainer() {
+    func testCodableInitFromDecoderKeyedContainer() throws {
         struct Model: Decodable {
             let name: String
             let amount: Money
@@ -177,14 +177,14 @@ class MoneyTests: XCTestCase {
             "amount": 0.56
         }
         """.utf8)
-        let sut = try! JSONDecoder().decode(Model.self, from: json)
+        let sut = try JSONDecoder().decode(Model.self, from: json)
 
         XCTAssertEqual(sut.amount, Money(0.56))
     }
 
-    func testEncodeToEncoder() {
+    func testEncodeToEncoder() throws {
         let sut = Money(0.56)
-        let data = try! JSONEncoder().encode(sut)
+        let data = try JSONEncoder().encode(sut)
         let json = String(decoding: data, as: UTF8.self)
 
         XCTAssertNotEqual(json, "0.5600000000000001024")

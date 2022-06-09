@@ -1,11 +1,9 @@
 excluded:
   - Package.swift
-  - Tests
-  - Tests/LinuxMain.swift
-  - Tests/FinanceKitTests/XCTestManifests.swift
 
 disabled_rules:
   - explicit_type_interface
+  - file_header # disabled as it's just not reliable
   - extension_access_modifier
   - vertical_whitespace_between_cases
 
@@ -19,6 +17,7 @@ opt_in_rules:
   - closure_end_indentation
   - closure_spacing
   - collection_alignment
+  - conditional_returns_on_newline
   - contains_over_filter_count
   - contains_over_filter_is_empty
   - contains_over_first_not_nil
@@ -102,13 +101,13 @@ opt_in_rules:
 # Configure Rules
 conditional_returns_on_newline:
     if_only: true
-file_header:
-    required_pattern: |
-                      \/\/
-                      \/\/  FinanceKit
-                      \/\/  Copyright © \d{4} Christian Mitteldorf\. All rights reserved\.
-                      \/\/  MIT license, see LICENSE file for details
-                      \/\/
+# file_header:
+#     required_pattern: |
+#                       \/\/
+#                       \/\/  FinanceKit
+#                       \/\/  Copyright © \d{4} Christian Mitteldorf\. All rights reserved\.
+#                       \/\/  MIT license, see LICENSE file for details
+#                       \/\/
 force_unwrapping:
   severity: error
 line_length:

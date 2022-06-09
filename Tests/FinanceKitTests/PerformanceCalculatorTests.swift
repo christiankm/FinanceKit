@@ -47,9 +47,9 @@ class PerformanceCalculatorTests: XCTestCase {
     private static let transactions = [
         Transaction(type: .buy, symbol: .aapl, date: Date.jan1, price: 100, quantity: 10),
         Transaction(type: .buy, symbol: .cake, date: Date.jan3, price: 100, quantity: 10),
-        Transaction(type: .buy, symbol: .ko, date: Date.jan5, price: 100, quantity: 10),
+        Transaction(type: .buy, symbol: .coke, date: Date.jan5, price: 100, quantity: 10),
         Transaction(type: .buy, symbol: .aapl, date: Date.jan7, price: 100, quantity: 10),
-        Transaction(type: .sell, symbol: .ko, date: Date.jan9, price: 100, quantity: 10)
+        Transaction(type: .sell, symbol: .coke, date: Date.jan9, price: 100, quantity: 10)
     ]
 
     private static let historicalPrices: [Symbol: [HistoricalPrice]] = [
@@ -75,7 +75,7 @@ class PerformanceCalculatorTests: XCTestCase {
             HistoricalPrice(date: Date.jan8, price: 148),
             HistoricalPrice(date: Date.jan9, price: 180)
         ],
-        .ko: [
+        .coke: [
             HistoricalPrice(date: Date.jan1, price: 30),
             HistoricalPrice(date: Date.jan2, price: 35),
             HistoricalPrice(date: Date.jan3, price: 30),

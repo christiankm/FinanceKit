@@ -6,7 +6,7 @@
 
 import XCTest
 
-class NumberFormatter_CurrencyTests: XCTestCase {
+class NumberFormatterCurrencyTests: XCTestCase {
 
     func testCurrencyStyleFormatter() {
         let sut = NumberFormatter.currency

@@ -6,6 +6,24 @@
       "options" : {
 
       }
+    },
+    {
+      "enabled" : false,
+      "id" : "2320511D-2C6D-4492-A6CF-A853C951ED47",
+      "name" : "Australian Locale",
+      "options" : {
+        "language" : "en-AU",
+        "region" : "AU"
+      }
+    },
+    {
+      "enabled" : false,
+      "id" : "29FF72D0-D468-4119-940C-CD2A03820521",
+      "name" : "Danish Locale",
+      "options" : {
+        "language" : "da",
+        "region" : "DK"
+      }
     }
   ],
   "defaultOptions" : {

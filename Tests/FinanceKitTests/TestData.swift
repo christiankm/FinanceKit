@@ -1,3 +1,4 @@
+// swiftlint:disable:this file_name
 //
 //  FinanceKit
 //  Copyright © 2022 Christian Mitteldorf. All rights reserved.
@@ -7,10 +8,12 @@
 import FinanceKit
 import Foundation
 
+// swiftlint:disable force_unwrapping
+
 extension Company {
     static let apple = Company(symbol: .aapl, name: "Apple Inc.", currency: .usDollars)
     static let cake = Company(symbol: .cake, name: "The Cheesecake Factory Inc.", currency: .usDollars)
-    static let coke = Company(symbol: .ko, name: "The Coca-Cola Company Inc.", currency: .usDollars)
+    static let coke = Company(symbol: .coke, name: "The Coca-Cola Company Inc.", currency: .usDollars)
 }
 
 extension Currency {
@@ -32,9 +35,30 @@ extension Date {
 }
 
 extension Holding {
-    static let apple = Holding(symbol: .aapl, quantity: 16, costBasis: 13, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
-    static let cake = Holding(symbol: .cake, quantity: 5, costBasis: 44.21, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
-    static let coke = Holding(symbol: .ko, quantity: 22, costBasis: 12.83, costBasisInLocalCurrency: 0, currentValue: 0, currentValueInLocalCurrency: 0)
+    static let apple = Holding(
+        symbol: .aapl,
+        quantity: 16,
+        costBasis: 13,
+        costBasisInLocalCurrency: 0,
+        currentValue: 0,
+        currentValueInLocalCurrency: 0
+    )
+    static let cake = Holding(
+        symbol: .cake,
+        quantity: 5,
+        costBasis: 44.21,
+        costBasisInLocalCurrency: 0,
+        currentValue: 0,
+        currentValueInLocalCurrency: 0
+    )
+    static let coke = Holding(
+        symbol: .coke,
+        quantity: 22,
+        costBasis: 12.83,
+        costBasisInLocalCurrency: 0,
+        currentValue: 0,
+        currentValueInLocalCurrency: 0
+    )
 }
 
 extension Portfolio {}
@@ -42,11 +66,13 @@ extension Portfolio {}
 extension Stock {
     static let apple = Stock(symbol: .aapl, company: .apple, price: 180, currency: .usDollars)
     static let cake = Stock(symbol: .cake, company: .cake, price: 43, currency: .usDollars)
-    static let coke = Stock(symbol: .ko, company: .coke, price: 45, currency: .usDollars)
+    static let coke = Stock(symbol: .coke, company: .coke, price: 45, currency: .usDollars)
 }
 
 extension Symbol {
     static let aapl = Symbol("AAPL")!
     static let cake = Symbol(rawValue: "CAKE")!
-    static let ko = Symbol(rawValue: "KO")!
+    static let coke = Symbol(rawValue: "KO")!
 }
+
+// swiftlint:enable force_unwrapping
