@@ -33,13 +33,12 @@ opt_in_rules:
   - empty_xctest_method
   - enum_case_associated_values_count
   - explicit_init
-  - explicit_self
   - fallthrough
   - fatal_error_message
   - file_header
   - file_name
   - file_name_no_space
-  - file_types_order
+  #- file_types_order
   - first_where
   - flatmap_over_map_reduce
   - force_unwrapping
@@ -91,8 +90,6 @@ opt_in_rules:
   - unneeded_parentheses_in_closure_argument
   - unowned_variable_capture
   - untyped_error_in_catch
-  - unused_declaration
-  - unused_import
   - vertical_parameter_alignment_on_call
   - vertical_whitespace_closing_braces
   - xct_specific_matcher

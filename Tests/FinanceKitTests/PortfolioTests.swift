@@ -123,7 +123,7 @@ class PortfolioTests: XCTestCase {
         XCTAssertEqual(cokeHolding?.currentValue, 0)
     }
 
-    func testUpdateWithStocks() {
+    func testUpdateWithStocks() throws {
         let holdings: [Holding] = [
             Holding(
                 symbol: .aapl,
@@ -161,9 +161,9 @@ class PortfolioTests: XCTestCase {
         let stocks = [appleStock, cakeStock]
         let sut = portfolio.update(with: stocks)
 
-        let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
-        let cakeHolding = sut.holdings.first { $0.symbol == .cake }!
-        let cokeHolding = sut.holdings.first { $0.symbol == .coke }!
+        let appleHolding = try XCTUnwrap(sut.holdings.first { $0.symbol == .aapl })
+        let cakeHolding = try XCTUnwrap(sut.holdings.first { $0.symbol == .cake })
+        let cokeHolding = try XCTUnwrap(sut.holdings.first { $0.symbol == .coke })
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
         XCTAssertEqual(appleHolding.currentValue, 2912.00)
@@ -171,7 +171,7 @@ class PortfolioTests: XCTestCase {
         XCTAssertEqual(cokeHolding.currentValue, 0.00)
     }
 
-    func testAdjustForSplits() {
+    func testAdjustForSplits() throws {
         let transactions = [
             Transaction(type: .buy, symbol: .aapl, date: .jan3, price: 100, quantity: 20, commission: 13),
             Transaction(type: .buy, symbol: .aapl, date: .jan8, price: 50, quantity: 30, commission: 13),
@@ -185,13 +185,13 @@ class PortfolioTests: XCTestCase {
             Split(symbol: .aapl, date: .jan7, ratio: 2)
         ])
 
-        let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
+        let appleHolding = try XCTUnwrap(sut.holdings.first { $0.symbol == .aapl })
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
         XCTAssertEqual(appleHolding.quantity, 40)
     }
 
-    func testUpdateWithCurrencyPairsToBaseCurrency() {
+    func testUpdateWithCurrencyPairsToBaseCurrency() throws {
         let holdings: [Holding] = [
             Holding(
                 symbol: .aapl,
@@ -228,9 +228,9 @@ class PortfolioTests: XCTestCase {
         var sut = portfolio.update(with: [.apple, .cake, .coke])
         sut = sut.update(with: currencyPairs, to: .danishKroner)
 
-        let appleHolding = sut.holdings.first { $0.symbol == .aapl }!
-        let cakeHolding = sut.holdings.first { $0.symbol == .cake }!
-        let cokeHolding = sut.holdings.first { $0.symbol == .coke }!
+        let appleHolding = try XCTUnwrap(sut.holdings.first { $0.symbol == .aapl })
+        let cakeHolding = try XCTUnwrap(sut.holdings.first { $0.symbol == .cake })
+        let cokeHolding = try XCTUnwrap(sut.holdings.first { $0.symbol == .coke })
 
         XCTAssertEqual(sut.holdings.count, holdings.count)
         XCTAssertEqual(appleHolding.costBasisInLocalCurrency.rounded, 1379.31)
