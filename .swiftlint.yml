@@ -1,3 +1,5 @@
+parent_config: https://raw.githubusercontent.com/christiankm/swiftlint-parent-config/main/dk.mitteldorf.swiftlint.yml
+
 excluded:
   - Package.swift
 
@@ -5,43 +7,24 @@ disabled_rules:
   - explicit_type_interface
   - file_header # disabled as it's just not reliable
   - extension_access_modifier
-  - vertical_whitespace_between_cases
 
 opt_in_rules:
   - custom_rules
-  - anyobject_protocol
   - array_init
-  - attributes
-  - class_delegate_protocol
   - closure_body_length
   - closure_end_indentation
-  - closure_spacing
-  - collection_alignment
-  - conditional_returns_on_newline
-  - contains_over_filter_count
-  - contains_over_filter_is_empty
-  - contains_over_first_not_nil
-  - contains_over_range_nil_comparison
-  - convenience_type
-  - discarded_notification_center_observer
   - discouraged_object_literal
   - discouraged_optional_boolean
   - discouraged_optional_collection
-  - empty_collection_literal
-  - empty_count
-  - empty_string
   - empty_xctest_method
   - enum_case_associated_values_count
   - explicit_init
   - fallthrough
   - fatal_error_message
-  - file_header
+  #- file_header
   - file_name
   - file_name_no_space
   #- file_types_order
-  - first_where
-  - flatmap_over_map_reduce
-  - force_unwrapping
   - function_default_parameter_at_end
   - function_parameter_count
   - identical_operands
@@ -50,10 +33,6 @@ opt_in_rules:
   - inert_defer
   - joined_default_parameter
   - large_tuple
-  - last_where
-  - legacy_multiple
-  - legacy_nsgeometry_functions
-  - legacy_random
   - literal_expression_end_indentation
   - lower_acl_than_parent
   - modifier_order
@@ -61,43 +40,25 @@ opt_in_rules:
   - multiline_function_chains
   - multiline_literal_brackets
   - object_literal
-  - operator_usage_whitespace
   - optional_enum_case_matching
-  - overridden_super_call
   - override_in_extension
-  - pattern_matching_keywords
-  - prefer_self_type_over_type_of_self
   - prefixed_toplevel_constant
   - private_action
   - private_outlet
   - prohibited_interface_builder
-  - prohibited_super_call
   - raw_value_for_camel_cased_codable_enum
   - reduce_into
-  - redundant_nil_coalescing
-  - redundant_type_annotation
   - required_enum_case
-  - single_test_class
-  - sorted_first_last
   - sorted_imports
   - static_operator
   - strong_iboutlet
   - switch_case_on_newline
-  - todo
-  - toggle_bool
   - trailing_closure
-  - unavailable_function
-  - unneeded_parentheses_in_closure_argument
   - unowned_variable_capture
   - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
-  - vertical_whitespace_closing_braces
-  - xct_specific_matcher
-  - yoda_condition
 
 # Configure Rules
-conditional_returns_on_newline:
-    if_only: true
 # file_header:
 #     required_pattern: |
 #                       \/\/
@@ -105,40 +66,14 @@ conditional_returns_on_newline:
 #                       \/\/  Copyright © \d{4} Christian Mitteldorf\. All rights reserved\.
 #                       \/\/  MIT license, see LICENSE file for details
 #                       \/\/
-force_unwrapping:
-  severity: error
 line_length:
   warning: 140
-overridden_super_call:
-  severity: error
-prohibited_super_call:
-  severity: error
-identifier_name:
-  excluded:
-    - i
-    - id
-    - to
 
 custom_rules: 
-  boolean_return:
-    name: "Boolean Return"
-    regex: "\\? (true : false)|(false : true)"
-    message: "It is redundant to return true or false for a boolean value. Instead return the value itself."
-    severity: warning
-
   class_name:
     name: "Class Name"
     regex: "(?i)(class|struct) \\S*(Protocol|Delegate):"
     message: "A class name should never contain `Delegate` or `Protocol`. Use a Protocol instead."
-    severity: warning
-
-  documentation_ticks:
-    name: "Documentation Ticks"
-    regex: "´"
-    message: "Incorrect Markdown format used. Mark types in '`' instead of '´' for proper formatting."
-    match_kinds:
-      - comment
-      - doccomment
     severity: warning
 
   empty_line_after_guard:
@@ -168,20 +103,6 @@ custom_rules:
     name: "Logging"
     regex: "(print|NSLog)\\("
     message: "Using print or NSLog is considered unsecure and inefficient. Use `os_log`"
-    severity: warning
-
-  # Custom rule violating if specifing a parameter to it's default value.
-  redundant_default_parameter:
-    name: "Redundant Default Value"
-    regex: "(present|dismiss|animateWithDuration)\\(\\V*, completion: nil\\)"
-    message: "Specifying a parameter with it's default value is redundant. Remove parameter or change it's value."
-    severity: warning
-
-  # Custom rule violating if tabs are used for indentation instead of spaces.
-  tabs:
-    name: "Tab Whitespace"
-    regex: "\\t"
-    message: "Using tabs is discouraged. Use spaces only."
     severity: warning
 
   # Custom rule violating when type inference is not used.

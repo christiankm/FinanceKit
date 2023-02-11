@@ -3,3 +3,7 @@
 xcuserdata
 .DS_Store
 /.build
+
+
+# SwiftLint Remote Config Cache
+.swiftlint/RemoteConfigCache
