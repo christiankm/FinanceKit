@@ -1,0 +1,32 @@
+# This workflow will run on every pull request, and builds and tests the project
+# to ensure everything works before merging to another branch or main.
+
+name: Pull Request
+
+on: [pull_request]
+
+jobs:
+  build-macos:
+    concurrency:
+      group: ${{ github.head_ref }}
+      cancel-in-progress: true
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build package
+      run: swift build
+    - name: Run tests
+      run: swift test
+  
+  build-linux:
+    concurrency:
+      group: ${{ github.head_ref }}
+      cancel-in-progress: true    
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build package
+      run: swift build
+    - name: Run Tests
+      run: swift test
+
