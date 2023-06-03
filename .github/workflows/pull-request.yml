@@ -1,0 +1,27 @@
+# This workflow will run on every pull request, and builds and tests the project
+# to ensure everything works before merging to another branch or main.
+
+name: Pull Request
+
+on: [pull_request]
+
+jobs:
+  build:
+    # concurrency:
+    #   group: ${{ github.workflow }}-${{ github.ref }}
+    #   cancel-in-progress: true
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, macos-11, macos-10.15, macos-10.13]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    # - name: Run SwiftLint
+    #   uses: norio-nomura/action-swiftlint@3.2.1
+    #   with:
+    #     args: --strict
+    - name: Build package
+      run: swift build
+    - name: Run Tests
+      run: swift test
+
