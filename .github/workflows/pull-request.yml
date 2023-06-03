@@ -13,6 +13,8 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Run SwiftLint
+      uses: norio-nomura/action-swiftlint@3.2.1
     - name: Build package
       run: swift build
     - name: Run tests
@@ -25,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Run SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1    
     - name: Build package
       run: swift build
     - name: Run Tests
