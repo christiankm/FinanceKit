@@ -25,7 +25,6 @@
     linebreakAtEndOfFile, \
     modifierOrder, \
     numberFormatting, \
-    preferDouble, \
     preferKeyPath, \
     redundantBackticks, \
     redundantBreak, \
