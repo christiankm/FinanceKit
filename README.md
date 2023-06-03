@@ -1,6 +1,6 @@
 # FinanceKit
 
-[![Build Status](https://app.bitrise.io/app/e84bb055bf6392ac/status.svg?token=C_r2Pd6FmyPSuX8fJvCxcw)](https://app.bitrise.io/app/e84bb055bf6392ac) [![Swift Version](https://img.shields.io/static/v1?label=Swift&message=4.0&color=red)
+[![Swift Version](https://img.shields.io/static/v1?label=Swift&message=4.0&color=red)
 
 FinanceKit is a Swift framework for working with financial data in your apps. It has support for Stocks, Portfolios, Holdings, Currencies, financial calculations and more.
 
