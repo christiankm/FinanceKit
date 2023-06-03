@@ -6,71 +6,20 @@ name: Pull Request
 on: [pull_request]
 
 jobs:
-  build-macos-latest:
+  build:
     concurrency:
       group: ${{ github.head_ref }}
       cancel-in-progress: true
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Run SwiftLint
-    #   uses: norio-nomura/action-swiftlint@3.2.1
-    # - name: Build package
-      run: swift build
-    - name: Run tests
-      run: swift test
-    
-  build-macos-11:
-    concurrency:
-      group: ${{ github.head_ref }}
-      cancel-in-progress: true
-    runs-on: macos-11
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, macos-11, macos-10.15, macos-10.13]
+    runs-on: $
     steps:
     - uses: actions/checkout@v3
     # - name: Run SwiftLint
     #   uses: norio-nomura/action-swiftlint@3.2.1
-    - name: Build package
-      run: swift build
-    - name: Run tests
-      run: swift test
-    
-  build-macos-10-15:
-    concurrency:
-      group: ${{ github.head_ref }}
-      cancel-in-progress: true
-    runs-on: macos-10.15
-    steps:
-    - uses: actions/checkout@v3
-    # - name: Run SwiftLint
-    #   uses: norio-nomura/action-swiftlint@3.2.1
-    - name: Build package
-      run: swift build
-    - name: Run tests
-      run: swift test
-    
-  build-macos-10-13:
-    concurrency:
-      group: ${{ github.head_ref }}
-      cancel-in-progress: true
-    runs-on: macos-10.13
-    steps:
-    - uses: actions/checkout@v3
-    # - name: Run SwiftLint
-    #   uses: norio-nomura/action-swiftlint@3.2.1
-    - name: Build package
-      run: swift build
-    - name: Run tests
-      run: swift test
-  
-  build-linux-latest:
-    concurrency:
-      group: ${{ github.head_ref }}
-      cancel-in-progress: true    
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Run SwiftLint
-      uses: norio-nomura/action-swiftlint@3.2.1    
+    #   with:
+    #     args: --strict
     - name: Build package
       run: swift build
     - name: Run Tests
