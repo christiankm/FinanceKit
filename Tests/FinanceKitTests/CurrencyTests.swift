@@ -52,7 +52,8 @@ class CurrencyTests: XCTestCase {
         XCTAssertEqual(Currency.isoCurrencyCodes, NSLocale.isoCurrencyCodes)
     }
 
+    @available(iOS 16, macOS 13, *)
     func testCommonISOCurrencyCodes() {
-        XCTAssertEqual(Currency.commonIsoCurrencyCodes, NSLocale.commonISOCurrencyCodes)
+        XCTAssertEqual(Currency.commonISOCurrencyCodes, NSLocale.commonISOCurrencyCodes)
     }
 }

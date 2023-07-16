@@ -67,7 +67,8 @@ extension Currency {
     }
 
     /// A list of common currency codes.
-    public static var commonIsoCurrencyCodes: [String] {
+    @available(iOS 16, macOS 13, *)
+    public static var commonISOCurrencyCodes: [String] {
         Locale.commonISOCurrencyCodes
     }
 

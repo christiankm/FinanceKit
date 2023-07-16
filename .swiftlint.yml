@@ -30,7 +30,6 @@ opt_in_rules:
   - identical_operands
   - implicit_return
   - implicitly_unwrapped_optional
-  - inert_defer
   - joined_default_parameter
   - large_tuple
   - literal_expression_end_indentation
