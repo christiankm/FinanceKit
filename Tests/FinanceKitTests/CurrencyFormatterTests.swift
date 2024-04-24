@@ -44,14 +44,14 @@ class CurrencyFormatterTests: XCTestCase {
 
     func testStringFromMoneyLocalCurrency() throws {
         let money = Money(123.45, in: .australianDollars)
-        let sut = CurrencyFormatter(currency: try XCTUnwrap(money.currency), locale: Locale(identifier: "en_AU"))
+        let sut = try CurrencyFormatter(currency: XCTUnwrap(money.currency), locale: Locale(identifier: "en_AU"))
         let string = try XCTUnwrap(sut.string(from: money))
         XCTAssertEqual(string, "$123.45")
     }
 
     func testStringFromMoneyNonLocalCurrency() throws {
         let money = Money(123.45, in: .australianDollars)
-        let sut = CurrencyFormatter(currency: try XCTUnwrap(money.currency), locale: usLocale)
+        let sut = try CurrencyFormatter(currency: XCTUnwrap(money.currency), locale: usLocale)
         let string = try XCTUnwrap(sut.string(from: money))
         XCTAssertEqual(string, "A$123.45")
     }

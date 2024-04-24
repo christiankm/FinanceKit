@@ -10,8 +10,14 @@ public struct PercentageFormatter {
 
     private let formatter: NumberFormatter
 
-    public init(positivePrefix: String = "", minimumFractionDigits: Int = 2, maximumFractionDigits: Int = 2) {
+    public init(
+        locale: Locale = .autoupdatingCurrent,
+        positivePrefix: String = "",
+        minimumFractionDigits: Int = 2,
+        maximumFractionDigits: Int = 2
+    ) {
         let formatter = NumberFormatter()
+        formatter.locale = locale
         formatter.numberStyle = .percent
         formatter.positivePrefix = positivePrefix
         formatter.minimumFractionDigits = minimumFractionDigits

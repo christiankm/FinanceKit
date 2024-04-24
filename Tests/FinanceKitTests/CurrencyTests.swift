@@ -28,15 +28,13 @@ class CurrencyTests: XCTestCase {
     }
 
     func testSymbol() {
-        // TODO: add test case for all symbols
-//        XCTAssertEqual(Currency.danishKroner.symbol, "kr.")
         XCTAssertTrue(Currency.danishKroner.symbol == "kr." || Currency.danishKroner.symbol == "DKK")
     }
 
     // MARK: - Locale convenience functions
 
     func testLocaleCurrencyCode() {
-        XCTAssertEqual(Currency.currencyCode, NSLocale.current.currencyCode)
+        XCTAssertEqual(Currency.currencyCode, NSLocale.current.currency?.identifier ?? "")
     }
 
     func testLocaleCurrencySymbol() {

@@ -9,6 +9,8 @@ import Foundation
 /// An amount of money in a given currency.
 public struct Money: Hashable {
 
+    private let locale: Locale
+
     private static let decimalHandler = NSDecimalNumberHandler(
         roundingMode: .bankers,
         scale: 2,
@@ -27,10 +29,10 @@ public struct Money: Hashable {
     /// If `currency` is not set, returns the formatted amount without currency.
     public var formattedString: String? {
         if let currency = currency {
-            let formatter = CurrencyFormatter(currency: currency, locale: .current)
+            let formatter = CurrencyFormatter(currency: currency, locale: locale)
             return formatter.string(from: self)
         } else {
-            return NumberFormatter.monetary.string(from: amount.asDecimalNumber)
+            return NumberFormatter.monetary(locale: locale).string(from: amount.asDecimalNumber)
         }
     }
 
@@ -44,18 +46,20 @@ public struct Money: Hashable {
     /// - Parameters:
     ///   - amount: An amount of money.
     ///   - currency: A currency the money is in, or nil if no particular currency is needed.
-    public init(_ amount: Decimal, in currency: Currency? = nil) {
+    public init(_ amount: Decimal, in currency: Currency? = nil, locale: Locale = .autoupdatingCurrent) {
         self.rawValue = amount
         self.currency = currency
+        self.locale = locale
     }
 
     /// Creates an amount of money with a given double number, and optional currency.
     /// - Parameters:
     ///   - amount: An amount of money.
     ///   - currency: A currency the money is in, or nil if no particular currency is needed.
-    public init(amount: Double, in currency: Currency? = nil) {
+    public init(amount: Double, in currency: Currency? = nil, locale: Locale = .autoupdatingCurrent) {
         self.rawValue = Decimal(amount)
         self.currency = currency
+        self.locale = locale
     }
 
     // MARK: - Arithmetic
@@ -64,13 +68,14 @@ public struct Money: Hashable {
     /// - Parameters:
     ///   - string: An amount of money from string.
     ///   - currency: A currency the money is in, or nil if no particular currency is needed.
-    public init?(string: String, in currency: Currency? = nil) {
+    public init?(string: String, in currency: Currency? = nil, locale: Locale = .autoupdatingCurrent) {
         guard let doubleValue = Double(string) else {
             return nil
         }
 
         self.rawValue = Decimal(doubleValue)
         self.currency = currency
+        self.locale = locale
     }
 
     /// Add two money amounts. This function does not take different currencies into account.
@@ -201,6 +206,7 @@ extension Money: Codable {
             if let amount = amount {
                 self.rawValue = Decimal(amount)
                 self.currency = .none
+                self.locale = .autoupdatingCurrent
             } else {
                 throw DecodingError.dataCorruptedError(in: singleValueContainer, debugDescription: "Could not decode value for amount")
             }

@@ -8,16 +8,20 @@ import XCTest
 
 class NumberFormatterCurrencyTests: XCTestCase {
 
+    func testStandardStyleFormatter() {
+        let sut = NumberFormatter.standard(locale: Locale(identifier: "en_US"))
+
+        XCTAssertEqual(sut.string(from: 2500.32), "2500")
+    }
+
     func testCurrencyStyleFormatter() {
-        let sut = NumberFormatter.currency
-        sut.locale = Locale(identifier: "en_US")
+        let sut = NumberFormatter.currency(locale: Locale(identifier: "en_US"))
 
         XCTAssertEqual(sut.string(from: 2500.32), "$2,500.32")
     }
 
     func testMonetaryStyleFormatter() {
-        let sut = NumberFormatter.monetary
-        sut.locale = Locale(identifier: "en_US")
+        let sut = NumberFormatter.monetary(locale: Locale(identifier: "en_US"))
 
         XCTAssertEqual(sut.string(from: 2500.32), "2,500.32")
     }

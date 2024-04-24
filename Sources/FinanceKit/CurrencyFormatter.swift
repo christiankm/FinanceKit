@@ -15,15 +15,15 @@ public struct CurrencyFormatter {
     /// The currency to use when formatting.
     public let currency: Currency
 
-    private let formatter = NumberFormatter.currency
+    private let formatter: NumberFormatter
 
     /// Initialize a new formatter with a specified currency and locale.
     /// Locale is an optional parameter and defaults to `.autoupdatingCurrent`.
     public init(currency: Currency, locale: Locale = .autoupdatingCurrent) {
         self.currency = currency
         self.locale = locale
+        self.formatter = NumberFormatter.currency(locale: locale)
 
-        formatter.locale = locale
         formatter.currencyCode = currency.code.rawValue
 
         if currency.code == .none {
