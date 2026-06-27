@@ -74,7 +74,7 @@
 --commas inline
 --extensionacl on-declarations
 --guardelse same-line
---header "\n FinanceKit\n Copyright © {year} Christian Mitteldorf. All rights reserved.\n MIT license, see LICENSE file for details.\n"
+--header "\n FinanceKit\n Copyright © {created.year} Christian Mitteldorf. All rights reserved.\n MIT license, see LICENSE file for details.\n"
 --ifdef no-indent
 --indent 4
 --lineaftermarks true

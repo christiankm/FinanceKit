@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2024 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
@@ -8,14 +8,22 @@ import Foundation
 
 extension NumberFormatter {
 
-    public static var currency: NumberFormatter {
+    public static func standard(locale: Locale = .autoupdatingCurrent) -> NumberFormatter {
         let formatter = NumberFormatter()
+        formatter.locale = locale
+        return formatter
+    }
+
+    public static func currency(locale: Locale = .autoupdatingCurrent) -> NumberFormatter {
+        let formatter = NumberFormatter.monetary(locale: locale)
+        formatter.locale = locale
         formatter.numberStyle = .currency
         return formatter
     }
 
-    public static var monetary: NumberFormatter {
+    public static func monetary(locale: Locale = .autoupdatingCurrent) -> NumberFormatter {
         let formatter = NumberFormatter()
+        formatter.locale = locale
         formatter.alwaysShowsDecimalSeparator = true
         formatter.numberStyle = .decimal
         formatter.minimumIntegerDigits = 1

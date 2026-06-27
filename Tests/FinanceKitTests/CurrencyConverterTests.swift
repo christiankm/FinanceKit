@@ -1,6 +1,6 @@
 //
 //  FinanceKit
-//  Copyright © 2022 Christian Mitteldorf. All rights reserved.
+//  Copyright © 2023 Christian Mitteldorf. All rights reserved.
 //  MIT license, see LICENSE file for details.
 //
 
